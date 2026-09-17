@@ -13,34 +13,33 @@ valine:
   placeholder: "1. 提问前请先仔细阅读本文档⚡\n2. 页面显示问题💥，请提供控制台截图📸或者您的测试网址\n3. 其他任何报错💣，请提供详细描述和截图📸，祝食用愉快💪"
 ---
 
-:::info
-跳票N久终于更新的简单的使用说明
-- [hexo-theme-syutoi](https://github.com/syutoi/hexo-theme-syutoi) ：本博客自用的主题
-- [hexo-renderer-multi-markdown-it](https://github.com/amehime/hexo-renderer-multi-markdown-it)：配套的markdown渲染器
+> **历史文档**：本页保留上游主题的说明与示例，部分私有语法现仅显示为原文，不代表当前功能。当前写法与替代方案请参阅 [Syutoi 写作与迁移示例](/reading/)。
 
-已经支持hexo 5。
-:::
 
-:::info
-因博主被学业和工作掏空，本项目已停滞更新大半年，问题也无法及时回复大家，这个悲惨状态可能还要持续半年的样子。
+> 跳票N久终于更新的简单的使用说明
+> - [hexo-theme-syutoi](https://github.com/syutoi/hexo-theme-syutoi) ：本博客自用的主题
+> - [hexo-renderer-multi-markdown-it](https://github.com/amehime/hexo-renderer-multi-markdown-it)：配套的markdown渲染器
+>
+> 已经支持hexo 5。
 
-有很多热心小伙伴在评论区或者项目issue帮忙回答问题，非常非常感谢！
 
-本项目是完全开源的，也有做一些example示例，大家可以随便拿随便改。
-但是很抱歉，博主我暂时不能提供更多的支持，这个写的乱七八糟的文档，暂时也没有时间把它写得更专业一些。
-非常对不住大家！
+> 因博主被学业和工作掏空，本项目已停滞更新大半年，问题也无法及时回复大家，这个悲惨状态可能还要持续半年的样子。
+>
+> 有很多热心小伙伴在评论区或者项目issue帮忙回答问题，非常非常感谢！
+>
+> 本项目是完全开源的，也有做一些example示例，大家可以随便拿随便改。
+> 但是很抱歉，博主我暂时不能提供更多的支持，这个写的乱七八糟的文档，暂时也没有时间把它写得更专业一些。
+> 非常对不住大家！
+>
+> iconfont的添加申请，我看到留言后会尽快加上，希望各位小伙伴能看到。
 
-iconfont的添加申请，我看到留言后会尽快加上，希望各位小伙伴能看到。
-:::
 
-:::warning
-当前版本更新至 0.2.5，[更新记录点此](#更新记录)
+> 当前版本更新至 0.2.5，[更新记录点此](#更新记录)
+>
 
-:::
 
-:::primary
-[**:rocket:快速开始**](/computer-science/note/theme-syutoi-doc/) - [:love_letter:依赖插件](/computer-science/note/theme-syutoi-doc/dependents/) - [:pushpin:基本配置](/computer-science/note/theme-syutoi-doc/config/) - [:rainbow:界面显示](/computer-science/note/theme-syutoi-doc/display/) - [:unicorn:特殊功能](/computer-science/note/theme-syutoi-doc/special/)
-:::
+> [**:rocket:快速开始**](/computer-science/note/theme-syutoi-doc/) - [:love_letter:依赖插件](/computer-science/note/theme-syutoi-doc/dependents/) - [:pushpin:基本配置](/computer-science/note/theme-syutoi-doc/config/) - [:rainbow:界面显示](/computer-science/note/theme-syutoi-doc/display/) - [:unicorn:特殊功能](/computer-science/note/theme-syutoi-doc/special/)
+
 
 # 设计缘由
 前几年在Bear和Evernote上整理了大量笔记，非常喜欢Bear默认的markdown渲染样式。

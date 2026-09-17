@@ -14,19 +14,17 @@
     "dev": "node toolbox/dev.mjs",
     "build": "pnpm build:theme && pnpm build:example",
     "clean": "pnpm --dir example clean",
-    "test": "pnpm test:unit && node toolbox/check-example.mjs",
+    "test": "pnpm test:unit && node toolbox/check-example.mjs && node toolbox/check-markdown.mjs",
     "build:theme": "node toolbox/build.mjs",
     "build:example": "pnpm prepare:example && pnpm --dir example build",
     "typecheck": "tsc --noEmit",
     "test:unit": "node --test test/*.test.mjs"
   },
   "dependencies": {
-    "hexo-fs": "^5.0.0",
     "hexo-pagination": "^4.0.0",
     "hexo-util": "^3.3.0",
     "js-yaml": "^4.1.0",
-    "nunjucks": "^3.2.4",
-    "pangu": "^4.0.7"
+    "nunjucks": "^3.2.4"
   },
   "devDependencies": {
     "autoprefixer": "10.4.23",

@@ -13,7 +13,8 @@ git clone https://github.com/syutoi/hexo-theme-syutoi.git ./themes/syutoi
   - update `theme` fragment as `syutoi`.  
 
 3. Install the necessary plugins
-  - [hexo-renderer-multi-markdown-it](https://www.npmjs.com/package/hexo-renderer-multi-markdown-it)
+  - [hexo-renderer-markdown-it](https://github.com/hexojs/hexo-renderer-markdown-it)
+  - [markdown-it-task-lists](https://github.com/revin/markdown-it-task-lists)（示例站的任务列表扩展）
   - [hexo-feed](https://www.npmjs.com/package/hexo-feed)
 
 4. View a site configuration example in the `example` folder.
@@ -29,7 +30,7 @@ git clone https://github.com/syutoi/hexo-theme-syutoi.git ./themes/syutoi
 
 ```bash
 # 在仓库根目录安装两个 workspace 的依赖
-PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true pnpm install
+pnpm install
 
 # 构建并检查示例站
 pnpm clean
@@ -49,4 +50,4 @@ pnpm dev
 
 `pnpm test` 运行主题偏好逻辑测试并检查上一次示例站构建的页面、正文、脚本、静态资源和 feeds；应先运行 `pnpm build`。GitHub Actions 在 Node 20.19.0 和 Node 24 上执行类型检查、构建、测试及产物一致性检查。详细命令与迁移方式见 [开发文档](docs/development.md)。
 
-旧 Stylus 与浏览器运行时已移除，页面默认只加载本地 JS/CSS；定制 Markdown renderer 暂时保留到 B5。迁移差异见 [说明](docs/migration-from-shoka.md)。安装时跳过旧 Puppeteer 自带 Chromium 下载；示例站禁用了依赖它的 Mermaid/Graphviz 构建插件，相关示例暂以代码展示。后续会在通用 Markdown renderer 迁移中移除这项依赖。
+旧 Stylus 与浏览器运行时已移除，页面默认只加载本地 JS/CSS；Markdown 使用通用 `hexo-renderer-markdown-it`，安装与构建不再需要 Puppeteer / Chromium。脚注与任务列表显式启用，代码高亮使用 Hexo 的 Highlight.js。旧私有语法不会全部兼容，迁移清单见 [说明](docs/migration-from-shoka.md)，当前写法见 [写作示例](example/source/reading/index.md)（预览 `/reading/`）。

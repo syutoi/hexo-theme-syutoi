@@ -12,9 +12,11 @@ audio:
   - https://music.163.com/song?id=1387098940
 ---
 
-:::primary
-[:rocket:快速开始](/computer-science/note/theme-syutoi-doc/) - [:love_letter:依赖插件](/computer-science/note/theme-syutoi-doc/dependents/) - [**:pushpin:基本配置**](/computer-science/note/theme-syutoi-doc/config/) - [:rainbow:界面显示](/computer-science/note/theme-syutoi-doc/display/) - [:unicorn:特殊功能](/computer-science/note/theme-syutoi-doc/special/)
-:::
+> **历史文档**：本页保留上游主题的说明与示例，部分私有语法现仅显示为原文，不代表当前功能。当前写法与替代方案请参阅 [Syutoi 写作与迁移示例](/reading/)。
+
+
+> [:rocket:快速开始](/computer-science/note/theme-syutoi-doc/) - [:love_letter:依赖插件](/computer-science/note/theme-syutoi-doc/dependents/) - [**:pushpin:基本配置**](/computer-science/note/theme-syutoi-doc/config/) - [:rainbow:界面显示](/computer-science/note/theme-syutoi-doc/display/) - [:unicorn:特殊功能](/computer-science/note/theme-syutoi-doc/special/)
+
 
 
 # 站点别称
@@ -416,7 +418,5 @@ vendors:
 以上文件加载全部基于jsDelivr，并对全局加载的组件进行了文件合并。
 如果不明白啥意思，则不要轻易修改。
 
-:::danger
-主题版本升级的时候，可能会修改这里。
-如果修改过主题默认`_config.yml`，记得更新主题时，末尾的`vendors`也要及时修改。
-:::
+> 主题版本升级的时候，可能会修改这里。
+> 如果修改过主题默认`_config.yml`，记得更新主题时，末尾的`vendors`也要及时修改。

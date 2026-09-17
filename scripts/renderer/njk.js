@@ -3,12 +3,6 @@
 const nunjucks = require('nunjucks');
 const path = require('path');
 
-const pangu = require('pangu') || {
-    spacing: data => {
-      return data;
-    }
-  };
-
 function njkCompile(data) {
   const templateDir = path.dirname(data.path);
   const env = nunjucks.configure(templateDir, {
@@ -16,18 +10,6 @@ function njkCompile(data) {
     throwOnUndefined: false,
     trimBlocks: false,
     lstripBlocks: false
-  });
-  env.addFilter('safedump', dictionary => {
-    if (typeof dictionary !== 'undefined' && dictionary !== null) {
-      return JSON.stringify(dictionary);
-    }
-    return '""';
-  });
-  env.addFilter('pangu', dictionary => {
-    if (typeof dictionary !== 'undefined' && dictionary !== null) {
-      return pangu.spacing(dictionary);
-    }
-    return '""';
   });
   return nunjucks.compile(data.text, env, data.path);
 }

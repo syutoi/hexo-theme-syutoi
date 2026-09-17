@@ -26,7 +26,7 @@ PRD 第 52 节的 v0.1 MVP 验收标准优先于后续版本功能清单。
 - [x] B2：建立 CSS + Custom Properties + PostCSS 流程；定义颜色、宽度、间距、字号和圆角 tokens。
 - [x] B3：将开发监听与 Hexo 预览串联；生产输出进入 `source/`，明确生成文件的版本控制策略。
 - [x] B4：逐步替换 Stylus 和旧脚本；切换前后都验证示例站，切换完成后移除旧构建依赖。已按反馈恢复接近原版的视觉结构，并重新完成本地验证。
-- [ ] B5：替换 multi-markdown-it 定制渲染器为通用 Markdown renderer；盘点旧示例语法并记录迁移差异。
+- [x] B5：替换 multi-markdown-it 定制渲染器为通用 Markdown renderer；盘点旧示例语法并记录迁移差异。
 - [ ] B6：简化配置至约 100–150 行、最多三层；导航与社交链接采用结构化 YAML。
 - [ ] B7：引入适量 lint/typecheck；只为配置、URL 等独立逻辑添加必要单元测试，并纳入 CI。
 
@@ -143,3 +143,16 @@ PRD 第 52 节的 v0.1 MVP 验收标准优先于后续版本功能清单。
 - 页头通过 `appearance.cover` 显式配置；示例站复用本地图片，三篇文档文章设置明确封面，其他文章保留无封面卡片。未恢复随机图片、CDN 脚本、PJAX 和播放器。
 - 本地检查 Light/Dark 桌面首页与移动页面截图，并复测主要页面、键盘菜单、代码复制和禁用 JS 的导航。技术与截图检查记录不代表用户已最终认可所有视觉细节，C/D 阶段继续完善。
 - 后续每完成一个大任务，在检查通过后创建一次 Git 提交，提交信息使用英文。当前提交以 B4 为边界，B5 单独执行和提交。
+
+
+### 2026-09-18：B5 通用 Markdown renderer
+
+- 示例站改用 `hexo-renderer-markdown-it@7.1.1`，显式启用脚注与 `markdown-it-task-lists@2.1.1`；代码使用 Hexo 内置 Highlight.js，未知语言回退纯文本，保留复制按钮。
+- 移除 `hexo-renderer-multi-markdown-it` 及其 Puppeteer / deasync 依赖链、旧 minify 配置和不用的 Pangu 模板过滤器；CI / 安装说明不再设置跳过 Chromium 下载的环境变量。HTML 不再额外压缩，JS/CSS 仍由主题构建压缩。
+- 盘点原示例私有语法；Java 笔记和普通历史说明中的提示块改为引用，题目改为普通文本。复杂特殊功能历史页保留原文并明确标注支持范围，保留历史来源链接。具体差异见 [迁移说明](migration-from-shoka.md)。
+- 新增 `/reading/` 写作示例，覆盖脚注、任务列表、表格、代码、未知语言转义、原生图片懒加载、details、ruby 与重复标题；新增实际 HTML 产物检查并纳入 `pnpm test`。
+- 类型检查、76 个文件的示例站构建、11 项单元/构建恢复测试、9 类页面及 Markdown 产物检查通过。新 renderer 构建日志无旧 Prism diff 提示。
+- Chrome：10 类页面在 1440px / 390px 与无 JS 下复测通过；写作示例另测 Light/Dark、精确代码复制、脚注、图片与无 JS 原生折叠。已查看移动端正文截图；未改变 B4 修正后的页面外壳。
+- 仍存在 Nunjucks/Chokidar 与 hexo-feed/Hexo 的 peer 范围提示；本地构建通过，Node 24 / 远端 CI 尚未运行。
+
+下一批：B6，简化主题配置并统一导航与社交链接的结构化 YAML；作为独立任务验证与提交。

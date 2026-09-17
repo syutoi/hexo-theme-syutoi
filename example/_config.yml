@@ -48,9 +48,9 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: false # edit for Theme.syutoi
-  line_number: true
-  auto_detect: true
+  enable: true
+  line_number: false
+  auto_detect: false
   tab_replace: ''
 prismjs:
   enable: false # edit for Theme.syutoi
@@ -88,75 +88,28 @@ deploy:
   type:
 
 
-# edit for Theme.syutoi
-autoprefixer:
-  exclude:
-    - '*.min.css'
-
+# Standard renderer: Markdown + small, explicit extensions.
 markdown:
-  render: # 渲染器设置
-    html: false # 过滤 HTML 标签
-    xhtmlOut: true # 使用 '/' 来闭合单标签 （比如 <br />）。
-    breaks: true # 转换段落里的 '\n' 到 <br>。
-    linkify: true # 将类似 URL 的文本自动转换为链接。
-    typographer:
-    quotes: '“”‘’'
-  plugins: # markdown-it插件设置
-    # Legacy diagram renderers launch an obsolete Chromium during builds.
-    # Keep diagrams as code until the planned renderer migration.
-    - plugin:
-        name: ./markdown-it-mermaid
-        enable: false
-    - plugin:
-        name: ./markdown-it-graphviz
-        enable: false
-    - plugin:
-        name: markdown-it-toc-and-anchor
-        enable: true
-        options: # 文章目录以及锚点应用的class名称，syutoi主题必须设置成这样
-          tocClassName: 'toc'
-          anchorClassName: 'anchor'
-    - plugin:
-        name: markdown-it-multimd-table
-        enable: true
-        options:
-          multiline: true
-          rowspan: true
-          headerless: true
-    - plugin:
-        name: ./markdown-it-furigana
-        enable: true
-        options:
-          fallbackParens: "()"
-    - plugin:
-        name: ./markdown-it-spoiler
-        enable: true
-        options:
-          title: "你知道得太多了"
-
-minify:
-  html:
-    enable: true
-    stamp: false
-    exclude:
-      - '**/json.ejs'
-      - '**/atom.ejs'
-      - '**/rss.ejs'
-  css:
-    enable: true
-    stamp: false
-    exclude:
-      - '**/*.min.css'
-  js:
-    enable: true
-    stamp: false
-    mangle:
-      # The legacy client shares globals with separately loaded vendor scripts.
-      toplevel: false
-    output:
-    compress:
-    exclude:
-      - '**/*.min.js'
+  preset: default
+  render:
+    html: true # Authored HTML such as details, ruby and media is allowed.
+    xhtmlOut: false
+    breaks: false
+    linkify: true
+    typographer: false
+  plugins:
+    - markdown-it-footnote
+    - name: markdown-it-task-lists
+      options:
+        enabled: false
+  anchors:
+    level: 1
+    collisionSuffix: ''
+    permalink: false
+  images:
+    lazyload: true
+    prepend_root: true
+    post_asset: false
 
 # algolia:
 #   appId:

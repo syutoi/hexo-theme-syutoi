@@ -11,7 +11,8 @@ const pages = [
   'categories/index.html',
   'tags/index.html',
   'tags/Foo/index.html',
-  '404.html'
+  '404.html',
+  'reading/index.html'
 ];
 
 for (const page of pages) {

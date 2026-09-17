@@ -36,22 +36,23 @@
 .code-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; color: var(--syutoi-color-text-secondary); font: .75rem var(--syutoi-font-code); }
 .copy-button { border: 1px solid var(--syutoi-color-border); border-radius: var(--syutoi-radius-sm); background: var(--syutoi-color-surface); padding: .4rem .75rem; cursor: pointer; }
 .code-block > pre { margin-top: .5rem; }
-/* Support current renderer output while its replacement is handled in B5. */
+/* Hexo builds Highlight.js markup; no browser highlighter is needed. */
 .prose figure.highlight { overflow-x: auto; border: 1px solid var(--syutoi-color-border); border-radius: var(--syutoi-radius-sm); background: var(--syutoi-color-surface); }
 .prose figure.highlight table { display: table; width: 100%; margin: 0; }
 .prose figure.highlight :where(td, pre) { margin: 0; border: 0; border-radius: 0; }
 .prose figure.highlight td { padding: 0; }
 .prose figure.highlight pre { overflow: visible; background: transparent; font-size: .85rem; }
 .prose figure.highlight .gutter { width: 2rem; color: var(--syutoi-color-text-secondary); user-select: none; border-right: 1px solid var(--syutoi-color-border); }
-.prose .token.comment, .prose .comment { color: var(--syutoi-color-text-secondary); }
-.prose .token.keyword, .prose .keyword, .prose .selector-tag { color: var(--syutoi-code-keyword); }
-.prose .token.string, .prose .string, .prose .attr { color: var(--syutoi-code-string); }
-.prose .token.number, .prose .number, .prose .literal { color: var(--syutoi-code-number); }
+.prose .comment { color: var(--syutoi-color-text-secondary); }
+.prose .keyword, .prose .selector-tag { color: var(--syutoi-code-keyword); }
+.prose .string, .prose .attr { color: var(--syutoi-code-string); }
+.prose .number, .prose .literal { color: var(--syutoi-code-number); }
 .prose .note { padding: 1rem 1.25rem; margin-block: 1.5rem; border-left: 2px solid var(--syutoi-color-primary); background: var(--syutoi-color-surface); }
 .prose .tab::before { content: attr(data-title); display: block; margin-top: 1rem; font-weight: 600; }
 .prose .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
 .prose .link-card { padding: 1rem; border: 1px solid var(--syutoi-color-border); border-radius: var(--syutoi-radius-sm); }
 .prose .link-card img { width: 3rem; height: 3rem; object-fit: cover; margin: 0 0 1rem; }
 .prose .link-card > span > span { display: block; margin: .5rem 0 0; font-size: .85rem; color: var(--syutoi-color-text-secondary); }
-.prose .katex-html { display: none; }
-.prose .katex-display { display: block; overflow-x: auto; padding: 1rem 0; }
+
+.prose .task-list-item { list-style: none; }
+.prose .task-list-item-checkbox { margin: 0 .5rem 0 -1.35rem; accent-color: var(--syutoi-color-primary); }

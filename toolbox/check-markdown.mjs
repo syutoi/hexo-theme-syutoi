@@ -1,0 +1,32 @@
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import hexoUtil from 'hexo-util';
+const { unescapeHTML } = hexoUtil;
+
+// Check the actual Hexo output, including its filters and theme templates.
+const output = new URL('../example/public/', import.meta.url);
+const html = await readFile(new URL('reading/index.html', output), 'utf8');
+assert.match(html, /<h2 id="重复标题">/);
+assert.match(html, /<h2 id="重复标题-2">/, 'Duplicate headings need unique anchors');
+assert.match(html, /href="#fn1"[^>]*id="fnref1"/);
+assert.match(html, /id="fn1"[\s\S]*href="#fnref1"/, 'Footnote must link back to its reference');
+assert.match(html, /<input[^>]*checked=""[^>]*disabled=""[^>]*type="checkbox"/);
+assert.match(html, /<table>[\s\S]*<thead>[\s\S]*<tbody>/);
+assert.match(html, /<details>\s*<summary>查看答案与说明<\/summary>[\s\S]*<strong>答案始终保留在 HTML 中<\/strong>[\s\S]*<\/details>/);
+assert.match(html, /<ruby>书台<rp>（<\/rp><rt>syutoi<\/rt>/);
+assert.match(html, /<img src="\/assets\/wallpaper-2572384.jpg"[^>]+loading="lazy"/);
+assert.match(html, /<figure class="highlight javascript">[\s\S]*<span class="keyword">const<\/span>/);
+const code = html.match(/<figure class="highlight javascript">[\s\S]*?<pre>([\s\S]*?)<\/pre>/)?.[1];
+assert(code, 'Highlighted JavaScript sample is missing');
+const text = unescapeHTML(code.replace(/<br\s*\/?>/g, '\n').replace(/<[^>]*>/g, ''));
+assert.equal(text, 'const greeting = "Hello, 世界";\nconsole.log(greeting);\n', 'Highlighting must preserve code content');
+assert.match(html, /&lt;widget title=/, 'Unknown language code must be escaped');
+assert.doesNotMatch(html, /<widget\b/);
+const legacy = await readFile(new URL('computer-science/note/theme-syutoi-doc/special/index.html', output), 'utf8');
+assert.match(legacy, /历史文档/);
+assert.match(legacy, /https:\/\/shoka\.lostyu\.me/, 'Historical source links must remain');
+assert.match(legacy, /class="media-links"/, 'Media tag fallback must survive renderer migration');
+const notes = await readFile(new URL('computer-science/java/course-1/week-2/index.html', output), 'utf8');
+assert.doesNotMatch(notes, /:::note|\{\.quiz/);
+assert.match(notes, /huang/);
+console.log('Verified Markdown anchors, footnotes, tasks, tables, details, images, code fidelity and legacy content.');

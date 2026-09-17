@@ -10,13 +10,14 @@ valine:
   placeholder: "1. 提问前请先仔细阅读本文档⚡\n2. 页面显示问题💥，请提供控制台截图📸或者您的测试网址\n3. 其他任何报错💣，请提供详细描述和截图📸，祝食用愉快💪"
 ---
 
-:::primary
-[:rocket:快速开始](/computer-science/note/theme-syutoi-doc/) - [**:love_letter:依赖插件**](/computer-science/note/theme-syutoi-doc/dependents/) - [:pushpin:基本配置](/computer-science/note/theme-syutoi-doc/config/) - [:rainbow:界面显示](/computer-science/note/theme-syutoi-doc/display/) - [:unicorn:特殊功能](/computer-science/note/theme-syutoi-doc/special/)
-:::
+> **历史文档**：本页保留上游主题的说明与示例，部分私有语法现仅显示为原文，不代表当前功能。当前写法与替代方案请参阅 [Syutoi 写作与迁移示例](/reading/)。
 
-:::warning
-请务必将hexo-renderer-multi-markdown-it升级到最新版，目前为 0.1.5
-:::
+
+> [:rocket:快速开始](/computer-science/note/theme-syutoi-doc/) - [**:love_letter:依赖插件**](/computer-science/note/theme-syutoi-doc/dependents/) - [:pushpin:基本配置](/computer-science/note/theme-syutoi-doc/config/) - [:rainbow:界面显示](/computer-science/note/theme-syutoi-doc/display/) - [:unicorn:特殊功能](/computer-science/note/theme-syutoi-doc/special/)
+
+
+> 请务必将hexo-renderer-multi-markdown-it升级到最新版，目前为 0.1.5
+
 
 Theme Syutoi依赖以下Hexo插件
 

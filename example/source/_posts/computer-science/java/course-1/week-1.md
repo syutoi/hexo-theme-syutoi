@@ -6,11 +6,10 @@ categories:
 tags:
 ---
 
-:::note info
-以下为个人学习笔记和习题整理
-课程：零基础学Java语言-浙江大学-翁恺 @ 中国大学MOOC 
-https://www.icourse163.org/course/ZJU-1001541001
-:::
+> 以下为个人学习笔记和习题整理
+> 课程：零基础学Java语言-浙江大学-翁恺 @ 中国大学MOOC
+> https://www.icourse163.org/course/ZJU-1001541001
+
 
 # 课堂笔记
 ## 读输入、字符串输出

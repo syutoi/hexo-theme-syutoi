@@ -6,11 +6,10 @@ categories:
 tags:
 ---
 
-:::note info
-以下为个人学习笔记和习题整理
-课程：零基础学Java语言-浙江大学-翁恺 @ 中国大学MOOC 
-https://www.icourse163.org/course/ZJU-1001541001
-:::
+> 以下为个人学习笔记和习题整理
+> 课程：零基础学Java语言-浙江大学-翁恺 @ 中国大学MOOC
+> https://www.icourse163.org/course/ZJU-1001541001
+
 
 # 课堂笔记
 ## 关系运算
@@ -77,7 +76,7 @@ switch (type)
 	
 # 小测验
 
-1. 写出以下代码段的执行结果： {.quiz .essay}
+1. 写出以下代码段的执行结果：
 	```java
 	int num=34, max=30;
 	if ( num >= max*2 )
@@ -89,7 +88,7 @@ switch (type)
 	> huang
 	> zhu
 
-2. 写出以下代码段的执行结果： {.quiz .essay}
+2. 写出以下代码段的执行结果：
 	```java
 	int limit = 100;
 	int num1 = 15;
