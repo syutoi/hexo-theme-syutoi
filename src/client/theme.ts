@@ -17,7 +17,7 @@ export function initializeTheme(): void {
     root.dataset.theme = resolved;
     root.dataset.themePreference = preference;
     document.querySelector('meta[name="theme-color"]')?.setAttribute(
-      'content', resolved === 'dark' ? '#222222' : '#ffffff'
+      'content', resolved === 'dark' ? '#20232c' : '#f6f7f9'
     );
     document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]').forEach(button => {
       const label = button.dataset[`${preference}Label`];
@@ -40,8 +40,6 @@ export function initializeTheme(): void {
       apply();
     }
   });
-  // Delegation also supports controls replaced by the transitional PJAX layer.
-  document.addEventListener('pjax:success', apply);
   document.addEventListener('click', event => {
     if (!(event.target instanceof Element) || !event.target.closest('[data-theme-toggle]')) return;
     preference = nextPreference(preference);

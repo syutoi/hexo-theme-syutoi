@@ -1,4 +1,5 @@
 ---
+cover: /assets/wallpaper-2572384.jpg
 title: Step.4 主题特殊功能
 date: 2020/08/13 21:45:48
 categories:

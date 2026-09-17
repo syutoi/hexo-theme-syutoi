@@ -14,9 +14,6 @@ git clone https://github.com/syutoi/hexo-theme-syutoi.git ./themes/syutoi
 
 3. Install the necessary plugins
   - [hexo-renderer-multi-markdown-it](https://www.npmjs.com/package/hexo-renderer-multi-markdown-it)
-  - [hexo-autoprefixer](https://www.npmjs.com/package/hexo-autoprefixer)
-  - [hexo-algoliasearch](https://www.npmjs.com/package/hexo-algoliasearch)
-  - [hexo-symbols-count-time](https://www.npmjs.com/package/hexo-symbols-count-time)
   - [hexo-feed](https://www.npmjs.com/package/hexo-feed)
 
 4. View a site configuration example in the `example` folder.
@@ -26,7 +23,7 @@ git clone https://github.com/syutoi/hexo-theme-syutoi.git ./themes/syutoi
 
 ## 本地开发
 
-当前仓库使用 Hexo 8，正在逐步迁移到 TypeScript/esbuild 和 CSS/PostCSS。现代化重写计划与完成情况见 [TODO](docs/TODO.md)。
+当前仓库使用 Hexo 8，页面已使用 TypeScript/esbuild 和 CSS/PostCSS。现代化重写计划与完成情况见 [TODO](docs/TODO.md)。
 
 环境要求：Node.js >=20.19.0，pnpm 9.0.4（版本固定于 `packageManager`）。使用 nvm 时可执行 `nvm install`、`nvm use` 读取 `.nvmrc`。
 
@@ -52,4 +49,4 @@ pnpm dev
 
 `pnpm test` 运行主题偏好逻辑测试并检查上一次示例站构建的页面、正文、脚本、静态资源和 feeds；应先运行 `pnpm build`。GitHub Actions 在 Node 20.19.0 和 Node 24 上执行类型检查、构建、测试及产物一致性检查。详细命令与迁移方式见 [开发文档](docs/development.md)。
 
-当前仍保留上游的 Stylus、定制 Markdown renderer 和浏览器 CDN 依赖，尚未达到 PRD 的“无第三方 JS”标准。安装时跳过旧 Puppeteer 自带 Chromium 下载；示例站禁用了依赖它的 Mermaid/Graphviz 构建插件，相关示例暂以代码展示。后续会在通用 Markdown renderer 迁移中移除这项依赖。
+旧 Stylus 与浏览器运行时已移除，页面默认只加载本地 JS/CSS；定制 Markdown renderer 暂时保留到 B5。迁移差异见 [说明](docs/migration-from-shoka.md)。安装时跳过旧 Puppeteer 自带 Chromium 下载；示例站禁用了依赖它的 Mermaid/Graphviz 构建插件，相关示例暂以代码展示。后续会在通用 Markdown renderer 迁移中移除这项依赖。

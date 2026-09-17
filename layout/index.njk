@@ -1,46 +1,14 @@
 {% extends '_partials/layout.njk' %}
-{% import '_macro/card.njk' as card with context %}
-{% import '_macro/postmeta.njk' as postmeta with context %}
-{% import '_macro/segment.njk' as segment with context %}
-
 {% block content %}
-  <div class="index wrap">
-    {%- if page.current == 1 %}
-      {%- if page.sticky.length > 0%}
-      <h2 class="divider">{{ __('index.sticky') }}</h2>
-      {%- set sticky = page.sticky.toArray() %}
-      <div class="segments sticky">
-        {%- for post in sticky %}
-          {{ segment.render(post) }}
-        {%- endfor %}
-      </div>
-      {%- endif %}
-
-      {%- if page.catlist.length > 0%}
-      <h2 class="divider">{{ __('index.category') }}</h2>
-      <div class="cards">
-        {%- for cat in page.catlist %}
-          {{ card.render(cat) }}
-        {%- endfor %}
-      </div>
-      {%- endif %}
-    {%- endif %}
-
-    {%- if page.posts.length > 0%}
-    {%- set posts = page.posts.toArray() %}
-    {%- if page.current == 1 %}
-    <h2 class="divider">{{ __('index.posts') }}</h2>
-    {%- endif %}
-    <div class="segments posts">
-      {%- for post in posts %}
-        {{ segment.render(post) }}
-      {%- endfor %}
-    </div>
-    {%- endif %}
-
-  </div>
-
+{% if page.current == 1 and site.categories.length %}
+<section class="home-categories" aria-labelledby="categories-title">
+  <div class="section-heading"><h2 id="categories-title">{{ __('index.category') }}</h2><a href="{{ url_for(config.category_dir + '/') }}">{{ __('title.all') }} <span aria-hidden="true">↗</span></a></div>
+  <div class="category-cards">{% for category in site.categories.sort('name').toArray() %}{% if not category.parent %}<a class="category-card" href="{{ url_for(category.path) }}"><span class="category-symbol" aria-hidden="true">#</span><strong>{{ category.name }}</strong><span>{{ category.length }} {{ __('state.posts') }}</span></a>{% endif %}{% endfor %}</div>
+</section>
+{% endif %}
+<section class="home-posts" aria-labelledby="posts-title">
+  <div class="section-heading"><h2 id="posts-title">{{ __('desk.latest') }}</h2><a href="{{ url_for(config.archive_dir + '/') }}">{{ __('title.archive') }} <span aria-hidden="true">↗</span></a></div>
+  {% include '_partials/post-list.njk' %}
   {% include '_partials/pagination.njk' %}
-
+</section>
 {% endblock %}
-

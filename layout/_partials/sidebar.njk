@@ -1,0 +1,19 @@
+<aside class="site-sidebar" aria-label="{{ __('sidebar.overview') }}">
+  <section class="author-panel">
+    {% if theme.sidebar.avatar and syutoi_url(theme.images + '/' + theme.sidebar.avatar, true) %}<img class="author-avatar" src="{{ syutoi_url(theme.images + '/' + theme.sidebar.avatar, true) }}" alt="" width="96" height="96" loading="lazy">{% else %}<span class="author-monogram" aria-hidden="true">{{ config.title | first }}</span>{% endif %}
+    <h2>{{ config.author or config.title }}</h2>
+    <p class="author-description">{{ config.description }}</p>
+    <nav class="site-statistics" aria-label="{{ __('sidebar.overview') }}">
+      <a href="{{ url_for(config.archive_dir + '/') }}"><strong>{{ site.posts.length }}</strong><span>{{ __('state.posts') }}</span></a>
+      <a href="{{ url_for(config.category_dir + '/') }}"><strong>{{ site.categories.length }}</strong><span>{{ __('state.categories') }}</span></a>
+      <a href="{{ url_for(config.tag_dir + '/') }}"><strong>{{ site.tags.length }}</strong><span>{{ __('state.tags') }}</span></a>
+    </nav>
+    {% if syutoi_feed('rss') %}<a class="subscribe-link" href="{{ syutoi_feed('rss') }}">RSS <span aria-hidden="true">↗</span></a>{% endif %}
+  </section>
+  {% if is_post() %}
+    {% set contents = toc(page.content) %}
+    {% if contents %}<section class="sidebar-section article-toc"><h2>{{ __('sidebar.toc') }}</h2>{{ contents | safe }}</section>{% endif %}
+  {% else %}
+    <section class="sidebar-section"><h2>{{ __('title.category') }}</h2><ul class="sidebar-categories">{% for category in site.categories.sort('name').toArray() %}{% if not category.parent %}<li><a href="{{ url_for(category.path) }}"><span>{{ category.name }}</span><span>{{ category.length }}</span></a></li>{% endif %}{% endfor %}</ul></section>
+  {% endif %}
+</aside>

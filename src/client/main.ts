@@ -1,4 +1,10 @@
 import { initializeTheme } from './theme';
+import { initializeNavigation } from './navigation';
+import { initializeCode } from './code';
 
-// Loaded synchronously in <head>, before styles and page content.
+// Apply preference before the page and stylesheet are rendered.
 initializeTheme();
+document.addEventListener('DOMContentLoaded', () => {
+  initializeNavigation();
+  initializeCode();
+}, { once: true });

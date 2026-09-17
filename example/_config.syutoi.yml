@@ -90,3 +90,8 @@ disable_baidu_transformation: true
 
 # Automatically add external URL with Base64 encrypt & decrypt.
 exturl: true
+
+# A fixed local banner keeps the original image-led layout available offline.
+appearance:
+  theme: auto
+  cover: /assets/wallpaper-878514.jpg

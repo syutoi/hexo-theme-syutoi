@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: subtitle
-description: 描述123
+title: Syutoi
+subtitle: A place to write, read and think.
+description: 一个安静、清晰的写作与阅读空间。
 keywords: 关键词1,关键词2 # edit for Theme.syutoi
-author: John Doe
+author: Syutoi
 language: zh-CN # 这里只可以选 zh-CN、zh-HK、zh-TW、ja、en 这几个格式
 timezone: 'Asia/Shanghai'
 

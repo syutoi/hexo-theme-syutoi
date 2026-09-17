@@ -12,7 +12,7 @@ const pangu = require('pangu') || {
 function njkCompile(data) {
   const templateDir = path.dirname(data.path);
   const env = nunjucks.configure(templateDir, {
-    autoescape: false,
+    autoescape: true,
     throwOnUndefined: false,
     trimBlocks: false,
     lstripBlocks: false

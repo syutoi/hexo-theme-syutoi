@@ -1,0 +1,15 @@
+<ol class="post-list">
+{% for post in page.posts.toArray() %}
+  <li class="post-card{% if syutoi_cover(post) %} has-cover{% endif %}">
+    <article>
+      {% if syutoi_cover(post) %}<a class="post-cover" href="{{ url_for(post.path) }}" tabindex="-1" aria-hidden="true"><img src="{{ syutoi_cover(post) }}" alt="" loading="lazy" decoding="async"></a>{% endif %}
+      <div class="post-card-content">
+        <div class="post-meta"><time datetime="{{ date(post.date, 'YYYY-MM-DD') }}">{{ date(post.date, config.date_format) }}</time>{% if post.sticky %}<span class="sticky-label">{{ __('post.sticky') }}</span>{% endif %}</div>
+        <h2><a href="{{ url_for(post.path) }}">{{ post.title or __('post.untitled') }}</a></h2>
+        <p class="post-summary">{{ syutoi_excerpt(post) }}</p>
+        <div class="post-card-footer"><div class="post-taxonomy">{% if post.categories.length %}{% set category = post.categories.last() %}<a href="{{ url_for(category.path) }}">{{ category.name }}</a>{% endif %}</div><a class="read-more" href="{{ url_for(post.path) }}">{{ __('post.read_more') }} <span aria-hidden="true">→</span></a></div>
+      </div>
+    </article>
+  </li>
+{% else %}<li class="empty-state">{{ __('desk.empty') }}</li>{% endfor %}
+</ol>

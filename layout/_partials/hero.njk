@@ -1,0 +1,11 @@
+<div class="site-hero{% if not is_home() %} compact{% endif %}">
+  {% if theme.appearance.cover and syutoi_url(theme.appearance.cover, true) %}<img class="hero-image" src="{{ syutoi_url(theme.appearance.cover, true) }}" alt="" fetchpriority="high" decoding="async">{% endif %}
+  <div class="hero-shade"></div>
+  <div class="hero-content">
+    <p class="hero-name">{{ theme.alternate or config.title }}</p>
+    {% if is_home() %}<h1>{{ config.title }}</h1>{% else %}<p class="hero-site-title">{{ config.title }}</p>{% endif %}
+    {% if config.subtitle %}<p class="hero-subtitle">{{ config.subtitle }}</p>{% endif %}
+    {% if is_home() %}<a class="hero-down" href="#main" aria-label="{{ __('desk.skip') }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>{% endif %}
+  </div>
+  <svg class="hero-waves" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path opacity=".35" d="M0 20Q360 100 720 40T1440 30V90H0Z"/><path opacity=".6" d="M0 40Q360 0 720 55T1440 40V90H0Z"/><path d="M0 60Q360 100 720 65T1440 65V90H0Z"/></svg>
+</div>

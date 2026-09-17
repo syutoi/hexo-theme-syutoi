@@ -29,6 +29,7 @@ darkmode: false
 # Takes precedence over the legacy darkmode option.
 appearance:
   theme: auto # light | dark | auto
+  cover: # Optional static banner image URL; no random image service
 
 # By default the page will automatically scroll to the last viewed position
 # if `false`, automatic positioning will be turned off

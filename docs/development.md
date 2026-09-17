@@ -1,6 +1,6 @@
 # 开发与构建
 
-当前处于渐进迁移阶段：旧布局仍使用 Stylus 和原客户端；深浅色切换由新的 TypeScript 客户端负责。任务状态见 [TODO](TODO.md)。
+页面已切换到原生 CSS 和 TypeScript 客户端，移除了 Stylus 与旧脚本；Markdown renderer 的替换留待 B5。任务状态见 [TODO](TODO.md)。
 
 ## 环境与命令
 
@@ -20,8 +20,8 @@ pnpm dev
 | `pnpm build:example` | 连接本地主题并生成示例站；使用已有主题产物 |
 | `pnpm build` | 先构建主题资源，再生成示例站 |
 | `pnpm typecheck` | 严格检查 `src/**/*.ts`，不输出文件 |
-| `pnpm test:unit` | 测试主题偏好、优先级、系统跟随和受限存储的纯逻辑 |
-| `pnpm test` | 运行偏好/构建恢复测试及示例站产物检查；先执行 `pnpm build` |
+| `pnpm test:unit` | 测试主题偏好、URL、导航、分页与构建失败恢复 |
+| `pnpm test` | 运行单元/构建恢复测试及示例站产物检查；先执行 `pnpm build` |
 | `pnpm dev` | 首次构建资源，监听源码，启动 Hexo 预览 |
 | `pnpm dev --port 4001` | 在指定端口预览，默认只监听 127.0.0.1 |
 | `pnpm clean` | 删除示例站数据库和 public，不删除已提交的主题产物 |
@@ -38,13 +38,13 @@ src/styles/main.css     → source/css/syutoi.min.css
 src/styles/tokens.css  ↗
 ```
 
-JS 由 esbuild 打包为独立 IIFE，避免向旧脚本泄漏变量；CSS 经 PostCSS 展开本地 imports、Autoprefixer 处理，再由 esbuild 压缩。构建器使用 [esbuild context/watch API](https://esbuild.github.io/api/#watch)，并将 PostCSS 的 import 依赖纳入监听。类型检查单独使用 [TypeScript noEmit](https://www.typescriptlang.org/tsconfig/noEmit.html)，不能用成功打包替代类型检查。
+JS 由 esbuild 打包为独立 IIFE，避免污染全局变量；CSS 经 PostCSS 展开本地 imports、Autoprefixer 处理，再由 esbuild 压缩。构建器使用 [esbuild context/watch API](https://esbuild.github.io/api/#watch)，并将 PostCSS 的 import 依赖纳入监听。类型检查单独使用 [TypeScript noEmit](https://www.typescriptlang.org/tsconfig/noEmit.html)，不能用成功打包替代类型检查。
 
 新的 `.min.js` / `.min.css` 产物**纳入版本控制**，便于 git clone 安装主题后直接生成博客；源码与产物需要一起提交。请修改 `src/`，然后运行 `pnpm build:theme`。CI 会重新构建并检查产物是否一致。开发监听与正式构建使用相同输出选项，不生成时间戳或 source maps。
 
-`.min` 文件名也避免过渡期旧 renderer 再次压缩新语法。暂时保留 `source/js/_app`、`source/css/*.styl` 和脚本生成器；B4 完成后再删除旧链路。
+`.min` 文件名也避免过渡期旧 renderer 再次压缩新语法。旧 `app.js`、`app.css` 及其生成入口已删除；升级后执行 `pnpm clean && pnpm build` 清理旧产物。
 
-Design tokens 已定义颜色、深浅主题、内容宽度、字体、字号、间距和圆角。当前应用于新主题按钮及浏览器 color-scheme，旧布局的配色与排版将在 C 阶段逐步接入。
+Design tokens 已定义颜色、深浅主题、内容宽度、字体、字号、间距和圆角。基础模板、文章排版、列表和导航共用这些 tokens，后续按 C/D 阶段继续验收细节。
 
 ## 深浅色偏好
 
@@ -57,4 +57,8 @@ appearance:
 
 启动脚本位于 head 中、样式之前，先确定颜色模式再渲染正文。localStorage 不可用时仍可在当前页面切换。旧 `darkmode` 仅在 `appearance.theme` 未配置时作为兼容回退；新配置优先。
 
-主题按钮使用本地内联 SVG，不依赖 CDN。整个旧页面仍有外部依赖，完整的无 JS 阅读和零默认第三方请求验收属于后续任务。
+主题按钮使用本地内联 SVG，不依赖 CDN。页面不再请求第三方 JS、图标字体或 Google Fonts。正文中作者提供的外部图片仍会产生请求；无 JS 时正文、链接、分页和移动导航可用，主题按钮和复制按钮作为渐进增强功能。
+
+## 旧主题兼容
+
+本批移除了默认 PJAX、音乐播放器、烟花、搜索、评论、统计和打赏运行时。旧配置字段暂时保留，已停用的功能不会因字段仍在而加载；B6 将整理配置。具体差异见 [迁移说明](migration-from-shoka.md)。

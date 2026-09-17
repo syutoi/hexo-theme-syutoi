@@ -1,44 +1,21 @@
 {% extends '_partials/layout.njk' %}
-{% import '_macro/sidebar.njk' as sidebar with context %}
-{% import '_macro/comment.njk' as comment with context %}
-{% import '_macro/postmeta.njk' as postmeta with context %}
-
-{% block title %}
-{%- set page_title = page.title %}
-{%- if page.categories and page.categories.length %}
-  {%- set cat_list = '' %}
-  {%- set comma = '' %}
-  {%- for cat in page.categories.toArray() %}
-    {%- set cat_list = cat.name + comma + cat_list%}
-    {%- set comma = ' - ' %}
-  {%- endfor %}
-  {%- set page_title = page_title + ' - ' + cat_list %}
-{%- endif %}
-{{ page_title }} |
-{% endblock %}
-
-{% block header %}
-  <h1 itemprop="name headline">
-    {%- if page.link %}
-      {%- set postTitleIcon = '<i class="ic i-link-alt"></i>' %}
-      {%- set postText = page.title or page.link %}
-      {{ _url(page.link, postText + postTitleIcon, {class: 'link external', itemprop: 'url'}) }}
-    {%- else %}
-      {{- page.title }}
-    {%- endif %}
-  </h1>
-  {{postmeta.render(page, true)}}
-{% endblock %}
-
 {% block content %}
-  <div class="article wrap">
-    {{ breadcrumb.render(page, true) }}
-    {{ partial('_partials/post/post.njk', {post: page}) }}
-  </div>
-  {{ partial('_partials/post/nav.njk', {post: page}) }}
-  {{ comment.render() }}
-{% endblock %}
-
-{% block sidebar %}
-{{ sidebar.render(true) }}
+<article class="article-page">
+  <header class="page-heading">
+    <p class="eyebrow"><a href="{{ url_for(config.archive_dir + '/') }}">{{ __('title.archive') }}</a></p>
+    <h1>{{ page.title or __('post.untitled') }}</h1>
+    <div class="post-meta"><time datetime="{{ date(page.date, 'YYYY-MM-DD') }}">{{ date(page.date, config.date_format) }}</time>{% if config.author %}<span>{{ config.author }}</span>{% endif %}</div>
+    {% if page.link and syutoi_url(page.link) %}<p><a href="{{ syutoi_url(page.link) }}">{{ __('desk.external') }} ↗</a></p>{% endif %}
+  </header>
+  {% if syutoi_cover(page) %}<img class="article-cover" src="{{ syutoi_cover(page) }}" alt="" decoding="async">{% endif %}
+  <div class="prose" data-prose data-copy-label="{{ __('desk.copy') }}" data-copied-label="{{ __('desk.copied') }}" data-copy-failed-label="{{ __('desk.copy_failed') }}">{{ page.content | safe }}</div>
+  <footer class="article-footer">
+    {% if page.updated %}<p class="post-meta">{{ __('post.edited') }} <time datetime="{{ date(page.updated, 'YYYY-MM-DD') }}">{{ date(page.updated, config.date_format) }}</time></p>{% endif %}
+    <div class="post-taxonomy">{% for tag in page.tags.toArray() %}<a href="{{ url_for(tag.path) }}">#{{ tag.name }}</a>{% endfor %}</div>
+  </footer>
+</article>
+<nav class="post-neighbors" aria-label="{{ __('desk.related_navigation') }}">
+  {% if page.prev %}<a href="{{ url_for(page.prev.path) }}"><span>{{ __('post.prev') }}</span>{{ page.prev.title or __('post.untitled') }}</a>{% endif %}
+  {% if page.next %}<a href="{{ url_for(page.next.path) }}"><span>{{ __('post.next') }}</span>{{ page.next.title or __('post.untitled') }}</a>{% endif %}
+</nav>
 {% endblock %}

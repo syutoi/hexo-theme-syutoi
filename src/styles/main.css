@@ -1,3 +1,5 @@
-/* The new client stylesheet grows here while the legacy layout is migrated. */
 @import './tokens.css';
+@import './base/base.css';
+@import './layouts/site.css';
+@import './markdown/article.css';
 @import './components/theme.css';
