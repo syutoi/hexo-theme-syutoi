@@ -28,6 +28,12 @@ code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
 
+# The local theme links back to this repository; do not traverse its example
+# site recursively or scan installed dependencies as theme files.
+ignore:
+  - '**/node_modules/**'
+  - '**/themes/syutoi/example/**'
+
 # Writing
 new_post_name: :title.md # File name of new posts
 default_layout: post
@@ -96,6 +102,14 @@ markdown:
     typographer:
     quotes: '“”‘’'
   plugins: # markdown-it插件设置
+    # Legacy diagram renderers launch an obsolete Chromium during builds.
+    # Keep diagrams as code until the planned renderer migration.
+    - plugin:
+        name: ./markdown-it-mermaid
+        enable: false
+    - plugin:
+        name: ./markdown-it-graphviz
+        enable: false
     - plugin:
         name: markdown-it-toc-and-anchor
         enable: true
@@ -137,7 +151,8 @@ minify:
     enable: true
     stamp: false
     mangle:
-      toplevel: true
+      # The legacy client shares globals with separately loaded vendor scripts.
+      toplevel: false
     output:
     compress:
     exclude:

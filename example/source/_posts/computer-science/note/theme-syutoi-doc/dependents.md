@@ -118,7 +118,7 @@ minify:
   js:
     enable: true
     mangle:
-      toplevel: true
+      toplevel: false
     output:
     compress:
     exclude:

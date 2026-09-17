@@ -72,11 +72,11 @@ Note: Theme's style should support `.highlight.line.marked` (recommend to use th
 
 ### Gist
 
-{% gist 996818 %}
+[View the Gist example](https://gist.github.com/996818)
 
 ### jsFiddle
 
-{% jsfiddle ccWP7 %}
+[Open the jsFiddle example](https://jsfiddle.net/ccWP7/)
 
 ## Pullquote
 

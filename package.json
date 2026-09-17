@@ -1,8 +1,27 @@
 {
   "name": "hexo-theme-syutoi",
   "version": "0.2.5",
-  "description": "",
+  "description": "A calm and modern Hexo theme for writing, reading and thinking.",
   "author": "Ruri Shimotsuki",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "packageManager": "pnpm@9.0.4",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "prepare:example": "node toolbox/prepare-example.mjs",
+    "dev": "pnpm prepare:example && pnpm --dir example run server --ip 127.0.0.1",
+    "build": "pnpm prepare:example && pnpm --dir example build",
+    "clean": "pnpm --dir example clean",
+    "test": "node toolbox/check-example.mjs"
+  },
+  "dependencies": {
+    "hexo-fs": "^5.0.0",
+    "hexo-pagination": "^4.0.0",
+    "hexo-util": "^3.3.0",
+    "js-yaml": "^4.1.0",
+    "nunjucks": "^3.2.4",
+    "pangu": "^4.0.7"
+  }
 }

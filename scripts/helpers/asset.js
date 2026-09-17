@@ -20,7 +20,7 @@ hexo.extend.helper.register('_vendor_font', () => {
   const fontDisplay = '&display=swap';
   const fontSubset = '&subset=latin,latin-ext';
   const fontStyles = ':300,300italic,400,400italic,700,700italic';
-  const fontHost = '//fonts.googleapis.com';
+  const fontHost = 'https://fonts.googleapis.com';
 
   //Get a font list from config
   let fontFamilies = ['global', 'logo', 'title', 'headings', 'posts', 'codes'].map(item => {
@@ -56,9 +56,9 @@ hexo.extend.helper.register('_vendor_js', () => {
   vendorJs = [...new Set(vendorJs)];
   vendorJs = vendorJs.join(',');
 
-  let result = vendorJs ? `<script src="//cdn.jsdelivr.net/combine/${vendorJs}"></script>` : '';
+  let result = vendorJs ? `<script src="https://cdn.jsdelivr.net/combine/${vendorJs}"></script>` : '';
 
-  return vendorJs ? htmlTag('script', { src: `//cdn.jsdelivr.net/combine/${vendorJs}` }, '') : '';
+  return vendorJs ? htmlTag('script', { src: `https://cdn.jsdelivr.net/combine/${vendorJs}` }, '') : '';
 });
 
 hexo.extend.helper.register('_css', function(...urls) {

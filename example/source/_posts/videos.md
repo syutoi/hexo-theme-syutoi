@@ -7,8 +7,8 @@ This is a video test post.
 
 **Youtube**
 
-{% youtube TIbZDRXM-Tg %}
+[Watch on YouTube](https://www.youtube.com/watch?v=TIbZDRXM-Tg)
 
 **Vimeo**
 
-{% vimeo 82090131 %}
+[Watch on Vimeo](https://vimeo.com/82090131)

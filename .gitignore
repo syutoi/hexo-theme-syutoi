@@ -2,3 +2,8 @@
 Thumbs.db
 node_modules/
 yarn.lock
+
+# Local Hexo preview and generated output
+example/public/
+example/db.json
+example/themes/
