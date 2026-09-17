@@ -34,6 +34,7 @@ pnpm install
 
 # 构建并检查示例站
 pnpm clean
+pnpm lint
 pnpm typecheck
 pnpm build
 pnpm test
@@ -48,6 +49,6 @@ pnpm dev
 
 `pnpm dev` 会先构建主题资源并监听 `src/`，再启动 Hexo；保存源码后刷新浏览器查看更新。`pnpm build:theme` 可单独构建新 JS/CSS，产物纳入版本控制并随源码一起提交。
 
-`pnpm test` 运行主题偏好逻辑测试并检查上一次示例站构建的页面、正文、脚本、静态资源和 feeds；应先运行 `pnpm build`。GitHub Actions 在 Node 20.19.0 和 Node 24 上执行类型检查、构建、测试及产物一致性检查。详细命令与迁移方式见 [开发文档](docs/development.md)。
+`pnpm test` 运行主题偏好逻辑测试并检查上一次示例站构建的页面、正文、脚本、静态资源和 feeds；应先运行 `pnpm build`。GitHub Actions 在 Node 20.19.0 和 Node 24 上执行 lint、类型检查、构建、测试及产物一致性检查。详细命令与迁移方式见 [开发文档](docs/development.md)。
 
 旧 Stylus 与浏览器运行时已移除，页面默认只加载本地 JS/CSS；Markdown 使用通用 `hexo-renderer-markdown-it`，安装与构建不再需要 Puppeteer / Chromium。脚注与任务列表显式启用，代码高亮使用 Hexo 的 Highlight.js。旧私有语法不会全部兼容，迁移清单见 [说明](docs/migration-from-shoka.md)，当前写法见 [写作示例](example/source/reading/index.md)（预览 `/reading/`）。

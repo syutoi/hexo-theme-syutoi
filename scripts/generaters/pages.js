@@ -1,6 +1,6 @@
 'use strict';
 
-hexo.extend.generator.register('pages', function(locals){
+hexo.extend.generator.register('pages', function(){
   const config = hexo.config;
 
   return [

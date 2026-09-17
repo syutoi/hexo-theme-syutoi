@@ -8,6 +8,7 @@
 
 ```bash
 pnpm install --frozen-lockfile
+pnpm lint
 pnpm typecheck
 pnpm build
 pnpm test
@@ -19,9 +20,10 @@ pnpm dev
 | `pnpm build:theme` | 构建新的 JS 与 CSS，不生成示例站 |
 | `pnpm build:example` | 连接本地主题并生成示例站；使用已有主题产物 |
 | `pnpm build` | 先构建主题资源，再生成示例站 |
+| `pnpm lint` | ESLint 检查手写 JS/TS；出现错误或警告均失败 |
 | `pnpm typecheck` | 严格检查 `src/**/*.ts`，不输出文件 |
 | `pnpm test:unit` | 测试主题偏好、URL、导航、分页与构建失败恢复 |
-| `pnpm test` | 运行单元/构建恢复测试及示例站及 Markdown 产物检查；先执行 `pnpm build` |
+| `pnpm test` | 运行单元/构建恢复测试、示例站及 Markdown 产物检查；先执行 `pnpm build` |
 | `pnpm dev` | 首次构建资源，监听源码，启动 Hexo 预览 |
 | `pnpm dev --port 4001` | 在指定端口预览，默认只监听 127.0.0.1 |
 | `pnpm clean` | 删除示例站数据库和 public，不删除已提交的主题产物 |
@@ -70,3 +72,15 @@ appearance:
 代码高亮交给 Hexo 内置 Highlight.js，`highlight.enable: true`、`line_number: false`、`auto_detect: false`；未知语言回退到纯文本。`markdown.render.html: true` 允许博客作者写入 details、ruby 等 HTML；这适用于受信任的作者内容，并不提供对外来 HTML 的净化。`breaks: false` 使用普通 Markdown 分段规则。
 
 图片启用原生懒加载与站点 root 前缀；标题从 H1 开始生成锚点，同名标题自动区分。原站链接不变，但旧定制锚点与扩展语法需要按 [迁移清单](migration-from-shoka.md) 检查。
+
+## 代码检查
+
+`pnpm lint` 使用 ESLint flat config（`eslint.config.mjs`）。JS 采用 ESLint recommended，TS 采用 typescript-eslint recommended；JS 增加 no-var / prefer-const，JS/TS 使用严格相等检查。规则重点是代码正确性，不强制缩进、引号或整库格式化。
+
+检查覆盖 `scripts/`、`lib/`、`toolbox/`、`test/`、根目录 JS 配置及 `src/**/*.ts`。Hexo 脚本按 CommonJS 解析，并只在 `scripts/` 声明只读 `hexo` 全局；Node 工具与浏览器客户端分别声明运行环境。TypeScript 的未定义名称由 `pnpm typecheck` 检查。
+
+`example/`、`source/` 生成资源、node_modules 和 coverage 不参与 lint，避免递归主题链接和重复检查产物。CSS、Nunjucks、YAML 不在本轮 lint 范围，继续通过实际构建、配置测试和页面检查验证。
+
+CI 在锁定安装后依次执行 lint、clean、typecheck、build、test 和生成资源一致性检查。`pnpm lint` 使用 `--max-warnings=0`，未使用的规则禁用注释也报错。提交前使用与 CI 相同的检查顺序；不用默认 `--fix`，避免未经审阅的批量修改。
+
+单元测试继续聚焦主题偏好、配置、URL、分页和构建恢复；配置兼容另通过隔离 Hexo 站点验证。没有为页面外观添加快照测试。

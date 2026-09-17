@@ -18,7 +18,8 @@
     "build:theme": "node toolbox/build.mjs",
     "build:example": "pnpm prepare:example && pnpm --dir example build",
     "typecheck": "tsc --noEmit",
-    "test:unit": "node --test test/*.test.mjs"
+    "test:unit": "node --test test/*.test.mjs",
+    "lint": "eslint . --max-warnings=0"
   },
   "dependencies": {
     "hexo-pagination": "^4.0.0",
@@ -27,10 +28,14 @@
     "nunjucks": "^3.2.4"
   },
   "devDependencies": {
+    "@eslint/js": "9.39.5",
     "autoprefixer": "10.4.23",
     "esbuild": "0.25.12",
+    "eslint": "9.39.5",
+    "globals": "17.12.0",
     "postcss": "8.5.6",
     "postcss-import": "16.1.1",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.70.0"
   }
 }

@@ -7,7 +7,7 @@ import { createAssetContext } from '../toolbox/assets.mjs';
 
 test('a failed build preserves assets and a corrected source recovers', async t => {
   const fixture = await mkdtemp(join(tmpdir(), 'syutoi-build-'));
-  let context;
+  let context = null;
   t.after(async () => {
     await context?.dispose();
     await rm(fixture, { recursive: true, force: true });
