@@ -1,8 +1,8 @@
 <div class="site-hero{% if not is_home() %} compact{% endif %}">
-  {% if theme.appearance.cover and syutoi_url(theme.appearance.cover, true) %}<img class="hero-image" src="{{ syutoi_url(theme.appearance.cover, true) }}" alt="" fetchpriority="high" decoding="async">{% endif %}
+  {% if syutoi.appearance.cover and syutoi_url(syutoi.appearance.cover, true) %}<img class="hero-image" src="{{ syutoi_url(syutoi.appearance.cover, true) }}" alt="" fetchpriority="high" decoding="async">{% endif %}
   <div class="hero-shade"></div>
   <div class="hero-content">
-    <p class="hero-name">{{ theme.alternate or config.title }}</p>
+    <p class="hero-name">{{ syutoi.branding.name or config.title }}</p>
     {% if is_home() %}<h1>{{ config.title }}</h1>{% else %}<p class="hero-site-title">{{ config.title }}</p>{% endif %}
     {% if config.subtitle %}<p class="hero-subtitle">{{ config.subtitle }}</p>{% endif %}
     {% if is_home() %}<a class="hero-down" href="#main" aria-label="{{ __('desk.skip') }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>{% endif %}

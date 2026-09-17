@@ -149,6 +149,7 @@ theme_mode:
   dark: "Theme: dark. Follow system settings."
 
 desk:
+  social: Social links
   skip: "Skip to content"
   menu: "Menu"
   navigation: "Main navigation"

@@ -1,5 +1,6 @@
+{% set syutoi = syutoi_settings() %}
 <!doctype html>
-<html lang="{{ page.lang or config.language or 'en' }}" data-theme-default="{{ theme.appearance.theme if theme.appearance and theme.appearance.theme else ('dark' if theme.darkmode else 'auto') }}">
+<html lang="{{ page.lang or config.language or 'en' }}" data-theme-default="{{ syutoi.appearance.theme }}">
 <head>{% include '_partials/head/head.njk' %}</head>
 <body class="{{ 'home-page' if is_home() else 'inner-page' }}">
   <a class="skip-link" href="#main">{{ __('desk.skip') }}</a>
@@ -7,9 +8,9 @@
     {% include '_partials/header.njk' %}
     {% include '_partials/hero.njk' %}
   </div>
-  <div class="site-layout">
+  <div class="site-layout{% if not syutoi.sidebar.enable %} without-sidebar{% endif %}">
     <main id="main" class="site-main" tabindex="-1">{% block content %}{% endblock %}</main>
-    {% include '_partials/sidebar.njk' %}
+    {% if syutoi.sidebar.enable %}{% include '_partials/sidebar.njk' %}{% endif %}
   </div>
   {% include '_partials/footer.njk' %}
 </body>

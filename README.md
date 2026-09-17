@@ -17,7 +17,7 @@ git clone https://github.com/syutoi/hexo-theme-syutoi.git ./themes/syutoi
   - [markdown-it-task-lists](https://github.com/revin/markdown-it-task-lists)（示例站的任务列表扩展）
   - [hexo-feed](https://www.npmjs.com/package/hexo-feed)
 
-4. View a site configuration example in the `example` folder.
+4. View a site configuration example in the `example` folder. Use the blog’s `_config.syutoi.yml` for overrides; see [配置说明](docs/configuration.md).
 
 5. [中文使用说明](https://syutoi.com)
 

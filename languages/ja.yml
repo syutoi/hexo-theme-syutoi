@@ -149,6 +149,7 @@ theme_mode:
   dark: "テーマ：ダーク。システム設定に従います。"
 
 desk:
+  social: ソーシャルリンク
   skip: "本文へ移動"
   menu: "メニュー"
   navigation: "メインナビゲーション"

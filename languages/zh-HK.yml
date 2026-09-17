@@ -149,6 +149,7 @@ theme_mode:
   dark: "主題：深色。點擊跟隨系統。"
 
 desk:
+  social: 社交連結
   skip: "跳至內文"
   menu: "選單"
   navigation: "主導覽"

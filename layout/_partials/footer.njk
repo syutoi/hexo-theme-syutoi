@@ -1,6 +1,6 @@
 <footer class="site-footer">
   <div class="footer-inner">
-    <p>© {{ syutoi_year() }} {{ config.author or config.title }}</p>
-    <p class="powered-by"><a href="https://hexo.io" rel="noopener">Hexo</a><span aria-hidden="true"> / </span><span>Syutoi</span>{% if syutoi_feed('rss') %}<span aria-hidden="true"> / </span><a href="{{ syutoi_feed('rss') }}">RSS</a>{% endif %}</p>
+    <p>© {% if syutoi.footer.since and syutoi.footer.since < syutoi_year() %}{{ syutoi.footer.since }}–{% endif %}{{ syutoi_year() }} {{ config.author or config.title }}</p>
+    {% if syutoi.footer.powered or (syutoi.footer.rss and syutoi_feed('rss')) %}<p class="powered-by">{% if syutoi.footer.powered %}<a href="https://hexo.io" rel="noopener">Hexo</a><span aria-hidden="true"> / </span><span>Syutoi</span>{% endif %}{% if syutoi.footer.rss and syutoi_feed('rss') %}{% if syutoi.footer.powered %}<span aria-hidden="true"> / </span>{% endif %}<a href="{{ syutoi_feed('rss') }}">RSS</a>{% endif %}</p>{% endif %}
   </div>
 </footer>

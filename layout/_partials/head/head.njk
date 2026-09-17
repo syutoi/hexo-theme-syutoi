@@ -6,7 +6,7 @@
 <title>{{ page_title }}{% if page_title != config.title %} · {{ config.title }}{% endif %}</title>
 <meta name="description" content="{{ syutoi_excerpt(page) if page.content else config.description }}">
 <link rel="canonical" href="{{ full_url_for(page.path or '') }}">
-<link rel="icon" href="{{ url_for('images/favicon.ico') }}">
+{% if syutoi.branding.favicon %}<link rel="icon" href="{{ syutoi_url(syutoi.branding.favicon, true) }}">{% endif %}
 <meta property="og:title" content="{{ page_title }}">
 <meta property="og:description" content="{{ syutoi_excerpt(page) if page.content else config.description }}">
 <meta property="og:type" content="{{ 'article' if is_post() else 'website' }}">

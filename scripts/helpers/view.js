@@ -1,9 +1,14 @@
 'use strict';
 const { stripHTML } = require('hexo-util');
 const { safeUrl, navigationItems } = require('../../lib/view.cjs');
+const { normalizeConfig } = require('../../lib/config.cjs');
+
+hexo.extend.helper.register('syutoi_settings', function () {
+  return normalizeConfig(this.theme, hexo.config.theme_config);
+});
 
 hexo.extend.helper.register('syutoi_navigation', function () {
-  return navigationItems(this.theme, key => this.__(key));
+  return navigationItems(normalizeConfig(this.theme, hexo.config.theme_config), key => this.__(key));
 });
 hexo.extend.helper.register('syutoi_url', function (value, image = false) {
   const url = safeUrl(value, image);

@@ -1,16 +1,16 @@
 <header class="site-header">
-  <div class="header-inner">
+  <div class="header-inner{% if not syutoi.navigation.menu.length %} without-navigation{% endif %}">
     <a class="site-brand" href="{{ url_for('/') }}" rel="home"><span class="brand-mark" aria-hidden="true">S</span>{{ config.title }}</a>
     <div class="header-actions">
       {% include '_partials/theme-toggle.njk' %}
-      <button type="button" class="menu-toggle" data-nav-toggle hidden aria-controls="site-navigation" aria-expanded="false" aria-label="{{ __('desk.menu') }}">
+      {% if syutoi.navigation.menu.length %}<button type="button" class="menu-toggle" data-nav-toggle hidden aria-controls="site-navigation" aria-expanded="false" aria-label="{{ __('desk.menu') }}">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
+      </button>{% endif %}
     </div>
-    <nav id="site-navigation" class="site-navigation" aria-label="{{ __('desk.navigation') }}">
+    {% if syutoi.navigation.menu.length %}<nav id="site-navigation" class="site-navigation" aria-label="{{ __('desk.navigation') }}">
       {% for item in syutoi_navigation() %}
         <a href="{{ syutoi_url(item.url) }}"{% if url_for(page.path or '') == syutoi_url(item.url) %} aria-current="page"{% endif %}>{{ item.label }}</a>
       {% endfor %}
-    </nav>
+    </nav>{% endif %}
   </div>
 </header>
