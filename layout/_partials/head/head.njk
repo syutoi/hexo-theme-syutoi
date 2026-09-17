@@ -1,6 +1,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#FFF">
+{{ _js('syutoi.min.js') }}
 
 {%- if theme.favicon.apple_touch_icon %}
   <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for(theme.statics +  theme.images + theme.favicon.apple_touch_icon) }}">
@@ -43,3 +44,5 @@
 {{ _vendor_font() }}
 
 {{ _css('app.css') }}
+
+{{ _css('syutoi.min.css') }}

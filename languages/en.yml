@@ -141,3 +141,9 @@ quiz:
   essay: Questions
   gap_fill: Gap Filling
   mistake: Wrong Answer
+
+
+theme_mode:
+  auto: "Theme: automatic. Switch to light."
+  light: "Theme: light. Switch to dark."
+  dark: "Theme: dark. Follow system settings."

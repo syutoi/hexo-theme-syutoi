@@ -24,5 +24,7 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm clean
+      - run: pnpm typecheck
       - run: pnpm build
       - run: pnpm test
+      - run: git diff --exit-code -- source/js/syutoi.min.js source/css/syutoi.min.css

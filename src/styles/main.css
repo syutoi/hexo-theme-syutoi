@@ -1,0 +1,3 @@
+/* The new client stylesheet grows here while the legacy layout is migrated. */
+@import './tokens.css';
+@import './components/theme.css';

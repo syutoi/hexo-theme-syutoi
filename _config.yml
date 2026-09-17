@@ -25,6 +25,11 @@ favicon:
 # if `true`, the page will be displayed directly as Dark Mode, unless the user makes another choice
 darkmode: false
 
+# New client preference: auto follows the system until the reader chooses a mode.
+# Takes precedence over the legacy darkmode option.
+appearance:
+  theme: auto # light | dark | auto
+
 # By default the page will automatically scroll to the last viewed position
 # if `false`, automatic positioning will be turned off
 auto_scroll: true

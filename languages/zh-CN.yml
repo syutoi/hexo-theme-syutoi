@@ -141,3 +141,9 @@ quiz:
   essay: 问答题
   gap_fill: 填空题
   mistake: 错题备注
+
+
+theme_mode:
+  auto: "主题：跟随系统。点击切换为浅色。"
+  light: "主题：浅色。点击切换为深色。"
+  dark: "主题：深色。点击跟随系统。"

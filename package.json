@@ -11,10 +11,14 @@
   },
   "scripts": {
     "prepare:example": "node toolbox/prepare-example.mjs",
-    "dev": "pnpm prepare:example && pnpm --dir example run server --ip 127.0.0.1",
-    "build": "pnpm prepare:example && pnpm --dir example build",
+    "dev": "node toolbox/dev.mjs",
+    "build": "pnpm build:theme && pnpm build:example",
     "clean": "pnpm --dir example clean",
-    "test": "node toolbox/check-example.mjs"
+    "test": "pnpm test:unit && node toolbox/check-example.mjs",
+    "build:theme": "node toolbox/build.mjs",
+    "build:example": "pnpm prepare:example && pnpm --dir example build",
+    "typecheck": "tsc --noEmit",
+    "test:unit": "node --test test/*.test.mjs"
   },
   "dependencies": {
     "hexo-fs": "^5.0.0",
@@ -23,5 +27,12 @@
     "js-yaml": "^4.1.0",
     "nunjucks": "^3.2.4",
     "pangu": "^4.0.7"
+  },
+  "devDependencies": {
+    "autoprefixer": "10.4.23",
+    "esbuild": "0.25.12",
+    "postcss": "8.5.6",
+    "postcss-import": "16.1.1",
+    "typescript": "5.9.3"
   }
 }

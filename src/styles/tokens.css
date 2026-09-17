@@ -1,0 +1,35 @@
+:root {
+  --syutoi-color-bg: #f8f6f2;
+  --syutoi-color-surface: #ffffff;
+  --syutoi-color-text: #242321;
+  --syutoi-color-text-secondary: #74716d;
+  --syutoi-color-border: #e4e0da;
+  --syutoi-color-primary: #8c8176;
+  --syutoi-color-focus: #8c8176;
+  --syutoi-content-width: 720px;
+  --syutoi-layout-width: 1200px;
+  --syutoi-radius-sm: 6px;
+  --syutoi-radius-md: 10px;
+  --syutoi-space-1: 0.25rem;
+  --syutoi-space-2: 0.5rem;
+  --syutoi-space-3: 1rem;
+  --syutoi-space-4: 1.5rem;
+  --syutoi-space-5: 2rem;
+  --syutoi-font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+  --syutoi-font-code: ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+  --syutoi-text-sm: 0.875rem;
+  --syutoi-text-base: 1rem;
+  --syutoi-text-lg: 1.25rem;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --syutoi-color-bg: #20201e;
+  --syutoi-color-surface: #292927;
+  --syutoi-color-text: #eeece7;
+  --syutoi-color-text-secondary: #b6b2a9;
+  --syutoi-color-border: #44423d;
+  --syutoi-color-primary: #c9bda7;
+  --syutoi-color-focus: #c9bda7;
+  color-scheme: dark;
+}

@@ -120,7 +120,6 @@ const siteInit = function () {
   quicklink.listen(CONFIG.quicklink)
 
   visibilityListener()
-  themeColorListener()
 
   algoliaSearch(pjax)
 

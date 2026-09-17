@@ -7,7 +7,7 @@
 PRD 第 52 节的 v0.1 MVP 验收标准优先于后续版本功能清单。
 当前包版本 `0.2.5` 继承自上游，不代表已完成 Syutoi 的 0.2 阶段。
 
-## A. 可运行基线（当前批次）
+## A. 可运行基线（已完成）
 
 - [x] A1：将当前主题名称、配置、路径和文档目录改为 Syutoi；保留上游来源和原站外链。
 - [x] A2：保留原 MIT License，并添加 NOTICE 说明代码来源（PRD §31）。
@@ -20,11 +20,11 @@ PRD 第 52 节的 v0.1 MVP 验收标准优先于后续版本功能清单。
 
 验收：新 checkout 按 README 安装后可运行；首页、文章、独立页、归档、分类和标签页及静态资源可访问；构建日志没有错误。此阶段不代表现代化 MVP 已完成。
 
-## B. v0.1 工程重建（PRD §8–12、37–41、52）
+## B. v0.1 工程重建（当前阶段，PRD §8–12、37–41、52）
 
-- [ ] B1：建立 `src/client`、`src/styles`、`src/shared`，以 TypeScript + esbuild 构建客户端，添加有实际输入的 `typecheck`。
-- [ ] B2：建立 CSS + Custom Properties + PostCSS 流程；定义颜色、宽度、间距、字号和圆角 tokens。
-- [ ] B3：将开发监听与 Hexo 预览串联；生产输出进入 `source/`，明确生成文件的版本控制策略。
+- [x] B1：建立 `src/client`、`src/styles`、`src/shared`，以 TypeScript + esbuild 构建客户端，添加有实际输入的 `typecheck`。
+- [x] B2：建立 CSS + Custom Properties + PostCSS 流程；定义颜色、宽度、间距、字号和圆角 tokens。
+- [x] B3：将开发监听与 Hexo 预览串联；生产输出进入 `source/`，明确生成文件的版本控制策略。
 - [ ] B4：逐步替换 Stylus 和旧脚本；切换前后都验证示例站，切换完成后移除旧构建依赖。
 - [ ] B5：替换 multi-markdown-it 定制渲染器为通用 Markdown renderer；盘点旧示例语法并记录迁移差异。
 - [ ] B6：简化配置至约 100–150 行、最多三层；导航与社交链接采用结构化 YAML。
@@ -47,7 +47,7 @@ PRD 第 52 节的 v0.1 MVP 验收标准优先于后续版本功能清单。
 
 ## D. v0.1 阅读、主题与收尾（PRD §17、20–21、32–34、42、52–53）
 
-- [ ] D1：实现 light/dark/auto，读取系统偏好、保存用户选择，并在首次绘制前应用主题。
+- [x] D1：实现 light/dark/auto，读取系统偏好、保存用户选择，并在首次绘制前应用主题。
 - [ ] D2：覆盖 H1–H6、段落、列表、引用、链接、表格、图片、代码、脚注和 details 样式。
 - [ ] D3：以 renderer 输出为基础提供代码语言标签、复制按钮、横向滚动及深浅配色。
 - [ ] D4：实现图片响应式、原生懒加载、标题说明与合理尺寸约束。
@@ -102,4 +102,17 @@ PRD 第 52 节的 v0.1 MVP 验收标准优先于后续版本功能清单。
 - 上游 renderer 仍包含弃用依赖，Prism diff 插件存在非致命提示。
 - `hexo-feed` 的 peer 范围尚未声明 Hexo 8；当前三类 feed 已通过实测。Nunjucks/Chokidar 仍有 peer 警告，后续升级或替换时需要消除。
 - 旧界面仍依赖 CDN、外部图片和旧功能；无 JS 可用性、零默认第三方请求和性能指标尚未验收。
-- 下一批从 B1–B3 开始：TypeScript/esbuild、CSS tokens/PostCSS 和开发监听，然后推进核心页面重写。
+- 当时的下一批计划为 B1–B3；完成记录见下。
+
+
+### 2026-09-17：B1–B3 构建链与主题偏好
+
+- 完成 TypeScript 严格检查、esbuild IIFE 打包、PostCSS imports/Autoprefixer 与 design tokens；配置、源码和开发说明已加入仓库。
+- 新产物为 `source/js/syutoi.min.js` 和 `source/css/syutoi.min.css`，随源码纳入版本控制；CI 增加类型检查、单元测试和产物一致性检查。旧布局仍走原来的构建链。
+- `pnpm dev` 串联首次资源构建、资源监听和 Hexo 服务。实际验证了 CSS import 更新、TS 更新、语法错误保留旧产物、恢复后继续构建，以及 SIGTERM 后端口释放。
+- 原深浅色控制器已迁入新客户端（提前完成 D1）：light/dark/auto、启动时应用偏好、键盘操作、本地 SVG、持久化、系统跟随、跨标签页同步、旧偏好兼容和受限存储回退。
+- Chrome 对新客户端进行了隔离验证（阻断旧 app.js 与外部请求）：在 body 解析前设置模式；键盘切换、重新加载、显式偏好不被系统覆盖、auto 跟随系统、跨标签同步和禁止 localStorage 均通过。此检查不代表完整旧页面已消除外部依赖。
+- `pnpm typecheck`、完整示例站构建（81 个文件）、7 项单元/构建测试及 8 类页面产物检查通过。构建失败测试会故意构造语法错误；其报错属于测试输入，测试本身应通过。
+- 锁定安装通过；CI 配置已更新，Node 24 与远端 CI 的结果仍待实际运行。
+
+下一批：继续 B4/B5，迁移旧脚本与 Stylus、替换定制 Markdown renderer；随后完成 B6 配置整理及 B7 剩余 lint。B4/B7 本批只有部分进展，尚未勾选。完整页面、排版和无 JS 验收仍按 C/D 阶段推进。

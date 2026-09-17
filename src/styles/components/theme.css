@@ -1,0 +1,38 @@
+[data-theme-toggle] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--syutoi-space-1);
+  border: 0;
+  border-radius: var(--syutoi-radius-sm);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+[data-theme-toggle][hidden] {
+  display: none;
+}
+
+[data-theme-toggle]:focus-visible {
+  outline: 2px solid var(--syutoi-color-focus);
+  outline-offset: var(--syutoi-space-1);
+}
+
+[data-theme-toggle] svg {
+  display: none;
+  width: var(--syutoi-text-lg);
+  height: var(--syutoi-text-lg);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+[data-theme-preference="auto"] [data-theme-icon="auto"],
+[data-theme-preference="light"] [data-theme-icon="light"],
+[data-theme-preference="dark"] [data-theme-icon="dark"] {
+  display: block;
+}
