@@ -68,6 +68,7 @@
 .post-card { background: var(--syutoi-color-surface); border: 1px solid var(--syutoi-color-border); border-radius: 12px; box-shadow: var(--syutoi-shadow); overflow: hidden; transition: box-shadow .2s; }
 .post-card:hover { box-shadow: var(--syutoi-shadow-hover); }
 .post-card article { display: flex; min-height: 240px; }
+.post-card:not(.has-cover):not(.has-summary) article { min-height: 0; }
 .post-card-content { display: flex; flex-direction: column; flex: 1; min-width: 0; padding: 1.5rem; }
 .post-card h2 { margin: .75rem 0; font-size: 1.15rem; font-weight: 600; line-height: 1.55; }
 .post-card h2 a { color: var(--syutoi-color-primary); text-decoration: none; }

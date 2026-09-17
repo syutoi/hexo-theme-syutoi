@@ -55,3 +55,12 @@ test('normalization does not mutate reusable defaults and accepts absolute legac
   settings.navigation.menu[0].name='Changed';
   assert.deepEqual(defaults,original);
 });
+
+
+test('list options preserve explicit false and reject invalid summary lengths', () => {
+  assert.deepEqual(normalizeConfig(defaults, {post_list:{summary:false,cover:false,summary_length:32}}).post_list,
+    {summary:false,cover:false,summary_length:32});
+  for (const summary_length of [0, -1, 1001, 1.5, '80', null]) {
+    assert.equal(normalizeConfig(defaults, {post_list:{summary_length}}).post_list.summary_length, 160);
+  }
+});

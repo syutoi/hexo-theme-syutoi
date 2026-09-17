@@ -1,5 +1,5 @@
 'use strict';
-const { stripHTML } = require('hexo-util');
+const { stripHTML, unescapeHTML } = require('hexo-util');
 const { safeUrl, navigationItems } = require('../../lib/view.cjs');
 const { normalizeConfig } = require('../../lib/config.cjs');
 
@@ -28,6 +28,14 @@ hexo.extend.helper.register('syutoi_excerpt', function (post) {
   const text = stripHTML(post.description || post.excerpt || post.content || '').replace(/\s+/g, ' ').trim();
   const characters = Array.from(text);
   return characters.length > 160 ? characters.slice(0, 160).join('') + '…' : text;
+});
+hexo.extend.helper.register('syutoi_card_summary', function (post) {
+  const settings = normalizeConfig(this.theme, hexo.config.theme_config).post_list;
+  if (!settings.summary || post.summary === false) return '';
+  const source = typeof post.summary === 'string' ? post.summary : post.description || post.excerpt || post.content || '';
+  const text = unescapeHTML(stripHTML((typeof source === 'string' ? source : '').replace(/<\/(?:p|div|h[1-6]|li|blockquote)>|<br\s*\/?>/gi, ' '))).replace(/\s+/g, ' ').trim();
+  const characters = Array.from(text);
+  return characters.length > settings.summary_length ? characters.slice(0, settings.summary_length).join('') + '…' : text;
 });
 hexo.extend.helper.register('syutoi_cover', function (post) {
   const url = safeUrl(post.cover, true);

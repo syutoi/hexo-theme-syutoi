@@ -1,6 +1,6 @@
 # 主题配置
 
-主题默认配置为 111 行（含注释），只列出已经实现的选项，最多三层字段。用户在博客根目录创建 `_config.syutoi.yml`，只写需要覆盖的字段，无需复制整份默认文件。
+主题默认配置为 120 行（含注释），只列出已经实现的选项，最多三层字段。用户在博客根目录创建 `_config.syutoi.yml`，只写需要覆盖的字段，无需复制整份默认文件。
 
 Hexo 的同名字段覆盖顺序是：主题 `_config.yml` → 博客 `_config.syutoi.yml` → 博客 `_config.yml` 中的 `theme_config`。列表整体替换，不追加；`[]` 表示清空。修改配置后重新启动 `pnpm dev`。
 
@@ -58,6 +58,9 @@ social:
 | `branding.favicon` | `/images/favicon.ico` | 网站图标；空字符串关闭 |
 | `appearance.theme` | `auto` | auto / light / dark；读者保存的选择优先 |
 | `appearance.cover` | 空字符串 | 固定页头图片；留空使用渐变背景 |
+| `post_list.summary` | `true` | 首页、分类和标签列表显示摘要 |
+| `post_list.summary_length` | `160` | 摘要最多 Unicode 码点数（1–1000 的整数），超出追加省略号；无效值回退 160 |
+| `post_list.cover` | `true` | 列表显示文章 cover；不影响文章页和页头 |
 | `navigation.menu` | 首页、归档、分类、标签 | `{ name, url }` 列表；空列表移除菜单链接 |
 | `social` | `[]` | `{ name, url }` 列表，显示在作者侧栏；不加载外部图标或组件 |
 | `sidebar.enable` | `true` | 显示侧栏；关闭后使用居中的单列布局 |
@@ -81,9 +84,46 @@ social:
 | `alternate` | `branding.name` |
 | `sidebar.avatar` + `images` | `branding.avatar` 完整路径 |
 | `darkmode: true/false` | `appearance.theme: dark/auto` |
-| `menu` 映射及 `路径 || 图标` | `navigation.menu` 列表；旧嵌套菜单展开，忽略分组 default |
+| `menu` 映射及 `路径 || 图标` | `post_list.summary` | `true` | 首页、分类和标签列表显示摘要 |
+| `post_list.summary_length` | `160` | 摘要最多 Unicode 码点数（1–1000 的整数），超出追加省略号；无效值回退 160 |
+| `post_list.cover` | `true` | 列表显示文章 cover；不影响文章页和页头 |
+| `navigation.menu` 列表；旧嵌套菜单展开，忽略分组 default |
 | `social` 映射及 `URL || 图标 || 颜色` | `social` 列表；旧图标和颜色不再读取 |
 
 站点的旧字段不会被新版主题默认值遮住；站点覆盖配置中同时存在新字段和旧别名时，新字段优先，包括空字符串与空列表。建议逐步改用新字段，不再向旧配置添加功能。
 
 旧 CDN、Iconfont、Google Fonts、加载动画、烟花、播放器、评论、搜索、打赏、统计脚本、Quicklink、Base64 链接、随机图等字段已从默认配置删除，在本版本没有效果。它们不会仅因为旧配置还在就发起外部请求。详细范围见 [迁移说明](migration-from-shoka.md)。
+
+## 首页与文章列表
+
+列表保留图文卡片样式；封面完全由文章 `cover` 提供，未配置时使用文字卡片。图片延迟加载。标题完整输出并自动换行，摘要在视觉上最多显示三行。无封面且无摘要时卡片收紧留白；没有文章时显示空状态。
+
+在博客 `_config.syutoi.yml` 中统一控制首页、分类和标签列表：
+
+```yaml
+post_list:
+  summary: true
+  summary_length: 160
+  cover: true
+```
+
+文章 Front Matter 可单独设置：
+
+```yaml
+summary: 这是一段自定义的列表摘要。
+cover: /images/article.jpg
+```
+
+`summary: false` 或 `summary: ''` 隐藏该篇的列表摘要；`cover: false` 或留空不显示该篇封面。全局列表开关关闭时，单篇设置不会重新开启。自定义摘要按纯文本输出；未设置时依次使用 `description`、`<!-- more -->` 前的内容、正文，移除 HTML 标签并截断。列表摘要设置不改变文章正文和 SEO 描述。
+
+分页属于博客 `_config.yml`：
+
+```yaml
+per_page: 10
+pagination_dir: page
+index_generator:
+  path: ''
+  order_by: -date
+```
+
+`index_generator.per_page` 若显式设置则优先于 `per_page`；`0` 表示不分页。文章 `sticky: true` 会排在首页列表最前，同组按 `order_by` 排序；置顶文章只出现一次。分页使用普通链接，无需 JavaScript。首页分类卡片只出现在第一页。

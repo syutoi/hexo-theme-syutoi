@@ -25,6 +25,15 @@ appearance:
   theme: auto # auto | light | dark
   cover: ''
 
+# Cards on the homepage, category and tag lists.
+# Per-post summary: false hides its summary; a string supplies custom text.
+# summary_length counts Unicode code points (1–1000).
+# cover only controls list images, not the article or page banner.
+post_list:
+  summary: true
+  summary_length: 160
+  cover: true
+
 # Navigation
 # Every item has a visible name and a destination URL.
 # menu.* names use the corresponding entry in languages/*.yml.
