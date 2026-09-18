@@ -21,7 +21,7 @@ hexo.extend.helper.register('syutoi_title', function () {
   if (page.type === '404') return this.__('desk.not_found');
   if (page.category) return `${this.__('title.category')}: ${page.category}`;
   if (page.tag) return `${this.__('title.tag')}: ${page.tag}`;
-  if (page.archive) return [this.__('title.archive'), page.year, page.month].filter(Boolean).join(' / ');
+  if (page.archive) return [this.__('title.archive'), page.year, page.month, page.day].filter(Boolean).join(' / ');
   return page.title || (this.is_home() ? this.config.title : this.__('post.untitled'));
 });
 hexo.extend.helper.register('syutoi_excerpt', function (post) {

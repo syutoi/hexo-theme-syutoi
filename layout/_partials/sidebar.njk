@@ -11,9 +11,9 @@
     {% if syutoi.social.length %}<nav class="social-links" aria-label="{{ __('desk.social') }}">{% for item in syutoi.social %}<a href="{{ syutoi_url(item.url) }}">{{ item.name }} <span aria-hidden="true">↗</span></a>{% endfor %}</nav>{% endif %}
     {% if syutoi_feed('rss') %}<a class="subscribe-link" href="{{ syutoi_feed('rss') }}">RSS <span aria-hidden="true">↗</span></a>{% endif %}
   </section>
-  {% if is_post() %}
+  {% if is_post() or (is_page() and page.content) %}
     {% set contents = toc(page.content) %}
-    {% if syutoi.sidebar.toc and contents %}<section class="sidebar-section article-toc"><h2>{{ __('sidebar.toc') }}</h2>{{ contents | safe }}</section>{% endif %}
+    {% if syutoi.sidebar.toc and page.toc != false and contents %}<section class="sidebar-section article-toc"><h2>{{ __('sidebar.toc') }}</h2>{{ contents | safe }}</section>{% endif %}
   {% elif syutoi.sidebar.categories %}
     <section class="sidebar-section"><h2>{{ __('title.category') }}</h2><ul class="sidebar-categories">{% for category in site.categories.sort('name').toArray() %}{% if not category.parent %}<li><a href="{{ url_for(category.path) }}"><span>{{ category.name }}</span><span>{{ category.length }}</span></a></li>{% endif %}{% endfor %}</ul></section>
   {% endif %}

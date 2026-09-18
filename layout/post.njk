@@ -4,18 +4,24 @@
   <header class="page-heading">
     <p class="eyebrow"><a href="{{ url_for(config.archive_dir + '/') }}">{{ __('title.archive') }}</a></p>
     <h1>{{ page.title or __('post.untitled') }}</h1>
-    <div class="post-meta"><time datetime="{{ date(page.date, 'YYYY-MM-DD') }}">{{ date(page.date, config.date_format) }}</time>{% if config.author %}<span>{{ config.author }}</span>{% endif %}</div>
+    <div class="post-meta"><time datetime="{{ date(page.date, 'YYYY-MM-DD') }}">{{ date(page.date, config.date_format) }}</time>{% if page.author or config.author %}<span>{{ page.author or config.author }}</span>{% endif %}</div>
+    {% if page.categories.length %}<nav class="post-taxonomy" aria-label="{{ __('title.category') }}">{% for category in page.categories.toArray() %}<a href="{{ url_for(category.path) }}">{{ category.name }}</a>{% endfor %}</nav>{% endif %}
     {% if page.link and syutoi_url(page.link) %}<p><a href="{{ syutoi_url(page.link) }}">{{ __('desk.external') }} ↗</a></p>{% endif %}
   </header>
   {% if syutoi_cover(page) %}<img class="article-cover" src="{{ syutoi_cover(page) }}" alt="" decoding="async">{% endif %}
   <div class="prose" data-prose data-copy-label="{{ __('desk.copy') }}" data-copied-label="{{ __('desk.copied') }}" data-copy-failed-label="{{ __('desk.copy_failed') }}">{{ page.content | safe }}</div>
   <footer class="article-footer">
-    {% if page.updated %}<p class="post-meta">{{ __('post.edited') }} <time datetime="{{ date(page.updated, 'YYYY-MM-DD') }}">{{ date(page.updated, config.date_format) }}</time></p>{% endif %}
-    <div class="post-taxonomy">{% for tag in page.tags.toArray() %}<a href="{{ url_for(tag.path) }}">#{{ tag.name }}</a>{% endfor %}</div>
+    {% if page.updated and date(page.updated, 'YYYY-MM-DD') != date(page.date, 'YYYY-MM-DD') %}<p class="post-meta">{{ __('post.edited') }} <time datetime="{{ date(page.updated, 'YYYY-MM-DD') }}">{{ date(page.updated, config.date_format) }}</time></p>{% endif %}
+    {% if page.tags.length %}<nav class="post-taxonomy" aria-label="{{ __('title.tag') }}">{% for tag in page.tags.toArray() %}<a href="{{ url_for(tag.path) }}">#{{ tag.name }}</a>{% endfor %}</nav>{% endif %}
+    <div class="article-attribution">
+      {% if page.author or config.author %}<p>© {{ date(page.date, 'YYYY') }} {{ page.author or config.author }}</p>{% endif %}
+      <p>{{ __('post.copyright.link') }}: <a href="{{ url_for(page.path) }}" rel="bookmark">{{ page.permalink }}</a></p>
+    </div>
   </footer>
 </article>
-<nav class="post-neighbors" aria-label="{{ __('desk.related_navigation') }}">
+{% if page.prev or page.next %}<nav class="post-neighbors" aria-label="{{ __('desk.related_navigation') }}">
   {% if page.prev %}<a href="{{ url_for(page.prev.path) }}"><span>{{ __('post.prev') }}</span>{{ page.prev.title or __('post.untitled') }}</a>{% endif %}
   {% if page.next %}<a href="{{ url_for(page.next.path) }}"><span>{{ __('post.next') }}</span>{{ page.next.title or __('post.untitled') }}</a>{% endif %}
-</nav>
+</nav>{% endif %}
+{% block comments %}{% endblock %}
 {% endblock %}

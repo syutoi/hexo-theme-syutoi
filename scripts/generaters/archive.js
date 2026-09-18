@@ -34,8 +34,6 @@ if (!(hexo.config.archive && hexo.config.archive.enabled === false)) {
     const perPage = config.archive_generator.per_page;
     let result = [];
 
-    if (!allPosts.length) return;
-
     if (archiveDir[archiveDir.length - 1] !== '/') archiveDir += '/';
 
     function generate(path, posts, options) {
@@ -43,7 +41,7 @@ if (!(hexo.config.archive && hexo.config.archive.enabled === false)) {
       options.archive = true;
 
       result = result.concat(pagination(path, posts, {
-        perPage: path === archiveDir? 0 : perPage,
+        perPage: posts.length ? perPage : 0,
         layout: ['archive', 'index'],
         format: paginationDir + '/%d/',
         data: options
@@ -52,7 +50,7 @@ if (!(hexo.config.archive && hexo.config.archive.enabled === false)) {
 
     generate(archiveDir, allPosts);
 
-    if (!config.archive_generator.yearly) return result;
+    if (!allPosts.length || !(config.archive_generator.yearly || config.archive_generator.monthly || config.archive_generator.daily)) return result;
 
     const posts = {};
 
@@ -106,7 +104,7 @@ if (!(hexo.config.archive && hexo.config.archive.enabled === false)) {
       url = archiveDir + year + '/';
       if (!data[0].length) continue;
 
-      generate(url, new Query(data[0]), {year: year});
+      if (config.archive_generator.yearly) generate(url, new Query(data[0]), {year: year});
 
       if (!config.archive_generator.monthly && !config.archive_generator.daily) continue;
 

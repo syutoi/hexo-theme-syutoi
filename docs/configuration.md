@@ -66,7 +66,7 @@ social:
 | `sidebar.enable` | `true` | 显示侧栏；关闭后使用居中的单列布局 |
 | `sidebar.statistics` | `true` | 显示文章、分类、标签数量 |
 | `sidebar.categories` | `true` | 在非文章页显示顶级分类列表 |
-| `sidebar.toc` | `true` | 在文章页显示普通目录链接；尚未提供 scroll spy |
+| `sidebar.toc` | `true` | 在文章和独立 Page 显示普通目录链接；单页 toc: false 可关闭，尚未提供 scroll spy |
 | `footer.since` | 空值 | 起始年份整数；早于当前年份时显示年份区间，否则只显示当前年 |
 | `footer.powered` | `true` | 显示 Hexo / Syutoi 标识 |
 | `footer.rss` | `true` | 显示页脚 RSS 链接；还需站点 feed.rss.enable 为 true |
@@ -127,3 +127,41 @@ index_generator:
 ```
 
 `index_generator.per_page` 若显式设置则优先于 `per_page`；`0` 表示不分页。文章 `sticky: true` 会排在首页列表最前，同组按 `order_by` 排序；置顶文章只出现一次。分页使用普通链接，无需 JavaScript。首页分类卡片只出现在第一页。
+
+## 文章、独立 Page 与归档
+
+文章页显示标题、发布日期、作者、分类、正文、标签及上一篇/下一篇；没有相邻文章时不输出空导航。作者优先使用文章 `author`，否则使用站点 `author`。更新日期与发布日期不在同一天时显示更新时间，显示格式跟随站点 `date_format`。文章末尾显示年份、作者及永久链接，不自动声明任何转载许可；如需指定许可，请在正文中明确写出。
+
+```yaml
+---
+title: 我的阅读笔记
+date: 2026-09-18 09:00:00
+updated: 2026-09-19 10:00:00
+author: 文章作者
+categories:
+  - 阅读
+  - 笔记
+tags:
+  - 写作
+cover: /images/notes.jpg
+toc: true
+---
+```
+
+独立页面可使用 `hexo new page about` 创建，或直接创建 `source/about/index.md`，设置 `title` 并书写 Markdown。支持可选 `cover`，默认不显示文章日期、分类标签、来源声明和相邻文章导航。站点导航链接需要另行配置。
+
+文章和独立 Page 有标题时会在侧栏生成原生目录链接；`toc: false` 关闭当前页目录，主题 `sidebar.toc: false` 关闭所有目录，`sidebar.enable: false` 关闭整个侧栏。目录无需 JavaScript；滚动高亮和移动端折叠留待 E2 实现。
+
+文章模板预留空的 Nunjucks `comments` block，供继承 `post.njk` 的自定义模板扩展；默认没有评论容器或外部脚本。本阶段不集成评论服务。
+
+归档按年份分组、默认按日期倒序排列。归档首页、年份页和月份页均遵循博客 `_config.yml` 的分页设置，空站点也会生成归档首页：
+
+```yaml
+archive_generator:
+  per_page: 10 # 未设置时跟随站点 per_page；0 不分页
+  yearly: true
+  monthly: true
+  daily: false
+```
+
+三个日期层级可独立开关；每日归档标题包含具体日期。`archive.enabled: false` 禁用归档生成，此时也应移除指向归档的自定义导航链接。

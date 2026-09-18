@@ -23,6 +23,11 @@ async function render(settings, rootPath = '/', fixture = {}) {
     await writeFile(join(directory, '_config.syutoi.yml'), yaml.dump(settings));
     const posts = fixture.posts ?? ['---\ntitle: Example\ndate: 2020-01-01\n---\n## Heading\n\nA paragraph.\n'];
     await Promise.all(posts.map((post, index) => writeFile(join(directory, `source/_posts/post-${index}.md`), post)));
+    for (const [path, content] of Object.entries(fixture.pages ?? {})) {
+      const destination = join(directory, 'source', path, 'index.md');
+      await mkdir(join(directory, 'source', path), {recursive:true});
+      await writeFile(destination, content);
+    }
     await hexo.init();
     await hexo.call('generate');
     if (fixture.paths) return await Promise.all(fixture.paths.map(path => readFile(join(directory, 'public', path), 'utf8')));
@@ -115,4 +120,73 @@ test('empty and unpaginated sites render usable lists without pagination', async
   const all = await render({}, '/', {config:{per_page:0}, posts:[post('One'),post('Two')]});
   assert.equal((list(all).match(/<h2>/g)||[]).length, 2);
   assert.doesNotMatch(all, /class="pagination"/);
+});
+
+
+test('article metadata, taxonomy, attribution and neighbors survive subdirectory rendering', async () => {
+  const [article, single] = await render({}, '/blog/', {
+    config:{permalink:':title/'},
+    posts:[
+      post('Older', 'updated: 2020-01-01'),
+      post('Reading & notes', 'date: 2021-02-03\nupdated: 2021-02-05\nauthor: Guest Writer\ncategories: [Notes, Reading]\ntags: [Books]', '## Heading\n\nMain content.').replace('date: 2020-01-01\n', '')
+    ],
+    paths:['post-1/index.html','post-0/index.html']
+  });
+  assert.match(article, /<h1>Reading &amp; notes<\/h1>/);
+  assert.match(article, /datetime="2021-02-03"/);
+  assert.match(article, /datetime="2021-02-05"/);
+  assert.match(article, /© 2021 Guest Writer/);
+  assert.match(article, /href="\/blog\/categories\/Notes\/Reading\/"/);
+  assert.match(article, /href="\/blog\/tags\/Books\/"/);
+  assert.match(article, /href="\/blog\/post-1\/" rel="bookmark">https:\/\/example.com\/blog\/post-1\//);
+  assert.match(article, /href="#Heading"/);
+  assert.match(article, /id="Heading"/);
+  assert.match(article, /class="post-neighbors"[\s\S]*href="\/blog\/post-0\/"/);
+  assert.doesNotMatch(single, /Edited on/);
+});
+
+test('standalone pages render title, cover, body and optional native TOC without post metadata', async () => {
+  const [about, plain, onlyPost] = await render({}, '/blog/', {
+    config:{permalink:':title/'},
+    pages:{
+      about:'---\ntitle: About & projects\ncover: /images/about.jpg\n---\n## Projects\n\nIndependent page body.',
+      plain:'---\ntitle: Plain\ntoc: false\n---\n## Heading\n\nPlain content.'
+    },
+    paths:['about/index.html','plain/index.html','post-0/index.html']
+  });
+  assert.match(about, /<h1>About &amp; projects<\/h1>/);
+  assert.match(about, /src="\/blog\/images\/about.jpg"/);
+  assert.match(about, /Independent page body/);
+  assert.match(about, /href="#Projects"/);
+  assert.match(about, /id="Projects"/);
+  assert.doesNotMatch(about, /article-footer|post-neighbors|article-attribution/);
+  assert.doesNotMatch(plain, /article-toc/);
+  assert.doesNotMatch(onlyPost, /post-neighbors/);
+});
+
+test('archives paginate by year without losing posts and can generate an empty archive', async () => {
+  const pages = await render({}, '/blog/', {
+    config:{per_page:2,archive_generator:{per_page:2}},
+    posts:[post('First'),post('Second').replace('2020-01-01','2020-02-01'),post('Third').replace('2020-01-01','2021-03-01')],
+    paths:['archives/index.html','archives/page/2/index.html','archives/2020/index.html','archives/2020/02/index.html']
+  });
+  assert.match(pages[0], /class="archive-year">2021<\/h2>[\s\S]*class="archive-year">2020<\/h2>/);
+  const titles = pages.slice(0,2).flatMap(html => [...html.matchAll(/<h3><a[^>]*>(.*?)<\/a><\/h3>/g)].map(match=>match[1]));
+  assert.deepEqual(titles, ['Third','Second','First']);
+  assert.match(pages[0], /href="\/blog\/archives\/page\/2\/"/);
+  assert.match(pages[2], /<h1>Archive \/ 2020<\/h1>/);
+  assert.match(pages[3], /<h1>Archive \/ 2020 \/ 2<\/h1>/);
+  assert.match(pages[3], /datetime="2020-02-01"/);
+  const [empty] = await render({}, '/', {posts:[],paths:['archives/index.html']});
+  assert.match(empty, /No posts yet/);
+  assert.doesNotMatch(empty, /class="pagination"/);
+});
+
+test('monthly and daily archives work independently of yearly archives', async () => {
+  const [month, day] = await render({}, '/', {
+    config:{archive_generator:{yearly:false,monthly:true,daily:true}},
+    paths:['archives/2020/01/index.html','archives/2020/01/01/index.html']
+  });
+  assert.match(month, /<h1>Archive \/ 2020 \/ 1<\/h1>/);
+  assert.match(day, /<h1>Archive \/ 2020 \/ 1 \/ 1<\/h1>/);
 });
