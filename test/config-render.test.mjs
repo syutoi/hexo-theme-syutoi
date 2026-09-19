@@ -270,3 +270,15 @@ test('pagination, fallback descriptions, unsafe covers and 404 metadata are dist
   assert.match(heads[3], /twitter:card" content="summary"/);
   assert.match(heads[4], /name="robots" content="noindex, follow"/);
 });
+
+
+test('body images get native loading, subdirectory URLs and valid standalone captions', async () => {
+  const [html] = await render({}, '/blog/', {
+    pages:{pictures:'---\ntitle: Pictures\n---\n![Cat](/images/cat.jpg "Photo & note")\n\n<figure><img src="/images/tall.png" width="300" height="1200" loading="eager"><figcaption>Existing</figcaption></figure>\n'},
+    paths:['pictures/index.html']
+  });
+  assert.match(html, /<figure><img src="\/blog\/images\/cat.jpg"[^>]*loading="lazy"[^>]*decoding="async"[^>]*><figcaption>Photo &amp; note<\/figcaption><\/figure>/);
+  assert.match(html, /src="\/blog\/images\/tall.png" width="300" height="1200" loading="eager" decoding="async"/);
+  assert.doesNotMatch(html, /\/blog\/blog\//);
+  assert.equal((html.match(/<figcaption>/g)||[]).length,2);
+});

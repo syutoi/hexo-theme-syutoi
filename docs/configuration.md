@@ -217,3 +217,19 @@ pretty_urls:
 滚动区域有显式 Tab 焦点，可用左右方向键滚动长行；无 JavaScript 时标签和滚动仍可用。浏览器提供 Clipboard API 时才添加复制按钮，复制内容不含标签、行号或按钮文字，保留缩进、空行和行末空格。成功／失败反馈显示在当前代码块下方，也通过 status 区域播报。进行中的复制拒绝重复触发但保留按钮焦点；失败后可重试或手动选择代码。
 
 Clipboard API 不可用时不显示复制按钮；权限拒绝时显示失败提示，不自动请求其他权限或引入备用外部组件。构建侧新增 htmlparser2 用来定位 HTML 片段，不进入浏览器 bundle。代码颜色仍使用主题的深浅色 token，不加载浏览器高亮器。
+
+## 正文图片
+
+完整样例位于 `/pictures/`。主题在生成阶段为正文 img 补充缺失的 `loading="lazy"` 和 `decoding="async"`，原生 HTML 与 Markdown 图片均适用；作者明确设置的属性不覆盖。未指定 loading 且 `fetchpriority="high"` 时使用 eager。页头与文章封面由原模板管理，不会被正文规则改成懒加载。
+
+独立段落中单张图片或图片链接的 `title` 会生成 figcaption，保留 alt、链接和其他属性；混排文字、多图段落不自动转为 figure，已有 figure/figcaption 不重复添加。title 按文字转义，不执行 HTML。替代文字 alt 应描述图片内容，图注可提供补充说明：
+
+```markdown
+![图片的替代文字](/images/photo.jpg "显示在图片下方的说明")
+```
+
+正文图片最大宽度不超过容器，高度上限为 `min(80vh, 960px)`，按原比例完整显示；小图不强制放大。超长信息图可自行链接到原图，或在原生 HTML 图片上设置 `style="max-height: none"` 取消高度上限。文章封面和首页卡片仍使用原有裁剪方式。
+
+建议为已知尺寸的图片填写原生 width/height，让浏览器预留比例；主题保留这些尺寸，不自动下载图片探测尺寸。也不生成缩略图或 srcset。picture/source、srcset、sizes、已有说明和链接均保留作者设置。
+
+正文 img 的站内绝对 src 经过 Hexo URL helper 处理，适配站点 root。手写 source/srcset 中的地址由作者负责：子目录部署可以使用相对路径或带部署前缀的路径。无 JS 时仍由浏览器加载图片，替代文字在失败时保留；样例中 `intentionally-missing-image.png` 是故意设置的失败场景。未加入图片灯箱。

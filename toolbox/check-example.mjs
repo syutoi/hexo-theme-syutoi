@@ -15,7 +15,8 @@ const pages = [
   'reading/index.html',
   'typography/index.html',
   'reading-elements/index.html',
-  'code/index.html'
+  'code/index.html',
+  'pictures/index.html'
 ];
 
 for (const page of pages) {

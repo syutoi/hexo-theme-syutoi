@@ -1,4 +1,5 @@
 'use strict';
+const { enhanceImages } = require('../../lib/images.cjs');
 const { enhanceCode } = require('../../lib/code.cjs');
 const { plainText } = require('../../lib/text.cjs');
 const { safeUrl, navigationItems } = require('../../lib/view.cjs');
@@ -78,5 +79,5 @@ hexo.extend.helper.register('syutoi_metadata', function () {
 });
 
 hexo.extend.helper.register('syutoi_content', function (content) {
-  return enhanceCode(content, this.__('desk.code_block'));
+  return enhanceCode(enhanceImages(content, value => this.url_for(value)), this.__('desk.code_block'));
 });

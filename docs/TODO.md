@@ -50,7 +50,7 @@ PRD 第 52 节的 v0.1 MVP 验收标准优先于后续版本功能清单。
 - [x] D1：实现 light/dark/auto，读取系统偏好、保存用户选择，并在首次绘制前应用主题。
 - [x] D2：覆盖 H1–H6、段落、列表、引用、链接、表格、图片、代码、脚注和 details 样式。
 - [x] D3：以 renderer 输出为基础提供代码语言标签、复制按钮、横向滚动及深浅配色。
-- [ ] D4：实现图片响应式、原生懒加载、标题说明与合理尺寸约束。
+- [x] D4：实现图片响应式、原生懒加载、标题说明与合理尺寸约束。
 - [ ] D5：完善 MVP 示例文章、图片和表格，增加无封面、长文和边界情况。
 - [x] D6：移除默认 PJAX、音乐、烟花、评论、搜索、打赏、动画和统计脚本；默认无第三方 JS 请求。
 - [ ] D7：验证 Light/Dark、Mobile/Desktop、无 JS、键盘操作和 reduced-motion；记录实际结果。
@@ -273,3 +273,15 @@ C 阶段完成。下一批：D2，完善 Markdown 阅读元素的样式与边界
 - 依赖镜像重试后安装成功；保留原锁文件中其他平台的 esbuild 条目，锁文件只增加 htmlparser2 的直接依赖声明，frozen/offline 安装通过。最终 lint、typecheck、干净构建（81 文件）、37 项测试、12 类页面及 Markdown 产物检查通过。
 
 下一批：D4，完善图片响应式、原生懒加载、说明和尺寸约束，独立验证与提交。
+
+
+### 2026-09-19：D4 图片展示与加载
+
+- 构建阶段统一为正文 Markdown/原生 HTML 图片补齐 loading 与 decoding，保留显式设置，fetchpriority=high 在缺少 loading 时使用 eager；正文规则不改变页头/封面的加载策略。
+- 独立段落中的单图或图片链接将 title 转为转义后的 figcaption；保留 alt、链接、尺寸和作者 HTML，已有 figure 不重复图注，多图/混排/代码内容不错误包裹。站内绝对 img src 通过 Hexo URL helper 适配子目录，picture/source/srcset 原样保留。
+- 正文图片最大宽度为容器宽度、高度上限 min(80vh, 960px)，object-fit: contain 保持完整画面，小图不放大。增加 `/pictures/` 及本地横/竖 SVG 样例，覆盖说明、尺寸、picture、eager、失效 alt 和折叠图片。
+- 新增 3 项图片逻辑测试和 1 项真实 Hexo 子目录/图注测试；样例纳入页面与 Markdown 产物检查。配置文档说明明确尺寸、长图退出高度约束、srcset 路径责任和故意失效样例；不引入图片运行时、尺寸探测下载或灯箱。
+- Linux Chrome 验证 1440/390/320px、Light/Dark 下无页面溢出、图注不重复、竖图完整缩放、小图 120px、picture 响应来源、eager/decoding 保留、失效替代文字和无 JS 折叠图片；手机截图人工检查及既有写作/10 类页面回归通过。
+- 最终 lint、typecheck、干净构建（84 文件）、41 项测试、13 类页面与 Markdown 产物检查通过。
+
+下一批：D5，整理完整 MVP 示例内容及长文、无封面和边界场景，独立验证与提交。

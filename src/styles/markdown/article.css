@@ -25,7 +25,7 @@
 .prose blockquote > :first-child { margin-top: .5rem; }
 .prose blockquote > :last-child { margin-bottom: .5rem; }
 .prose hr { margin: 3rem 0; border: 0; border-top: 1px solid var(--syutoi-color-border); }
-.prose img { display: block; border-radius: var(--syutoi-radius-sm); margin-inline: auto; }
+.prose img { display: block; max-width: 100%; max-height: min(80vh, 960px); height: auto; object-fit: contain; border-radius: var(--syutoi-radius-sm); margin-inline: auto; }
 .prose figure { margin-inline: 0; }
 .prose figcaption { margin-top: .5rem; color: var(--syutoi-color-text-secondary); font-size: .85rem; text-align: center; }
 .prose :where(code, pre, kbd, samp) { font-family: var(--syutoi-font-code); font-size: .875em; }
