@@ -28,6 +28,10 @@ async function render(settings, rootPath = '/', fixture = {}) {
       await mkdir(join(directory, 'source', path), {recursive:true});
       await writeFile(destination, content);
     }
+    if (fixture.translations) {
+      await mkdir(join(directory, 'source/_data'), {recursive:true});
+      await writeFile(join(directory, 'source/_data/languages.yml'), yaml.dump(fixture.translations));
+    }
     await hexo.init();
     await hexo.call('generate');
     if (fixture.paths) return await Promise.all(fixture.paths.map(path => readFile(join(directory, 'public', path), 'utf8')));
@@ -189,4 +193,40 @@ test('monthly and daily archives work independently of yearly archives', async (
   });
   assert.match(month, /<h1>Archive \/ 2020 \/ 1<\/h1>/);
   assert.match(day, /<h1>Archive \/ 2020 \/ 1 \/ 1<\/h1>/);
+});
+
+
+test('page language, language lists and custom translations render consistently', async () => {
+  const [home, english, traditional, unknown] = await render({navigation:{menu:[{name:'menu.home',url:'/'},{name:'menu.friends',url:'/friends/'}]}}, '/', {
+    config:{language:['zh-CN','en']},
+    translations:{en:{menu:{home:'Start & read'}}},
+    pages:{
+      english:'---\ntitle: English page\nlang: en-US\n---\nBody',
+      traditional:'---\ntitle: Traditional page\nlang: zh_hant\n---\n內文',
+      unknown:'---\ntitle: French page\nlang: fr\n---\nTexte'
+    },
+    paths:['index.html','english/index.html','traditional/index.html','unknown/index.html']
+  });
+  assert.match(home, /<html lang="zh-CN"/);
+  assert.match(home, /aria-label="主导航"/);
+  assert.match(english, /<html lang="en-US"/);
+  assert.match(english, /aria-label="Main navigation"/);
+  assert.match(english, />Start &amp; read<\/a>/);
+  assert.match(english, />Friends<\/a>/);
+  assert.match(english, /data-copy-label="Copy"/);
+  assert.match(traditional, /<html lang="zh-Hant"/);
+  assert.match(traditional, /aria-label="主導覽"/);
+  assert.match(traditional, /data-copy-label="複製"/);
+  assert.match(unknown, /<html lang="fr"/);
+  assert.match(unknown, /aria-label="主导航"/);
+});
+
+test('unsupported site languages use English UI and empty taxonomy messages describe the right content', async () => {
+  const [categories, tags, missing] = await render({}, '/', {
+    config:{language:'fr'},posts:[],paths:['categories/index.html','tags/index.html','404.html']
+  });
+  assert.match(categories, /<html lang="fr"/);
+  assert.match(categories, /No categories yet/);
+  assert.match(tags, /No tags yet/);
+  assert.match(missing, /<h1>Page not found<\/h1>/);
 });

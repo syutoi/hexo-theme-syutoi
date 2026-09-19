@@ -15,7 +15,7 @@
     {% if page.tags.length %}<nav class="post-taxonomy" aria-label="{{ __('title.tag') }}">{% for tag in page.tags.toArray() %}<a href="{{ url_for(tag.path) }}">#{{ tag.name }}</a>{% endfor %}</nav>{% endif %}
     <div class="article-attribution">
       {% if page.author or config.author %}<p>© {{ date(page.date, 'YYYY') }} {{ page.author or config.author }}</p>{% endif %}
-      <p>{{ __('post.copyright.link') }}: <a href="{{ url_for(page.path) }}" rel="bookmark">{{ page.permalink }}</a></p>
+      <p>{{ __('post.copyright.link') }}<a href="{{ url_for(page.path) }}" rel="bookmark">{{ page.permalink }}</a></p>
     </div>
   </footer>
 </article>

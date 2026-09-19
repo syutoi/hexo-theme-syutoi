@@ -175,3 +175,9 @@ archive_generator:
 中英文使用自然换行与起始侧对齐，不强制两端对齐、不自动插入空格；中文标点使用严格断行规则。普通英文单词在正常边界换行，过长链接和行内标识符在必要时折行，代码块保持原始行并在容器内横向滚动。
 
 页面 Front Matter 可设置 `lang: en`、`lang: zh-CN` 或 `lang: zh-TW`；混排段落可使用原生 HTML `lang` 属性标注局部语言。排版示例见 `/typography/`（源码 `example/source/typography/index.md`）。
+
+## 界面语言
+
+在博客 `_config.yml` 设置 `language: zh-CN`、`zh-TW` 或 `en`；也可提供有顺序的语言列表。文章或 Page 的 `lang` 优先，支持 `zh_Hant` 等常见标记规范化。缺失文案按单页语言、站点语言列表、英文逐键回退。
+
+内置导航名称使用 `menu.*` 键以跟随语言，例如 `menu.friends`；直接写“友链”等名称时保留原文。自定义文案继续通过 `source/_data/languages.yml` 覆盖，详细示例与兼容范围见 [语言说明](../languages/README.md)。

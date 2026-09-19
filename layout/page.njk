@@ -5,7 +5,7 @@
   {% if page.type == 'categories' or page.type == 'tags' %}
   <ul class="taxonomy-list">
     {% set terms = site.categories if page.type == 'categories' else site.tags %}
-    {% for term in terms.toArray() %}<li><a href="{{ url_for(term.path) }}">{{ term.name }}<span>{{ term.length }}</span></a></li>{% else %}<li>{{ __('desk.empty') }}</li>{% endfor %}
+    {% for term in terms.toArray() %}<li><a href="{{ url_for(term.path) }}">{{ term.name }}<span>{{ term.length }}</span></a></li>{% else %}<li>{{ __('desk.empty_categories') if page.type == 'categories' else __('desk.empty_tags') }}</li>{% endfor %}
   </ul>
   {% elif page.type == '404' %}
     <p>{{ __('desk.not_found_description') }}</p><p><a href="{{ url_for('/') }}">{{ __('desk.back_home') }} →</a></p>

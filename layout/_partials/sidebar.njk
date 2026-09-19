@@ -9,7 +9,7 @@
       <a href="{{ url_for(config.tag_dir + '/') }}"><strong>{{ site.tags.length }}</strong><span>{{ __('state.tags') }}</span></a>
     </nav>{% endif %}
     {% if syutoi.social.length %}<nav class="social-links" aria-label="{{ __('desk.social') }}">{% for item in syutoi.social %}<a href="{{ syutoi_url(item.url) }}">{{ item.name }} <span aria-hidden="true">↗</span></a>{% endfor %}</nav>{% endif %}
-    {% if syutoi_feed('rss') %}<a class="subscribe-link" href="{{ syutoi_feed('rss') }}">RSS <span aria-hidden="true">↗</span></a>{% endif %}
+    {% if syutoi_feed('rss') %}<a class="subscribe-link" href="{{ syutoi_feed('rss') }}">{{ __('desk.rss') }} <span aria-hidden="true">↗</span></a>{% endif %}
   </section>
   {% if is_post() or (is_page() and page.content) %}
     {% set contents = toc(page.content) %}
