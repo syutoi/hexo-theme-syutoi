@@ -11,7 +11,7 @@
     <p>{{ __('desk.not_found_description') }}</p><p><a href="{{ url_for('/') }}">{{ __('desk.back_home') }} →</a></p>
   {% else %}
     {% if syutoi_cover(page) %}<img class="article-cover" src="{{ syutoi_cover(page) }}" alt="" decoding="async">{% endif %}
-    <div class="prose" data-prose data-copy-label="{{ __('desk.copy') }}" data-copied-label="{{ __('desk.copied') }}" data-copy-failed-label="{{ __('desk.copy_failed') }}">{{ page.content | safe }}</div>
+    <div class="prose" data-prose data-copy-label="{{ __('desk.copy') }}" data-copied-label="{{ __('desk.copied') }}" data-copy-failed-label="{{ __('desk.copy_failed') }}">{{ syutoi_content(page.content) | safe }}</div>
   {% endif %}
 </section>
 {% endblock %}

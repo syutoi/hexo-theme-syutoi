@@ -14,7 +14,8 @@ const pages = [
   '404.html',
   'reading/index.html',
   'typography/index.html',
-  'reading-elements/index.html'
+  'reading-elements/index.html',
+  'code/index.html'
 ];
 
 for (const page of pages) {

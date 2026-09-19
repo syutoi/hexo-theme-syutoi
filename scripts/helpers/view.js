@@ -1,4 +1,5 @@
 'use strict';
+const { enhanceCode } = require('../../lib/code.cjs');
 const { plainText } = require('../../lib/text.cjs');
 const { safeUrl, navigationItems } = require('../../lib/view.cjs');
 const { normalizeConfig } = require('../../lib/config.cjs');
@@ -74,4 +75,8 @@ hexo.extend.helper.register('syutoi_metadata', function () {
     type: isArticle ? 'article' : 'website',
     notFound: page.type === '404'
   };
+});
+
+hexo.extend.helper.register('syutoi_content', function (content) {
+  return enhanceCode(content, this.__('desk.code_block'));
 });

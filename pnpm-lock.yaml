@@ -14,6 +14,9 @@ importers:
       hexo-util:
         specifier: ^3.3.0
         version: 3.3.0
+      htmlparser2:
+        specifier: 10.1.0
+        version: 10.1.0
       js-yaml:
         specifier: ^4.1.0
         version: 4.3.2
