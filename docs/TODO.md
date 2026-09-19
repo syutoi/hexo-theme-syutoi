@@ -41,7 +41,7 @@ PRD 第 52 节的 v0.1 MVP 验收标准优先于后续版本功能清单。
 - [x] C5：提供本地 SVG 图标，移除远程 Iconfont 和默认 Google Fonts 请求。
 - [x] C6：实现移动导航、响应式布局、键盘焦点和主要页面的无 JS 可用性。
 - [x] C7：保留并整理 zh-CN、zh-TW、en 文案，去除核心界面的硬编码文本。
-- [ ] C8：整理页面 title、description、canonical 与基本 Open Graph；避免继承示例站作者身份。
+- [x] C8：整理页面 title、description、canonical 与基本 Open Graph；避免继承示例站作者身份。
 
 验收：桌面与移动端可阅读和导航；无封面、长标题、中英文文章正常；核心页面在禁用 JS 时仍可访问。
 
@@ -238,3 +238,15 @@ B 阶段完成。下一批：C2，完善首页与文章列表的分页、可选�
 - lint、typecheck、干净构建（79 文件）、32 项测试、10 类页面及 Markdown 产物检查通过。独立 Hexo 站点生成 en/zh-CN/zh-TW 页面，Chrome 验证 1440/390px 下无溢出、复制按钮及状态、菜单、主题标签和无 JS 导航；既有 10 类页面回归通过，无脚本错误。
 
 下一批：C8，整理页面 title、description、canonical 与基本 Open Graph，检查示例身份与实际站点配置；独立验证与提交。
+
+
+### 2026-09-19：C8 页面 SEO 元信息
+
+- 统一生成页面 title、description、canonical 和 Open Graph，分页标题加入本地化页码，首页不重复站点名称。标题与作者按字面文字转义，保留尖括号等特殊字符。
+- 描述依次使用单页 description、more 摘要、正文、站点描述；空正文仍可使用显式描述，无描述时省略标签。共享纯文本处理保留 Unicode 和常用实体、去掉标签及 script/style 内容；列表摘要开关不影响元信息。
+- canonical/og:url 使用当前实际路径和 Hexo URL helper，遵循 url、子目录和 pretty_urls，不将分页合并到首页。文章/Page cover 和列表固定页头可提供绝对分享图片，非法协议被忽略。
+- 增加基本 Twitter Card、文章作者及 UTC ISO 发布时间/更新时间；独立 Page 不输出文章元数据，404 输出 noindex。所有身份来自博客配置或单篇 Front Matter，不读取主题包作者/示例 branding，也不新增外部请求。
+- 增加纯文本边界测试与两组真实 Hexo 元信息测试，覆盖转义、无正文描述、当前作者、子目录 canonical/图片、pretty_urls、分页标题、时区转换、非法封面和 404。更新配置文档，明确示例域名为占位、生产 url/root 需自行填写，feed/sitemap 仍交由插件。
+- lint、typecheck、最终干净构建（79 文件）、35 项测试、10 类页面及 Markdown 产物检查通过；另检查示例站 9 类页面 title 唯一、canonical/og:url 一致及基本卡片标签。未测试外部搜索引擎收录或社交平台抓取。
+
+C 阶段完成。下一批：D2，完善 Markdown 阅读元素的样式与边界情况；D1 已完成，按大任务独立验证与提交。

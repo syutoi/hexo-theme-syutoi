@@ -6,6 +6,7 @@ title:
   all: All
   category_page: 'Category: %s'
   tag_page: 'Tag: %s'
+  page_number: Page %s
 menu:
   home: Home
   posts: Posts

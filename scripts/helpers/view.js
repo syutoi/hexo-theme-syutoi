@@ -1,5 +1,5 @@
 'use strict';
-const { stripHTML, unescapeHTML } = require('hexo-util');
+const { plainText } = require('../../lib/text.cjs');
 const { safeUrl, navigationItems } = require('../../lib/view.cjs');
 const { normalizeConfig } = require('../../lib/config.cjs');
 
@@ -24,18 +24,12 @@ hexo.extend.helper.register('syutoi_title', function () {
   if (page.archive) return [this.__('title.archive'), page.year, page.month, page.day].filter(Boolean).join(' / ');
   return page.title || (this.is_home() ? this.config.title : this.__('post.untitled'));
 });
-hexo.extend.helper.register('syutoi_excerpt', function (post) {
-  const text = stripHTML(post.description || post.excerpt || post.content || '').replace(/\s+/g, ' ').trim();
-  const characters = Array.from(text);
-  return characters.length > 160 ? characters.slice(0, 160).join('') + '…' : text;
-});
+hexo.extend.helper.register('syutoi_excerpt', post => plainText(post.description || post.excerpt || post.content || ''));
 hexo.extend.helper.register('syutoi_card_summary', function (post) {
   const settings = normalizeConfig(this.theme, hexo.config.theme_config).post_list;
   if (!settings.summary || post.summary === false) return '';
   const source = typeof post.summary === 'string' ? post.summary : post.description || post.excerpt || post.content || '';
-  const text = unescapeHTML(stripHTML((typeof source === 'string' ? source : '').replace(/<\/(?:p|div|h[1-6]|li|blockquote)>|<br\s*\/?>/gi, ' '))).replace(/\s+/g, ' ').trim();
-  const characters = Array.from(text);
-  return characters.length > settings.summary_length ? characters.slice(0, settings.summary_length).join('') + '…' : text;
+  return plainText(source, settings.summary_length);
 });
 hexo.extend.helper.register('syutoi_cover', function (post) {
   const url = safeUrl(post.cover, true);
@@ -47,3 +41,37 @@ hexo.extend.helper.register('syutoi_feed', function (type) {
 });
 
 hexo.extend.helper.register('syutoi_year', () => new Date().getFullYear());
+
+
+hexo.extend.helper.register('syutoi_metadata', function () {
+  const { page, config } = this;
+  const text = value => typeof value === 'string' ? value.replace(/\s+/g, ' ').trim() : '';
+  const title = text(this.syutoi_title());
+  const pagedTitle = page.current > 1 ? `${title} · ${this.__('title.page_number', page.current)}` : title;
+  const siteTitle = text(config.title);
+  const description = [page.description, page.excerpt, page.content, config.description].map(value => plainText(value)).find(Boolean) || '';
+  const absolute = value => {
+    const safe = safeUrl(value, true);
+    if (!safe) return '';
+    try {
+      const url = new URL(this.full_url_for(safe), config.url);
+      return ['http:', 'https:'].includes(url.protocol) ? url.href : '';
+    } catch { return ''; }
+  };
+  const isArticle = this.is_post();
+  const cover = page.cover || (!isArticle && !page.content ? this.syutoi_settings().appearance.cover : '');
+  const timestamp = value => value && typeof value.toISOString === 'function' ? value.toISOString() : '';
+  return {
+    title: pagedTitle,
+    documentTitle: siteTitle && title !== siteTitle ? `${pagedTitle} · ${siteTitle}` : pagedTitle,
+    description,
+    canonical: absolute(page.path || '/'),
+    siteTitle,
+    image: absolute(cover),
+    author: isArticle ? text(page.author || config.author) : '',
+    published: isArticle ? timestamp(page.date) : '',
+    modified: isArticle ? timestamp(page.updated) : '',
+    type: isArticle ? 'article' : 'website',
+    notFound: page.type === '404'
+  };
+});

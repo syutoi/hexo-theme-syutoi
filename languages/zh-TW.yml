@@ -6,6 +6,7 @@ title:
   all: 全部
   category_page: 分類：%s
   tag_page: 標籤：%s
+  page_number: 第 %s 頁
 menu:
   home: 首頁
   posts: 文章

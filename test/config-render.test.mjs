@@ -230,3 +230,43 @@ test('unsupported site languages use English UI and empty taxonomy messages desc
   assert.match(tags, /No tags yet/);
   assert.match(missing, /<h1>Page not found<\/h1>/);
 });
+
+
+test('article metadata uses current identity, escaped descriptions, absolute covers and real timestamps', async () => {
+  const [article, page] = await render({post_list:{summary:false,cover:false},branding:{name:'Theme brand'}}, '/blog/', {
+    config:{timezone:'Asia/Shanghai',title:'My & site',author:'Site author',description:'Site description',permalink:':title/',pretty_urls:{trailing_index:false}},
+    posts:[post('A & <B>', 'author: Guest\ndescription: "<b>Say &quot;hello&quot;</b> &amp; 世界"\ncover: /images/cover.jpg\nupdated: 2020-01-03')],
+    pages:{about:'---\ntitle: About\ndescription: An empty page description\n---\n'},
+    paths:['post-0/index.html','about/index.html']
+  });
+  const head = article.match(/<head>[\s\S]*?<\/head>/)[0];
+  assert.match(head, /<title>A &amp; &lt;B&gt; · My &amp; site<\/title>/);
+  assert.match(head, /name="description" content="Say &quot;hello&quot; &amp; 世界"/);
+  assert.match(head, /rel="canonical" href="https:\/\/example.com\/blog\/post-0\/"/);
+  assert.match(head, /property="og:url" content="https:\/\/example.com\/blog\/post-0\/"/);
+  assert.match(head, /property="og:image" content="https:\/\/example.com\/blog\/images\/cover.jpg"/);
+  assert.match(head, /name="author" content="Guest"/);
+  assert.match(head, /article:published_time" content="2019-12-31T16:00:00.000Z"/);
+  assert.match(head, /article:modified_time" content="2020-01-02T16:00:00.000Z"/);
+  assert.match(head, /twitter:card" content="summary_large_image"/);
+  assert.doesNotMatch(head, /Theme brand|Ruri|Yume|yoursite\.com/);
+  assert.match(page, /name="description" content="An empty page description"/);
+  assert.doesNotMatch(page, /article:published_time|name="author"/);
+});
+
+test('pagination, fallback descriptions, unsafe covers and 404 metadata are distinct', async () => {
+  const pages = await render({}, '/blog/', {
+    config:{language:'zh-CN',per_page:1,permalink:':title/',description:'Site fallback',pretty_urls:{trailing_index:false}},
+    posts:[post('One','cover: "javascript:alert(1)"','<p>第一段</p><p>第二段 &amp; 尾声</p><script>SHOULD_NOT_APPEAR</script>'),post('Two')],
+    paths:['index.html','page/2/index.html','archives/page/2/index.html','post-0/index.html','404.html']
+  });
+  const heads=pages.map(html=>html.match(/<head>[\s\S]*?<\/head>/)[0]);
+  assert.match(heads[0], /name="description" content="Site fallback"/);
+  assert.match(heads[1], /<title>Fixture · 第 2 页<\/title>/);
+  assert.match(heads[1], /rel="canonical" href="https:\/\/example.com\/blog\/page\/2\/"/);
+  assert.match(heads[2], /<title>归档 · 第 2 页 · Fixture<\/title>/);
+  assert.match(heads[3], /content="第一段 第二段 &amp; 尾声"/);
+  assert.doesNotMatch(heads[3], /SHOULD_NOT_APPEAR|og:image|twitter:image|javascript:/);
+  assert.match(heads[3], /twitter:card" content="summary"/);
+  assert.match(heads[4], /name="robots" content="noindex, follow"/);
+});

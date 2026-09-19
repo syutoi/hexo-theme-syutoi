@@ -181,3 +181,23 @@ archive_generator:
 在博客 `_config.yml` 设置 `language: zh-CN`、`zh-TW` 或 `en`；也可提供有顺序的语言列表。文章或 Page 的 `lang` 优先，支持 `zh_Hant` 等常见标记规范化。缺失文案按单页语言、站点语言列表、英文逐键回退。
 
 内置导航名称使用 `menu.*` 键以跟随语言，例如 `menu.friends`；直接写“友链”等名称时保留原文。自定义文案继续通过 `source/_data/languages.yml` 覆盖，详细示例与兼容范围见 [语言说明](../languages/README.md)。
+
+## 页面与分享元信息
+
+主题生成 title、description、canonical、Open Graph 和基本 Twitter Card，不加载第三方脚本：
+
+- 标题由当前页面标题和博客 `title` 组成，首页不重复站点名；列表第 2 页起加入本地化页码。
+- 描述依次取页面 `description`、more 摘要、正文、博客 `description`，跳过空值。移除 HTML、script/style 内容，转换常用 HTML 实体，最多保留 160 个 Unicode 码点；没有描述时省略对应标签。列表摘要的显示开关不影响 SEO 描述。
+- canonical 和 og:url 使用当前生成路径，经 Hexo `full_url_for` 转为绝对 URL，遵循博客 `url` 和 `pretty_urls`。分页有自己的 URL，不统一指回首页；文章 `link` 是阅读原文入口，不改变 canonical。
+- 文章或 Page 的 `cover` 可用作分享图片；首页及无正文的列表页可使用固定页头 `appearance.cover`。不抓取正文图片或使用作者头像作为回退。图片转为绝对 HTTP(S) 地址，无有效图片时使用普通 summary 卡片。
+- 文章作者优先使用 Front Matter `author`，其次为博客 `author`；发布时间与更新时间输出为 UTC ISO 时间。Page 和列表不输出文章时间或作者标签。
+- 404 页面输出 `noindex, follow`。RSS/Atom/JSON Feed 仍由插件生成，主题保留发现链接；本批未集成 sitemap 或结构化数据。
+
+上线前必须在博客 `_config.yml` 填写真实的 `title`、`description`、`author` 和 `url`；部署在子目录时保持 url 的路径与 root 一致，例如 `url: https://example.com/blog`、`root: /blog/`。示例站的 `http://yoursite.com` 是占位地址，不用于生产。主题元信息不会从 package.json 作者或示例站 branding 读取站点身份。
+
+可在浏览器查看页面源代码，检查生成的绝对地址。若希望隐藏 URL 中的 index.html，可使用 Hexo 配置：
+
+```yaml
+pretty_urls:
+  trailing_index: false
+```

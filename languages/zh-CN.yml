@@ -6,6 +6,7 @@ title:
   all: 全部
   category_page: 分类：%s
   tag_page: 标签：%s
+  page_number: 第 %s 页
 menu:
   home: 首页
   posts: 文章
