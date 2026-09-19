@@ -3,6 +3,7 @@ title: 从一条笔记到一篇长文：整理、写作与回看
 date: 2026-09-19 12:00:00
 updated: 2026-09-19 13:00:00
 cover: /assets/wallpaper-878514.webp
+cover_alt: 夜色中的城市天际线与水面倒影
 description: 一篇完整的中文长文示例，串联笔记整理、写作、引用、表格和复盘。
 categories:
   - Syutoi

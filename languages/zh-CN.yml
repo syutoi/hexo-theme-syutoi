@@ -21,6 +21,9 @@ sidebar:
 index:
   category: 精选分类
 post:
+  published: '发表于'
+  reading_minute: '预计阅读 1 分钟'
+  reading_minutes: '预计阅读 %s 分钟'
   edited: 更新于
   read_more: 阅读全文
   untitled: 未命名

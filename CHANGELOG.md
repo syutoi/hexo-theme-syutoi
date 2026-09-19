@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add optional build-time reading estimates with per-post control and localized labels, group publication/update dates in the article header, and support descriptive cover alt text on posts and pages.
+
 - Add a sticky desktop table of contents, native mobile disclosure and progressive scroll tracking for posts and standalone pages. Preserve no-JavaScript links and existing TOC switches; transfer keyboard focus when changing responsive layouts.
 
 ## 0.1.0 — 2026-09-20

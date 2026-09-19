@@ -14,6 +14,8 @@ updated: 2026-09-20 10:00:00
 description: 用于页面分享和搜索摘要的简短说明。
 summary: 文章列表中显示的摘要。
 cover: /images/notes.webp
+cover_alt: 摊开的笔记本与书签
+reading_time: true
 categories:
   - 阅读
 tags:
@@ -32,9 +34,9 @@ toc: true
 
 `cover` 可省略，或使用 `false`；图片来自博客 `source/images/`，不会随机回退到别的封面。`summary: false` 隐藏列表摘要，未设置时按 description、more 摘要、正文回退。`description` 与列表摘要不同，隐藏列表摘要不会关闭页面元信息。`author` 可单篇覆盖站点作者，`sticky: true` 将文章置顶到首页。
 
-分类数组通常表达层级，例如“阅读 → 笔记”；多个平级标签放在 `tags`。没有分类或标签也可发布。不要复制示例日期、作者和域名作为自己的身份。日期显示遵循博客 date_format/timezone，updated 与 date 不在同一天才单独显示更新日期。
+分类数组通常表达层级，例如“阅读 → 笔记”；多个平级标签放在 `tags`。没有分类或标签也可发布。不要复制示例日期、作者和域名作为自己的身份。日期显示遵循博客 date_format/timezone，updated 与 date 不在同一天才在文章头部显示更新日期。正文阅读时间由构建时估算，短文最少约 1 分钟；纯代码块或纯图片不显示估时，可用 `reading_time: false` 关闭。算法和全局开关见 [阅读时间说明](configuration.md#阅读时间与封面替代文字)。
 
-`pnpm exec hexo new page about` 创建独立 Page，正文与文章写法相同，但默认没有文章日期、分类标签和前后篇。Page 支持 title、description、cover、lang、toc。页面导航在 `_config.syutoi.yml` 单独配置。
+`pnpm exec hexo new page about` 创建独立 Page，正文与文章写法相同，但默认没有文章日期、分类标签和前后篇。Page 支持 title、description、cover、cover_alt、lang、toc，不显示文章阅读时间。页面导航在 `_config.syutoi.yml` 单独配置。
 
 ## 标题、正文与链接
 

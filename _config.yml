@@ -34,6 +34,10 @@ post_list:
   summary_length: 160
   cover: true
 
+# Article metadata (build-time estimate; per-post reading_time: false hides it).
+post:
+  reading_time: true
+
 # Navigation
 # Every item has a visible name and a destination URL.
 # menu.* names use the corresponding entry in languages/*.yml.

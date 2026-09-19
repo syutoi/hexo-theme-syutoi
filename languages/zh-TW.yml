@@ -21,6 +21,9 @@ sidebar:
 index:
   category: 精選分類
 post:
+  published: '發表於'
+  reading_minute: '預計閱讀 1 分鐘'
+  reading_minutes: '預計閱讀 %s 分鐘'
   edited: 更新於
   read_more: 閱讀全文
   untitled: 未命名

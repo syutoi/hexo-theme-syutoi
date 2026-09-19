@@ -21,6 +21,9 @@ sidebar:
 index:
   category: Categories
 post:
+  published: 'Published on'
+  reading_minute: 'About 1 minute to read'
+  reading_minutes: 'About %s minutes to read'
   edited: Edited on
   read_more: Read more
   untitled: Untitled

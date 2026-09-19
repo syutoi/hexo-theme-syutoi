@@ -303,3 +303,26 @@ test('TOC presentations share heading targets and honor site and page switches',
     assert.doesNotMatch(disabled, /data-toc=|class="mobile-toc"/);
   }
 });
+
+test('article reading estimates localize, honor switches and keep Page metadata separate', async () => {
+  const posts = [post('Short', 'lang: en\nreading_time: true\nauthor: A & B\nupdated: 2020-01-02\ncover: /images/cover.webp\ncover_alt: "Sky & <clouds>"', 'A short paragraph.'),
+    post('Long', 'lang: zh-TW\ncover: false', '文'.repeat(301)),
+    post('Hidden', 'reading_time: false', 'Body'), post('Empty', '', '')];
+  const fixture = {config:{permalink:':title/'},posts,
+    pages:{about:'---\ntitle: About\ncover: /images/cover.webp\ncover_alt: "Sky & clouds"\n---\nBody'},
+    paths:['post-0/index.html','post-1/index.html','post-2/index.html','post-3/index.html','about/index.html']};
+  const [short, long, hidden, empty, page] = await render({}, '/blog/', fixture);
+  const header = short.match(/<header class="page-heading">[\s\S]*?<\/header>/)[0];
+  assert.match(header,/Published on/);
+  assert.match(header,/Edited on/);
+  assert.match(header,/A &amp; B/);
+  assert.match(header,/About 1 minute to read/);
+  assert.equal((short.match(/Edited on/g)||[]).length,1);
+  assert.match(short,/src="\/blog\/images\/cover.webp" alt="Sky &amp; &lt;clouds&gt;"/);
+  assert.match(long,/預計閱讀 2 分鐘/);
+  assert.doesNotMatch(long,/class="article-cover"/);
+  for (const html of [hidden,empty,page]) assert.doesNotMatch(html,/class="reading-time"/);
+  assert.match(page,/alt="Sky &amp; clouds"/);
+  const disabled = await render({post:{reading_time:false}}, '/', fixture);
+  for (const html of disabled) assert.doesNotMatch(html,/class="reading-time"/);
+});

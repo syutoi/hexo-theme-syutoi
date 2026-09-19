@@ -1,6 +1,6 @@
 # 主题配置
 
-主题默认配置为 120 行（含注释），只列出已经实现的选项，最多三层字段。用户在博客根目录创建 `_config.syutoi.yml`，只写需要覆盖的字段，无需复制整份默认文件。
+主题默认配置只列出已经实现的选项，最多三层字段。用户在博客根目录创建 `_config.syutoi.yml`，只写需要覆盖的字段，无需复制整份默认文件。
 
 Hexo 的同名字段覆盖顺序是：主题 `_config.yml` → 博客 `_config.syutoi.yml` → 博客 `_config.yml` 中的 `theme_config`。列表整体替换，不追加；`[]` 表示清空。修改配置后重新启动 `pnpm dev`。
 
@@ -61,6 +61,7 @@ social:
 | `post_list.summary` | `true` | 首页、分类和标签列表显示摘要 |
 | `post_list.summary_length` | `160` | 摘要最多 Unicode 码点数（1–1000 的整数），超出追加省略号；无效值回退 160 |
 | `post_list.cover` | `true` | 列表显示文章 cover；不影响文章页和页头 |
+| `post.reading_time` | `true` | 文章头部显示正文预计阅读时间；单篇 reading_time: false 可关闭 |
 | `navigation.menu` | 首页、归档、分类、标签 | `{ name, url }` 列表；空列表移除菜单链接 |
 | `social` | `[]` | `{ name, url }` 列表，显示在作者侧栏；不加载外部图标或组件 |
 | `sidebar.enable` | `true` | 显示侧栏；关闭后使用居中的单列布局 |
@@ -127,7 +128,7 @@ index_generator:
 
 ## 文章、独立 Page 与归档
 
-文章页显示标题、发布日期、作者、分类、正文、标签及上一篇/下一篇；没有相邻文章时不输出空导航。作者优先使用文章 `author`，否则使用站点 `author`。更新日期与发布日期不在同一天时显示更新时间，显示格式跟随站点 `date_format`。文章末尾显示年份、作者及永久链接，不自动声明任何转载许可；如需指定许可，请在正文中明确写出。
+文章页显示标题、发布日期、作者、分类、正文、标签及上一篇/下一篇；没有相邻文章时不输出空导航。作者优先使用文章 `author`，否则使用站点 `author`。发布日期、作者及阅读时间显示在文章头部；更新日期与发布日期不在同一天时，也在头部显示更新时间，不在页尾重复。日期格式跟随站点 `date_format`。文章末尾显示年份、作者及永久链接，不自动声明任何转载许可；如需指定许可，请在正文中明确写出。
 
 ```yaml
 ---
@@ -145,7 +146,7 @@ toc: true
 ---
 ```
 
-独立页面可使用 `hexo new page about` 创建，或直接创建 `source/about/index.md`，设置 `title` 并书写 Markdown。支持可选 `cover`，默认不显示文章日期、分类标签、来源声明和相邻文章导航。站点导航链接需要另行配置。
+独立页面可使用 `hexo new page about` 创建，或直接创建 `source/about/index.md`，设置 `title` 并书写 Markdown。支持可选 `cover` 和 `cover_alt`，默认不显示文章日期、阅读时间、分类标签、来源声明和相邻文章导航。站点导航链接需要另行配置。
 
 文章和独立 Page 的正文有标题时生成目录；`toc: false` 关闭当前页目录，主题 `sidebar.toc: false` 关闭所有目录，`sidebar.enable: false` 关闭侧栏及两种目录。
 
@@ -234,3 +235,25 @@ Clipboard API 不可用时不显示复制按钮；权限拒绝时显示失败提
 建议为已知尺寸的图片填写原生 width/height，让浏览器预留比例；主题保留这些尺寸，不自动下载图片探测尺寸。也不生成缩略图或 srcset。picture/source、srcset、sizes、已有说明和链接均保留作者设置。
 
 正文 img 的站内绝对 src 经过 Hexo URL helper 处理，适配站点 root。手写 source/srcset 中的地址由作者负责：子目录部署可以使用相对路径或带部署前缀的路径。无 JS 时仍由浏览器加载图片，替代文字在失败时保留；样例中 `intentionally-missing-image.png` 是故意设置的失败场景。未加入图片灯箱。
+
+
+## 阅读时间与封面替代文字
+
+```yaml
+# 博客 _config.syutoi.yml
+post:
+  reading_time: true
+```
+
+文章 Front Matter 可写 `reading_time: false` 隐藏当前篇估时；全局关闭后，单篇 `true` 不会重新启用。空正文、仅图片或仅代码块的文章不输出估时；有正文的短文最少显示约 1 分钟。只在文章头部显示，不为首页卡片、归档或独立 Page 增加阅读时间。
+
+估算在 Hexo 构建阶段完成，不依赖站点字数插件或客户端计时。中日韩文字按每分钟 300 个文字计，其余字母/数字词按每分钟 200 词计，混排时相加并向上取整。实体先按 HTML 解析，行内格式不拆开单词；正文标题、引用、列表、表格、原生 figcaption 图注、脚注正文、行内代码和 details 内的文字计入，代码块/行号、图片 alt/title 属性、脚注标记/返回符号、script/style/template/SVG/math 与显式 hidden/aria-hidden 内容不计入。计算基于 renderer 输出，不计主题后续生成的复制按钮、语言标签或 title 图注。它不是理解代码、图片或复杂内容所需时间，也不是实际阅读行为统计；未按各语言精细分词。
+
+封面仍完全可选，`cover: false`、空值或不设置时不输出图片，也不预留图片占位，不使用页头图片作为回退。文章和独立 Page 可为有信息含义的封面写替代文字：
+
+```yaml
+cover: /images/city.webp
+cover_alt: 夜色中的城市与水面倒影
+```
+
+`cover_alt` 仅接受文字，默认空字符串（装饰性图片）；输出经过 HTML 转义。列表封面位于重复的文章链接内，继续使用空 alt，避免重复读出标题。无有效 cover 时 cover_alt 不会单独生成元素，也不改变分享元信息。

@@ -2,6 +2,7 @@
 const { enhanceImages } = require('../../lib/images.cjs');
 const { enhanceCode } = require('../../lib/code.cjs');
 const { plainText } = require('../../lib/text.cjs');
+const { readingTime } = require('../../lib/reading.cjs');
 const { safeUrl, navigationItems } = require('../../lib/view.cjs');
 const { normalizeConfig } = require('../../lib/config.cjs');
 
@@ -36,6 +37,12 @@ hexo.extend.helper.register('syutoi_card_summary', function (post) {
 hexo.extend.helper.register('syutoi_cover', function (post) {
   const url = safeUrl(post.cover, true);
   return url ? this.url_for(url) : '';
+});
+hexo.extend.helper.register('syutoi_cover_alt', post => typeof post.cover_alt === 'string' ? post.cover_alt.trim() : '');
+hexo.extend.helper.register('syutoi_reading_time', function (post) {
+  if (!this.syutoi_settings().post.reading_time || post.reading_time === false) return '';
+  const minutes = readingTime(post.content);
+  return minutes ? this.__(minutes === 1 ? 'post.reading_minute' : 'post.reading_minutes', minutes) : '';
 });
 hexo.extend.helper.register('syutoi_feed', function (type) {
   const feed = this.config.feed?.[type];
