@@ -105,3 +105,7 @@ CI 在锁定安装后依次执行 lint、clean、typecheck、build、test 和生
 ## 示例站入口
 
 导航中的“示例”汇总当前阅读组件、长文和边界页面，路径为 `/examples/`。源码映射、故意失效资源与检查范围见 [示例站说明](examples.md)。新增页面应同时更新入口和生成产物检查，保留旧历史文章的 URL 以便迁移回归。
+
+## 综合浏览器验收
+
+`toolbox/check-browser.mjs` 是可选的示例站验收工具，覆盖系统深浅偏好、多档视口、无 JS、键盘、受限存储和 reduced-motion。使用独立准备的 Puppeteer/Chrome，不进入默认构建或 CI；运行方式、实测环境、结果与范围见 [D7 验收报告](validation/d7.md)。性能指标由 D8 单独记录。

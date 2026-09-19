@@ -53,7 +53,7 @@ PRD 第 52 节的 v0.1 MVP 验收标准优先于后续版本功能清单。
 - [x] D4：实现图片响应式、原生懒加载、标题说明与合理尺寸约束。
 - [x] D5：完善 MVP 示例文章、图片和表格，增加无封面、长文和边界情况。
 - [x] D6：移除默认 PJAX、音乐、烟花、评论、搜索、打赏、动画和统计脚本；默认无第三方 JS 请求。
-- [ ] D7：验证 Light/Dark、Mobile/Desktop、无 JS、键盘操作和 reduced-motion；记录实际结果。
+- [x] D7：验证 Light/Dark、Mobile/Desktop、无 JS、键盘操作和 reduced-motion；记录实际结果。
 - [ ] D8：统计核心 JS/CSS gzip 大小；使用 Lighthouse 测量 LCP/CLS/INP 相关指标并记录测试环境，避免把目标写成实测结果。
 - [ ] D9：补齐配置、开发和基础写作说明，更新版本与 CHANGELOG，逐项完成 PRD §52 验收。
 
@@ -296,3 +296,15 @@ C 阶段完成。下一批：D2，完善 Markdown 阅读元素的样式与边界
 - lint、typecheck、干净构建（96 文件）、41 项测试、19 类页面、20 个站内入口链接及 Markdown 产物检查通过。Chrome 验证新增 6 类页面与首页在 1440/390/320px、Light/Dark 下无横向页面溢出，禁用 JS 的长文目录、英文 details 与导航可用；代码专项回归通过，无脚本错误。手机入口截图人工检查通过。
 
 下一批：D7，执行并记录 Light/Dark、Mobile/Desktop、无 JS、键盘和 reduced-motion 综合验收；D6 已完成。
+
+
+### 2026-09-19：D7 浏览器综合验收
+
+- 新增可选浏览器验收脚本，覆盖 22 类页面、1440/768/390/320px 与系统深浅模式，共 176 组检查；另完成 66 组无 JS 检查，均无整页横向溢出。
+- 键盘导航、跨断点焦点、主题偏好刷新保持/系统跟随/跨标签页同步、受限存储、复制空白保真及失败重试、无 JS 目录/脚注/details/表格/代码滚动和 reduced-motion 均通过，无页面脚本错误。
+- 保存 [验收报告](validation/d7.md) 与 [逐项结果](validation/d7-browser.json)，开发文档补充重复运行方式。浏览器依赖不加入主题安装链路，主题代码与样式保持不变。
+- 本次为 Linux Headless Chrome 视口模拟，剪贴板与存储拒绝使用替身；未验证真机、Safari/Firefox、屏幕阅读器或性能指标。历史友链外部图片及故意失效图片已在报告中说明。
+
+- 最终 lint、typecheck、干净构建（96 文件）、41 项测试、19 类页面、20 个示例入口链接及 Markdown 产物检查通过。
+
+下一批：D8，统计核心 JS/CSS gzip 大小并执行 Lighthouse 性能测量，记录实际环境和结果。
