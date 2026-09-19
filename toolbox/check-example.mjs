@@ -13,7 +13,8 @@ const pages = [
   'tags/Foo/index.html',
   '404.html',
   'reading/index.html',
-  'typography/index.html'
+  'typography/index.html',
+  'reading-elements/index.html'
 ];
 
 for (const page of pages) {

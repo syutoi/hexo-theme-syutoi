@@ -29,4 +29,14 @@ assert.match(legacy, /class="media-links"/, 'Media tag fallback must survive ren
 const notes = await readFile(new URL('computer-science/java/course-1/week-2/index.html', output), 'utf8');
 assert.doesNotMatch(notes, /:::note|\{\.quiz/);
 assert.match(notes, /huang/);
+const elements = await readFile(new URL('reading-elements/index.html', output), 'utf8');
+for (let level = 1; level <= 6; level++) assert.match(elements, new RegExp(`<h${level} id=`));
+assert.match(elements, /<dl>[\s\S]*<dt>Markdown<\/dt>[\s\S]*<dd>/);
+assert.match(elements, /<table tabindex="0" aria-label="宽表格示例">[\s\S]*<caption>/);
+assert.match(elements, /<th scope="col">/);
+assert.match(elements, /<th scope="row">/);
+assert.match(elements, /<figcaption>本地示例图片/);
+assert.match(elements, /id="fnref1:1"/);
+assert.match(elements, /href="#fnref1:1"/);
+assert.match(elements, /<details>[\s\S]*<details>[\s\S]*<\/details>\s*<\/details>/);
 console.log('Verified Markdown anchors, footnotes, tasks, tables, details, images, code fidelity and legacy content.');

@@ -201,3 +201,11 @@ archive_generator:
 pretty_urls:
   trailing_index: false
 ```
+
+## Markdown 阅读元素
+
+完整样例位于 `/reading-elements/`（源码 `example/source/reading-elements/index.md`），覆盖 H1–H6、段落强调、嵌套列表、任务列表、定义列表、引用、表格、图片说明、代码、脚注和原生 details。
+
+表格保留 Markdown 的左/中/右对齐，单元格顶部对齐并保留最小宽度，窄屏在表格内部横向滚动。较宽表格如需显式键盘焦点，可使用原生 HTML `<table tabindex="0" aria-label="数据说明">`，配合 caption、th 的 scope 描述数据关系；聚焦后可按方向键滚动。代码高亮内部的布局表格不使用普通表格的单元格最小宽度。
+
+脚注跳转后高亮目标脚注，返回链接对应原引用位置。原生 details 保留浏览器标记与 Enter/Space 操作，支持嵌套；这些功能无需 JavaScript。figure/figcaption 可为图片添加说明，长说明随正文宽度换行。代码复制和图片加载的进一步完善分别留在 D3、D4。
