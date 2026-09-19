@@ -15,7 +15,7 @@
   --syutoi-space-3: 1rem;
   --syutoi-space-4: 1.5rem;
   --syutoi-space-5: 2rem;
-  --syutoi-font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+  --syutoi-font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "PingFang TC", "Microsoft YaHei", "Noto Sans SC", "Noto Sans TC", sans-serif;
   --syutoi-font-code: ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
   --syutoi-text-sm: 0.875rem;
   --syutoi-text-base: 1rem;

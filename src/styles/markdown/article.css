@@ -1,4 +1,12 @@
-.prose { line-height: 1.85; }
+/* Keep natural word boundaries; only break an otherwise overflowing token.
+   No generated spaces or justification: copied mixed-language text stays intact. */
+.prose { max-width: var(--syutoi-content-width); margin-inline: auto; line-height: 1.85; text-align: start; word-break: normal; overflow-wrap: anywhere; line-break: strict; hyphens: manual; }
+.prose :where(h1, h2, h3, h4, h5, h6) { line-height: 1.4; text-wrap: balance; }
+.prose :where(sub, sup) { font-size: .75em; line-height: 0; position: relative; vertical-align: baseline; }
+.prose sub { bottom: -.25em; }
+.prose sup { top: -.5em; }
+.prose rt { font-size: .6em; }
+.prose pre { word-break: normal; overflow-wrap: normal; line-break: auto; hyphens: none; text-align: start; }
 .prose > :first-child { margin-top: 0; }
 .prose > :last-child { margin-bottom: 0; }
 .prose :where(p, ul, ol, dl, blockquote, pre, figure, table, details) { margin-block: 1.5rem; }

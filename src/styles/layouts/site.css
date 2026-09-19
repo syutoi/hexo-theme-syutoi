@@ -85,6 +85,7 @@
 .post-card:nth-child(even) .post-cover { order: 1; clip-path: polygon(6% 0, 100% 0, 100% 100%, 0 100%); }
 .post-card:not(.has-cover) .post-card-content { border-left: 3px solid var(--syutoi-color-primary); }
 .inner-page .site-main { padding: 2.5rem; border-radius: 12px; background: var(--syutoi-color-surface); box-shadow: var(--syutoi-shadow); }
+.article-page, .post-neighbors { max-width: var(--syutoi-content-width); margin-inline: auto; }
 .page-heading { padding-bottom: 2rem; }
 .eyebrow { margin: 0 0 1rem; color: var(--syutoi-color-text-secondary); font-size: .8rem; }
 .eyebrow a { text-decoration: none; }
