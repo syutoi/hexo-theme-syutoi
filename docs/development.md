@@ -23,7 +23,7 @@ pnpm dev
 | `pnpm lint` | ESLint 检查手写 JS/TS；出现错误或警告均失败 |
 | `pnpm typecheck` | 严格检查 `src/**/*.ts`，不输出文件 |
 | `pnpm test:unit` | 测试主题偏好、URL、导航、分页与构建失败恢复 |
-| `pnpm test` | 运行单元/构建恢复测试、示例站及 Markdown 产物检查；先执行 `pnpm build` |
+| `pnpm test` | 运行单元/隔离 Hexo/构建恢复测试、页面与 Markdown 产物检查及 gzip 预算检查；先执行 `pnpm build` |
 | `pnpm dev` | 首次构建资源，监听源码，启动 Hexo 预览 |
 | `pnpm dev --port 4001` | 在指定端口预览，默认只监听 127.0.0.1 |
 | `pnpm clean` | 删除示例站数据库和 public，不删除已提交的主题产物 |
@@ -46,7 +46,7 @@ JS 由 esbuild 打包为独立 IIFE，避免污染全局变量；CSS 经 PostCSS
 
 JS/CSS 压缩由主题构建负责；不再安装旧 renderer 自带的 HTML/CSS/JS 压缩器。旧 `app.js`、`app.css` 及其生成入口已删除；升级后执行 `pnpm clean && pnpm build` 清理旧产物。
 
-Design tokens 已定义颜色、深浅主题、内容宽度、字体、字号、间距和圆角。基础模板、文章排版、列表和导航共用这些 tokens，后续按 C/D 阶段继续验收细节。
+Design tokens 已定义颜色、深浅主题、内容宽度、字体、字号、间距和圆角。基础模板、文章排版、列表和导航共用这些 tokens，当前验收证据见 [MVP 验收表](validation/mvp.md)。
 
 ## 深浅色偏好
 
@@ -100,7 +100,7 @@ CI 在锁定安装后依次执行 lint、clean、typecheck、build、test 和生
 5. 使用指向 `#main` 的导航链接确认同页跳转；增加多项导航，在 320/390/760px 检查页头与横幅不重叠，页面无横向溢出。
 6. 禁用 JavaScript，检查首页、文章、Page、归档、分类、标签、友链和 404 的导航、链接、分页及原生 details 仍可用。
 
-本批使用 Linux Chrome 实测；其他浏览器、屏幕阅读器与完整无障碍审计尚未执行。代码块与表格的进一步键盘增强随 D 阶段阅读组件继续处理。
+本批使用 Linux Chrome 实测；其他浏览器、屏幕阅读器与完整无障碍审计尚未执行。代码块、表格及无 JS 交互的综合结果见 D7/D8a 报告。
 
 ## 示例站入口
 
@@ -115,3 +115,12 @@ CI 在锁定安装后依次执行 lint、clean、typecheck、build、test 和生
 构建后运行 `pnpm check:budget`，检查生成的核心 JS/CSS（含构建注释），以 gzip level 9、十进制 KB 统计；严格上限为 JS <50 KB、CSS <40 KB，JS <30 KB 是争取目标。该检查也进入 `pnpm test` 和现有 CI；它不包含页面 HTML、图片、feed 或可选第三方服务，也不代表服务器已开启压缩。
 
 `toolbox/check-performance.mjs` 使用独立安装的 Lighthouse CLI 和本机 Chrome，依次测量首页/长文、mobile/desktop，每组 3 次，保存完整原始报告及含中位数/范围的摘要。它不进入默认测试或下载浏览器；构建与服务启动由调用者负责。固定版本、启动命令、实测数据及 INP 测量限制见 [D8 性能报告](validation/d8.md)。
+
+
+## 版本与提交检查
+
+当前版本为 `0.1.0`，对应 Syutoi 首个 MVP；此前 `0.2.5` 沿用自上游，不表示本项目已完成 PRD 的 0.2 阶段。版本与破坏性变更记录在 [CHANGELOG](../CHANGELOG.md)。`package.json` 版本也用于 JS/CSS URL 的缓存参数，修改后需重新生成示例站。
+
+提交前停止预览监听，依次运行 `pnpm lint`、`pnpm clean`、`pnpm typecheck`、`pnpm build`、`pnpm test`，检查 `git diff --check` 及生成资源是否同步。然后恢复 `pnpm dev`。修改文档或包版本不需要重新运行未受影响的 Lighthouse 矩阵。
+
+现有 CI 配置覆盖 Node 20.19.0 / 24；本机已实测 Node 20.19.2，远端 CI 与 Node 24 的执行状态不由本地检查推断。主题保持 `private: true`；本轮提交不创建 Git tag、不发布 npm 或部署网站。公开发布、npm 安装方式与完整部署文档按后续 G 阶段处理。

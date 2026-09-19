@@ -84,11 +84,8 @@ social:
 | `alternate` | `branding.name` |
 | `sidebar.avatar` + `images` | `branding.avatar` 完整路径 |
 | `darkmode: true/false` | `appearance.theme: dark/auto` |
-| `menu` 映射及 `路径 || 图标` | `post_list.summary` | `true` | 首页、分类和标签列表显示摘要 |
-| `post_list.summary_length` | `160` | 摘要最多 Unicode 码点数（1–1000 的整数），超出追加省略号；无效值回退 160 |
-| `post_list.cover` | `true` | 列表显示文章 cover；不影响文章页和页头 |
-| `navigation.menu` 列表；旧嵌套菜单展开，忽略分组 default |
-| `social` 映射及 `URL || 图标 || 颜色` | `social` 列表；旧图标和颜色不再读取 |
+| `menu` 映射及 `路径 \|\| 图标` | `navigation.menu` 列表；旧嵌套菜单展开，忽略分组 default |
+| `social` 映射及 `URL \|\| 图标 \|\| 颜色` | `social` 列表；旧图标和颜色不再读取 |
 
 站点的旧字段不会被新版主题默认值遮住；站点覆盖配置中同时存在新字段和旧别名时，新字段优先，包括空字符串与空列表。建议逐步改用新字段，不再向旧配置添加功能。
 
@@ -208,7 +205,7 @@ pretty_urls:
 
 表格保留 Markdown 的左/中/右对齐，单元格顶部对齐并保留最小宽度，窄屏在表格内部横向滚动。较宽表格如需显式键盘焦点，可使用原生 HTML `<table tabindex="0" aria-label="数据说明">`，配合 caption、th 的 scope 描述数据关系；聚焦后可按方向键滚动。代码高亮内部的布局表格不使用普通表格的单元格最小宽度。
 
-脚注跳转后高亮目标脚注，返回链接对应原引用位置。原生 details 保留浏览器标记与 Enter/Space 操作，支持嵌套；这些功能无需 JavaScript。figure/figcaption 可为图片添加说明，长说明随正文宽度换行。代码复制和图片加载的进一步完善分别留在 D3、D4。
+脚注跳转后高亮目标脚注，返回链接对应原引用位置。原生 details 保留浏览器标记与 Enter/Space 操作，支持嵌套；这些功能无需 JavaScript。figure/figcaption 可为图片添加说明，长说明随正文宽度换行。代码复制和图片加载规则见下方对应章节。
 
 ## 代码展示与复制
 

@@ -1,54 +1,36 @@
 # Hexo Theme Syutoi
 
-## Usage
+面向写作与阅读的 Hexo 主题，fork 自 hexo-theme-shoka。保留图片页头、波浪、图文卡片和侧栏，以 Nunjucks、TypeScript 和原生 CSS 重建核心页面。
 
-1. Clone this repository
+当前版本 **0.1.0（MVP）**，支持首页、文章、独立页面、归档、深浅模式、基础目录和常用 Markdown 阅读元素。首个 Syutoi 版本重新编号，不延续上游遗留的 `0.2.5`；差异见 [CHANGELOG](CHANGELOG.md)。上游来源与 MIT 许可证保留。
 
-``` bash
-# cd your-blog
-git clone https://github.com/syutoi/hexo-theme-syutoi.git ./themes/syutoi
-```
+## 使用主题
 
-2. Make changes to the root `_config.yml`
-  - update `theme` fragment as `syutoi`.  
+需要 Node.js >=20.19.0、pnpm 9.0.4 和 Hexo 8。现有博客安装方式见 [快速开始](docs/getting-started.md)，主题选项放在博客根目录的 `_config.syutoi.yml`。无需开发构建即可使用仓库中已提交的 JS/CSS，但仍需安装主题的构建时依赖。
 
-3. Install the necessary plugins
-  - [hexo-renderer-markdown-it](https://github.com/hexojs/hexo-renderer-markdown-it)
-  - [markdown-it-task-lists](https://github.com/revin/markdown-it-task-lists)（示例站的任务列表扩展）
-  - [hexo-feed](https://www.npmjs.com/package/hexo-feed)
+- [配置说明](docs/configuration.md)：主题字段、覆盖规则与分页。
+- [基础写作](docs/writing.md)：Front Matter、Markdown、图片与代码。
+- [迁移说明](docs/migration-from-shoka.md)：旧配置与旧语法的兼容范围。
+- [示例说明](docs/examples.md)：阅读组件、长文和边界场景。
+- [MVP 验收](docs/validation/mvp.md)：实际证据与尚未验证的范围。
 
-4. View a site configuration example in the `example` folder. Use the blog’s `_config.syutoi.yml` for overrides; see [配置说明](docs/configuration.md).
+默认不加载第三方 JS；搜索、评论、音乐、统计、PJAX 等功能尚未集成。作者自行嵌入的外部内容可能产生网络请求。RSS 是可选站点插件，不是主题运行的必需依赖。
 
-5. [中文使用说明](https://syutoi.com)
-
-
-## 本地开发
-
-当前仓库使用 Hexo 8，页面已使用 TypeScript/esbuild 和 CSS/PostCSS。现代化重写计划与完成情况见 [TODO](docs/TODO.md)。
-
-环境要求：Node.js >=20.19.0，pnpm 9.0.4（版本固定于 `packageManager`）。使用 nvm 时可执行 `nvm install`、`nvm use` 读取 `.nvmrc`。
+## 本地开发与预览
 
 ```bash
-# 在仓库根目录安装两个 workspace 的依赖
-pnpm install
-
-# 构建并检查示例站
-pnpm clean
+# 仓库根目录；nvm 用户先执行 nvm install 和 nvm use
+pnpm install --frozen-lockfile
 pnpm lint
+pnpm clean
 pnpm typecheck
 pnpm build
 pnpm test
-
-# 本地预览（默认只监听本机）
 pnpm dev
 ```
 
-访问 <http://localhost:4000>，从 [示例入口](http://localhost:4000/examples/) 查看当前阅读组件、长文及边界页面。停止服务使用 Ctrl+C。可通过 `pnpm dev --port 4001` 更换端口。
+访问 <http://127.0.0.1:4000/examples/>。`pnpm dev --port 4001` 可更换端口；Ctrl+C 停止服务。`dev` 与 `build` 自动将 `example/themes/syutoi` 链接到当前主题，已有其他目录时不会覆盖。
 
-`dev` 和 `build` 会自动创建 `example/themes/syutoi`，链接到当前主题，因此修改主题无需复制文件。脚本遇到已有的其他主题目录时会报错，不会覆盖。生成的主题链接、`example/public/` 和 `example/db.json` 不纳入版本控制；`pnpm-lock.yaml` 应提交。已有锁文件时使用 `pnpm install --frozen-lockfile`。
+修改 `src/` 后重新生成并提交 `source/js/syutoi.min.js` 和 `source/css/syutoi.min.css`；`pnpm test` 需要已有示例构建，包含单元、隔离 Hexo、产物及 gzip 预算检查。浏览器/Lighthouse 属于可选验收工具，普通安装和构建无需 Puppeteer 或 Chrome。详细命令、CI 范围与工作流程见 [开发文档](docs/development.md)，后续任务见 [TODO](docs/TODO.md)。
 
-`pnpm dev` 会先构建主题资源并监听 `src/`，再启动 Hexo；保存源码后刷新浏览器查看更新。`pnpm build:theme` 可单独构建新 JS/CSS，产物纳入版本控制并随源码一起提交。
-
-`pnpm test` 运行主题偏好逻辑测试并检查上一次示例站构建的页面、正文、脚本、静态资源和 feeds；应先运行 `pnpm build`。GitHub Actions 在 Node 20.19.0 和 Node 24 上执行 lint、类型检查、构建、测试及产物一致性检查。详细命令与迁移方式见 [开发文档](docs/development.md)。
-
-旧 Stylus 与浏览器运行时已移除，页面默认只加载本地 JS/CSS；Markdown 使用通用 `hexo-renderer-markdown-it`，安装与构建不再需要 Puppeteer / Chromium。脚注与任务列表显式启用，代码高亮使用 Hexo 的 Highlight.js。旧私有语法不会全部兼容，迁移清单见 [说明](docs/migration-from-shoka.md)，当前写法见 [写作示例](example/source/reading/index.md)（预览 `/reading/`）。
+代码许可证见 [LICENSE](LICENSE)；保留原作者署名。示例中的历史内容和原站链接用于来源记录及迁移对照，不作为当前功能说明。
