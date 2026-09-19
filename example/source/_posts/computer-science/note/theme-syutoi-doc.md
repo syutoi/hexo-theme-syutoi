@@ -1,5 +1,5 @@
 ---
-cover: /assets/wallpaper-2311325.jpg
+cover: /assets/wallpaper-2311325.webp
 title: Hexo主题Syutoi & multi-markdown-it渲染器使用说明
 date: 2020/08/13 20:45:48
 update: 2020/09/27
