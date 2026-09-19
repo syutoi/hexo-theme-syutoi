@@ -11,6 +11,8 @@ navigation:
   menu:
     - name: menu.home
       url: /
+    - name: menu.examples
+      url: /examples/
     - name: menu.archives
       url: /archives/
     - name: menu.categories

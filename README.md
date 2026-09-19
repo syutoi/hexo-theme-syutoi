@@ -43,7 +43,7 @@ pnpm test
 pnpm dev
 ```
 
-访问 <http://localhost:4000>。停止服务使用 Ctrl+C。可通过 `pnpm dev --port 4001` 更换端口。
+访问 <http://localhost:4000>，从 [示例入口](http://localhost:4000/examples/) 查看当前阅读组件、长文及边界页面。停止服务使用 Ctrl+C。可通过 `pnpm dev --port 4001` 更换端口。
 
 `dev` 和 `build` 会自动创建 `example/themes/syutoi`，链接到当前主题，因此修改主题无需复制文件。脚本遇到已有的其他主题目录时会报错，不会覆盖。生成的主题链接、`example/public/` 和 `example/db.json` 不纳入版本控制；`pnpm-lock.yaml` 应提交。已有锁文件时使用 `pnpm install --frozen-lockfile`。
 

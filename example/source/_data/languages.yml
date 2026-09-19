@@ -2,6 +2,7 @@
 zh-CN:
   # items
   menu:
+    examples: 示例
     links: 链接
     travellings: 开往
     webstack: 网址
@@ -9,6 +10,7 @@ zh-CN:
 
 zh-HK:
   menu:
+    examples: 範例
     links: 链接
     travellings: 開往
     friends: 友達
@@ -16,6 +18,7 @@ zh-HK:
 
 zh-TW:
   menu:
+    examples: 範例
     links: 链接
     travellings: 開往
     friends: 友達
@@ -23,6 +26,7 @@ zh-TW:
 
 en:
   menu:
+    examples: Examples
     links: Links
     travellings: Travellings
     webstack: Web Stack
@@ -30,6 +34,7 @@ en:
 
 ja:
   menu:
+    examples: サンプル
     links: リンク
     travellings: 旅行
     friends: 友達
