@@ -109,3 +109,9 @@ CI 在锁定安装后依次执行 lint、clean、typecheck、build、test 和生
 ## 综合浏览器验收
 
 `toolbox/check-browser.mjs` 是可选的示例站验收工具，覆盖系统深浅偏好、多档视口、无 JS、键盘、受限存储和 reduced-motion。使用独立准备的 Puppeteer/Chrome，不进入默认构建或 CI；运行方式、实测环境、结果与范围见 [D7 验收报告](validation/d7.md)。性能指标由 D8 单独记录。
+
+## 性能预算与测量
+
+构建后运行 `pnpm check:budget`，检查生成的核心 JS/CSS（含构建注释），以 gzip level 9、十进制 KB 统计；严格上限为 JS <50 KB、CSS <40 KB，JS <30 KB 是争取目标。该检查也进入 `pnpm test` 和现有 CI；它不包含页面 HTML、图片、feed 或可选第三方服务，也不代表服务器已开启压缩。
+
+`toolbox/check-performance.mjs` 使用独立安装的 Lighthouse CLI 和本机 Chrome，依次测量首页/长文、mobile/desktop，每组 3 次，保存完整原始报告及含中位数/范围的摘要。它不进入默认测试或下载浏览器；构建与服务启动由调用者负责。固定版本、启动命令、实测数据及 INP 测量限制见 [D8 性能报告](validation/d8.md)。

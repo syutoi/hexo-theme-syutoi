@@ -1,0 +1,3056 @@
+{
+  "started": "2026-09-19T15:22:47.510Z",
+  "commit": "1a371a12bdf8bc00b70f234ff0b372f1040143e7",
+  "environment": {
+    "node": "v20.19.2",
+    "os": "linux 7.0.0-31-generic",
+    "cpu": "11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz",
+    "logicalCPUs": 8,
+    "memoryBytes": 16496459776,
+    "chrome": "Google Chrome 151.0.7922.108",
+    "lighthouse": "12.8.2"
+  },
+  "base": "http://127.0.0.1:4173",
+  "budget": {
+    "gzipLevel": 9,
+    "unit": "bytes (1 KB = 1000 bytes)",
+    "assets": [
+      {
+        "path": "source/js/syutoi.min.js",
+        "bytes": 3498,
+        "gzipBytes": 1334,
+        "limitBytes": 50000,
+        "stretchBytes": 30000,
+        "passed": true,
+        "sha256": "3e646cfc2395e4df93e9d84cc7af7f81c45a4992ae2d659409292ac99262a99b"
+      },
+      {
+        "path": "source/css/syutoi.min.css",
+        "bytes": 21312,
+        "gzipBytes": 5211,
+        "limitBytes": 40000,
+        "stretchBytes": null,
+        "passed": true,
+        "sha256": "84b3f852840f839f892cd5a9a61979cc05bf3ac1bfe6096ee8966158eedcae8c"
+      }
+    ]
+  },
+  "runs": [
+    {
+      "name": "home",
+      "path": "/",
+      "mode": "mobile",
+      "iteration": 1,
+      "report": "home-mobile-1.json",
+      "sha256": "82e2021323ddbde06c6ea2636ddc4cfb0590fe4e11bbd6dccea2d792fabe3c25",
+      "fetchTime": "2026-09-19T15:22:53.095Z",
+      "lighthouseVersion": "12.8.2",
+      "environment": {
+        "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+        "hostUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+        "benchmarkIndex": 1152,
+        "credits": {}
+      },
+      "settings": {
+        "output": [
+          "json"
+        ],
+        "maxWaitForFcp": 30000,
+        "maxWaitForLoad": 45000,
+        "pauseAfterFcpMs": 1000,
+        "pauseAfterLoadMs": 1000,
+        "networkQuietThresholdMs": 1000,
+        "cpuQuietThresholdMs": 1000,
+        "formFactor": "mobile",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "throttlingMethod": "simulate",
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        },
+        "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+        "auditMode": false,
+        "gatherMode": false,
+        "clearStorageTypes": [
+          "file_systems",
+          "shader_cache",
+          "service_workers",
+          "cache_storage"
+        ],
+        "disableStorageReset": false,
+        "debugNavigation": false,
+        "channel": "cli",
+        "usePassiveGathering": false,
+        "disableFullPageScreenshot": false,
+        "skipAboutBlank": false,
+        "blankPage": "about:blank",
+        "ignoreStatusCode": false,
+        "locale": "en-US",
+        "blockedUrlPatterns": null,
+        "additionalTraceCategories": null,
+        "extraHeaders": null,
+        "precomputedLanternData": null,
+        "onlyAudits": null,
+        "onlyCategories": [
+          "performance"
+        ],
+        "skipAudits": null
+      },
+      "warnings": [],
+      "score": 75,
+      "metrics": {
+        "first-contentful-paint": 1369.9967000000001,
+        "largest-contentful-paint": 8782.9934,
+        "cumulative-layout-shift": 0.04850174553962941,
+        "total-blocking-time": 0,
+        "speed-index": 2438.1297499972216
+      },
+      "diagnostics": {
+        "interactive": {
+          "title": "Time to Interactive",
+          "score": 0.35,
+          "displayValue": "8.8 s"
+        },
+        "largest-contentful-paint-element": {
+          "title": "Largest Contentful Paint element",
+          "score": 0,
+          "displayValue": "8,780 ms",
+          "metricSavings": {
+            "LCP": 6300
+          }
+        },
+        "uses-long-cache-ttl": {
+          "title": "Serve static assets with an efficient cache policy",
+          "score": 0.5,
+          "displayValue": "5 resources found"
+        },
+        "render-blocking-resources": {
+          "title": "Eliminate render-blocking resources",
+          "score": 0.5,
+          "displayValue": "Est savings of 0 ms",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "modern-image-formats": {
+          "title": "Serve images in next-gen formats",
+          "score": 0,
+          "displayValue": "Est savings of 855 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 3750
+          }
+        },
+        "uses-optimized-images": {
+          "title": "Efficiently encode images",
+          "score": 0,
+          "displayValue": "Est savings of 16 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 150
+          }
+        },
+        "uses-text-compression": {
+          "title": "Enable text compression",
+          "score": 0,
+          "displayValue": "Est savings of 30 KiB",
+          "metricSavings": {
+            "FCP": 150,
+            "LCP": 150
+          }
+        },
+        "uses-responsive-images": {
+          "title": "Properly size images",
+          "score": 0,
+          "displayValue": "Est savings of 1,410 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 6450
+          }
+        },
+        "cache-insight": {
+          "title": "Use efficient cache lifetimes",
+          "score": 0,
+          "displayValue": "Est savings of 1,569 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 6900
+          }
+        },
+        "document-latency-insight": {
+          "title": "Document request latency",
+          "score": 0.5,
+          "displayValue": "Est savings of 11 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "image-delivery-insight": {
+          "title": "Improve image delivery",
+          "score": 0,
+          "displayValue": "Est savings of 1,453 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 6600
+          }
+        },
+        "network-dependency-tree-insight": {
+          "title": "Network dependency tree",
+          "score": 0,
+          "metricSavings": {
+            "LCP": 0
+          }
+        },
+        "render-blocking-insight": {
+          "title": "Render blocking requests",
+          "score": 0.5,
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        }
+      },
+      "requests": [
+        {
+          "url": "http://127.0.0.1:4173/",
+          "resourceType": "Document",
+          "statusCode": 200,
+          "transferSize": 16655,
+          "resourceSize": 16466
+        },
+        {
+          "url": "http://127.0.0.1:4173/js/syutoi.min.js?v=0.2.5",
+          "resourceType": "Script",
+          "statusCode": 200,
+          "transferSize": 3692,
+          "resourceSize": 3498
+        },
+        {
+          "url": "http://127.0.0.1:4173/css/syutoi.min.css?v=0.2.5",
+          "resourceType": "Stylesheet",
+          "statusCode": 200,
+          "transferSize": 21500,
+          "resourceSize": 21312
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/wallpaper-878514.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 618841,
+          "resourceSize": 618650
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/wallpaper-2311325.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 742143,
+          "resourceSize": 741952
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/wallpaper-2572384.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 220039,
+          "resourceSize": 219848
+        },
+        {
+          "url": "http://127.0.0.1:4173/images/favicon.ico",
+          "resourceType": "Other",
+          "statusCode": 200,
+          "transferSize": 4489,
+          "resourceSize": 4286
+        }
+      ]
+    },
+    {
+      "name": "home",
+      "path": "/",
+      "mode": "mobile",
+      "iteration": 2,
+      "report": "home-mobile-2.json",
+      "sha256": "ffcdaf228700336e8de47297fe6c8caf0b1bad6de2fb35499af10ad0ef5a6917",
+      "fetchTime": "2026-09-19T15:23:09.945Z",
+      "lighthouseVersion": "12.8.2",
+      "environment": {
+        "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+        "hostUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+        "benchmarkIndex": 1173,
+        "credits": {}
+      },
+      "settings": {
+        "output": [
+          "json"
+        ],
+        "maxWaitForFcp": 30000,
+        "maxWaitForLoad": 45000,
+        "pauseAfterFcpMs": 1000,
+        "pauseAfterLoadMs": 1000,
+        "networkQuietThresholdMs": 1000,
+        "cpuQuietThresholdMs": 1000,
+        "formFactor": "mobile",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "throttlingMethod": "simulate",
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        },
+        "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+        "auditMode": false,
+        "gatherMode": false,
+        "clearStorageTypes": [
+          "file_systems",
+          "shader_cache",
+          "service_workers",
+          "cache_storage"
+        ],
+        "disableStorageReset": false,
+        "debugNavigation": false,
+        "channel": "cli",
+        "usePassiveGathering": false,
+        "disableFullPageScreenshot": false,
+        "skipAboutBlank": false,
+        "blankPage": "about:blank",
+        "ignoreStatusCode": false,
+        "locale": "en-US",
+        "blockedUrlPatterns": null,
+        "additionalTraceCategories": null,
+        "extraHeaders": null,
+        "precomputedLanternData": null,
+        "onlyAudits": null,
+        "onlyCategories": [
+          "performance"
+        ],
+        "skipAudits": null
+      },
+      "warnings": [],
+      "score": 75,
+      "metrics": {
+        "first-contentful-paint": 1363.0086999999999,
+        "largest-contentful-paint": 8856.0174,
+        "cumulative-layout-shift": 0.04850174553962941,
+        "total-blocking-time": 0,
+        "speed-index": 2381.677195970457
+      },
+      "diagnostics": {
+        "interactive": {
+          "title": "Time to Interactive",
+          "score": 0.34,
+          "displayValue": "8.9 s"
+        },
+        "largest-contentful-paint-element": {
+          "title": "Largest Contentful Paint element",
+          "score": 0,
+          "displayValue": "8,860 ms",
+          "metricSavings": {
+            "LCP": 6350
+          }
+        },
+        "uses-long-cache-ttl": {
+          "title": "Serve static assets with an efficient cache policy",
+          "score": 0.5,
+          "displayValue": "5 resources found"
+        },
+        "render-blocking-resources": {
+          "title": "Eliminate render-blocking resources",
+          "score": 0.5,
+          "displayValue": "Est savings of 0 ms",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "modern-image-formats": {
+          "title": "Serve images in next-gen formats",
+          "score": 0,
+          "displayValue": "Est savings of 855 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 3900
+          }
+        },
+        "uses-optimized-images": {
+          "title": "Efficiently encode images",
+          "score": 0,
+          "displayValue": "Est savings of 16 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 150
+          }
+        },
+        "uses-text-compression": {
+          "title": "Enable text compression",
+          "score": 0,
+          "displayValue": "Est savings of 30 KiB",
+          "metricSavings": {
+            "FCP": 150,
+            "LCP": 300
+          }
+        },
+        "uses-responsive-images": {
+          "title": "Properly size images",
+          "score": 0,
+          "displayValue": "Est savings of 1,410 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 6450
+          }
+        },
+        "cache-insight": {
+          "title": "Use efficient cache lifetimes",
+          "score": 0,
+          "displayValue": "Est savings of 1,569 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 7050
+          }
+        },
+        "document-latency-insight": {
+          "title": "Document request latency",
+          "score": 0.5,
+          "displayValue": "Est savings of 11 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "image-delivery-insight": {
+          "title": "Improve image delivery",
+          "score": 0,
+          "displayValue": "Est savings of 1,453 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 6600
+          }
+        },
+        "network-dependency-tree-insight": {
+          "title": "Network dependency tree",
+          "score": 0,
+          "metricSavings": {
+            "LCP": 0
+          }
+        },
+        "render-blocking-insight": {
+          "title": "Render blocking requests",
+          "score": 0.5,
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        }
+      },
+      "requests": [
+        {
+          "url": "http://127.0.0.1:4173/",
+          "resourceType": "Document",
+          "statusCode": 200,
+          "transferSize": 16655,
+          "resourceSize": 16466
+        },
+        {
+          "url": "http://127.0.0.1:4173/js/syutoi.min.js?v=0.2.5",
+          "resourceType": "Script",
+          "statusCode": 200,
+          "transferSize": 3692,
+          "resourceSize": 3498
+        },
+        {
+          "url": "http://127.0.0.1:4173/css/syutoi.min.css?v=0.2.5",
+          "resourceType": "Stylesheet",
+          "statusCode": 200,
+          "transferSize": 21500,
+          "resourceSize": 21312
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/wallpaper-878514.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 618841,
+          "resourceSize": 618650
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/wallpaper-2311325.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 742143,
+          "resourceSize": 741952
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/wallpaper-2572384.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 220039,
+          "resourceSize": 219848
+        },
+        {
+          "url": "http://127.0.0.1:4173/images/favicon.ico",
+          "resourceType": "Other",
+          "statusCode": 200,
+          "transferSize": 4489,
+          "resourceSize": 4286
+        }
+      ]
+    },
+    {
+      "name": "home",
+      "path": "/",
+      "mode": "mobile",
+      "iteration": 3,
+      "report": "home-mobile-3.json",
+      "sha256": "594456f4a7b2fde54fd276e512884ebb81ecddc80e2f2ed154a8a1567c612ae1",
+      "fetchTime": "2026-09-19T15:23:26.524Z",
+      "lighthouseVersion": "12.8.2",
+      "environment": {
+        "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+        "hostUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+        "benchmarkIndex": 1145.5,
+        "credits": {}
+      },
+      "settings": {
+        "output": [
+          "json"
+        ],
+        "maxWaitForFcp": 30000,
+        "maxWaitForLoad": 45000,
+        "pauseAfterFcpMs": 1000,
+        "pauseAfterLoadMs": 1000,
+        "networkQuietThresholdMs": 1000,
+        "cpuQuietThresholdMs": 1000,
+        "formFactor": "mobile",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "throttlingMethod": "simulate",
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        },
+        "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+        "auditMode": false,
+        "gatherMode": false,
+        "clearStorageTypes": [
+          "file_systems",
+          "shader_cache",
+          "service_workers",
+          "cache_storage"
+        ],
+        "disableStorageReset": false,
+        "debugNavigation": false,
+        "channel": "cli",
+        "usePassiveGathering": false,
+        "disableFullPageScreenshot": false,
+        "skipAboutBlank": false,
+        "blankPage": "about:blank",
+        "ignoreStatusCode": false,
+        "locale": "en-US",
+        "blockedUrlPatterns": null,
+        "additionalTraceCategories": null,
+        "extraHeaders": null,
+        "precomputedLanternData": null,
+        "onlyAudits": null,
+        "onlyCategories": [
+          "performance"
+        ],
+        "skipAudits": null
+      },
+      "warnings": [],
+      "score": 75,
+      "metrics": {
+        "first-contentful-paint": 1347.3793500000002,
+        "largest-contentful-paint": 8858.7587,
+        "cumulative-layout-shift": 0.04850174553962941,
+        "total-blocking-time": 0,
+        "speed-index": 2382.95656001245
+      },
+      "diagnostics": {
+        "interactive": {
+          "title": "Time to Interactive",
+          "score": 0.34,
+          "displayValue": "8.9 s"
+        },
+        "largest-contentful-paint-element": {
+          "title": "Largest Contentful Paint element",
+          "score": 0,
+          "displayValue": "8,860 ms",
+          "metricSavings": {
+            "LCP": 6350
+          }
+        },
+        "uses-long-cache-ttl": {
+          "title": "Serve static assets with an efficient cache policy",
+          "score": 0.5,
+          "displayValue": "5 resources found"
+        },
+        "render-blocking-resources": {
+          "title": "Eliminate render-blocking resources",
+          "score": 0.5,
+          "displayValue": "Est savings of 0 ms",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "modern-image-formats": {
+          "title": "Serve images in next-gen formats",
+          "score": 0,
+          "displayValue": "Est savings of 855 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 3900
+          }
+        },
+        "uses-optimized-images": {
+          "title": "Efficiently encode images",
+          "score": 0,
+          "displayValue": "Est savings of 16 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 150
+          }
+        },
+        "uses-text-compression": {
+          "title": "Enable text compression",
+          "score": 0,
+          "displayValue": "Est savings of 30 KiB",
+          "metricSavings": {
+            "FCP": 150,
+            "LCP": 300
+          }
+        },
+        "uses-responsive-images": {
+          "title": "Properly size images",
+          "score": 0,
+          "displayValue": "Est savings of 1,410 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 6450
+          }
+        },
+        "cache-insight": {
+          "title": "Use efficient cache lifetimes",
+          "score": 0,
+          "displayValue": "Est savings of 1,569 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 7050
+          }
+        },
+        "document-latency-insight": {
+          "title": "Document request latency",
+          "score": 0.5,
+          "displayValue": "Est savings of 11 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "image-delivery-insight": {
+          "title": "Improve image delivery",
+          "score": 0,
+          "displayValue": "Est savings of 1,453 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 6600
+          }
+        },
+        "network-dependency-tree-insight": {
+          "title": "Network dependency tree",
+          "score": 0,
+          "metricSavings": {
+            "LCP": 0
+          }
+        },
+        "render-blocking-insight": {
+          "title": "Render blocking requests",
+          "score": 0.5,
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        }
+      },
+      "requests": [
+        {
+          "url": "http://127.0.0.1:4173/",
+          "resourceType": "Document",
+          "statusCode": 200,
+          "transferSize": 16655,
+          "resourceSize": 16466
+        },
+        {
+          "url": "http://127.0.0.1:4173/js/syutoi.min.js?v=0.2.5",
+          "resourceType": "Script",
+          "statusCode": 200,
+          "transferSize": 3692,
+          "resourceSize": 3498
+        },
+        {
+          "url": "http://127.0.0.1:4173/css/syutoi.min.css?v=0.2.5",
+          "resourceType": "Stylesheet",
+          "statusCode": 200,
+          "transferSize": 21500,
+          "resourceSize": 21312
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/wallpaper-878514.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 618841,
+          "resourceSize": 618650
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/wallpaper-2311325.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 742143,
+          "resourceSize": 741952
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/wallpaper-2572384.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 220039,
+          "resourceSize": 219848
+        },
+        {
+          "url": "http://127.0.0.1:4173/images/favicon.ico",
+          "resourceType": "Other",
+          "statusCode": 200,
+          "transferSize": 4489,
+          "resourceSize": 4286
+        }
+      ]
+    },
+    {
+      "name": "home",
+      "path": "/",
+      "mode": "desktop",
+      "iteration": 1,
+      "report": "home-desktop-1.json",
+      "sha256": "ca8ed9a9597bf673fc4a203ad6701443cfdb45d36a0bd4da6784fd434c95892f",
+      "fetchTime": "2026-09-19T15:23:42.901Z",
+      "lighthouseVersion": "12.8.2",
+      "environment": {
+        "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+        "hostUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+        "benchmarkIndex": 1152.5,
+        "credits": {}
+      },
+      "settings": {
+        "output": [
+          "json"
+        ],
+        "maxWaitForFcp": 30000,
+        "maxWaitForLoad": 45000,
+        "pauseAfterFcpMs": 1000,
+        "pauseAfterLoadMs": 1000,
+        "networkQuietThresholdMs": 1000,
+        "cpuQuietThresholdMs": 1000,
+        "formFactor": "desktop",
+        "throttling": {
+          "rttMs": 40,
+          "throughputKbps": 10240,
+          "requestLatencyMs": 0,
+          "downloadThroughputKbps": 0,
+          "uploadThroughputKbps": 0,
+          "cpuSlowdownMultiplier": 1
+        },
+        "throttlingMethod": "simulate",
+        "screenEmulation": {
+          "mobile": false,
+          "width": 1350,
+          "height": 940,
+          "deviceScaleFactor": 1,
+          "disabled": false
+        },
+        "emulatedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+        "auditMode": false,
+        "gatherMode": false,
+        "clearStorageTypes": [
+          "file_systems",
+          "shader_cache",
+          "service_workers",
+          "cache_storage"
+        ],
+        "disableStorageReset": false,
+        "debugNavigation": false,
+        "channel": "cli",
+        "usePassiveGathering": false,
+        "disableFullPageScreenshot": false,
+        "skipAboutBlank": false,
+        "blankPage": "about:blank",
+        "ignoreStatusCode": false,
+        "locale": "en-US",
+        "blockedUrlPatterns": null,
+        "additionalTraceCategories": null,
+        "extraHeaders": null,
+        "precomputedLanternData": null,
+        "onlyAudits": null,
+        "onlyCategories": [
+          "performance"
+        ],
+        "skipAudits": null
+      },
+      "warnings": [],
+      "score": 94,
+      "metrics": {
+        "first-contentful-paint": 372.83230000000003,
+        "largest-contentful-paint": 1587.6646,
+        "cumulative-layout-shift": 0.0003894438669330084,
+        "total-blocking-time": 0,
+        "speed-index": 483.7820459563814
+      },
+      "diagnostics": {
+        "interactive": {
+          "title": "Time to Interactive",
+          "score": 0.99,
+          "displayValue": "1.6 s"
+        },
+        "largest-contentful-paint-element": {
+          "title": "Largest Contentful Paint element",
+          "score": 0,
+          "displayValue": "1,590 ms",
+          "metricSavings": {
+            "LCP": 400
+          }
+        },
+        "uses-long-cache-ttl": {
+          "title": "Serve static assets with an efficient cache policy",
+          "score": 0.5,
+          "displayValue": "6 resources found"
+        },
+        "render-blocking-resources": {
+          "title": "Eliminate render-blocking resources",
+          "score": 0.5,
+          "displayValue": "Est savings of 0 ms",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "unused-css-rules": {
+          "title": "Reduce unused CSS",
+          "score": 0.5,
+          "displayValue": "Est savings of 11 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "modern-image-formats": {
+          "title": "Serve images in next-gen formats",
+          "score": 0,
+          "displayValue": "Est savings of 874 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 600
+          }
+        },
+        "uses-optimized-images": {
+          "title": "Efficiently encode images",
+          "score": 0.5,
+          "displayValue": "Est savings of 16 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "uses-text-compression": {
+          "title": "Enable text compression",
+          "score": 0,
+          "displayValue": "Est savings of 30 KiB",
+          "metricSavings": {
+            "FCP": 50,
+            "LCP": 50
+          }
+        },
+        "uses-responsive-images": {
+          "title": "Properly size images",
+          "score": 0,
+          "displayValue": "Est savings of 1,469 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 1050
+          }
+        },
+        "cache-insight": {
+          "title": "Use efficient cache lifetimes",
+          "score": 0,
+          "displayValue": "Est savings of 1,613 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 1100
+          }
+        },
+        "document-latency-insight": {
+          "title": "Document request latency",
+          "score": 0.5,
+          "displayValue": "Est savings of 11 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "image-delivery-insight": {
+          "title": "Improve image delivery",
+          "score": 0,
+          "displayValue": "Est savings of 1,451 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 1050
+          }
+        },
+        "network-dependency-tree-insight": {
+          "title": "Network dependency tree",
+          "score": 0,
+          "metricSavings": {
+            "LCP": 0
+          }
+        },
+        "render-blocking-insight": {
+          "title": "Render blocking requests",
+          "score": 0.5,
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        }
+      },
+      "requests": [
+        {
+          "url": "http://127.0.0.1:4173/",
+          "resourceType": "Document",
+          "statusCode": 200,
+          "transferSize": 16655,
+          "resourceSize": 16466
+        },
+        {
+          "url": "http://127.0.0.1:4173/js/syutoi.min.js?v=0.2.5",
+          "resourceType": "Script",
+          "statusCode": 200,
+          "transferSize": 3692,
+          "resourceSize": 3498
+        },
+        {
+          "url": "http://127.0.0.1:4173/css/syutoi.min.css?v=0.2.5",
+          "resourceType": "Stylesheet",
+          "statusCode": 200,
+          "transferSize": 21500,
+          "resourceSize": 21312
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/wallpaper-878514.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 618841,
+          "resourceSize": 618650
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/wallpaper-2311325.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 742143,
+          "resourceSize": 741952
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/wallpaper-2572384.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 220039,
+          "resourceSize": 219848
+        },
+        {
+          "url": "http://127.0.0.1:4173/images/avatar.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 45031,
+          "resourceSize": 44841
+        },
+        {
+          "url": "http://127.0.0.1:4173/images/favicon.ico",
+          "resourceType": "Other",
+          "statusCode": 200,
+          "transferSize": 4489,
+          "resourceSize": 4286
+        }
+      ]
+    },
+    {
+      "name": "home",
+      "path": "/",
+      "mode": "desktop",
+      "iteration": 2,
+      "report": "home-desktop-2.json",
+      "sha256": "a47f1158ff3c3a5c510408ac811543240d08e02d75bc66079200392feb804734",
+      "fetchTime": "2026-09-19T15:23:58.574Z",
+      "lighthouseVersion": "12.8.2",
+      "environment": {
+        "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+        "hostUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+        "benchmarkIndex": 1183,
+        "credits": {}
+      },
+      "settings": {
+        "output": [
+          "json"
+        ],
+        "maxWaitForFcp": 30000,
+        "maxWaitForLoad": 45000,
+        "pauseAfterFcpMs": 1000,
+        "pauseAfterLoadMs": 1000,
+        "networkQuietThresholdMs": 1000,
+        "cpuQuietThresholdMs": 1000,
+        "formFactor": "desktop",
+        "throttling": {
+          "rttMs": 40,
+          "throughputKbps": 10240,
+          "requestLatencyMs": 0,
+          "downloadThroughputKbps": 0,
+          "uploadThroughputKbps": 0,
+          "cpuSlowdownMultiplier": 1
+        },
+        "throttlingMethod": "simulate",
+        "screenEmulation": {
+          "mobile": false,
+          "width": 1350,
+          "height": 940,
+          "deviceScaleFactor": 1,
+          "disabled": false
+        },
+        "emulatedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+        "auditMode": false,
+        "gatherMode": false,
+        "clearStorageTypes": [
+          "file_systems",
+          "shader_cache",
+          "service_workers",
+          "cache_storage"
+        ],
+        "disableStorageReset": false,
+        "debugNavigation": false,
+        "channel": "cli",
+        "usePassiveGathering": false,
+        "disableFullPageScreenshot": false,
+        "skipAboutBlank": false,
+        "blankPage": "about:blank",
+        "ignoreStatusCode": false,
+        "locale": "en-US",
+        "blockedUrlPatterns": null,
+        "additionalTraceCategories": null,
+        "extraHeaders": null,
+        "precomputedLanternData": null,
+        "onlyAudits": null,
+        "onlyCategories": [
+          "performance"
+        ],
+        "skipAudits": null
+      },
+      "warnings": [],
+      "score": 97,
+      "metrics": {
+        "first-contentful-paint": 392.1104,
+        "largest-contentful-paint": 1212.2208,
+        "cumulative-layout-shift": 0.0003894438669330084,
+        "total-blocking-time": 11.999999999999886,
+        "speed-index": 563.3176363410912
+      },
+      "diagnostics": {
+        "largest-contentful-paint-element": {
+          "title": "Largest Contentful Paint element",
+          "score": 0.5,
+          "displayValue": "1,210 ms",
+          "metricSavings": {
+            "LCP": 0
+          }
+        },
+        "uses-long-cache-ttl": {
+          "title": "Serve static assets with an efficient cache policy",
+          "score": 0.5,
+          "displayValue": "6 resources found"
+        },
+        "render-blocking-resources": {
+          "title": "Eliminate render-blocking resources",
+          "score": 0.5,
+          "displayValue": "Est savings of 10 ms",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "unused-css-rules": {
+          "title": "Reduce unused CSS",
+          "score": 0,
+          "displayValue": "Est savings of 11 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 50
+          }
+        },
+        "modern-image-formats": {
+          "title": "Serve images in next-gen formats",
+          "score": 0,
+          "displayValue": "Est savings of 874 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 300
+          }
+        },
+        "uses-optimized-images": {
+          "title": "Efficiently encode images",
+          "score": 0,
+          "displayValue": "Est savings of 16 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 50
+          }
+        },
+        "uses-text-compression": {
+          "title": "Enable text compression",
+          "score": 0,
+          "displayValue": "Est savings of 30 KiB",
+          "metricSavings": {
+            "FCP": 50,
+            "LCP": 100
+          }
+        },
+        "uses-responsive-images": {
+          "title": "Properly size images",
+          "score": 0,
+          "displayValue": "Est savings of 1,469 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 450
+          }
+        },
+        "cache-insight": {
+          "title": "Use efficient cache lifetimes",
+          "score": 0,
+          "displayValue": "Est savings of 1,613 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 450
+          }
+        },
+        "document-latency-insight": {
+          "title": "Document request latency",
+          "score": 0.5,
+          "displayValue": "Est savings of 11 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "image-delivery-insight": {
+          "title": "Improve image delivery",
+          "score": 0,
+          "displayValue": "Est savings of 1,451 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 400
+          }
+        },
+        "network-dependency-tree-insight": {
+          "title": "Network dependency tree",
+          "score": 0,
+          "metricSavings": {
+            "LCP": 0
+          }
+        },
+        "render-blocking-insight": {
+          "title": "Render blocking requests",
+          "score": 0.5,
+          "displayValue": "Est savings of 10 ms",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        }
+      },
+      "requests": [
+        {
+          "url": "http://127.0.0.1:4173/",
+          "resourceType": "Document",
+          "statusCode": 200,
+          "transferSize": 16655,
+          "resourceSize": 16466
+        },
+        {
+          "url": "http://127.0.0.1:4173/js/syutoi.min.js?v=0.2.5",
+          "resourceType": "Script",
+          "statusCode": 200,
+          "transferSize": 3692,
+          "resourceSize": 3498
+        },
+        {
+          "url": "http://127.0.0.1:4173/css/syutoi.min.css?v=0.2.5",
+          "resourceType": "Stylesheet",
+          "statusCode": 200,
+          "transferSize": 21500,
+          "resourceSize": 21312
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/wallpaper-878514.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 618841,
+          "resourceSize": 618650
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/wallpaper-2311325.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 742143,
+          "resourceSize": 741952
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/wallpaper-2572384.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 220039,
+          "resourceSize": 219848
+        },
+        {
+          "url": "http://127.0.0.1:4173/images/avatar.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 45031,
+          "resourceSize": 44841
+        },
+        {
+          "url": "http://127.0.0.1:4173/images/favicon.ico",
+          "resourceType": "Other",
+          "statusCode": 200,
+          "transferSize": 4489,
+          "resourceSize": 4286
+        }
+      ]
+    },
+    {
+      "name": "home",
+      "path": "/",
+      "mode": "desktop",
+      "iteration": 3,
+      "report": "home-desktop-3.json",
+      "sha256": "0c7552aeb11922406c6ede81d243524c4aa582e1f82b9a9104337e1abf13a41d",
+      "fetchTime": "2026-09-19T15:24:14.245Z",
+      "lighthouseVersion": "12.8.2",
+      "environment": {
+        "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+        "hostUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+        "benchmarkIndex": 1173,
+        "credits": {}
+      },
+      "settings": {
+        "output": [
+          "json"
+        ],
+        "maxWaitForFcp": 30000,
+        "maxWaitForLoad": 45000,
+        "pauseAfterFcpMs": 1000,
+        "pauseAfterLoadMs": 1000,
+        "networkQuietThresholdMs": 1000,
+        "cpuQuietThresholdMs": 1000,
+        "formFactor": "desktop",
+        "throttling": {
+          "rttMs": 40,
+          "throughputKbps": 10240,
+          "requestLatencyMs": 0,
+          "downloadThroughputKbps": 0,
+          "uploadThroughputKbps": 0,
+          "cpuSlowdownMultiplier": 1
+        },
+        "throttlingMethod": "simulate",
+        "screenEmulation": {
+          "mobile": false,
+          "width": 1350,
+          "height": 940,
+          "deviceScaleFactor": 1,
+          "disabled": false
+        },
+        "emulatedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+        "auditMode": false,
+        "gatherMode": false,
+        "clearStorageTypes": [
+          "file_systems",
+          "shader_cache",
+          "service_workers",
+          "cache_storage"
+        ],
+        "disableStorageReset": false,
+        "debugNavigation": false,
+        "channel": "cli",
+        "usePassiveGathering": false,
+        "disableFullPageScreenshot": false,
+        "skipAboutBlank": false,
+        "blankPage": "about:blank",
+        "ignoreStatusCode": false,
+        "locale": "en-US",
+        "blockedUrlPatterns": null,
+        "additionalTraceCategories": null,
+        "extraHeaders": null,
+        "precomputedLanternData": null,
+        "onlyAudits": null,
+        "onlyCategories": [
+          "performance"
+        ],
+        "skipAudits": null
+      },
+      "warnings": [],
+      "score": 94,
+      "metrics": {
+        "first-contentful-paint": 364.52180000000004,
+        "largest-contentful-paint": 1593.0436,
+        "cumulative-layout-shift": 0.0003894438669330084,
+        "total-blocking-time": 0,
+        "speed-index": 523.5697063791192
+      },
+      "diagnostics": {
+        "interactive": {
+          "title": "Time to Interactive",
+          "score": 0.99,
+          "displayValue": "1.6 s"
+        },
+        "largest-contentful-paint-element": {
+          "title": "Largest Contentful Paint element",
+          "score": 0,
+          "displayValue": "1,590 ms",
+          "metricSavings": {
+            "LCP": 400
+          }
+        },
+        "uses-long-cache-ttl": {
+          "title": "Serve static assets with an efficient cache policy",
+          "score": 0.5,
+          "displayValue": "6 resources found"
+        },
+        "render-blocking-resources": {
+          "title": "Eliminate render-blocking resources",
+          "score": 0.5,
+          "displayValue": "Est savings of 0 ms",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "unused-css-rules": {
+          "title": "Reduce unused CSS",
+          "score": 0.5,
+          "displayValue": "Est savings of 11 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "modern-image-formats": {
+          "title": "Serve images in next-gen formats",
+          "score": 0,
+          "displayValue": "Est savings of 874 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 600
+          }
+        },
+        "uses-optimized-images": {
+          "title": "Efficiently encode images",
+          "score": 0.5,
+          "displayValue": "Est savings of 16 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "uses-text-compression": {
+          "title": "Enable text compression",
+          "score": 0,
+          "displayValue": "Est savings of 30 KiB",
+          "metricSavings": {
+            "FCP": 50,
+            "LCP": 50
+          }
+        },
+        "uses-responsive-images": {
+          "title": "Properly size images",
+          "score": 0,
+          "displayValue": "Est savings of 1,469 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 1050
+          }
+        },
+        "cache-insight": {
+          "title": "Use efficient cache lifetimes",
+          "score": 0,
+          "displayValue": "Est savings of 1,613 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 1150
+          }
+        },
+        "document-latency-insight": {
+          "title": "Document request latency",
+          "score": 0.5,
+          "displayValue": "Est savings of 11 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "image-delivery-insight": {
+          "title": "Improve image delivery",
+          "score": 0,
+          "displayValue": "Est savings of 1,451 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 1050
+          }
+        },
+        "network-dependency-tree-insight": {
+          "title": "Network dependency tree",
+          "score": 0,
+          "metricSavings": {
+            "LCP": 0
+          }
+        },
+        "render-blocking-insight": {
+          "title": "Render blocking requests",
+          "score": 0.5,
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        }
+      },
+      "requests": [
+        {
+          "url": "http://127.0.0.1:4173/",
+          "resourceType": "Document",
+          "statusCode": 200,
+          "transferSize": 16655,
+          "resourceSize": 16466
+        },
+        {
+          "url": "http://127.0.0.1:4173/js/syutoi.min.js?v=0.2.5",
+          "resourceType": "Script",
+          "statusCode": 200,
+          "transferSize": 3692,
+          "resourceSize": 3498
+        },
+        {
+          "url": "http://127.0.0.1:4173/css/syutoi.min.css?v=0.2.5",
+          "resourceType": "Stylesheet",
+          "statusCode": 200,
+          "transferSize": 21500,
+          "resourceSize": 21312
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/wallpaper-878514.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 618841,
+          "resourceSize": 618650
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/wallpaper-2311325.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 742143,
+          "resourceSize": 741952
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/wallpaper-2572384.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 220039,
+          "resourceSize": 219848
+        },
+        {
+          "url": "http://127.0.0.1:4173/images/avatar.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 45031,
+          "resourceSize": 44841
+        },
+        {
+          "url": "http://127.0.0.1:4173/images/favicon.ico",
+          "resourceType": "Other",
+          "statusCode": 200,
+          "transferSize": 4489,
+          "resourceSize": 4286
+        }
+      ]
+    },
+    {
+      "name": "article",
+      "path": "/syutoi-long-read/",
+      "mode": "mobile",
+      "iteration": 1,
+      "report": "article-mobile-1.json",
+      "sha256": "88a49a3eecc565257dcd92597007b1d33c561f29ff9ded130c8ee07f420a5aef",
+      "fetchTime": "2026-09-19T15:24:30.339Z",
+      "lighthouseVersion": "12.8.2",
+      "environment": {
+        "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+        "hostUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+        "benchmarkIndex": 1212.5,
+        "credits": {}
+      },
+      "settings": {
+        "output": [
+          "json"
+        ],
+        "maxWaitForFcp": 30000,
+        "maxWaitForLoad": 45000,
+        "pauseAfterFcpMs": 1000,
+        "pauseAfterLoadMs": 1000,
+        "networkQuietThresholdMs": 1000,
+        "cpuQuietThresholdMs": 1000,
+        "formFactor": "mobile",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "throttlingMethod": "simulate",
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        },
+        "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+        "auditMode": false,
+        "gatherMode": false,
+        "clearStorageTypes": [
+          "file_systems",
+          "shader_cache",
+          "service_workers",
+          "cache_storage"
+        ],
+        "disableStorageReset": false,
+        "debugNavigation": false,
+        "channel": "cli",
+        "usePassiveGathering": false,
+        "disableFullPageScreenshot": false,
+        "skipAboutBlank": false,
+        "blankPage": "about:blank",
+        "ignoreStatusCode": false,
+        "locale": "en-US",
+        "blockedUrlPatterns": null,
+        "additionalTraceCategories": null,
+        "extraHeaders": null,
+        "precomputedLanternData": null,
+        "onlyAudits": null,
+        "onlyCategories": [
+          "performance"
+        ],
+        "skipAudits": null
+      },
+      "warnings": [],
+      "score": 84,
+      "metrics": {
+        "first-contentful-paint": 1563.1255999999998,
+        "largest-contentful-paint": 4354.2512,
+        "cumulative-layout-shift": 0.04850174553962941,
+        "total-blocking-time": 0,
+        "speed-index": 2419.507306893588
+      },
+      "diagnostics": {
+        "interactive": {
+          "title": "Time to Interactive",
+          "score": 0.84,
+          "displayValue": "4.4 s"
+        },
+        "largest-contentful-paint-element": {
+          "title": "Largest Contentful Paint element",
+          "score": 0,
+          "displayValue": "4,350 ms",
+          "metricSavings": {
+            "LCP": 1850
+          }
+        },
+        "unsized-images": {
+          "title": "Image elements do not have explicit `width` and `height`",
+          "score": 0.5,
+          "metricSavings": {
+            "CLS": 0
+          }
+        },
+        "uses-long-cache-ttl": {
+          "title": "Serve static assets with an efficient cache policy",
+          "score": 0.5,
+          "displayValue": "3 resources found"
+        },
+        "render-blocking-resources": {
+          "title": "Eliminate render-blocking resources",
+          "score": 0.5,
+          "displayValue": "Est savings of 0 ms",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "modern-image-formats": {
+          "title": "Serve images in next-gen formats",
+          "score": 0,
+          "displayValue": "Est savings of 342 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 1800
+          }
+        },
+        "uses-optimized-images": {
+          "title": "Efficiently encode images",
+          "score": 0,
+          "displayValue": "Est savings of 16 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 150
+          }
+        },
+        "uses-text-compression": {
+          "title": "Enable text compression",
+          "score": 0,
+          "displayValue": "Est savings of 30 KiB",
+          "metricSavings": {
+            "FCP": 150,
+            "LCP": 300
+          }
+        },
+        "uses-responsive-images": {
+          "title": "Properly size images",
+          "score": 0,
+          "displayValue": "Est savings of 563 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 2800
+          }
+        },
+        "cache-insight": {
+          "title": "Use efficient cache lifetimes",
+          "score": 0,
+          "displayValue": "Est savings of 629 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 2800
+          }
+        },
+        "document-latency-insight": {
+          "title": "Document request latency",
+          "score": 0.5,
+          "displayValue": "Est savings of 13 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "image-delivery-insight": {
+          "title": "Improve image delivery",
+          "score": 0,
+          "displayValue": "Est savings of 571 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 2800
+          }
+        },
+        "network-dependency-tree-insight": {
+          "title": "Network dependency tree",
+          "score": 0,
+          "metricSavings": {
+            "LCP": 0
+          }
+        },
+        "render-blocking-insight": {
+          "title": "Render blocking requests",
+          "score": 0.5,
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        }
+      },
+      "requests": [
+        {
+          "url": "http://127.0.0.1:4173/syutoi-long-read/",
+          "resourceType": "Document",
+          "statusCode": 200,
+          "transferSize": 20695,
+          "resourceSize": 20506
+        },
+        {
+          "url": "http://127.0.0.1:4173/js/syutoi.min.js?v=0.2.5",
+          "resourceType": "Script",
+          "statusCode": 200,
+          "transferSize": 3692,
+          "resourceSize": 3498
+        },
+        {
+          "url": "http://127.0.0.1:4173/css/syutoi.min.css?v=0.2.5",
+          "resourceType": "Stylesheet",
+          "statusCode": 200,
+          "transferSize": 21500,
+          "resourceSize": 21312
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/wallpaper-878514.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 618841,
+          "resourceSize": 618650
+        },
+        {
+          "url": "http://127.0.0.1:4173/images/favicon.ico",
+          "resourceType": "Other",
+          "statusCode": 200,
+          "transferSize": 4489,
+          "resourceSize": 4286
+        }
+      ]
+    },
+    {
+      "name": "article",
+      "path": "/syutoi-long-read/",
+      "mode": "mobile",
+      "iteration": 2,
+      "report": "article-mobile-2.json",
+      "sha256": "461bdfb76a45dfaa3da39e2f1eef13bc8276fbe7767d5f5146407cc50dfe839a",
+      "fetchTime": "2026-09-19T15:24:45.610Z",
+      "lighthouseVersion": "12.8.2",
+      "environment": {
+        "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+        "hostUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+        "benchmarkIndex": 1188,
+        "credits": {}
+      },
+      "settings": {
+        "output": [
+          "json"
+        ],
+        "maxWaitForFcp": 30000,
+        "maxWaitForLoad": 45000,
+        "pauseAfterFcpMs": 1000,
+        "pauseAfterLoadMs": 1000,
+        "networkQuietThresholdMs": 1000,
+        "cpuQuietThresholdMs": 1000,
+        "formFactor": "mobile",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "throttlingMethod": "simulate",
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        },
+        "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+        "auditMode": false,
+        "gatherMode": false,
+        "clearStorageTypes": [
+          "file_systems",
+          "shader_cache",
+          "service_workers",
+          "cache_storage"
+        ],
+        "disableStorageReset": false,
+        "debugNavigation": false,
+        "channel": "cli",
+        "usePassiveGathering": false,
+        "disableFullPageScreenshot": false,
+        "skipAboutBlank": false,
+        "blankPage": "about:blank",
+        "ignoreStatusCode": false,
+        "locale": "en-US",
+        "blockedUrlPatterns": null,
+        "additionalTraceCategories": null,
+        "extraHeaders": null,
+        "precomputedLanternData": null,
+        "onlyAudits": null,
+        "onlyCategories": [
+          "performance"
+        ],
+        "skipAudits": null
+      },
+      "warnings": [],
+      "score": 84,
+      "metrics": {
+        "first-contentful-paint": 1580.77725,
+        "largest-contentful-paint": 4353.5545,
+        "cumulative-layout-shift": 0.04850174553962941,
+        "total-blocking-time": 0,
+        "speed-index": 2436.497352766576
+      },
+      "diagnostics": {
+        "interactive": {
+          "title": "Time to Interactive",
+          "score": 0.84,
+          "displayValue": "4.4 s"
+        },
+        "largest-contentful-paint-element": {
+          "title": "Largest Contentful Paint element",
+          "score": 0,
+          "displayValue": "4,350 ms",
+          "metricSavings": {
+            "LCP": 1850
+          }
+        },
+        "unsized-images": {
+          "title": "Image elements do not have explicit `width` and `height`",
+          "score": 0.5,
+          "metricSavings": {
+            "CLS": 0
+          }
+        },
+        "uses-long-cache-ttl": {
+          "title": "Serve static assets with an efficient cache policy",
+          "score": 0.5,
+          "displayValue": "3 resources found"
+        },
+        "render-blocking-resources": {
+          "title": "Eliminate render-blocking resources",
+          "score": 0.5,
+          "displayValue": "Est savings of 0 ms",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "modern-image-formats": {
+          "title": "Serve images in next-gen formats",
+          "score": 0,
+          "displayValue": "Est savings of 342 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 1800
+          }
+        },
+        "uses-optimized-images": {
+          "title": "Efficiently encode images",
+          "score": 0,
+          "displayValue": "Est savings of 16 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 150
+          }
+        },
+        "uses-text-compression": {
+          "title": "Enable text compression",
+          "score": 0,
+          "displayValue": "Est savings of 30 KiB",
+          "metricSavings": {
+            "FCP": 150,
+            "LCP": 300
+          }
+        },
+        "uses-responsive-images": {
+          "title": "Properly size images",
+          "score": 0,
+          "displayValue": "Est savings of 563 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 2750
+          }
+        },
+        "cache-insight": {
+          "title": "Use efficient cache lifetimes",
+          "score": 0,
+          "displayValue": "Est savings of 629 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 2750
+          }
+        },
+        "document-latency-insight": {
+          "title": "Document request latency",
+          "score": 0.5,
+          "displayValue": "Est savings of 13 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "image-delivery-insight": {
+          "title": "Improve image delivery",
+          "score": 0,
+          "displayValue": "Est savings of 571 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 2750
+          }
+        },
+        "network-dependency-tree-insight": {
+          "title": "Network dependency tree",
+          "score": 0,
+          "metricSavings": {
+            "LCP": 0
+          }
+        },
+        "render-blocking-insight": {
+          "title": "Render blocking requests",
+          "score": 0.5,
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        }
+      },
+      "requests": [
+        {
+          "url": "http://127.0.0.1:4173/syutoi-long-read/",
+          "resourceType": "Document",
+          "statusCode": 200,
+          "transferSize": 20695,
+          "resourceSize": 20506
+        },
+        {
+          "url": "http://127.0.0.1:4173/js/syutoi.min.js?v=0.2.5",
+          "resourceType": "Script",
+          "statusCode": 200,
+          "transferSize": 3692,
+          "resourceSize": 3498
+        },
+        {
+          "url": "http://127.0.0.1:4173/css/syutoi.min.css?v=0.2.5",
+          "resourceType": "Stylesheet",
+          "statusCode": 200,
+          "transferSize": 21500,
+          "resourceSize": 21312
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/wallpaper-878514.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 618841,
+          "resourceSize": 618650
+        },
+        {
+          "url": "http://127.0.0.1:4173/images/favicon.ico",
+          "resourceType": "Other",
+          "statusCode": 200,
+          "transferSize": 4489,
+          "resourceSize": 4286
+        }
+      ]
+    },
+    {
+      "name": "article",
+      "path": "/syutoi-long-read/",
+      "mode": "mobile",
+      "iteration": 3,
+      "report": "article-mobile-3.json",
+      "sha256": "cdfb663d5afc47567e8f6f9deb2f176de00aaf8c6669bf61cc0285498f69f350",
+      "fetchTime": "2026-09-19T15:25:00.975Z",
+      "lighthouseVersion": "12.8.2",
+      "environment": {
+        "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+        "hostUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+        "benchmarkIndex": 1174,
+        "credits": {}
+      },
+      "settings": {
+        "output": [
+          "json"
+        ],
+        "maxWaitForFcp": 30000,
+        "maxWaitForLoad": 45000,
+        "pauseAfterFcpMs": 1000,
+        "pauseAfterLoadMs": 1000,
+        "networkQuietThresholdMs": 1000,
+        "cpuQuietThresholdMs": 1000,
+        "formFactor": "mobile",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "throttlingMethod": "simulate",
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        },
+        "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+        "auditMode": false,
+        "gatherMode": false,
+        "clearStorageTypes": [
+          "file_systems",
+          "shader_cache",
+          "service_workers",
+          "cache_storage"
+        ],
+        "disableStorageReset": false,
+        "debugNavigation": false,
+        "channel": "cli",
+        "usePassiveGathering": false,
+        "disableFullPageScreenshot": false,
+        "skipAboutBlank": false,
+        "blankPage": "about:blank",
+        "ignoreStatusCode": false,
+        "locale": "en-US",
+        "blockedUrlPatterns": null,
+        "additionalTraceCategories": null,
+        "extraHeaders": null,
+        "precomputedLanternData": null,
+        "onlyAudits": null,
+        "onlyCategories": [
+          "performance"
+        ],
+        "skipAudits": null
+      },
+      "warnings": [],
+      "score": 84,
+      "metrics": {
+        "first-contentful-paint": 1657.66985,
+        "largest-contentful-paint": 4357.3397,
+        "cumulative-layout-shift": 0.04850174553962941,
+        "total-blocking-time": 0,
+        "speed-index": 2438.863655820335
+      },
+      "diagnostics": {
+        "interactive": {
+          "title": "Time to Interactive",
+          "score": 0.84,
+          "displayValue": "4.4 s"
+        },
+        "mainthread-work-breakdown": {
+          "title": "Minimize main-thread work",
+          "score": 0.5,
+          "displayValue": "2.0 s",
+          "metricSavings": {
+            "TBT": 0
+          }
+        },
+        "largest-contentful-paint-element": {
+          "title": "Largest Contentful Paint element",
+          "score": 0,
+          "displayValue": "4,360 ms",
+          "metricSavings": {
+            "LCP": 1850
+          }
+        },
+        "unsized-images": {
+          "title": "Image elements do not have explicit `width` and `height`",
+          "score": 0.5,
+          "metricSavings": {
+            "CLS": 0
+          }
+        },
+        "uses-long-cache-ttl": {
+          "title": "Serve static assets with an efficient cache policy",
+          "score": 0.5,
+          "displayValue": "3 resources found"
+        },
+        "render-blocking-resources": {
+          "title": "Eliminate render-blocking resources",
+          "score": 0.5,
+          "displayValue": "Est savings of 0 ms",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "modern-image-formats": {
+          "title": "Serve images in next-gen formats",
+          "score": 0,
+          "displayValue": "Est savings of 342 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 1800
+          }
+        },
+        "uses-optimized-images": {
+          "title": "Efficiently encode images",
+          "score": 0,
+          "displayValue": "Est savings of 16 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 150
+          }
+        },
+        "uses-text-compression": {
+          "title": "Enable text compression",
+          "score": 0,
+          "displayValue": "Est savings of 30 KiB",
+          "metricSavings": {
+            "FCP": 150,
+            "LCP": 300
+          }
+        },
+        "uses-responsive-images": {
+          "title": "Properly size images",
+          "score": 0,
+          "displayValue": "Est savings of 563 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 2750
+          }
+        },
+        "cache-insight": {
+          "title": "Use efficient cache lifetimes",
+          "score": 0,
+          "displayValue": "Est savings of 629 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 2700
+          }
+        },
+        "document-latency-insight": {
+          "title": "Document request latency",
+          "score": 0.5,
+          "displayValue": "Est savings of 13 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "image-delivery-insight": {
+          "title": "Improve image delivery",
+          "score": 0,
+          "displayValue": "Est savings of 571 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 2700
+          }
+        },
+        "network-dependency-tree-insight": {
+          "title": "Network dependency tree",
+          "score": 0,
+          "metricSavings": {
+            "LCP": 0
+          }
+        },
+        "render-blocking-insight": {
+          "title": "Render blocking requests",
+          "score": 0.5,
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        }
+      },
+      "requests": [
+        {
+          "url": "http://127.0.0.1:4173/syutoi-long-read/",
+          "resourceType": "Document",
+          "statusCode": 200,
+          "transferSize": 20695,
+          "resourceSize": 20506
+        },
+        {
+          "url": "http://127.0.0.1:4173/js/syutoi.min.js?v=0.2.5",
+          "resourceType": "Script",
+          "statusCode": 200,
+          "transferSize": 3692,
+          "resourceSize": 3498
+        },
+        {
+          "url": "http://127.0.0.1:4173/css/syutoi.min.css?v=0.2.5",
+          "resourceType": "Stylesheet",
+          "statusCode": 200,
+          "transferSize": 21500,
+          "resourceSize": 21312
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/wallpaper-878514.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 618841,
+          "resourceSize": 618650
+        },
+        {
+          "url": "http://127.0.0.1:4173/images/favicon.ico",
+          "resourceType": "Other",
+          "statusCode": 200,
+          "transferSize": 4489,
+          "resourceSize": 4286
+        }
+      ]
+    },
+    {
+      "name": "article",
+      "path": "/syutoi-long-read/",
+      "mode": "desktop",
+      "iteration": 1,
+      "report": "article-desktop-1.json",
+      "sha256": "5846a8502b9f8847ff3898f43696135b5d39bd6e53235ec482ad133944d0d4b5",
+      "fetchTime": "2026-09-19T15:25:16.154Z",
+      "lighthouseVersion": "12.8.2",
+      "environment": {
+        "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+        "hostUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+        "benchmarkIndex": 1189.5,
+        "credits": {}
+      },
+      "settings": {
+        "output": [
+          "json"
+        ],
+        "maxWaitForFcp": 30000,
+        "maxWaitForLoad": 45000,
+        "pauseAfterFcpMs": 1000,
+        "pauseAfterLoadMs": 1000,
+        "networkQuietThresholdMs": 1000,
+        "cpuQuietThresholdMs": 1000,
+        "formFactor": "desktop",
+        "throttling": {
+          "rttMs": 40,
+          "throughputKbps": 10240,
+          "requestLatencyMs": 0,
+          "downloadThroughputKbps": 0,
+          "uploadThroughputKbps": 0,
+          "cpuSlowdownMultiplier": 1
+        },
+        "throttlingMethod": "simulate",
+        "screenEmulation": {
+          "mobile": false,
+          "width": 1350,
+          "height": 940,
+          "deviceScaleFactor": 1,
+          "disabled": false
+        },
+        "emulatedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+        "auditMode": false,
+        "gatherMode": false,
+        "clearStorageTypes": [
+          "file_systems",
+          "shader_cache",
+          "service_workers",
+          "cache_storage"
+        ],
+        "disableStorageReset": false,
+        "debugNavigation": false,
+        "channel": "cli",
+        "usePassiveGathering": false,
+        "disableFullPageScreenshot": false,
+        "skipAboutBlank": false,
+        "blankPage": "about:blank",
+        "ignoreStatusCode": false,
+        "locale": "en-US",
+        "blockedUrlPatterns": null,
+        "additionalTraceCategories": null,
+        "extraHeaders": null,
+        "precomputedLanternData": null,
+        "onlyAudits": null,
+        "onlyCategories": [
+          "performance"
+        ],
+        "skipAudits": null
+      },
+      "warnings": [],
+      "score": 99,
+      "metrics": {
+        "first-contentful-paint": 420.8159,
+        "largest-contentful-paint": 889.6318,
+        "cumulative-layout-shift": 0.0003894438669330084,
+        "total-blocking-time": 0,
+        "speed-index": 554.1969938833769
+      },
+      "diagnostics": {
+        "unsized-images": {
+          "title": "Image elements do not have explicit `width` and `height`",
+          "score": 0.5,
+          "metricSavings": {
+            "CLS": 0
+          }
+        },
+        "uses-long-cache-ttl": {
+          "title": "Serve static assets with an efficient cache policy",
+          "score": 0.5,
+          "displayValue": "5 resources found"
+        },
+        "render-blocking-resources": {
+          "title": "Eliminate render-blocking resources",
+          "score": 0.5,
+          "displayValue": "Est savings of 0 ms",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "modern-image-formats": {
+          "title": "Serve images in next-gen formats",
+          "score": 0,
+          "displayValue": "Est savings of 361 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 300
+          }
+        },
+        "uses-optimized-images": {
+          "title": "Efficiently encode images",
+          "score": 0.5,
+          "displayValue": "Est savings of 16 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "uses-text-compression": {
+          "title": "Enable text compression",
+          "score": 0,
+          "displayValue": "Est savings of 30 KiB",
+          "metricSavings": {
+            "FCP": 50,
+            "LCP": 100
+          }
+        },
+        "uses-responsive-images": {
+          "title": "Properly size images",
+          "score": 0,
+          "displayValue": "Est savings of 588 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 450
+          }
+        },
+        "cache-insight": {
+          "title": "Use efficient cache lifetimes",
+          "score": 0,
+          "displayValue": "Est savings of 673 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 450
+          }
+        },
+        "document-latency-insight": {
+          "title": "Document request latency",
+          "score": 0.5,
+          "displayValue": "Est savings of 13 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "image-delivery-insight": {
+          "title": "Improve image delivery",
+          "score": 0,
+          "displayValue": "Est savings of 556 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 450
+          }
+        },
+        "network-dependency-tree-insight": {
+          "title": "Network dependency tree",
+          "score": 0,
+          "metricSavings": {
+            "LCP": 0
+          }
+        },
+        "render-blocking-insight": {
+          "title": "Render blocking requests",
+          "score": 0.5,
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        }
+      },
+      "requests": [
+        {
+          "url": "http://127.0.0.1:4173/syutoi-long-read/",
+          "resourceType": "Document",
+          "statusCode": 200,
+          "transferSize": 20695,
+          "resourceSize": 20506
+        },
+        {
+          "url": "http://127.0.0.1:4173/js/syutoi.min.js?v=0.2.5",
+          "resourceType": "Script",
+          "statusCode": 200,
+          "transferSize": 3692,
+          "resourceSize": 3498
+        },
+        {
+          "url": "http://127.0.0.1:4173/css/syutoi.min.css?v=0.2.5",
+          "resourceType": "Stylesheet",
+          "statusCode": 200,
+          "transferSize": 21500,
+          "resourceSize": 21312
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/wallpaper-878514.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 618841,
+          "resourceSize": 618650
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/image-wide.svg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 593,
+          "resourceSize": 402
+        },
+        {
+          "url": "http://127.0.0.1:4173/images/avatar.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 45031,
+          "resourceSize": 44841
+        },
+        {
+          "url": "http://127.0.0.1:4173/images/favicon.ico",
+          "resourceType": "Other",
+          "statusCode": 200,
+          "transferSize": 4489,
+          "resourceSize": 4286
+        }
+      ]
+    },
+    {
+      "name": "article",
+      "path": "/syutoi-long-read/",
+      "mode": "desktop",
+      "iteration": 2,
+      "report": "article-desktop-2.json",
+      "sha256": "6c835e739e27551bce6faff2506385f637a652326f2015389767d1b747d15ca8",
+      "fetchTime": "2026-09-19T15:25:30.684Z",
+      "lighthouseVersion": "12.8.2",
+      "environment": {
+        "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+        "hostUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+        "benchmarkIndex": 1101.5,
+        "credits": {}
+      },
+      "settings": {
+        "output": [
+          "json"
+        ],
+        "maxWaitForFcp": 30000,
+        "maxWaitForLoad": 45000,
+        "pauseAfterFcpMs": 1000,
+        "pauseAfterLoadMs": 1000,
+        "networkQuietThresholdMs": 1000,
+        "cpuQuietThresholdMs": 1000,
+        "formFactor": "desktop",
+        "throttling": {
+          "rttMs": 40,
+          "throughputKbps": 10240,
+          "requestLatencyMs": 0,
+          "downloadThroughputKbps": 0,
+          "uploadThroughputKbps": 0,
+          "cpuSlowdownMultiplier": 1
+        },
+        "throttlingMethod": "simulate",
+        "screenEmulation": {
+          "mobile": false,
+          "width": 1350,
+          "height": 940,
+          "deviceScaleFactor": 1,
+          "disabled": false
+        },
+        "emulatedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+        "auditMode": false,
+        "gatherMode": false,
+        "clearStorageTypes": [
+          "file_systems",
+          "shader_cache",
+          "service_workers",
+          "cache_storage"
+        ],
+        "disableStorageReset": false,
+        "debugNavigation": false,
+        "channel": "cli",
+        "usePassiveGathering": false,
+        "disableFullPageScreenshot": false,
+        "skipAboutBlank": false,
+        "blankPage": "about:blank",
+        "ignoreStatusCode": false,
+        "locale": "en-US",
+        "blockedUrlPatterns": null,
+        "additionalTraceCategories": null,
+        "extraHeaders": null,
+        "precomputedLanternData": null,
+        "onlyAudits": null,
+        "onlyCategories": [
+          "performance"
+        ],
+        "skipAudits": null
+      },
+      "warnings": [],
+      "score": 99,
+      "metrics": {
+        "first-contentful-paint": 428.481,
+        "largest-contentful-paint": 864.962,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "speed-index": 582.9597429662964
+      },
+      "diagnostics": {
+        "unsized-images": {
+          "title": "Image elements do not have explicit `width` and `height`",
+          "score": 0.5,
+          "metricSavings": {
+            "CLS": 0
+          }
+        },
+        "uses-long-cache-ttl": {
+          "title": "Serve static assets with an efficient cache policy",
+          "score": 0.5,
+          "displayValue": "5 resources found"
+        },
+        "render-blocking-resources": {
+          "title": "Eliminate render-blocking resources",
+          "score": 0.5,
+          "displayValue": "Est savings of 0 ms",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "modern-image-formats": {
+          "title": "Serve images in next-gen formats",
+          "score": 0,
+          "displayValue": "Est savings of 361 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 300
+          }
+        },
+        "uses-optimized-images": {
+          "title": "Efficiently encode images",
+          "score": 0,
+          "displayValue": "Est savings of 16 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 50
+          }
+        },
+        "uses-text-compression": {
+          "title": "Enable text compression",
+          "score": 0,
+          "displayValue": "Est savings of 30 KiB",
+          "metricSavings": {
+            "FCP": 50,
+            "LCP": 100
+          }
+        },
+        "uses-responsive-images": {
+          "title": "Properly size images",
+          "score": 0,
+          "displayValue": "Est savings of 588 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 450
+          }
+        },
+        "cache-insight": {
+          "title": "Use efficient cache lifetimes",
+          "score": 0,
+          "displayValue": "Est savings of 673 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 400
+          }
+        },
+        "document-latency-insight": {
+          "title": "Document request latency",
+          "score": 0.5,
+          "displayValue": "Est savings of 13 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "image-delivery-insight": {
+          "title": "Improve image delivery",
+          "score": 0,
+          "displayValue": "Est savings of 556 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 400
+          }
+        },
+        "network-dependency-tree-insight": {
+          "title": "Network dependency tree",
+          "score": 0,
+          "metricSavings": {
+            "LCP": 0
+          }
+        },
+        "render-blocking-insight": {
+          "title": "Render blocking requests",
+          "score": 0.5,
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        }
+      },
+      "requests": [
+        {
+          "url": "http://127.0.0.1:4173/syutoi-long-read/",
+          "resourceType": "Document",
+          "statusCode": 200,
+          "transferSize": 20695,
+          "resourceSize": 20506
+        },
+        {
+          "url": "http://127.0.0.1:4173/js/syutoi.min.js?v=0.2.5",
+          "resourceType": "Script",
+          "statusCode": 200,
+          "transferSize": 3692,
+          "resourceSize": 3498
+        },
+        {
+          "url": "http://127.0.0.1:4173/css/syutoi.min.css?v=0.2.5",
+          "resourceType": "Stylesheet",
+          "statusCode": 200,
+          "transferSize": 21500,
+          "resourceSize": 21312
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/wallpaper-878514.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 618841,
+          "resourceSize": 618650
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/image-wide.svg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 593,
+          "resourceSize": 402
+        },
+        {
+          "url": "http://127.0.0.1:4173/images/avatar.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 45031,
+          "resourceSize": 44841
+        },
+        {
+          "url": "http://127.0.0.1:4173/images/favicon.ico",
+          "resourceType": "Other",
+          "statusCode": 200,
+          "transferSize": 4489,
+          "resourceSize": 4286
+        }
+      ]
+    },
+    {
+      "name": "article",
+      "path": "/syutoi-long-read/",
+      "mode": "desktop",
+      "iteration": 3,
+      "report": "article-desktop-3.json",
+      "sha256": "0987c9a0779f016fcee1e14829b2c3d17e5b9cfd8f222812c77bfef11aed235d",
+      "fetchTime": "2026-09-19T15:25:45.084Z",
+      "lighthouseVersion": "12.8.2",
+      "environment": {
+        "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+        "hostUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+        "benchmarkIndex": 1200,
+        "credits": {}
+      },
+      "settings": {
+        "output": [
+          "json"
+        ],
+        "maxWaitForFcp": 30000,
+        "maxWaitForLoad": 45000,
+        "pauseAfterFcpMs": 1000,
+        "pauseAfterLoadMs": 1000,
+        "networkQuietThresholdMs": 1000,
+        "cpuQuietThresholdMs": 1000,
+        "formFactor": "desktop",
+        "throttling": {
+          "rttMs": 40,
+          "throughputKbps": 10240,
+          "requestLatencyMs": 0,
+          "downloadThroughputKbps": 0,
+          "uploadThroughputKbps": 0,
+          "cpuSlowdownMultiplier": 1
+        },
+        "throttlingMethod": "simulate",
+        "screenEmulation": {
+          "mobile": false,
+          "width": 1350,
+          "height": 940,
+          "deviceScaleFactor": 1,
+          "disabled": false
+        },
+        "emulatedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+        "auditMode": false,
+        "gatherMode": false,
+        "clearStorageTypes": [
+          "file_systems",
+          "shader_cache",
+          "service_workers",
+          "cache_storage"
+        ],
+        "disableStorageReset": false,
+        "debugNavigation": false,
+        "channel": "cli",
+        "usePassiveGathering": false,
+        "disableFullPageScreenshot": false,
+        "skipAboutBlank": false,
+        "blankPage": "about:blank",
+        "ignoreStatusCode": false,
+        "locale": "en-US",
+        "blockedUrlPatterns": null,
+        "additionalTraceCategories": null,
+        "extraHeaders": null,
+        "precomputedLanternData": null,
+        "onlyAudits": null,
+        "onlyCategories": [
+          "performance"
+        ],
+        "skipAudits": null
+      },
+      "warnings": [],
+      "score": 99,
+      "metrics": {
+        "first-contentful-paint": 414.96135000000004,
+        "largest-contentful-paint": 869.9227000000001,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "speed-index": 563.826672633667
+      },
+      "diagnostics": {
+        "unsized-images": {
+          "title": "Image elements do not have explicit `width` and `height`",
+          "score": 0.5,
+          "metricSavings": {
+            "CLS": 0
+          }
+        },
+        "uses-long-cache-ttl": {
+          "title": "Serve static assets with an efficient cache policy",
+          "score": 0.5,
+          "displayValue": "5 resources found"
+        },
+        "render-blocking-resources": {
+          "title": "Eliminate render-blocking resources",
+          "score": 0.5,
+          "displayValue": "Est savings of 0 ms",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "modern-image-formats": {
+          "title": "Serve images in next-gen formats",
+          "score": 0,
+          "displayValue": "Est savings of 361 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 300
+          }
+        },
+        "uses-optimized-images": {
+          "title": "Efficiently encode images",
+          "score": 0,
+          "displayValue": "Est savings of 16 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 50
+          }
+        },
+        "uses-text-compression": {
+          "title": "Enable text compression",
+          "score": 0,
+          "displayValue": "Est savings of 30 KiB",
+          "metricSavings": {
+            "FCP": 50,
+            "LCP": 100
+          }
+        },
+        "uses-responsive-images": {
+          "title": "Properly size images",
+          "score": 0,
+          "displayValue": "Est savings of 588 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 450
+          }
+        },
+        "cache-insight": {
+          "title": "Use efficient cache lifetimes",
+          "score": 0,
+          "displayValue": "Est savings of 673 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 450
+          }
+        },
+        "document-latency-insight": {
+          "title": "Document request latency",
+          "score": 0.5,
+          "displayValue": "Est savings of 13 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        },
+        "image-delivery-insight": {
+          "title": "Improve image delivery",
+          "score": 0,
+          "displayValue": "Est savings of 556 KiB",
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 450
+          }
+        },
+        "network-dependency-tree-insight": {
+          "title": "Network dependency tree",
+          "score": 0,
+          "metricSavings": {
+            "LCP": 0
+          }
+        },
+        "render-blocking-insight": {
+          "title": "Render blocking requests",
+          "score": 0.5,
+          "metricSavings": {
+            "FCP": 0,
+            "LCP": 0
+          }
+        }
+      },
+      "requests": [
+        {
+          "url": "http://127.0.0.1:4173/syutoi-long-read/",
+          "resourceType": "Document",
+          "statusCode": 200,
+          "transferSize": 20695,
+          "resourceSize": 20506
+        },
+        {
+          "url": "http://127.0.0.1:4173/js/syutoi.min.js?v=0.2.5",
+          "resourceType": "Script",
+          "statusCode": 200,
+          "transferSize": 3692,
+          "resourceSize": 3498
+        },
+        {
+          "url": "http://127.0.0.1:4173/css/syutoi.min.css?v=0.2.5",
+          "resourceType": "Stylesheet",
+          "statusCode": 200,
+          "transferSize": 21500,
+          "resourceSize": 21312
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/wallpaper-878514.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 618841,
+          "resourceSize": 618650
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/image-wide.svg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 593,
+          "resourceSize": 402
+        },
+        {
+          "url": "http://127.0.0.1:4173/images/avatar.jpg",
+          "resourceType": "Image",
+          "statusCode": 200,
+          "transferSize": 45031,
+          "resourceSize": 44841
+        },
+        {
+          "url": "http://127.0.0.1:4173/images/favicon.ico",
+          "resourceType": "Other",
+          "statusCode": 200,
+          "transferSize": 4489,
+          "resourceSize": 4286
+        }
+      ]
+    }
+  ],
+  "summary": [
+    {
+      "name": "home",
+      "mode": "mobile",
+      "score": {
+        "min": 75,
+        "median": 75,
+        "max": 75
+      },
+      "metrics": {
+        "first-contentful-paint": {
+          "min": 1347.3793500000002,
+          "median": 1363.0086999999999,
+          "max": 1369.9967000000001
+        },
+        "largest-contentful-paint": {
+          "min": 8782.9934,
+          "median": 8856.0174,
+          "max": 8858.7587
+        },
+        "cumulative-layout-shift": {
+          "min": 0.04850174553962941,
+          "median": 0.04850174553962941,
+          "max": 0.04850174553962941
+        },
+        "total-blocking-time": {
+          "min": 0,
+          "median": 0,
+          "max": 0
+        },
+        "speed-index": {
+          "min": 2381.677195970457,
+          "median": 2382.95656001245,
+          "max": 2438.1297499972216
+        }
+      }
+    },
+    {
+      "name": "home",
+      "mode": "desktop",
+      "score": {
+        "min": 94,
+        "median": 94,
+        "max": 97
+      },
+      "metrics": {
+        "first-contentful-paint": {
+          "min": 364.52180000000004,
+          "median": 372.83230000000003,
+          "max": 392.1104
+        },
+        "largest-contentful-paint": {
+          "min": 1212.2208,
+          "median": 1587.6646,
+          "max": 1593.0436
+        },
+        "cumulative-layout-shift": {
+          "min": 0.0003894438669330084,
+          "median": 0.0003894438669330084,
+          "max": 0.0003894438669330084
+        },
+        "total-blocking-time": {
+          "min": 0,
+          "median": 0,
+          "max": 11.999999999999886
+        },
+        "speed-index": {
+          "min": 483.7820459563814,
+          "median": 523.5697063791192,
+          "max": 563.3176363410912
+        }
+      }
+    },
+    {
+      "name": "article",
+      "mode": "mobile",
+      "score": {
+        "min": 84,
+        "median": 84,
+        "max": 84
+      },
+      "metrics": {
+        "first-contentful-paint": {
+          "min": 1563.1255999999998,
+          "median": 1580.77725,
+          "max": 1657.66985
+        },
+        "largest-contentful-paint": {
+          "min": 4353.5545,
+          "median": 4354.2512,
+          "max": 4357.3397
+        },
+        "cumulative-layout-shift": {
+          "min": 0.04850174553962941,
+          "median": 0.04850174553962941,
+          "max": 0.04850174553962941
+        },
+        "total-blocking-time": {
+          "min": 0,
+          "median": 0,
+          "max": 0
+        },
+        "speed-index": {
+          "min": 2419.507306893588,
+          "median": 2436.497352766576,
+          "max": 2438.863655820335
+        }
+      }
+    },
+    {
+      "name": "article",
+      "mode": "desktop",
+      "score": {
+        "min": 99,
+        "median": 99,
+        "max": 99
+      },
+      "metrics": {
+        "first-contentful-paint": {
+          "min": 414.96135000000004,
+          "median": 420.8159,
+          "max": 428.481
+        },
+        "largest-contentful-paint": {
+          "min": 864.962,
+          "median": 869.9227000000001,
+          "max": 889.6318
+        },
+        "cumulative-layout-shift": {
+          "min": 0,
+          "median": 0,
+          "max": 0.0003894438669330084
+        },
+        "total-blocking-time": {
+          "min": 0,
+          "median": 0,
+          "max": 0
+        },
+        "speed-index": {
+          "min": 554.1969938833769,
+          "median": 563.826672633667,
+          "max": 582.9597429662964
+        }
+      }
+    }
+  ],
+  "finished": "2026-09-19T15:25:54.943Z"
+}
