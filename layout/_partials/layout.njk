@@ -1,4 +1,5 @@
 {% set syutoi = syutoi_settings() %}
+{% set contents = toc(page.content) if syutoi.sidebar.enable and syutoi.sidebar.toc and page.toc != false and (is_post() or (is_page() and page.content)) else '' %}
 <!doctype html>
 <html lang="{{ page.lang or config.language or 'en' }}" data-theme-default="{{ syutoi.appearance.theme }}">
 <head>{% include '_partials/head/head.njk' %}</head>

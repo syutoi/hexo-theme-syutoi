@@ -66,7 +66,7 @@ social:
 | `sidebar.enable` | `true` | 显示侧栏；关闭后使用居中的单列布局 |
 | `sidebar.statistics` | `true` | 显示文章、分类、标签数量 |
 | `sidebar.categories` | `true` | 在非文章页显示顶级分类列表 |
-| `sidebar.toc` | `true` | 在文章和独立 Page 显示普通目录链接；单页 toc: false 可关闭，尚未提供 scroll spy |
+| `sidebar.toc` | `true` | 在文章和独立 Page 显示桌面固定/手机折叠目录；JS 增强滚动高亮，单页 toc: false 可关闭 |
 | `footer.since` | 空值 | 起始年份整数；早于当前年份时显示年份区间，否则只显示当前年 |
 | `footer.powered` | `true` | 显示 Hexo / Syutoi 标识 |
 | `footer.rss` | `true` | 显示页脚 RSS 链接；还需站点 feed.rss.enable 为 true |
@@ -147,7 +147,11 @@ toc: true
 
 独立页面可使用 `hexo new page about` 创建，或直接创建 `source/about/index.md`，设置 `title` 并书写 Markdown。支持可选 `cover`，默认不显示文章日期、分类标签、来源声明和相邻文章导航。站点导航链接需要另行配置。
 
-文章和独立 Page 有标题时会在侧栏生成原生目录链接；`toc: false` 关闭当前页目录，主题 `sidebar.toc: false` 关闭所有目录，`sidebar.enable: false` 关闭整个侧栏。目录无需 JavaScript；滚动高亮和移动端折叠留待 E2 实现。
+文章和独立 Page 的正文有标题时生成目录；`toc: false` 关闭当前页目录，主题 `sidebar.toc: false` 关闭所有目录，`sidebar.enable: false` 关闭侧栏及两种目录。
+
+761px 及以上屏宽使用侧栏 sticky 目录，长目录在面板内滚动；760px 及以下在正文前显示默认折叠的原生 details。Enter/Space 可展开，目录链接使用原生锚点跳转，选中后不强制收起。两种呈现共享同一份生成目录，CSS 只显示当前屏宽的一种，无 JS 时仍可操作。
+
+启用 JS 后，标题越过视口顶部 96px 阅读线时更新当前章节；正文首标题之前不高亮，页面底部选择最后一个可见标题。高亮使用下划线、字重与 `aria-current="location"`，不会修改 URL/history、移动焦点或触发页面平滑滚动。长桌面目录仅在自身内部显示活动链接，键盘焦点在目录中时不自动滚动。窗口跨断点且焦点位于目录时，会移至可见的对应链接，手机目录按需展开。
 
 文章模板预留空的 Nunjucks `comments` block，供继承 `post.njk` 的自定义模板扩展；默认没有评论容器或外部脚本。本阶段不集成评论服务。
 

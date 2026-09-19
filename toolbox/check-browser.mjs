@@ -124,7 +124,8 @@ try {
   await Promise.all([page.waitForNavigation({waitUntil:'load'}),page.click('.pagination a[href="/archives/page/2/"]')]);
   assert(page.url().endsWith('/archives/page/2/'));
   await visit('/syutoi-long-read/');
-  const contents = await page.$$('.article-toc a');
+  await page.click('.mobile-toc summary');
+  const contents = await page.$$('[data-toc="mobile"] a');
   await contents.at(-1).click();
   assert(await page.evaluate(() => !!document.getElementById(decodeURIComponent(location.hash.slice(1)))));
   await visit('/reading-elements/');

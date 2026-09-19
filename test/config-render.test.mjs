@@ -282,3 +282,24 @@ test('body images get native loading, subdirectory URLs and valid standalone cap
   assert.doesNotMatch(html, /\/blog\/blog\//);
   assert.equal((html.match(/<figcaption>/g)||[]).length,2);
 });
+
+
+test('TOC presentations share heading targets and honor site and page switches', async () => {
+  const fixture = {
+    config:{permalink:':title/'},
+    posts:[post('Contents', '') + '\n## Duplicate\n\nText.\n\n## Duplicate\n\nText.\n'],
+    paths:['post-0/index.html']
+  };
+  const [html] = await render({}, '/blog/', fixture);
+  assert.match(html, /<details class="mobile-toc">/);
+  assert.match(html, /data-toc="desktop"/);
+  const desktop = html.match(/<nav[^>]*data-toc="desktop"[\s\S]*?<\/nav>/)[0];
+  const mobile = html.match(/<nav[^>]*data-toc="mobile"[\s\S]*?<\/nav>/)[0];
+  const targets = value => [...value.matchAll(/href="(#[^"]+)"/g)].map(match => match[1]);
+  assert.deepEqual(targets(desktop), targets(mobile));
+  assert.equal(new Set(targets(desktop)).size, targets(desktop).length);
+  for (const settings of [{sidebar:{toc:false}}, {sidebar:{enable:false}}]) {
+    const [disabled] = await render(settings, '/blog/', fixture);
+    assert.doesNotMatch(disabled, /data-toc=|class="mobile-toc"/);
+  }
+});

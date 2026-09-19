@@ -124,3 +124,10 @@ CI 在锁定安装后依次执行 lint、clean、typecheck、build、test 和生
 提交前停止预览监听，依次运行 `pnpm lint`、`pnpm clean`、`pnpm typecheck`、`pnpm build`、`pnpm test`，检查 `git diff --check` 及生成资源是否同步。然后恢复 `pnpm dev`。修改文档或包版本不需要重新运行未受影响的 Lighthouse 矩阵。
 
 现有 CI 配置覆盖 Node 20.19.0 / 24；本机已实测 Node 20.19.2，远端 CI 与 Node 24 的执行状态不由本地检查推断。主题保持 `private: true`；本轮提交不创建 Git tag、不发布 npm 或部署网站。公开发布、npm 安装方式与完整部署文档按后续 G 阶段处理。
+
+
+## 目录增强回归
+
+目录由布局统一调用 Hexo toc helper，桌面 nav 和手机 details 复用生成内容；不会给正文重复插入标题 ID。CSS 断点为 760/761px，与主导航一致。`src/client/toc.ts` 通过 requestAnimationFrame 合并滚动检查，并响应 resize/hash/load/toggle；可用时 ResizeObserver 补充正文尺寸变化，缺少该 API 时保留事件回退。
+
+使用与 D7 相同的 `SYUTOI_PUPPETEER_PATH` / `SYUTOI_CHROME`，启动预览后运行 `node toolbox/check-toc.mjs`。可设置 `SYUTOI_BROWSER_OUTPUT` 保存截图与结果；覆盖双向滚动、深链接刷新、短视口长目录、跨断点焦点、原生 Enter/Space、无 JS 和无 ResizeObserver。完整记录见 [E2 验收](validation/e2.md)。综合脚本 `check-browser.mjs` 也检查手机折叠目录展开后的无 JS 跳转。

@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Add a sticky desktop table of contents, native mobile disclosure and progressive scroll tracking for posts and standalone pages. Preserve no-JavaScript links and existing TOC switches; transfer keyboard focus when changing responsive layouts.
+
 ## 0.1.0 — 2026-09-20
 
 First Syutoi MVP after the fork from hexo-theme-shoka. The previous package version, 0.2.5, was inherited from upstream; Syutoi starts a separate version sequence at 0.1.0. This entry records repository changes, not an npm publication or deployed release. The package remains private.

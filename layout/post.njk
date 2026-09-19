@@ -9,6 +9,7 @@
     {% if page.link and syutoi_url(page.link) %}<p><a href="{{ syutoi_url(page.link) }}">{{ __('desk.external') }} ↗</a></p>{% endif %}
   </header>
   {% if syutoi_cover(page) %}<img class="article-cover" src="{{ syutoi_cover(page) }}" alt="" decoding="async">{% endif %}
+  {% include '_partials/mobile-toc.njk' %}
   <div class="prose" data-prose data-copy-label="{{ __('desk.copy') }}" data-copied-label="{{ __('desk.copied') }}" data-copy-failed-label="{{ __('desk.copy_failed') }}">{{ syutoi_content(page.content) | safe }}</div>
   <footer class="article-footer">
     {% if page.updated and date(page.updated, 'YYYY-MM-DD') != date(page.date, 'YYYY-MM-DD') %}<p class="post-meta">{{ __('post.edited') }} <time datetime="{{ date(page.updated, 'YYYY-MM-DD') }}">{{ date(page.updated, config.date_format) }}</time></p>{% endif %}

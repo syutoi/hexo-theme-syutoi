@@ -1,0 +1,16 @@
+{
+  "browser": "Chrome/151.0.7922.108",
+  "checks": [
+    "sticky and scroll tracking up/down: light",
+    "native disclosure, focus across breakpoints, hash navigation/reload: light",
+    "sticky and scroll tracking up/down: dark",
+    "native disclosure, focus across breakpoints, hash navigation/reload: dark",
+    "content resizing recomputes the current section without scrolling",
+    "long desktop TOC scrolls internally on standalone Page",
+    "long/duplicate titles and absent headings",
+    "no JS: desktop/mobile native navigation and disclosure",
+    "scroll tracking without ResizeObserver"
+  ],
+  "errors": [],
+  "finished": "2026-09-19T16:53:22.248Z"
+}

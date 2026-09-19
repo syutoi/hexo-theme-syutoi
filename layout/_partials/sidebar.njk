@@ -1,4 +1,4 @@
-<aside class="site-sidebar" aria-label="{{ __('sidebar.overview') }}">
+<aside class="site-sidebar{% if contents %} has-toc{% endif %}" aria-label="{{ __('sidebar.overview') }}">
   <section class="author-panel">
     {% if syutoi.branding.avatar %}<img class="author-avatar" src="{{ syutoi_url(syutoi.branding.avatar, true) }}" alt="" width="96" height="96" loading="lazy">{% else %}<span class="author-monogram" aria-hidden="true">{{ config.title | first }}</span>{% endif %}
     <h2>{{ config.author or config.title }}</h2>
@@ -12,8 +12,7 @@
     {% if syutoi_feed('rss') %}<a class="subscribe-link" href="{{ syutoi_feed('rss') }}">{{ __('desk.rss') }} <span aria-hidden="true">↗</span></a>{% endif %}
   </section>
   {% if is_post() or (is_page() and page.content) %}
-    {% set contents = toc(page.content) %}
-    {% if syutoi.sidebar.toc and page.toc != false and contents %}<section class="sidebar-section article-toc"><h2>{{ __('sidebar.toc') }}</h2>{{ contents | safe }}</section>{% endif %}
+    {% if contents %}<nav class="sidebar-section article-toc" data-toc="desktop" aria-label="{{ __('sidebar.toc') }}"><h2>{{ __('sidebar.toc') }}</h2>{{ contents | safe }}</nav>{% endif %}
   {% elif syutoi.sidebar.categories %}
     <section class="sidebar-section"><h2>{{ __('title.category') }}</h2><ul class="sidebar-categories">{% for category in site.categories.sort('name').toArray() %}{% if not category.parent %}<li><a href="{{ url_for(category.path) }}"><span>{{ category.name }}</span><span>{{ category.length }}</span></a></li>{% endif %}{% endfor %}</ul></section>
   {% endif %}

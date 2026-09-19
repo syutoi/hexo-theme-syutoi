@@ -149,3 +149,20 @@
   .site-sidebar { max-width: 360px; width: 100%; margin-inline: auto; }
   .inner-page .site-main { padding: 1.25rem; }
 }
+
+/* Two native presentations share the same heading links; only one is visible. */
+.site-sidebar.has-toc { align-self: stretch; }
+.mobile-toc { display: none; }
+.article-toc { max-height: calc(100vh - 2rem); max-height: calc(100dvh - 2rem); overscroll-behavior: contain; }
+.article-toc a[aria-current="location"] { color: var(--syutoi-color-primary); font-weight: 650; text-decoration: underline; text-underline-offset: .2em; }
+@media (min-width: 761px) {
+  [data-toc="desktop"] { position: sticky; top: 1rem; }
+}
+@media (max-width: 760px) {
+  [data-toc="desktop"] { display: none; }
+  .site-sidebar.has-toc { grid-template-columns: minmax(0, 1fr); max-width: 360px; width: 100%; margin-inline: auto; }
+  .mobile-toc { display: block; margin-bottom: 1.5rem; border: 1px solid var(--syutoi-color-border); border-radius: 8px; }
+  .mobile-toc summary { padding: .65rem 1rem; min-height: 44px; cursor: pointer; font-weight: 600; }
+  .mobile-toc .article-toc { padding: 0 1rem .5rem; max-height: 55vh; max-height: 55dvh; }
+  .mobile-toc a { padding-block: .5rem; }
+}

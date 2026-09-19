@@ -79,8 +79,8 @@ social: []
 # Disabling it uses a centred, single-column content area.
 # statistics displays counts and links for posts/categories/tags.
 # categories displays the top-level category list on non-post pages.
-# toc displays ordinary heading links on post pages.
-# Native links remain usable without JavaScript.
+# toc displays sticky desktop / collapsible mobile heading links.
+# Native links and the mobile disclosure work without JavaScript.
 # Avatar, display name and description are configured above / in Hexo.
 sidebar:
   enable: true

@@ -1,0 +1,4 @@
+{% if contents %}<details class="mobile-toc">
+  <summary>{{ __('sidebar.toc') }}</summary>
+  <nav class="article-toc" data-toc="mobile" aria-label="{{ __('sidebar.toc') }}">{{ contents | safe }}</nav>
+</details>{% endif %}
