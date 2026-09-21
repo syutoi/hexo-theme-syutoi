@@ -9,6 +9,7 @@ const require = createRequire(new URL('../example/package.json', import.meta.url
 const Hexo = require('hexo');
 const yaml = require('js-yaml');
 const root = fileURLToPath(new URL('../', import.meta.url));
+const themeVersion = JSON.parse(await readFile(join(root, 'package.json'), 'utf8')).version;
 
 async function render(settings, rootPath = '/', fixture = {}) {
   const directory = await mkdtemp(join(tmpdir(), 'syutoi-config-'));
@@ -345,10 +346,10 @@ test('lightbox opt-in isolates assets to eligible post/page bodies and preserves
     assert.match(html, /data-syutoi-lightbox/);
     assert.match(html, /href="(?:&#x2F;|\/)blog(?:&#x2F;|\/)images(?:&#x2F;|\/)example.svg"/);
     assert.doesNotMatch(html, /blog(?:&#x2F;|\/)blog/);
-    assert.match(html, /src="\/blog\/js\/lightbox.min.js\?v=0.1.0"/);
+    assert(html.includes(`src="/blog/js/lightbox.min.js?v=${themeVersion}"`));
     const attributes = html.replaceAll('&#x2F;', '/').replaceAll('&#x3D;', '=');
-    assert.match(attributes, /data-core="\/blog\/js\/photoswipe.min.js\?v=0.1.0"/);
-    assert.match(attributes, /data-style="\/blog\/css\/lightbox.min.css\?v=0.1.0"/);
+    assert(attributes.includes(`data-core="/blog/js/photoswipe.min.js?v=${themeVersion}"`));
+    assert(attributes.includes(`data-style="/blog/css/lightbox.min.css?v=${themeVersion}"`));
     assert.doesNotMatch(html, /<link[^>]+lightbox/);
   }
   assert.match(page, /data-close="关闭图片查看器"/);

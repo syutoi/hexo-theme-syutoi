@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 0.2.0 — 2026-09-21
+
+Reading experience improvements after the 0.1.0 MVP. Actual release numbering follows the completed development milestones rather than the original PRD phase numbers. The package remains private; a Git tag does not imply npm publication or deployment.
+
 - Add an opt-in local PhotoSwipe image viewer with click-loaded assets, native image-link fallbacks, keyboard focus containment, localized controls and reduced-motion support. Keep the default core bundles unchanged.
 
 - Add optional build-time reading estimates with per-post control and localized labels, group publication/update dates in the article header, and support descriptive cover alt text on posts and pages.

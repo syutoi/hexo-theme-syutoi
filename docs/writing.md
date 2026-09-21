@@ -1,6 +1,6 @@
 # 基础写作
 
-本页对应 Syutoi 0.1.0。先按 [快速开始](getting-started.md) 配置 Markdown renderer，再在博客中执行 `pnpm exec hexo new "文章标题"`。完整可运行样例见 [示例清单](examples.md)。
+本页对应 Syutoi 0.2.0。先按 [快速开始](getting-started.md) 配置 Markdown renderer，再在博客中执行 `pnpm exec hexo new "文章标题"`。完整可运行样例见 [示例清单](examples.md)。
 
 ## 文章与独立页面
 
