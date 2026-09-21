@@ -72,3 +72,17 @@ lightbox:
   previous: 上一張圖片
   next: 下一張圖片
   error: 圖片載入失敗，開啟原圖。
+
+search:
+  title: "搜尋"
+  label: "搜尋本站內容"
+  submit: "搜尋"
+  clear: "清空"
+  prompt: "輸入關鍵詞開始搜尋。"
+  loading: "正在搜尋…"
+  empty: "沒有找到相關內容。"
+  count: "找到 %s 筆結果"
+  more: "顯示更多"
+  error: "搜尋暫時無法使用，請重試。"
+  no_js: "搜尋需要 JavaScript，也可以透過歸檔瀏覽文章。"
+  archives: "瀏覽歸檔"

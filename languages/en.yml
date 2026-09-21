@@ -72,3 +72,17 @@ lightbox:
   previous: Previous image
   next: Next image
   error: Unable to load image. Open original.
+
+search:
+  title: "Search"
+  label: "Search this site"
+  submit: "Search"
+  clear: "Clear"
+  prompt: "Enter a word or phrase to search."
+  loading: "Searching…"
+  empty: "No results found."
+  count: "%s results"
+  more: "Show more"
+  error: "Search is unavailable. Please try again."
+  no_js: "Search requires JavaScript. You can browse the archives instead."
+  archives: "Browse archives"

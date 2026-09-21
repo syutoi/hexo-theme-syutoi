@@ -70,7 +70,7 @@ PRD 第 52 节的 v0.1 MVP 验收标准优先于后续版本功能清单。
 
 ## F. 博客能力（0.5，PRD §22–25）
 
-- [ ] F1：定义搜索 provider 接口，验证 Pagefind 与 Hexo 生命周期的集成，再实现可选本地搜索。
+- [x] F1：定义搜索 provider 接口，验证 Pagefind 与 Hexo 生命周期的集成，再实现可选本地搜索。
 - [ ] F2：定义 Comments Slot，以 Waline 为首个可选 adapter；不启用时无请求。
 - [ ] F3：完善 Open Graph/Twitter Card、结构化社交链接和 SEO 配置。
 - [ ] F4：通过 Hexo 插件验证 RSS、Sitemap，避免在主题重复实现。
@@ -400,3 +400,14 @@ C 阶段完成。下一批：D2，完善 Markdown 阅读元素的样式与边界
 - 更新 package.json、README、当前使用文档与 CHANGELOG；历史 PRD 和验收报告保留当时记录。资源 URL 的版本参数随包版本更新，相关测试改为读取包版本，避免下次升级留下硬编码。
 - lint、typecheck、干净构建、50 项测试与产物/预算检查通过；首页核心资源版本参数确认更新为 `0.2.0`，生成资源内容不变。
 - 版本标签为本地附注标签，不推送远端、不发布 npm、不部署。下一批仍为 F1 本地搜索。
+
+
+### 2026-09-21：F1 可选本地搜索
+
+- 定义构建与浏览器搜索 provider 接口，首个实现为固定 Pagefind 1.5.2；默认 `search.provider: none`，开启 pagefind 后生成独立 `/search/` 页面，普通页面只有导航链接，首次查询才加载本地引擎和分片。
+- 通过 Hexo generator 的内存路由接入索引，实际验证 public 写出前可用、watch 修改自动刷新、generate 替换旧分片、删除内容和禁用搜索的清理。不依赖额外 CLI 后处理；保留部署 root，只索引文章/Page 标题与正文，支持单篇退出并排除草稿、未来/密码内容。
+- 实现三语言表单、状态、错误重试、每批 10 条结果、更多结果焦点和无 JS 归档回退；清空后忽略旧响应。真实故障测试发现并适配 Pagefind 的孤立初始化 rejection，使用固定版本和精确匹配校验，搜索错误仍正常传给界面。
+- lint/typecheck/clean/build/test 通过，53 项测试、106 个生成文件；12 组搜索专项、176 组默认页面及 66 组无 JS 回归通过。搜索入口 JS/CSS gzip 为 1485/435 bytes，核心资源不变，Pagefind 引擎/索引另记成本。完整证据与边界见 [F1 验收](validation/f1.md)、[接入决策](decisions/local-search.md)。
+- 更新配置、开发说明、依赖许可证和 Unreleased。包版本仍为 0.2.0，既有版本标签保持原指向；默认预览已恢复。
+
+下一批：F2，定义 Comments Slot，以 Waline 为首个可选 adapter，关闭时无请求。

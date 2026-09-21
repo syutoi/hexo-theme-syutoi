@@ -22,6 +22,8 @@ test('a failed build preserves assets and a corrected source recovers', async t 
   await writeFile(join(fixture, 'src/client/lightbox.ts'), 'console.log("optional adapter");');
   await writeFile(join(fixture, 'src/client/photoswipe.ts'), 'console.log("optional viewer");');
   await writeFile(join(fixture, 'src/styles/lightbox.css'), '.viewer { color: white; }');
+  await writeFile(join(fixture, 'src/client/search.ts'), 'console.log("optional search");');
+  await writeFile(join(fixture, 'src/styles/search.css'), '.search { color: inherit; }');
   context = await createAssetContext(fixture);
   await context.rebuild();
   const jsPath = join(fixture, 'source/js/syutoi.min.js');

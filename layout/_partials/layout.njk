@@ -16,5 +16,6 @@
   </div>
   {% include '_partials/footer.njk' %}
   {% if body.enabled %}{{ syutoi_lightbox_assets() | safe }}{% endif %}
+  {% if page.type == 'search' and syutoi.search.provider != 'none' %}{{ syutoi_search_assets() | safe }}{% endif %}
 </body>
 </html>

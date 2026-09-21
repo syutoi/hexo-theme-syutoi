@@ -20,6 +20,7 @@ hexo.extend.helper.register('syutoi_url', function (value, image = false) {
 });
 hexo.extend.helper.register('syutoi_title', function () {
   const { page } = this;
+  if (page.type === 'search') return this.__('search.title');
   if (page.type === 'categories') return this.__('title.category');
   if (page.type === 'tags') return this.__('title.tag');
   if (page.type === '404') return this.__('desk.not_found');

@@ -1,0 +1,91 @@
+import assert from 'node:assert/strict';
+import { test } from 'node:test';
+import { createRequire } from 'node:module';
+import { mkdtemp, mkdir, writeFile, readFile, symlink, rm, access } from 'node:fs/promises';
+import { join } from 'node:path';
+import { tmpdir } from 'node:os';
+import { fileURLToPath } from 'node:url';
+const require = createRequire(new URL('../example/package.json', import.meta.url));
+const Hexo = require('hexo');
+const {searchRecords, searchText, searchProviders} = require('../lib/search.cjs');
+const {normalizeConfig} = require('../lib/config.cjs');
+const root = fileURLToPath(new URL('../', import.meta.url));
+const list = entries => ({toArray:()=>entries});
+
+test('search opt-in and indexing exclude drafts, opt-outs, future and private content', () => {
+  for (const provider of [undefined, 'none', 'local', 'algolia', true]) assert.equal(normalizeConfig({}, {search:{provider}}).search.provider,'none');
+  assert.equal(normalizeConfig({}, {search:{provider:'pagefind'}}).search.provider,'pagefind');
+  const item = {path:'article/index.html',title:'A < B',content:'<p>中文 <em>reading</em> &amp; code</p>'};
+  const site = {posts:list([item, {...item,path:'draft/',published:false}, {...item,path:'future/',date:new Date('2099-01-01')}, {...item,path:'private/',password:'secret'}, {...item,path:'optout/',search:false}]), pages:list([item,{...item,type:'tags'},{...item,path:'javascript:bad'}])};
+  const {records,language} = searchRecords(site,{language:'zh-CN'},path=>`/blog/${path}`);
+  assert.equal(language,'zh');
+  assert.deepEqual(records,[{url:'/blog/article/index.html',language:'zh',content:'A < B\n中文 reading & code',meta:{title:'A < B'}}]);
+  assert.equal(searchText('<p>one<br>two</p><pre>const x = 1;</pre><script>secret</script><span hidden>hidden</span><span aria-hidden="true">hidden</span><td class="gutter">12</td>'),'one two const x = 1;');
+});
+
+test('empty provider avoids starting Pagefind and distributed license stays current', async () => {
+  assert.deepEqual(await searchProviders.pagefind([], 'en'), []);
+  assert.equal(await readFile(join(root,'source/js/pagefind.LICENSE.txt'),'utf8'),(await readFile(join(root,'node_modules/pagefind/LICENSE/LICENSE'),'utf8')).replaceAll('\r\n','\n'));
+});
+
+test('Pagefind routes exist before disk generation and refresh after editing, deleting and disabling search', async t => {
+  const directory = await mkdtemp(join(tmpdir(),'syutoi-search-'));
+  const hexo = new Hexo(directory,{silent:true});
+  t.after(async()=>{hexo.unwatch();await hexo.exit();await rm(directory,{recursive:true,force:true});});
+  await mkdir(join(directory,'themes'),{recursive:true});
+  await mkdir(join(directory,'source/_posts'),{recursive:true});
+  await symlink(root,join(directory,'themes/syutoi'));
+  await symlink(join(root,'example/node_modules'),join(directory,'node_modules'));
+  await writeFile(join(directory,'package.json'),JSON.stringify({name:'search-fixture',hexo:{version:'8.1.2'},dependencies:{'hexo-renderer-markdown-it':'7.1.1'}}));
+  await writeFile(join(directory,'_config.yml'),'title: Search fixture\ntheme: syutoi\nlanguage: zh-CN\nurl: https://example.com/blog\nroot: /blog/\nignore: ["**/node_modules/**", "**/themes/syutoi/example/**"]\n');
+  await writeFile(join(directory,'_config.syutoi.yml'),'search:\n  provider: pagefind\n');
+  const article = join(directory,'source/_posts/article.md');
+  await writeFile(article,'---\ntitle: 中文搜索\ndate: 2020-01-01\n---\n阅读体验 firstword.');
+  await hexo.init();
+  let first = true;
+  hexo.extend.filter.register('after_generate',async()=>{
+    if (!first) return;
+    first = false;
+    assert(hexo.route.list().includes('_syutoi/search/pagefind.js'));
+    await assert.rejects(access(join(directory,'public/_syutoi/search/pagefind.js')));
+  });
+  await hexo.call('generate');
+  const manifest = () => readFile(join(directory,'public/_syutoi/search/manifest.json'),'utf8').then(JSON.parse);
+  assert.equal((await manifest()).count,1);
+  const page = await readFile(join(directory,'public/search/index.html'),'utf8');
+  assert.match(page,/data-index="\/blog\/_syutoi\/search\/"/);
+  assert.match(page,/搜索本站内容/);
+  assert.match(page,/search.min.js/);
+  await hexo.watch();
+  const before = hexo.route.list().filter(path=>path.endsWith('.pf_fragment'));
+  const watched = new Promise((resolve,reject)=>{
+    const timer=setTimeout(()=>reject(new Error('Hexo watch did not rebuild search')),10000);
+    hexo.once('generateAfter',()=>{clearTimeout(timer);setTimeout(resolve,0);});
+  });
+  await writeFile(article,'---\ntitle: 中文搜索\ndate: 2020-01-01\n---\nCompletely different secondword.');
+  await watched;
+  assert.notDeepEqual(hexo.route.list().filter(path=>path.endsWith('.pf_fragment')),before);
+  hexo.unwatch();
+  await hexo.call('generate');
+  assert.notDeepEqual(hexo.route.list().filter(path=>path.endsWith('.pf_fragment')),before);
+  for (const path of before) await assert.rejects(access(join(directory,'public',path)));
+  await rm(article);
+  await hexo.call('generate');
+  assert.equal((await manifest()).count,0);
+  assert(!hexo.route.list().includes('_syutoi/search/pagefind.js'));
+  await assert.rejects(access(join(directory,'public/_syutoi/search/pagefind.js')));
+  hexo.config.theme_config.search.provider = 'none';
+  await hexo.call('generate');
+  assert(!hexo.route.list().some(path=>path.startsWith('_syutoi/search/') || path==='search/index.html'));
+  await assert.rejects(access(join(directory,'public/search/index.html')));
+  const home = await readFile(join(directory,'public/index.html'),'utf8');
+  assert.doesNotMatch(home,/search.min|data-search|href="\/blog\/search\/"/);
+  await mkdir(join(directory,'source/search'),{recursive:true});
+  await writeFile(join(directory,'source/search/index.md'),'---\ntitle: Custom search page\ntype: search\n---\nCustom content preserved.');
+  await hexo.call('generate');
+  const custom = await readFile(join(directory,'public/search/index.html'),'utf8');
+  assert.match(custom,/Custom content preserved/);
+  assert.doesNotMatch(custom,/search.min|data-search/);
+  hexo.config.theme_config.search.provider = 'pagefind';
+  await assert.rejects(hexo.call('generate'),/reserves search\/index.html/);
+});

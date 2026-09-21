@@ -62,6 +62,7 @@ social:
 | `post_list.summary_length` | `160` | 摘要最多 Unicode 码点数（1–1000 的整数），超出追加省略号；无效值回退 160 |
 | `post_list.cover` | `true` | 列表显示文章 cover；不影响文章页和页头 |
 | `post.reading_time` | `true` | 文章头部显示正文预计阅读时间；单篇 reading_time: false 可关闭 |
+| `search.provider` | `none` | none / pagefind；启用后生成独立搜索页面，文章/Page 可用 search: false 退出索引 |
 | `lightbox.enable` | `false` | 正文图片的可选灯箱；单篇 lightbox: false 可关闭，首次点击才加载查看器 |
 | `navigation.menu` | 首页、归档、分类、标签 | `{ name, url }` 列表；空列表移除菜单链接 |
 | `social` | `[]` | `{ name, url }` 列表，显示在作者侧栏；不加载外部图标或组件 |
@@ -287,3 +288,20 @@ cover_alt: 夜色中的城市与水面倒影
 ```
 
 `cover_alt` 仅接受文字，默认空字符串（装饰性图片）；输出经过 HTML 转义。列表封面位于重复的文章链接内，继续使用空 alt，避免重复读出标题。无有效 cover 时 cover_alt 不会单独生成元素，也不改变分享元信息。
+
+
+## 本地搜索
+
+```yaml
+# 博客 _config.syutoi.yml
+search:
+  provider: pagefind
+```
+
+重新启动 `pnpm dev`，或执行 `hexo clean && hexo generate`。页头出现搜索图标，进入 `/search/` 后输入关键词并按 Enter 或点击搜索。结果每批显示 10 条，可继续加载。默认 `none` 不生成搜索入口、页面或索引；仅启用后的搜索页加载独立 JS/CSS，首次查询才加载本地搜索引擎。
+
+文章或 Page 的 Front Matter 可写 `search: false` 退出索引。索引包含标题、正文和代码，排除草稿、密码内容、尚未发布的文章（除非站点 future: true），不索引导航/侧栏等模板文字。索引语言沿用站点首选 language，全站内容放入同一个索引；不提供翻译搜索或简繁转换。search: false 不是访问控制。
+
+`/search/` 和 `/_syutoi/search/` 为启用时的保留目录，不要放置同名页面或静态资源。Pagefind 原生构建包随主题依赖安装，启用时需要平台二进制；不要省略其 optional dependencies。普通 Hexo generate/server 使用同一套索引生成器，不需要另外执行 Pagefind CLI。修改、删除内容或关闭搜索后，Hexo 更新路由并清理旧索引；部署时也应同步删除旧文件。
+
+查询不会发送给远端搜索服务；无 JS 时可通过搜索页中的归档链接浏览。网络错误会显示重试提示，重新提交即可。实现边界、依赖与生命周期证据见 [搜索决策](decisions/local-search.md) 和 [F1 验收](validation/f1.md)。

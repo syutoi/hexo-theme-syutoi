@@ -25,3 +25,5 @@
 {% if syutoi_feed('atom') %}<link rel="alternate" type="application/atom+xml" title="Atom" href="{{ syutoi_feed('atom') }}">{% endif %}
 {% if syutoi_feed('jsonFeed') %}<link rel="alternate" type="application/feed+json" title="JSON Feed" href="{{ syutoi_feed('jsonFeed') }}">{% endif %}
 {{ _css('syutoi.min.css') | safe }}
+
+{% if page.type == 'search' and syutoi.search.provider != 'none' %}{{ _css('search.min.css') | safe }}{% endif %}

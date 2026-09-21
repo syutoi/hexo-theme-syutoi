@@ -149,3 +149,17 @@ SYUTOI_PUPPETEER_PATH=/absolute/path/to/installed/puppeteer \
 ```
 
 PhotoSwipe 5.4.4 是锁定的构建开发依赖，发布产物包含其独立核心和 `source/js/photoswipe.LICENSE.txt`；消费者生成博客无需运行时 npm 下载。更新依赖时重新评估 API/包体，并同步许可证；测试会比较许可证与构建依赖。CI 检查整个 `source/js/`、`source/css/` 的生成一致性。
+
+
+## 本地搜索回归
+
+F1 采用 Pagefind Node API 在 Hexo generator 中返回内存路由，默认关闭；provider 接口及生命周期见 [搜索决策](decisions/local-search.md)。`test/search.test.mjs` 验证记录过滤、空索引、实际 generate 前后路由、修改/删除/禁用与许可证。索引失败会中断构建。
+
+`toolbox/check-search.mjs` 使用独立 Puppeteer/Chrome，在临时 Hexo 子目录站点验收搜索，不修改 example 配置。先执行 `pnpm build:theme`，然后运行：
+
+```bash
+SYUTOI_PUPPETEER_PATH=/absolute/path/to/installed/puppeteer \
+  SYUTOI_BROWSER_OUTPUT=/tmp/syutoi-f1 node toolbox/check-search.mjs
+```
+
+可选搜索入口 JS <6 KB gzip、CSS <3 KB gzip 纳入 `pnpm check:budget`。动态生成的 Pagefind 引擎和内容索引不混入核心预算，浏览器报告独立统计样本站点体积。内容越多，索引与构建时间越大；没有大站规模的性能保证。

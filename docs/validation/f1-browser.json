@@ -1,0 +1,281 @@
+{
+  "started": "2026-09-21T12:45:14.975Z",
+  "browser": "Chrome/151.0.7922.108",
+  "node": "v20.19.2",
+  "checks": [
+    {
+      "width": 1440,
+      "mode": "light",
+      "case": "lazy assets, Chinese/English/Page search, pagination, opt-out, inert snippets, root URLs, keyboard and clear",
+      "passed": true
+    },
+    {
+      "width": 1440,
+      "mode": "dark",
+      "case": "lazy assets, Chinese/English/Page search, pagination, opt-out, inert snippets, root URLs, keyboard and clear",
+      "passed": true
+    },
+    {
+      "width": 390,
+      "mode": "light",
+      "case": "lazy assets, Chinese/English/Page search, pagination, opt-out, inert snippets, root URLs, keyboard and clear",
+      "passed": true
+    },
+    {
+      "width": 390,
+      "mode": "dark",
+      "case": "lazy assets, Chinese/English/Page search, pagination, opt-out, inert snippets, root URLs, keyboard and clear",
+      "passed": true
+    },
+    {
+      "width": 320,
+      "mode": "light",
+      "case": "lazy assets, Chinese/English/Page search, pagination, opt-out, inert snippets, root URLs, keyboard and clear",
+      "passed": true
+    },
+    {
+      "width": 320,
+      "mode": "dark",
+      "case": "lazy assets, Chinese/English/Page search, pagination, opt-out, inert snippets, root URLs, keyboard and clear",
+      "passed": true
+    },
+    {
+      "case": "entry download failure preserves the archive fallback",
+      "passed": true
+    },
+    {
+      "case": "error and retry: manifest.json",
+      "passed": true
+    },
+    {
+      "case": "error and retry: pagefind.js",
+      "passed": true
+    },
+    {
+      "case": "error and retry: wasm.",
+      "passed": true
+    },
+    {
+      "case": "late response cannot restore cleared results",
+      "passed": true
+    },
+    {
+      "case": "no JavaScript: archive fallback and no search engine requests",
+      "passed": true
+    }
+  ],
+  "resources": [
+    {
+      "width": 1440,
+      "mode": "light",
+      "requests": [
+        "/blog/",
+        "/blog/js/syutoi.min.js?v=0.2.0",
+        "/blog/css/syutoi.min.css?v=0.2.0",
+        "/blog/images/favicon.ico",
+        "/blog/search/",
+        "/blog/js/syutoi.min.js?v=0.2.0",
+        "/blog/css/syutoi.min.css?v=0.2.0",
+        "/blog/css/search.min.css?v=0.2.0",
+        "/blog/js/search.min.js?v=0.2.0",
+        "/blog/_syutoi/search/manifest.json",
+        "/blog/_syutoi/search/pagefind.js",
+        "/blog/_syutoi/search/pagefind-worker.js"
+      ]
+    },
+    {
+      "width": 1440,
+      "mode": "dark",
+      "requests": [
+        "/blog/",
+        "/blog/js/syutoi.min.js?v=0.2.0",
+        "/blog/css/syutoi.min.css?v=0.2.0",
+        "/blog/search/",
+        "/blog/js/syutoi.min.js?v=0.2.0",
+        "/blog/css/syutoi.min.css?v=0.2.0",
+        "/blog/css/search.min.css?v=0.2.0",
+        "/blog/js/search.min.js?v=0.2.0",
+        "/blog/_syutoi/search/manifest.json",
+        "/blog/_syutoi/search/pagefind.js",
+        "/blog/_syutoi/search/pagefind-worker.js"
+      ]
+    },
+    {
+      "width": 390,
+      "mode": "light",
+      "requests": [
+        "/blog/",
+        "/blog/js/syutoi.min.js?v=0.2.0",
+        "/blog/css/syutoi.min.css?v=0.2.0",
+        "/blog/search/",
+        "/blog/js/syutoi.min.js?v=0.2.0",
+        "/blog/css/syutoi.min.css?v=0.2.0",
+        "/blog/css/search.min.css?v=0.2.0",
+        "/blog/js/search.min.js?v=0.2.0",
+        "/blog/_syutoi/search/manifest.json",
+        "/blog/_syutoi/search/pagefind.js",
+        "/blog/_syutoi/search/pagefind-worker.js"
+      ]
+    },
+    {
+      "width": 390,
+      "mode": "dark",
+      "requests": [
+        "/blog/",
+        "/blog/js/syutoi.min.js?v=0.2.0",
+        "/blog/css/syutoi.min.css?v=0.2.0",
+        "/blog/search/",
+        "/blog/js/syutoi.min.js?v=0.2.0",
+        "/blog/css/syutoi.min.css?v=0.2.0",
+        "/blog/css/search.min.css?v=0.2.0",
+        "/blog/js/search.min.js?v=0.2.0",
+        "/blog/_syutoi/search/manifest.json",
+        "/blog/_syutoi/search/pagefind.js",
+        "/blog/_syutoi/search/pagefind-worker.js"
+      ]
+    },
+    {
+      "width": 320,
+      "mode": "light",
+      "requests": [
+        "/blog/",
+        "/blog/js/syutoi.min.js?v=0.2.0",
+        "/blog/css/syutoi.min.css?v=0.2.0",
+        "/blog/search/",
+        "/blog/js/syutoi.min.js?v=0.2.0",
+        "/blog/css/syutoi.min.css?v=0.2.0",
+        "/blog/css/search.min.css?v=0.2.0",
+        "/blog/js/search.min.js?v=0.2.0",
+        "/blog/_syutoi/search/manifest.json",
+        "/blog/_syutoi/search/pagefind.js",
+        "/blog/_syutoi/search/pagefind-worker.js"
+      ]
+    },
+    {
+      "width": 320,
+      "mode": "dark",
+      "requests": [
+        "/blog/",
+        "/blog/js/syutoi.min.js?v=0.2.0",
+        "/blog/css/syutoi.min.css?v=0.2.0",
+        "/blog/search/",
+        "/blog/js/syutoi.min.js?v=0.2.0",
+        "/blog/css/syutoi.min.css?v=0.2.0",
+        "/blog/css/search.min.css?v=0.2.0",
+        "/blog/js/search.min.js?v=0.2.0",
+        "/blog/_syutoi/search/manifest.json",
+        "/blog/_syutoi/search/pagefind.js",
+        "/blog/_syutoi/search/pagefind-worker.js"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "path": "_syutoi/search/manifest.json",
+      "bytes": 50,
+      "gzipBytes": 70
+    },
+    {
+      "path": "_syutoi/search/pagefind.zh_cdb077a37f.pf_meta",
+      "bytes": 172,
+      "gzipBytes": 195
+    },
+    {
+      "path": "_syutoi/search/fragment/zh_8393b3f.pf_fragment",
+      "bytes": 163,
+      "gzipBytes": 186
+    },
+    {
+      "path": "_syutoi/search/fragment/zh_1b98fe1.pf_fragment",
+      "bytes": 164,
+      "gzipBytes": 187
+    },
+    {
+      "path": "_syutoi/search/fragment/zh_2d0e0a8.pf_fragment",
+      "bytes": 165,
+      "gzipBytes": 188
+    },
+    {
+      "path": "_syutoi/search/fragment/zh_d3ef358.pf_fragment",
+      "bytes": 165,
+      "gzipBytes": 188
+    },
+    {
+      "path": "_syutoi/search/fragment/zh_31f827e.pf_fragment",
+      "bytes": 163,
+      "gzipBytes": 186
+    },
+    {
+      "path": "_syutoi/search/fragment/zh_de7769e.pf_fragment",
+      "bytes": 164,
+      "gzipBytes": 187
+    },
+    {
+      "path": "_syutoi/search/fragment/zh_de7e768.pf_fragment",
+      "bytes": 164,
+      "gzipBytes": 187
+    },
+    {
+      "path": "_syutoi/search/fragment/zh_95dd3e3.pf_fragment",
+      "bytes": 164,
+      "gzipBytes": 187
+    },
+    {
+      "path": "_syutoi/search/fragment/zh_665a494.pf_fragment",
+      "bytes": 164,
+      "gzipBytes": 187
+    },
+    {
+      "path": "_syutoi/search/fragment/zh_755af5d.pf_fragment",
+      "bytes": 164,
+      "gzipBytes": 187
+    },
+    {
+      "path": "_syutoi/search/fragment/zh_8d9d43f.pf_fragment",
+      "bytes": 164,
+      "gzipBytes": 187
+    },
+    {
+      "path": "_syutoi/search/fragment/zh_6837d5f.pf_fragment",
+      "bytes": 164,
+      "gzipBytes": 187
+    },
+    {
+      "path": "_syutoi/search/fragment/zh_905a393.pf_fragment",
+      "bytes": 198,
+      "gzipBytes": 221
+    },
+    {
+      "path": "_syutoi/search/fragment/zh_b85f649.pf_fragment",
+      "bytes": 213,
+      "gzipBytes": 236
+    },
+    {
+      "path": "_syutoi/search/index/zh_5449537.pf_index",
+      "bytes": 408,
+      "gzipBytes": 431
+    },
+    {
+      "path": "_syutoi/search/pagefind.js",
+      "bytes": 45666,
+      "gzipBytes": 13012
+    },
+    {
+      "path": "_syutoi/search/pagefind-worker.js",
+      "bytes": 41366,
+      "gzipBytes": 12065
+    },
+    {
+      "path": "_syutoi/search/wasm.unknown.pagefind",
+      "bytes": 68024,
+      "gzipBytes": 68067
+    },
+    {
+      "path": "_syutoi/search/pagefind-entry.json",
+      "bytes": 172,
+      "gzipBytes": 161
+    }
+  ],
+  "errors": [],
+  "finished": "2026-09-21T12:45:54.061Z"
+}

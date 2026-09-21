@@ -72,3 +72,17 @@ lightbox:
   previous: 上一张图片
   next: 下一张图片
   error: 图片加载失败，打开原图。
+
+search:
+  title: "搜索"
+  label: "搜索本站内容"
+  submit: "搜索"
+  clear: "清空"
+  prompt: "输入关键词开始搜索。"
+  loading: "正在搜索…"
+  empty: "没有找到相关内容。"
+  count: "找到 %s 条结果"
+  more: "显示更多"
+  error: "搜索暂时不可用，请重试。"
+  no_js: "搜索需要 JavaScript，也可以通过归档浏览文章。"
+  archives: "浏览归档"

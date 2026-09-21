@@ -1,0 +1,69 @@
+{
+  "gzipLevel": 9,
+  "unit": "bytes (1 KB = 1000 bytes)",
+  "assets": [
+    {
+      "path": "source/js/syutoi.min.js",
+      "bytes": 5472,
+      "gzipBytes": 2028,
+      "limitBytes": 50000,
+      "stretchBytes": 30000,
+      "passed": true,
+      "sha256": "75a17b3366ade106b2ec83d4b3351d9245ae03dbf39e569ee2905b2849093826"
+    },
+    {
+      "path": "source/css/syutoi.min.css",
+      "bytes": 22160,
+      "gzipBytes": 5382,
+      "limitBytes": 40000,
+      "stretchBytes": null,
+      "passed": true,
+      "sha256": "4708f168648d40c9177a1d2db72b75ca985a57b1379912125366c0916e6cb5fb"
+    },
+    {
+      "path": "source/js/lightbox.min.js",
+      "bytes": 4835,
+      "gzipBytes": 2175,
+      "limitBytes": 6000,
+      "stretchBytes": null,
+      "passed": true,
+      "sha256": "83b5c3ddf3253cb3ca4c8c2a8677b7d9bd2a0fcb17e2d70bf8d15a5a28671e2b"
+    },
+    {
+      "path": "source/js/photoswipe.min.js",
+      "bytes": 60067,
+      "gzipBytes": 17356,
+      "limitBytes": 20000,
+      "stretchBytes": null,
+      "passed": true,
+      "sha256": "92c462055cf597a494b1f48e8c6994cf07198456072976f92d74a48e56cd09b4"
+    },
+    {
+      "path": "source/css/lightbox.min.css",
+      "bytes": 4965,
+      "gzipBytes": 1628,
+      "limitBytes": 3000,
+      "stretchBytes": null,
+      "passed": true,
+      "sha256": "13608a9aa5f3022c5fe7baa95f98f37cb478db880491ffb8ed591d0707c40209"
+    },
+    {
+      "path": "source/js/search.min.js",
+      "bytes": 3350,
+      "gzipBytes": 1485,
+      "limitBytes": 6000,
+      "stretchBytes": null,
+      "passed": true,
+      "sha256": "a966296d5845d12068d9e1f788138e9bcdbec1193d99aab53e2c16b27ec4d8dd"
+    },
+    {
+      "path": "source/css/search.min.css",
+      "bytes": 997,
+      "gzipBytes": 435,
+      "limitBytes": 3000,
+      "stretchBytes": null,
+      "passed": true,
+      "sha256": "a0195be7c4c1f1fc0a7c829d61df820a7dba90feacb25608507023f3ddd9f495"
+    }
+  ]
+}

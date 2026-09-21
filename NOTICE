@@ -7,3 +7,7 @@ The optional image viewer bundles PhotoSwipe 5.4.4 by Dmitry Semenov,
 licensed under MIT. Its copyright and license are distributed in
 source/js/photoswipe.LICENSE.txt. PhotoSwipe is loaded only when enabled
 and an eligible body image is opened.
+
+Optional local search uses Pagefind 1.5.2 (MIT). Its license is distributed
+in source/js/pagefind.LICENSE.txt. Pagefind builds search resources locally;
+its browser engine loads only after a query on the enabled search page.

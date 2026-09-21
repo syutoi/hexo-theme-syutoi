@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add optional local Pagefind search with Hexo-managed index routes, a dedicated search page, deferred engine loading, content opt-outs, localized status messages and retry handling.
+
 ## 0.2.0 — 2026-09-21
 
 Reading experience improvements after the 0.1.0 MVP. Actual release numbering follows the completed development milestones rather than the original PRD phase numbers. The package remains private; a Git tag does not imply npm publication or deployment.

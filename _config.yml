@@ -42,6 +42,10 @@ post:
 lightbox:
   enable: false
 
+# Local search (none | pagefind). Per-post/page search: false excludes content.
+search:
+  provider: none
+
 # Navigation
 # Every item has a visible name and a destination URL.
 # menu.* names use the corresponding entry in languages/*.yml.
@@ -124,5 +128,5 @@ footer:
 # menu -> navigation.menu ({name, url} list)
 # social mapping -> social ({name, url} list)
 # Old aliases are accepted during migration; new explicit values win.
-# Retired CDN/player/comment/search/animation settings have no effect.
+# Retired CDN/player/comment/animation settings have no effect.
 # See docs/migration-from-shoka.md for the detailed compatibility list.

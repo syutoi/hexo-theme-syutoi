@@ -1,0 +1,14 @@
+<div data-search data-provider="{{ syutoi.search.provider }}" data-index="{{ url_for('_syutoi/search/') }}" data-root="{{ url_for('/') }}" data-loading="{{ __('search.loading') }}" data-empty="{{ __('search.empty') }}" data-count="{{ __('search.count', '%s') }}" data-error="{{ __('search.error') }}" data-prompt="{{ __('search.prompt') }}">
+  <form class="search-form" role="search">
+    <label for="search-query">{{ __('search.label') }}</label>
+    <div class="search-controls">
+      <input id="search-query" name="q" type="search" maxlength="200" autocomplete="off" disabled>
+      <button type="submit" disabled>{{ __('search.submit') }}</button>
+      <button type="reset" disabled>{{ __('search.clear') }}</button>
+    </div>
+  </form>
+  <p data-search-status role="status" aria-live="polite" aria-atomic="true">{{ __('search.no_js') }}</p>
+  <ol class="search-results" data-search-results></ol>
+  <button type="button" data-search-more hidden>{{ __('search.more') }}</button>
+  <p><a href="{{ url_for(config.archive_dir + '/') }}">{{ __('search.archives') }} →</a></p>
+</div>

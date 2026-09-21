@@ -21,3 +21,7 @@ hexo.extend.helper.register('syutoi_lightbox_assets', function () {
   for (const key of ['title', 'close', 'zoom', 'previous', 'next', 'error']) attributes[`data-${key}`] = this.__(`lightbox.${key}`);
   return htmlTag('script', attributes, '');
 });
+
+hexo.extend.helper.register('syutoi_search_assets', function () {
+  return htmlTag('script', {defer: true, src: url_for.call(this, `js/search.min.js?v=${version}`)}, '');
+});
