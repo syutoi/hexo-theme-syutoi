@@ -12,7 +12,10 @@ export function createAssetContext(workingDirectory = root) {
     absWorkingDir: workingDirectory,
     entryPoints: {
       'js/syutoi.min': 'src/client/main.ts',
-      'css/syutoi.min': 'src/styles/main.css'
+      'css/syutoi.min': 'src/styles/main.css',
+      'js/lightbox.min': 'src/client/lightbox.ts',
+      'js/photoswipe.min': 'src/client/photoswipe.ts',
+      'css/lightbox.min': 'src/styles/lightbox.css'
     },
     outdir: 'source',
     bundle: true,

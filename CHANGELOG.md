@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add an opt-in local PhotoSwipe image viewer with click-loaded assets, native image-link fallbacks, keyboard focus containment, localized controls and reduced-motion support. Keep the default core bundles unchanged.
+
 - Add optional build-time reading estimates with per-post control and localized labels, group publication/update dates in the article header, and support descriptive cover alt text on posts and pages.
 
 - Add a sticky desktop table of contents, native mobile disclosure and progressive scroll tracking for posts and standalone pages. Preserve no-JavaScript links and existing TOC switches; transfer keyboard focus when changing responsive layouts.

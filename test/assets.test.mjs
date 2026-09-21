@@ -19,6 +19,9 @@ test('a failed build preserves assets and a corrected source recovers', async t 
   await writeFile(entry, 'console.log("first build");');
   await writeFile(tokens, ':root { --syutoi-color-bg: #f8f6f2; }');
   await writeFile(join(fixture, 'src/styles/main.css'), '@import "./tokens.css";');
+  await writeFile(join(fixture, 'src/client/lightbox.ts'), 'console.log("optional adapter");');
+  await writeFile(join(fixture, 'src/client/photoswipe.ts'), 'console.log("optional viewer");');
+  await writeFile(join(fixture, 'src/styles/lightbox.css'), '.viewer { color: white; }');
   context = await createAssetContext(fixture);
   await context.rebuild();
   const jsPath = join(fixture, 'source/js/syutoi.min.js');

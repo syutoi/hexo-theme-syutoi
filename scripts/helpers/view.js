@@ -1,4 +1,5 @@
 'use strict';
+const { enhanceLightbox } = require('../../lib/lightbox.cjs');
 const { enhanceImages } = require('../../lib/images.cjs');
 const { enhanceCode } = require('../../lib/code.cjs');
 const { plainText } = require('../../lib/text.cjs');
@@ -87,4 +88,11 @@ hexo.extend.helper.register('syutoi_metadata', function () {
 
 hexo.extend.helper.register('syutoi_content', function (content) {
   return enhanceCode(enhanceImages(content, value => this.url_for(value)), this.__('desk.code_block'));
+});
+
+hexo.extend.helper.register('syutoi_body', function () {
+  const html = this.syutoi_content(this.page.content);
+  return this.syutoi_settings().lightbox.enable && this.page.lightbox !== false
+    ? enhanceLightbox(html, value => value.startsWith(this.config.root || '/') ? value : this.url_for(value), this.__('lightbox.open'))
+    : { html, enabled: false };
 });

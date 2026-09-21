@@ -38,9 +38,12 @@ src/client/theme.ts     ↗
 src/shared/theme.ts     ↗
 src/styles/main.css     → source/css/syutoi.min.css
 src/styles/tokens.css  ↗
+src/client/lightbox.ts   → source/js/lightbox.min.js
+src/client/photoswipe.ts → source/js/photoswipe.min.js
+src/styles/lightbox.css  → source/css/lightbox.min.css
 ```
 
-JS 由 esbuild 打包为独立 IIFE，避免污染全局变量；CSS 经 PostCSS 展开本地 imports、Autoprefixer 处理，再由 esbuild 压缩。构建器使用 [esbuild context/watch API](https://esbuild.github.io/api/#watch)，并将 PostCSS 的 import 依赖纳入监听。类型检查单独使用 [TypeScript noEmit](https://www.typescriptlang.org/tsconfig/noEmit.html)，不能用成功打包替代类型检查。
+JS 由 esbuild 打包为独立 IIFE；可选查看器入口通过 `window.SyutoiPhotoSwipe` 提供延迟加载的构造函数，核心入口不引用它。CSS 经 PostCSS 展开本地 imports、Autoprefixer 处理，再由 esbuild 压缩。构建器使用 [esbuild context/watch API](https://esbuild.github.io/api/#watch)，并将 PostCSS 的 import 依赖纳入监听。类型检查单独使用 [TypeScript noEmit](https://www.typescriptlang.org/tsconfig/noEmit.html)，不能用成功打包替代类型检查。
 
 新的 `.min.js` / `.min.css` 产物**纳入版本控制**，便于 git clone 安装主题后直接生成博客；源码与产物需要一起提交。请修改 `src/`，然后运行 `pnpm build:theme`。CI 会重新构建并检查产物是否一致。开发监听与正式构建使用相同输出选项，不生成时间戳或 source maps。
 
@@ -112,7 +115,7 @@ CI 在锁定安装后依次执行 lint、clean、typecheck、build、test 和生
 
 ## 性能预算与测量
 
-构建后运行 `pnpm check:budget`，检查生成的核心 JS/CSS（含构建注释），以 gzip level 9、十进制 KB 统计；严格上限为 JS <50 KB、CSS <40 KB，JS <30 KB 是争取目标。该检查也进入 `pnpm test` 和现有 CI；它不包含页面 HTML、图片、feed 或可选第三方服务，也不代表服务器已开启压缩。
+构建后运行 `pnpm check:budget`，检查生成的核心 JS/CSS（含构建注释），以 gzip level 9、十进制 KB 统计；严格上限为 JS <50 KB、CSS <40 KB，JS <30 KB 是争取目标。可选灯箱另外检查适配入口 <6 KB、PhotoSwipe 核心 <20 KB、独立 CSS <3 KB，分别报告，不合并进核心预算。该检查也进入 `pnpm test` 和现有 CI；它不包含页面 HTML、图片、feed 或其他第三方服务，也不代表服务器已开启压缩。
 
 `toolbox/check-performance.mjs` 使用独立安装的 Lighthouse CLI 和本机 Chrome，依次测量首页/长文、mobile/desktop，每组 3 次，保存完整原始报告及含中位数/范围的摘要。它不进入默认测试或下载浏览器；构建与服务启动由调用者负责。固定版本、启动命令、实测数据及 INP 测量限制见 [D8 性能报告](validation/d8.md)。
 
@@ -135,4 +138,14 @@ CI 在锁定安装后依次执行 lint、clean、typecheck、build、test 和生
 
 ## 可选灯箱评估
 
-`toolbox/evaluate-lightbox.mjs` 是隔离可行性探针，不是主题运行时。候选包与浏览器工具独立准备，固定版本、运行步骤和未通过项见 [E4 决策](decisions/optional-lightbox.md)。当前主题尚未提供灯箱配置；接入与产品验收由 E4a 跟踪。不要将评估报告正常输出误认为所有候选行为均通过。
+`toolbox/evaluate-lightbox.mjs` 是隔离可行性探针，不是主题运行时。候选包与浏览器工具独立准备，固定版本、运行步骤和未通过项见 [E4 决策](decisions/optional-lightbox.md)。E4a 已接入默认关闭的独立灯箱，实际配置与验收见 [E4a](validation/e4a.md)。不要将评估报告正常输出误认为所有候选行为均通过。
+
+
+`toolbox/check-lightbox.mjs` 生成临时 Hexo 子目录站点，验证开关隔离、延迟加载、桌面/手机深浅、键盘、失败回退和无 JS；不修改示例站配置。与 D7 共用外部 Puppeteer/Chrome 环境变量，不下载浏览器，不进入默认 CI。先执行 `pnpm build:theme`，再运行：
+
+```bash
+SYUTOI_PUPPETEER_PATH=/absolute/path/to/installed/puppeteer \
+  SYUTOI_BROWSER_OUTPUT=/tmp/syutoi-e4a node toolbox/check-lightbox.mjs
+```
+
+PhotoSwipe 5.4.4 是锁定的构建开发依赖，发布产物包含其独立核心和 `source/js/photoswipe.LICENSE.txt`；消费者生成博客无需运行时 npm 下载。更新依赖时重新评估 API/包体，并同步许可证；测试会比较许可证与构建依赖。CI 检查整个 `source/js/`、`source/css/` 的生成一致性。

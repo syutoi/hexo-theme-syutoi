@@ -63,3 +63,12 @@ desk:
   empty_categories: 暂无分类。
   empty_tags: 暂无标签。
   code_block: 代码块
+
+lightbox:
+  open: 查看图片
+  title: 图片查看器
+  close: 关闭图片查看器
+  zoom: 缩放图片
+  previous: 上一张图片
+  next: 下一张图片
+  error: 图片加载失败，打开原图。

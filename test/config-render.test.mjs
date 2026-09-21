@@ -326,3 +326,30 @@ test('article reading estimates localize, honor switches and keep Page metadata 
   const disabled = await render({post:{reading_time:false}}, '/', fixture);
   for (const html of disabled) assert.doesNotMatch(html,/class="reading-time"/);
 });
+
+test('lightbox opt-in isolates assets to eligible post/page bodies and preserves root and translations', async () => {
+  const image = '<img src="/images/example.svg" alt="Example">';
+  const fixture = {
+    config:{permalink:':title/'},
+    posts:[post('Image', '', image), post('Optout', 'lightbox: false', image), post('Empty')],
+    pages:{gallery:`---\ntitle: Gallery\nlang: zh-CN\n---\n${image}`},
+    paths:['index.html','post-0/index.html','post-1/index.html','post-2/index.html','gallery/index.html']
+  };
+  for (const settings of [{}, {lightbox:{enable:false}}]) {
+    const pages = await render(settings, '/blog/', fixture);
+    for (const html of pages) assert.doesNotMatch(html, /data-syutoi-lightbox|data-lightbox-entry|(?:lightbox|photoswipe)\.min/);
+  }
+  const [home, article, optout, empty, page] = await render({lightbox:{enable:true}}, '/blog/', fixture);
+  for (const html of [home, optout, empty]) assert.doesNotMatch(html, /data-syutoi-lightbox|data-lightbox-entry|(?:lightbox|photoswipe)\.min/);
+  for (const html of [article, page]) {
+    assert.match(html, /data-syutoi-lightbox/);
+    assert.match(html, /href="(?:&#x2F;|\/)blog(?:&#x2F;|\/)images(?:&#x2F;|\/)example.svg"/);
+    assert.doesNotMatch(html, /blog(?:&#x2F;|\/)blog/);
+    assert.match(html, /src="\/blog\/js\/lightbox.min.js\?v=0.1.0"/);
+    const attributes = html.replaceAll('&#x2F;', '/').replaceAll('&#x3D;', '=');
+    assert.match(attributes, /data-core="\/blog\/js\/photoswipe.min.js\?v=0.1.0"/);
+    assert.match(attributes, /data-style="\/blog\/css\/lightbox.min.css\?v=0.1.0"/);
+    assert.doesNotMatch(html, /<link[^>]+lightbox/);
+  }
+  assert.match(page, /data-close="关闭图片查看器"/);
+});

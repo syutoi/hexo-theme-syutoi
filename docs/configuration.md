@@ -62,6 +62,7 @@ social:
 | `post_list.summary_length` | `160` | 摘要最多 Unicode 码点数（1–1000 的整数），超出追加省略号；无效值回退 160 |
 | `post_list.cover` | `true` | 列表显示文章 cover；不影响文章页和页头 |
 | `post.reading_time` | `true` | 文章头部显示正文预计阅读时间；单篇 reading_time: false 可关闭 |
+| `lightbox.enable` | `false` | 正文图片的可选灯箱；单篇 lightbox: false 可关闭，首次点击才加载查看器 |
 | `navigation.menu` | 首页、归档、分类、标签 | `{ name, url }` 列表；空列表移除菜单链接 |
 | `social` | `[]` | `{ name, url }` 列表，显示在作者侧栏；不加载外部图标或组件 |
 | `sidebar.enable` | `true` | 显示侧栏；关闭后使用居中的单列布局 |
@@ -234,7 +235,36 @@ Clipboard API 不可用时不显示复制按钮；权限拒绝时显示失败提
 
 建议为已知尺寸的图片填写原生 width/height，让浏览器预留比例；主题保留这些尺寸，不自动下载图片探测尺寸。也不生成缩略图或 srcset。picture/source、srcset、sizes、已有说明和链接均保留作者设置。
 
-正文 img 的站内绝对 src 经过 Hexo URL helper 处理，适配站点 root。手写 source/srcset 中的地址由作者负责：子目录部署可以使用相对路径或带部署前缀的路径。无 JS 时仍由浏览器加载图片，替代文字在失败时保留；样例中 `intentionally-missing-image.png` 是故意设置的失败场景。未加入图片灯箱；候选评估与后续接入边界见 [E4 决策](decisions/optional-lightbox.md)，其中的计划配置尚不可用。
+正文 img 的站内绝对 src 经过 Hexo URL helper 处理，适配站点 root。手写 source/srcset 中的地址由作者负责：子目录部署可以使用相对路径或带部署前缀的路径。无 JS 时仍由浏览器加载图片，替代文字在失败时保留；样例中 `intentionally-missing-image.png` 是故意设置的失败场景。可选图片灯箱默认关闭，开启方式和范围见下一节。
+
+
+## 可选图片灯箱
+
+```yaml
+# 博客 _config.syutoi.yml
+lightbox:
+  enable: true
+```
+
+默认 `false`。文章和独立 Page 的 Front Matter 可写 `lightbox: false` 退出；全局关闭时单篇 `true` 不会重新启用。只增强正文，不处理页头、头像、封面或列表图片。开启后重启预览，在 `/pictures/` 可查看普通图、长图、图注和失败图。
+
+合格的独立 img 会获得指向同一图片的原生链接；已指向同一图片的单图链接也可增强。实际打开时使用图片的固有尺寸，不能把用于显示缩略图的 width/height 当作原图尺寸。未加载图片只在用户点击后尝试取得尺寸（最多等待 10 秒）；不会为建立组图而预先下载所有懒加载图片。每次打开只包含已取得可靠尺寸的图片，因此组图数量可能随正文图片加载而增加。
+
+不同原图链接需要作者显式提供**目标原图**尺寸：
+
+```html
+<a href="/images/original.jpg" data-lightbox-width="2400" data-lightbox-height="1600">
+  <img src="/images/thumbnail.jpg" alt="山间的湖泊" width="480" height="320">
+</a>
+```
+
+链接必须只含一张 img（允许空白）。普通文章链接、含文字的链接、target/download 链接，以及 picture/srcset 保留原生行为；这一版不为响应式图片猜测当前来源或尺寸。单图可用 `data-lightbox="false"`（img 或已有 a）退出。自定义链接的原图宽高须是 1–100000 的整数；src 的相对路径保持原义，增强链接的站内绝对路径适配 root。
+
+说明使用 figcaption 的纯文本，没有说明则使用 alt；不解释 HTML。灯箱提供本地化关闭/缩放/切换按钮、方向键、Escape、Tab/Shift+Tab 循环，关闭后返回触发链接，打开期间背景 inert；系统减少动态效果时关闭过渡动画。
+
+关闭或没有合格图片时，HTML 不输出任何灯箱资源与增强标记。启用且有图片时只加载独立入口；首次点击才请求本地 PhotoSwipe 核心与独立 CSS，无 CDN。禁用 JS 或入口加载失败时链接正常工作；核心或样式失败会导航原图；灯箱内原图加载失败显示可点击的原图链接，无法修复原图自身的 404。Ctrl/Cmd/Shift/Alt 点击保留浏览器行为。
+
+资源体积、浏览器验收和未测范围见 [E4a 验收](validation/e4a.md)；[E4 评估](decisions/optional-lightbox.md) 保留选型时的历史问题。
 
 
 ## 阅读时间与封面替代文字

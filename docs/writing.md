@@ -102,7 +102,7 @@ alt 用于替代文字，独立图片的 title 会显示为图注。普通正文
 </details>
 ```
 
-选择与用途相符的图片尺寸和编码，主题不会自动下载或转换用户图片。手写 picture/source/srcset/sizes 保留原值，路径需要适配部署目录；完整边界规则见 [正文图片配置](configuration.md#正文图片)。目前没有灯箱，需查看原图时可自行加链接。
+选择与用途相符的图片尺寸和编码，主题不会自动下载或转换用户图片。手写 picture/source/srcset/sizes 保留原值，路径需要适配部署目录；完整边界规则见 [正文图片配置](configuration.md#正文图片)。默认保留原生图片；可在主题配置中启用 [可选灯箱](configuration.md#可选图片灯箱)，单篇 Front Matter 的 `lightbox: false` 可退出。picture/srcset 和非图片链接仍保留原生行为。
 
 脚注、details、目录和分页在无 JS 时可用。Mermaid、数学公式、标签属性扩展和复杂 Shoka 私有语法不默认支持；替代写法见 [迁移清单](migration-from-shoka.md)。
 

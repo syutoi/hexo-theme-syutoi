@@ -12,7 +12,7 @@
   {% else %}
     {% if syutoi_cover(page) %}<img class="article-cover" src="{{ syutoi_cover(page) }}" alt="{{ syutoi_cover_alt(page) }}" decoding="async">{% endif %}
     {% include '_partials/mobile-toc.njk' %}
-    <div class="prose" data-prose data-copy-label="{{ __('desk.copy') }}" data-copied-label="{{ __('desk.copied') }}" data-copy-failed-label="{{ __('desk.copy_failed') }}">{{ syutoi_content(page.content) | safe }}</div>
+    <div class="prose" data-prose data-copy-label="{{ __('desk.copy') }}" data-copied-label="{{ __('desk.copied') }}" data-copy-failed-label="{{ __('desk.copy_failed') }}">{{ body.html | safe }}</div>
   {% endif %}
 </section>
 {% endblock %}

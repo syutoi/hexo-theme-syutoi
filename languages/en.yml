@@ -63,3 +63,12 @@ desk:
   empty_categories: No categories yet.
   empty_tags: No tags yet.
   code_block: Code block
+
+lightbox:
+  open: Open image
+  title: Image viewer
+  close: Close image viewer
+  zoom: Zoom image
+  previous: Previous image
+  next: Next image
+  error: Unable to load image. Open original.

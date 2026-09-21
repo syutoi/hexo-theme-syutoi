@@ -26,4 +26,4 @@ jobs:
       - run: pnpm typecheck
       - run: pnpm build
       - run: pnpm test
-      - run: git diff --exit-code -- source/js/syutoi.min.js source/css/syutoi.min.css
+      - run: git diff --exit-code -- source/js/ source/css/

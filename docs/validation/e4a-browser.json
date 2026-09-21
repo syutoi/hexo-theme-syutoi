@@ -1,0 +1,296 @@
+{
+  "started": "2026-09-21T11:37:17.652Z",
+  "browser": "Chrome/151.0.7922.108",
+  "node": "v20.19.2",
+  "checks": [
+    {
+      "width": 1440,
+      "mode": "light",
+      "case": "isolated resources, caption, dimensions, gallery, strict Tab/Shift+Tab, inert, Esc, return focus, repeated opening, reduced motion",
+      "passed": true
+    },
+    {
+      "width": 1440,
+      "mode": "dark",
+      "case": "isolated resources, caption, dimensions, gallery, strict Tab/Shift+Tab, inert, Esc, return focus, repeated opening, reduced motion",
+      "passed": true
+    },
+    {
+      "width": 390,
+      "mode": "light",
+      "case": "isolated resources, caption, dimensions, gallery, strict Tab/Shift+Tab, inert, Esc, return focus, repeated opening, reduced motion",
+      "passed": true
+    },
+    {
+      "width": 390,
+      "mode": "dark",
+      "case": "isolated resources, caption, dimensions, gallery, strict Tab/Shift+Tab, inert, Esc, return focus, repeated opening, reduced motion",
+      "passed": true
+    },
+    {
+      "case": "mouse opening, ordinary fade animation and early Escape/close button",
+      "passed": true
+    },
+    {
+      "case": "disabled page preserves existing original link",
+      "passed": true
+    },
+    {
+      "case": "author links and modifier click",
+      "passed": true
+    },
+    {
+      "case": "gallery image failure offers a native original link",
+      "passed": true
+    },
+    {
+      "case": "native fallback: no-js",
+      "passed": true
+    },
+    {
+      "case": "native fallback: lightbox.min.js",
+      "passed": true
+    },
+    {
+      "case": "native fallback: lightbox.min.css",
+      "passed": true
+    },
+    {
+      "case": "native fallback: photoswipe.min.js",
+      "passed": true
+    },
+    {
+      "case": "native fallback: invalid-css",
+      "passed": true
+    },
+    {
+      "case": "native fallback: broken-image",
+      "passed": true
+    }
+  ],
+  "metrics": [
+    {
+      "width": 1440,
+      "mode": "light",
+      "state": "disabled",
+      "resourcesBeforeClick": [
+        "/blog/disabled/",
+        "/blog/js/syutoi.min.js?v=0.1.0",
+        "/blog/css/syutoi.min.css?v=0.1.0",
+        "/blog/assets/image-wide.svg",
+        "/blog/assets/image-tall.svg",
+        "/blog/assets/broken.svg",
+        "/blog/images/favicon.ico"
+      ],
+      "navigation": {
+        "domContentLoaded": 237,
+        "load": 239.09999999403954
+      }
+    },
+    {
+      "width": 1440,
+      "mode": "light",
+      "state": "empty",
+      "resourcesBeforeClick": [
+        "/blog/empty/",
+        "/blog/js/syutoi.min.js?v=0.1.0",
+        "/blog/css/syutoi.min.css?v=0.1.0"
+      ],
+      "navigation": {
+        "domContentLoaded": 49.80000001192093,
+        "load": 55
+      }
+    },
+    {
+      "width": 1440,
+      "mode": "light",
+      "state": "enabled",
+      "resourcesBeforeClick": [
+        "/blog/enabled/",
+        "/blog/js/syutoi.min.js?v=0.1.0",
+        "/blog/css/syutoi.min.css?v=0.1.0",
+        "/blog/assets/image-wide.svg",
+        "/blog/assets/image-tall.svg",
+        "/blog/assets/broken.svg",
+        "/blog/js/lightbox.min.js?v=0.1.0"
+      ],
+      "navigation": {
+        "domContentLoaded": 77,
+        "load": 81.80000001192093
+      }
+    },
+    {
+      "width": 1440,
+      "mode": "light",
+      "state": "opened",
+      "openMilliseconds": 76
+    },
+    {
+      "width": 1440,
+      "mode": "dark",
+      "state": "disabled",
+      "resourcesBeforeClick": [
+        "/blog/disabled/",
+        "/blog/js/syutoi.min.js?v=0.1.0",
+        "/blog/css/syutoi.min.css?v=0.1.0",
+        "/blog/assets/image-wide.svg",
+        "/blog/assets/image-tall.svg",
+        "/blog/assets/broken.svg"
+      ],
+      "navigation": {
+        "domContentLoaded": 71.5,
+        "load": 79.30000001192093
+      }
+    },
+    {
+      "width": 1440,
+      "mode": "dark",
+      "state": "empty",
+      "resourcesBeforeClick": [
+        "/blog/empty/",
+        "/blog/js/syutoi.min.js?v=0.1.0",
+        "/blog/css/syutoi.min.css?v=0.1.0"
+      ],
+      "navigation": {
+        "domContentLoaded": 40.29999998211861,
+        "load": 44.29999998211861
+      }
+    },
+    {
+      "width": 1440,
+      "mode": "dark",
+      "state": "enabled",
+      "resourcesBeforeClick": [
+        "/blog/enabled/",
+        "/blog/js/syutoi.min.js?v=0.1.0",
+        "/blog/css/syutoi.min.css?v=0.1.0",
+        "/blog/assets/image-wide.svg",
+        "/blog/assets/image-tall.svg",
+        "/blog/assets/broken.svg",
+        "/blog/js/lightbox.min.js?v=0.1.0"
+      ],
+      "navigation": {
+        "domContentLoaded": 64.40000000596046,
+        "load": 81.2000000178814
+      }
+    },
+    {
+      "width": 1440,
+      "mode": "dark",
+      "state": "opened",
+      "openMilliseconds": 56
+    },
+    {
+      "width": 390,
+      "mode": "light",
+      "state": "disabled",
+      "resourcesBeforeClick": [
+        "/blog/disabled/",
+        "/blog/js/syutoi.min.js?v=0.1.0",
+        "/blog/css/syutoi.min.css?v=0.1.0",
+        "/blog/assets/image-wide.svg",
+        "/blog/assets/image-tall.svg",
+        "/blog/assets/broken.svg"
+      ],
+      "navigation": {
+        "domContentLoaded": 71.40000000596046,
+        "load": 77
+      }
+    },
+    {
+      "width": 390,
+      "mode": "light",
+      "state": "empty",
+      "resourcesBeforeClick": [
+        "/blog/empty/",
+        "/blog/js/syutoi.min.js?v=0.1.0",
+        "/blog/css/syutoi.min.css?v=0.1.0"
+      ],
+      "navigation": {
+        "domContentLoaded": 41.79999998211861,
+        "load": 46.099999994039536
+      }
+    },
+    {
+      "width": 390,
+      "mode": "light",
+      "state": "enabled",
+      "resourcesBeforeClick": [
+        "/blog/enabled/",
+        "/blog/js/syutoi.min.js?v=0.1.0",
+        "/blog/css/syutoi.min.css?v=0.1.0",
+        "/blog/assets/image-wide.svg",
+        "/blog/assets/image-tall.svg",
+        "/blog/assets/broken.svg",
+        "/blog/js/lightbox.min.js?v=0.1.0"
+      ],
+      "navigation": {
+        "domContentLoaded": 69.7999999821186,
+        "load": 71.2999999821186
+      }
+    },
+    {
+      "width": 390,
+      "mode": "light",
+      "state": "opened",
+      "openMilliseconds": 58
+    },
+    {
+      "width": 390,
+      "mode": "dark",
+      "state": "disabled",
+      "resourcesBeforeClick": [
+        "/blog/disabled/",
+        "/blog/js/syutoi.min.js?v=0.1.0",
+        "/blog/css/syutoi.min.css?v=0.1.0",
+        "/blog/assets/image-wide.svg",
+        "/blog/assets/image-tall.svg",
+        "/blog/assets/broken.svg"
+      ],
+      "navigation": {
+        "domContentLoaded": 76,
+        "load": 82.69999998807907
+      }
+    },
+    {
+      "width": 390,
+      "mode": "dark",
+      "state": "empty",
+      "resourcesBeforeClick": [
+        "/blog/empty/",
+        "/blog/js/syutoi.min.js?v=0.1.0",
+        "/blog/css/syutoi.min.css?v=0.1.0"
+      ],
+      "navigation": {
+        "domContentLoaded": 40.400000005960464,
+        "load": 44.900000005960464
+      }
+    },
+    {
+      "width": 390,
+      "mode": "dark",
+      "state": "enabled",
+      "resourcesBeforeClick": [
+        "/blog/enabled/",
+        "/blog/js/syutoi.min.js?v=0.1.0",
+        "/blog/css/syutoi.min.css?v=0.1.0",
+        "/blog/assets/image-wide.svg",
+        "/blog/assets/image-tall.svg",
+        "/blog/assets/broken.svg",
+        "/blog/js/lightbox.min.js?v=0.1.0"
+      ],
+      "navigation": {
+        "domContentLoaded": 47.70000001788139,
+        "load": 52.400000005960464
+      }
+    },
+    {
+      "width": 390,
+      "mode": "dark",
+      "state": "opened",
+      "openMilliseconds": 52
+    }
+  ],
+  "errors": [],
+  "finished": "2026-09-21T11:37:56.552Z"
+}

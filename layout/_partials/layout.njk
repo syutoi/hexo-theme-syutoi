@@ -1,4 +1,5 @@
 {% set syutoi = syutoi_settings() %}
+{% set body = syutoi_body() if (is_post() or is_page()) and page.type not in ['categories', 'tags', '404'] else {} %}
 {% set contents = toc(page.content) if syutoi.sidebar.enable and syutoi.sidebar.toc and page.toc != false and (is_post() or (is_page() and page.content)) else '' %}
 <!doctype html>
 <html lang="{{ page.lang or config.language or 'en' }}" data-theme-default="{{ syutoi.appearance.theme }}">
@@ -14,5 +15,6 @@
     {% if syutoi.sidebar.enable %}{% include '_partials/sidebar.njk' %}{% endif %}
   </div>
   {% include '_partials/footer.njk' %}
+  {% if body.enabled %}{{ syutoi_lightbox_assets() | safe }}{% endif %}
 </body>
 </html>

@@ -1,0 +1,24 @@
+@import 'photoswipe/dist/photoswipe.css';
+
+.pswp { --syutoi-lightbox-ready: 1; }
+.pswp__error-msg-container a { color: white; text-decoration: underline; }
+.pswp__button:focus-visible { outline: 3px solid white; outline-offset: -4px; }
+.pswp__syutoi-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-height: 25%;
+  overflow: auto;
+  box-sizing: border-box;
+  padding: 12px 24px;
+  color: white;
+  background: rgb(0 0 0 / 75%);
+  font: 16px/1.5 system-ui, sans-serif;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.pswp__syutoi-caption:empty { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .pswp, .pswp * { transition: none !important; animation: none !important; }
+}

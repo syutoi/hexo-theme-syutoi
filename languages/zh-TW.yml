@@ -63,3 +63,12 @@ desk:
   empty_categories: 暫無分類。
   empty_tags: 暫無標籤。
   code_block: 程式碼區塊
+
+lightbox:
+  open: 檢視圖片
+  title: 圖片檢視器
+  close: 關閉圖片檢視器
+  zoom: 縮放圖片
+  previous: 上一張圖片
+  next: 下一張圖片
+  error: 圖片載入失敗，開啟原圖。

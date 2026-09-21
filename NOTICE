@@ -2,3 +2,8 @@ hexo-theme-syutoi is derived from hexo-theme-shoka,
 originally created by Ruri Shimotsuki (霜月琉璃).
 
 The original MIT copyright and license are preserved in LICENSE.
+
+The optional image viewer bundles PhotoSwipe 5.4.4 by Dmitry Semenov,
+licensed under MIT. Its copyright and license are distributed in
+source/js/photoswipe.LICENSE.txt. PhotoSwipe is loaded only when enabled
+and an eligible body image is opened.

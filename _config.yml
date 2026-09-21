@@ -38,6 +38,10 @@ post_list:
 post:
   reading_time: true
 
+# Optional body-image viewer. A post/page can opt out with lightbox: false.
+lightbox:
+  enable: false
+
 # Navigation
 # Every item has a visible name and a destination URL.
 # menu.* names use the corresponding entry in languages/*.yml.
