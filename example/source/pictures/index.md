@@ -6,7 +6,7 @@ description: 正文图片、说明、尺寸约束、原生懒加载与 picture �
 
 ## 独立图片的标题说明
 
-![窗台上的猫](/assets/wallpaper-2572384.jpg "窗台上的猫：说明来自 Markdown title，alt 仍作为替代文字。")
+![夕阳下的乡间花园](/assets/cottage-garden.webp "夕阳下的乡间花园：说明来自 Markdown title，alt 仍作为替代文字。")
 
 ## 横图与原始链接
 
@@ -32,7 +32,7 @@ description: 正文图片、说明、尺寸约束、原生懒加载与 picture �
 <figure>
 <picture>
 <source media="(max-width: 540px)" srcset="../assets/image-wide.svg">
-<img src="/assets/wallpaper-2572384.jpg" alt="窄屏使用尺寸示例，宽屏显示窗台上的猫">
+<img src="/assets/cottage-garden.webp" alt="窄屏使用尺寸示例，宽屏显示夕阳下的乡间花园">
 </picture>
 <figcaption>已有 figure 和 figcaption 保持原样，不重复生成说明。</figcaption>
 </figure>

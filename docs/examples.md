@@ -33,15 +33,9 @@
 
 ## 示例图片维护
 
-当前示例页头及欢迎文章、长文封面使用本地 WebP 副本；原始 JPG 和历史正文中的引用保留，便于再生成与迁移回归。使用系统 `cwebp`（本次 1.3.2）运行 `node toolbox/optimize-example-images.mjs`，按下表质量、method 6 生成以下文件，不裁剪、不放大：
+当前图片采用温暖田园插画：页头与长文使用 `pastoral-evening.webp`，欢迎文章使用 `sunlit-desk.webp`，正文示例使用 `cottage-garden.webp`。PNG 原图保存在 `example/source/assets/`，显示时使用 WebP。旧 wallpaper 图片已替换，历史性能报告仅代表旧素材。
 
-| 图片 | 用途 | 原图尺寸 | WebP 尺寸 | 质量 |
-| --- | --- | --- | --- | --- |
-| wallpaper-878514 | 页头 / 横幅封面 | 3840 × 1200 | 1920 × 600 | 78 |
-| wallpaper-2311325 | 置顶文章封面 | 1383 × 1858 | 800 × 1075 | 70 |
-| wallpaper-2572384 | 文章封面 | 1920 × 1200 | 1280 × 800 | 78 |
-
-已生成文件随仓库提交；日常 build/dev 不需要安装图片编码器。主题继续接受原来的单 URL 封面配置，没有自动转码用户图片或引入客户端图片库。这一批通过用途匹配的静态尺寸与 WebP 编码优化示例，不新增 srcset 配置；更高分辨率设备或其他布局需按实际展示尺寸准备资源。初始优化见 [D8a 报告](validation/d8a.md)；G4a 保持尺寸，仅将置顶封面质量从 78 调为 70，体积由 128642 降为 108796 bytes，当前复测与视觉边界见 [G4a 报告](validation/g4a.md)。
+运行 `node toolbox/optimize-example-images.mjs`（需要 cwebp）可重新编码：页头宽 1920、质量 78；书桌宽 800、质量 75；花园宽 1280、质量 78。保持原始比例，不裁剪。生成来源及提示词见 [图片记录](design/pastoral-images.md)。宽图、长图 SVG 继续用于尺寸边界测试。
 
 ## 导航 Logo 的维护
 

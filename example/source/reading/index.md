@@ -42,7 +42,7 @@ console.log(greeting);
 
 ## 图片
 
-![窗台上的猫](/assets/wallpaper-2572384.jpg "本地示例图片")
+![夕阳下的乡间花园](/assets/cottage-garden.webp "本地示例图片")
 
 ## 提示与折叠
 

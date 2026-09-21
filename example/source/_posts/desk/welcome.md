@@ -4,8 +4,8 @@ permalink: welcome/
 date: 2026-09-22 00:03:00
 updated: 2026-09-22 00:03:00
 sticky: true
-cover: /assets/wallpaper-2311325.webp
-cover_alt: 色彩明亮的人物与食物插画
+cover: /assets/sunlit-desk.webp
+cover_alt: 阳光洒在窗边的木书桌、笔记本与茶杯上
 description: 在一方书台上，记录见闻，整理思绪，留下值得回看的文字。
 categories:
   - 书台手记

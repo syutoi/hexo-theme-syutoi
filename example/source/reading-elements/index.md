@@ -70,7 +70,7 @@ description: 标题、列表、引用、宽表格、图片、代码、脚注与�
 ## 图片与说明
 
 <figure>
-<img src="/assets/wallpaper-2572384.jpg" alt="窗台上的猫" loading="lazy">
+<img src="/assets/cottage-garden.webp" alt="夕阳下的乡间花园" loading="lazy">
 <figcaption>本地示例图片。较长的图片说明在窄屏上自动换行，不超出正文宽度。</figcaption>
 </figure>
 

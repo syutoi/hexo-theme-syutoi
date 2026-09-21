@@ -3,8 +3,8 @@ title: 从一条笔记到一篇长文：整理、写作与回看
 date: 2026-09-22 00:02:00
 updated: 2026-09-22 00:02:00
 permalink: syutoi-long-read/
-cover: /assets/wallpaper-878514.webp
-cover_alt: 夜色中的城市天际线与水面倒影
+cover: /assets/pastoral-evening.webp
+cover_alt: 暖色暮光中的田野、树木与乡间小屋
 description: 一篇完整的中文长文示例，串联笔记整理、写作、引用、表格和复盘。
 categories:
   - 阅读与写作
