@@ -13,7 +13,7 @@
 branding:
   name: ''
   avatar: ''
-  favicon: /images/favicon.ico
+  favicon: /images/favicon.png
 
 # Appearance
 # auto follows the operating system until the reader makes a choice.

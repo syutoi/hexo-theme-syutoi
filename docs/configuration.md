@@ -25,7 +25,7 @@ language: zh-CN
 branding:
   name: 我的书台
   avatar: /images/me.jpg
-  favicon: /images/favicon.ico
+  favicon: /images/favicon.png
 
 appearance:
   theme: auto
@@ -55,7 +55,7 @@ social:
 | --- | --- | --- |
 | `branding.name` | 空字符串 | 页头展示名；留空使用站点 title |
 | `branding.avatar` | 空字符串 | 作者侧栏头像完整路径；留空显示首字母 |
-| `branding.favicon` | `/images/favicon.ico` | 网站图标；空字符串关闭 |
+| `branding.favicon` | `/images/favicon.png` | 网站图标；空字符串关闭 |
 | `appearance.theme` | `auto` | auto / light / dark；读者保存的选择优先 |
 | `appearance.cover` | 空字符串 | 固定页头图片；留空使用渐变背景 |
 | `post_list.summary` | `true` | 首页、分类和标签列表显示摘要 |
