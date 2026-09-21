@@ -1,7 +1,7 @@
 # Only override theme defaults needed by this example site.
 branding:
   name: Yume Syutoi
-  avatar: /images/avatar.jpg
+  avatar: /images/avatar.png
   logo: /images/logo.webp
   favicon: /images/favicon.png
 
