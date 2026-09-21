@@ -2,7 +2,7 @@
 
 面向写作与阅读的 Hexo 主题，fork 自 hexo-theme-shoka。保留图片页头、波浪、图文卡片和侧栏，以 Nunjucks、TypeScript 和原生 CSS 重建核心页面。
 
-当前版本 **0.3.0**，在 0.2.0 阅读体验增强的基础上加入默认关闭的 Pagefind 本地搜索和 Waline 评论插槽。首个 Syutoi 版本重新编号，不延续上游遗留的 `0.2.5`；差异见 [CHANGELOG](CHANGELOG.md)。上游来源与 MIT 许可证保留。开发分支还包含 Unreleased 改进，文档以当前工作树为准，版本差异见 Changelog。
+当前版本 **0.4.0**，包含可选搜索/评论、SEO 与订阅能力，以及迁移文档、无障碍和性能验证。Demo/分发与正式 1.0 发布准备仍按 [TODO](docs/TODO.md) 推进。首个 Syutoi 版本重新编号，不延续上游遗留的 `0.2.5`；版本差异见 [CHANGELOG](CHANGELOG.md)。上游来源与 MIT 许可证保留。
 
 在线 Demo：<https://hexo.syutoi.com/>（由 GitHub Actions 构建 `example/` 并发布到 GitHub Pages）。
 

@@ -1,6 +1,6 @@
 # 基础写作
 
-本页对应当前开发分支（0.3.0 及 Unreleased 的 SEO/订阅改进）。先按 [快速开始](getting-started.md) 配置 Markdown renderer，再在博客中执行 `pnpm exec hexo new "文章标题"`。完整可运行样例见 [示例清单](examples.md)。
+本页对应0.4.0。先按 [快速开始](getting-started.md) 配置 Markdown renderer，再在博客中执行 `pnpm exec hexo new "文章标题"`。完整可运行样例见 [示例清单](examples.md)。
 
 ## 文章与独立页面
 

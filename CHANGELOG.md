@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.4.0 — 2026-09-22
+
+SEO, syndication, migration documentation, accessibility and performance validation through G4a. Demo/package distribution and stable-release preparation remain pending.
+
+- Complete installation, customization, deployment and Shoka migration guides with configuration and content compatibility checklists.
+
 - Ship a right-sized default logo while retaining the original image, reduce the example cover transfer cost, and record repeatable Lighthouse and scripted INP measurements, including the mobile homepage LCP follow-up.
 
 - Improve accessibility with a unified header landmark, keyboard-focusable content tables, stronger image/banner and category contrast, and a repeatable core-page accessibility audit.
