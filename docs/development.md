@@ -131,3 +131,8 @@ CI 在锁定安装后依次执行 lint、clean、typecheck、build、test 和生
 目录由布局统一调用 Hexo toc helper，桌面 nav 和手机 details 复用生成内容；不会给正文重复插入标题 ID。CSS 断点为 760/761px，与主导航一致。`src/client/toc.ts` 通过 requestAnimationFrame 合并滚动检查，并响应 resize/hash/load/toggle；可用时 ResizeObserver 补充正文尺寸变化，缺少该 API 时保留事件回退。
 
 使用与 D7 相同的 `SYUTOI_PUPPETEER_PATH` / `SYUTOI_CHROME`，启动预览后运行 `node toolbox/check-toc.mjs`。可设置 `SYUTOI_BROWSER_OUTPUT` 保存截图与结果；覆盖双向滚动、深链接刷新、短视口长目录、跨断点焦点、原生 Enter/Space、无 JS 和无 ResizeObserver。完整记录见 [E2 验收](validation/e2.md)。综合脚本 `check-browser.mjs` 也检查手机折叠目录展开后的无 JS 跳转。
+
+
+## 可选灯箱评估
+
+`toolbox/evaluate-lightbox.mjs` 是隔离可行性探针，不是主题运行时。候选包与浏览器工具独立准备，固定版本、运行步骤和未通过项见 [E4 决策](decisions/optional-lightbox.md)。当前主题尚未提供灯箱配置；接入与产品验收由 E4a 跟踪。不要将评估报告正常输出误认为所有候选行为均通过。

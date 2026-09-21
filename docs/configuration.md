@@ -234,7 +234,7 @@ Clipboard API 不可用时不显示复制按钮；权限拒绝时显示失败提
 
 建议为已知尺寸的图片填写原生 width/height，让浏览器预留比例；主题保留这些尺寸，不自动下载图片探测尺寸。也不生成缩略图或 srcset。picture/source、srcset、sizes、已有说明和链接均保留作者设置。
 
-正文 img 的站内绝对 src 经过 Hexo URL helper 处理，适配站点 root。手写 source/srcset 中的地址由作者负责：子目录部署可以使用相对路径或带部署前缀的路径。无 JS 时仍由浏览器加载图片，替代文字在失败时保留；样例中 `intentionally-missing-image.png` 是故意设置的失败场景。未加入图片灯箱。
+正文 img 的站内绝对 src 经过 Hexo URL helper 处理，适配站点 root。手写 source/srcset 中的地址由作者负责：子目录部署可以使用相对路径或带部署前缀的路径。无 JS 时仍由浏览器加载图片，替代文字在失败时保留；样例中 `intentionally-missing-image.png` 是故意设置的失败场景。未加入图片灯箱；候选评估与后续接入边界见 [E4 决策](decisions/optional-lightbox.md)，其中的计划配置尚不可用。
 
 
 ## 阅读时间与封面替代文字

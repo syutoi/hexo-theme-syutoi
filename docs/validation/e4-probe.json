@@ -1,0 +1,194 @@
+{
+  "package": "photoswipe",
+  "version": "5.4.4",
+  "license": "MIT",
+  "gzipLevel": 9,
+  "assets": [
+    {
+      "name": "photoswipe-lightbox.esm.min.js",
+      "bytes": 14338,
+      "gzipBytes": 4467,
+      "sha256": "b82c385604f90cc77082d8e1bd4f5ef7c9d3da62d95dcc3ff1691a4eb0dddd12"
+    },
+    {
+      "name": "photoswipe.esm.min.js",
+      "bytes": 54270,
+      "gzipBytes": 16447,
+      "sha256": "542069771beb34dc461cdb9374da8af643c591ebf65d8ec36331dd9a0681ebd4"
+    },
+    {
+      "name": "photoswipe.css",
+      "bytes": 4617,
+      "gzipBytes": 1460,
+      "sha256": "5a2b7f8d04d6197c9c9473b1a679b421c36d5a10c12869bb44f8b4fa27e55aa9"
+    }
+  ],
+  "checks": [
+    {
+      "width": 1440,
+      "case": "disabled: zero optional assets and native image navigation",
+      "passed": true
+    },
+    {
+      "width": 1440,
+      "case": "strict Tab focus loop",
+      "passed": false,
+      "focusSamples": [
+        {
+          "inside": true,
+          "documentFocused": true,
+          "active": "<button class=\"pswp__button pswp__button--close\" type=\"button\" title=\"Close image\" aria-label=\"Close image\"><svg aria-hidden=\"true\" class=\"pswp__icn\" viewBox=\"0"
+        },
+        {
+          "inside": true,
+          "documentFocused": true,
+          "active": "<button class=\"pswp__button pswp__button--arrow--prev pswp__button--arrow pswp__hide-on-close\" type=\"button\" title=\"Previous image\" aria-label=\"Previous image\" "
+        },
+        {
+          "inside": true,
+          "documentFocused": true,
+          "active": "<button class=\"pswp__button pswp__button--arrow--next pswp__button--arrow pswp__hide-on-close\" type=\"button\" title=\"Next image\" aria-label=\"Next image\" aria-con"
+        },
+        {
+          "inside": false,
+          "documentFocused": true,
+          "active": "<body><h1>E4 isolated image probe</h1><div id=\"gallery\">\n<a href=\"/blog/image-wide.svg\" data-pswp-width=\"1200\" data-pswp-height=\"300\"><img src=\"/blog/image-wide"
+        },
+        {
+          "inside": true,
+          "documentFocused": true,
+          "active": "<div class=\"pswp pswp--open pswp--has_mouse pswp--ui-visible\" tabindex=\"-1\" role=\"dialog\" style=\"opacity: 1; --pswp-transition-duration: 0ms;\"><div class=\"pswp_"
+        },
+        {
+          "inside": true,
+          "documentFocused": true,
+          "active": "<button class=\"pswp__button pswp__button--close\" type=\"button\" title=\"Close image\" aria-label=\"Close image\"><svg aria-hidden=\"true\" class=\"pswp__icn\" viewBox=\"0"
+        },
+        {
+          "inside": true,
+          "documentFocused": true,
+          "active": "<button class=\"pswp__button pswp__button--arrow--prev pswp__button--arrow pswp__hide-on-close\" type=\"button\" title=\"Previous image\" aria-label=\"Previous image\" "
+        },
+        {
+          "inside": true,
+          "documentFocused": true,
+          "active": "<button class=\"pswp__button pswp__button--arrow--next pswp__button--arrow pswp__hide-on-close\" type=\"button\" title=\"Next image\" aria-label=\"Next image\" aria-con"
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "case": "enabled: delayed core, keyboard navigation, focus return, reduced motion",
+      "passed": true,
+      "requests": [
+        "http://127.0.0.1:32869/blog/enabled/",
+        "http://127.0.0.1:32869/blog/photoswipe.css",
+        "http://127.0.0.1:32869/blog/fixture.js",
+        "http://127.0.0.1:32869/blog/image-wide.svg",
+        "http://127.0.0.1:32869/blog/image-tall.svg",
+        "http://127.0.0.1:32869/blog/photoswipe-lightbox.esm.min.js",
+        "http://127.0.0.1:32869/blog/photoswipe.esm.min.js"
+      ]
+    },
+    {
+      "width": 390,
+      "case": "disabled: zero optional assets and native image navigation",
+      "passed": true
+    },
+    {
+      "width": 390,
+      "case": "strict Tab focus loop",
+      "passed": false,
+      "focusSamples": [
+        {
+          "inside": true,
+          "documentFocused": true,
+          "active": "<button class=\"pswp__button pswp__button--zoom\" type=\"button\" title=\"Zoom image\" aria-label=\"Zoom image\"><svg aria-hidden=\"true\" class=\"pswp__icn\" viewBox=\"0 0 "
+        },
+        {
+          "inside": true,
+          "documentFocused": true,
+          "active": "<button class=\"pswp__button pswp__button--close\" type=\"button\" title=\"Close image\" aria-label=\"Close image\"><svg aria-hidden=\"true\" class=\"pswp__icn\" viewBox=\"0"
+        },
+        {
+          "inside": true,
+          "documentFocused": true,
+          "active": "<button class=\"pswp__button pswp__button--arrow--prev pswp__button--arrow pswp__hide-on-close\" type=\"button\" title=\"Previous image\" aria-label=\"Previous image\" "
+        },
+        {
+          "inside": true,
+          "documentFocused": true,
+          "active": "<button class=\"pswp__button pswp__button--arrow--next pswp__button--arrow pswp__hide-on-close\" type=\"button\" title=\"Next image\" aria-label=\"Next image\" aria-con"
+        },
+        {
+          "inside": false,
+          "documentFocused": false,
+          "active": "<body><h1>E4 isolated image probe</h1><div id=\"gallery\">\n<a href=\"/blog/image-wide.svg\" data-pswp-width=\"1200\" data-pswp-height=\"300\"><img src=\"/blog/image-wide"
+        },
+        {
+          "inside": true,
+          "documentFocused": true,
+          "active": "<div class=\"pswp pswp--open pswp--has_mouse pswp--zoom-allowed pswp--click-to-zoom pswp--ui-visible\" tabindex=\"-1\" role=\"dialog\" style=\"opacity: 1; --pswp-trans"
+        },
+        {
+          "inside": true,
+          "documentFocused": true,
+          "active": "<button class=\"pswp__button pswp__button--zoom\" type=\"button\" title=\"Zoom image\" aria-label=\"Zoom image\"><svg aria-hidden=\"true\" class=\"pswp__icn\" viewBox=\"0 0 "
+        },
+        {
+          "inside": true,
+          "documentFocused": true,
+          "active": "<button class=\"pswp__button pswp__button--close\" type=\"button\" title=\"Close image\" aria-label=\"Close image\"><svg aria-hidden=\"true\" class=\"pswp__icn\" viewBox=\"0"
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "case": "enabled: delayed core, keyboard navigation, focus return, reduced motion",
+      "passed": true,
+      "requests": [
+        "http://127.0.0.1:32869/blog/enabled/",
+        "http://127.0.0.1:32869/blog/photoswipe.css",
+        "http://127.0.0.1:32869/blog/fixture.js",
+        "http://127.0.0.1:32869/blog/image-wide.svg",
+        "http://127.0.0.1:32869/blog/image-tall.svg",
+        "http://127.0.0.1:32869/blog/photoswipe-lightbox.esm.min.js",
+        "http://127.0.0.1:32869/blog/photoswipe.esm.min.js",
+        "http://127.0.0.1:32869/blog/enabled/",
+        "http://127.0.0.1:32869/blog/photoswipe.css",
+        "http://127.0.0.1:32869/blog/image-wide.svg",
+        "http://127.0.0.1:32869/blog/image-tall.svg",
+        "http://127.0.0.1:32869/blog/image-wide.svg"
+      ]
+    },
+    {
+      "case": "no JS: native image navigation",
+      "passed": true
+    },
+    {
+      "case": "current theme (no lightbox integration): zero lightbox assets",
+      "passed": true,
+      "requests": [
+        "http://127.0.0.1:4000/pictures/",
+        "http://127.0.0.1:4000/js/syutoi.min.js?v=0.1.0",
+        "http://127.0.0.1:4000/css/syutoi.min.css?v=0.1.0",
+        "http://127.0.0.1:4000/assets/wallpaper-878514.webp",
+        "http://127.0.0.1:4000/assets/image-wide.svg",
+        "http://127.0.0.1:4000/assets/wallpaper-2572384.jpg",
+        "http://127.0.0.1:4000/assets/image-tall.svg",
+        "http://127.0.0.1:4000/images/avatar.jpg",
+        "http://127.0.0.1:4000/images/favicon.ico"
+      ]
+    }
+  ],
+  "errors": [],
+  "browser": "Chrome/151.0.7922.108",
+  "failureProbe": {
+    "scenario": "core import blocked",
+    "nativeNavigationRestored": false,
+    "errors": [
+      "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:32869/blog/photoswipe.esm.min.js"
+    ]
+  },
+  "finished": "2026-09-21T11:08:37.970Z"
+}
