@@ -1,0 +1,207 @@
+{
+  "baseline": "b241988 (v0.4.0)",
+  "rawReports": {
+    "browser": {
+      "path": "/tmp/syutoi-wood-browser/report.json",
+      "sha256": "b527a48bebdbbd8940022920579357e01599a10eaf223ab320ab28f138943324"
+    },
+    "accessibility": {
+      "path": "/tmp/syutoi-wood-a11y/report.json",
+      "sha256": "3f9d181a84c766da04d3ea5e3341925738e1e6e1268b41d200486ed34e505864"
+    },
+    "finalColors": {
+      "path": "/tmp/syutoi-wood-final-checks.json",
+      "sha256": "83964ec67b3ab7d0265b8fd2162539e58c6f9e872996bbd87c18239a4302edcb"
+    }
+  },
+  "environment": {
+    "browser": "Chrome/151.0.7922.108",
+    "axe": "4.13.0",
+    "node": "v20.19.2"
+  },
+  "browser": {
+    "matrix": 176,
+    "noJS": 66,
+    "checks": {
+      "keyboardNavigation": true,
+      "copyWhitespaceFailureRetryFocus": true,
+      "reducedMotion": true,
+      "noJSNavigationTOCFootnotesDetailsTablesCode": true,
+      "themePersistenceSystemAndCrossTab": true,
+      "restrictedStorageAndClipboard": true
+    },
+    "errors": [],
+    "externalBlocked": [
+      "image: https://cdn.jsdelivr.net/gh/amehime/shoka@latest/images/avatar.jpg"
+    ]
+  },
+  "accessibility": {
+    "scans": 90,
+    "violations": 0,
+    "keyboard": 18,
+    "textResize": 18,
+    "noJSTableKeyboard": true,
+    "incompleteRules": [
+      "color-contrast"
+    ]
+  },
+  "finalColors": [
+    {
+      "width": 390,
+      "mode": "light",
+      "path": "/",
+      "meta": "#f5f2ec",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 19
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "mode": "light",
+      "path": "/reading-elements/",
+      "meta": "#f5f2ec",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 13
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "mode": "light",
+      "path": "/code/",
+      "meta": "#f5f2ec",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 5
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "mode": "dark",
+      "path": "/",
+      "meta": "#201d19",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 19
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "mode": "dark",
+      "path": "/reading-elements/",
+      "meta": "#201d19",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 13
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "mode": "dark",
+      "path": "/code/",
+      "meta": "#201d19",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 5
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "mode": "light",
+      "path": "/",
+      "meta": "#f5f2ec",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 26
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "mode": "light",
+      "path": "/reading-elements/",
+      "meta": "#f5f2ec",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 13
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "mode": "light",
+      "path": "/code/",
+      "meta": "#f5f2ec",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 11
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "mode": "dark",
+      "path": "/",
+      "meta": "#201d19",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 26
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "mode": "dark",
+      "path": "/reading-elements/",
+      "meta": "#201d19",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 13
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "mode": "dark",
+      "path": "/code/",
+      "meta": "#201d19",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 11
+        }
+      ]
+    }
+  ],
+  "note": "Full matrix preceded removal of category count opacity; final color checks use the final CSS. Incomplete checks require manual review. No fresh Lighthouse or optional-provider audit."
+}

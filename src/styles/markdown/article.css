@@ -21,7 +21,7 @@
 .prose :where(ul, ol) { padding-inline-start: 1.6rem; }
 .prose li + li { margin-top: .35rem; }
 .prose li > :where(ul, ol, p) { margin-block: .5rem; }
-.prose blockquote { margin-inline: 0; padding: .25rem clamp(.75rem, 3vw, 1.5rem); border-inline-start: 2px solid var(--syutoi-color-primary); color: var(--syutoi-color-text-secondary); }
+.prose blockquote { margin-inline: 0; padding: .25rem clamp(.75rem, 3vw, 1.5rem); border-inline-start: 2px solid var(--syutoi-color-accent); color: var(--syutoi-color-text); background: var(--syutoi-color-accent-soft); border-radius: 0 var(--syutoi-radius-sm) var(--syutoi-radius-sm) 0; }
 .prose blockquote > :first-child { margin-top: .5rem; }
 .prose blockquote > :last-child { margin-bottom: .5rem; }
 .prose hr { margin: 3rem 0; border: 0; border-top: 1px solid var(--syutoi-color-border); }
@@ -29,13 +29,13 @@
 .prose figure { margin-inline: 0; }
 .prose figcaption { margin-top: .5rem; color: var(--syutoi-color-text-secondary); font-size: .85rem; text-align: center; }
 .prose :where(code, pre, kbd, samp) { font-family: var(--syutoi-font-code); font-size: .875em; }
-.prose :not(pre) > code { padding: .15em .35em; border: 1px solid var(--syutoi-color-border); border-radius: 4px; background: var(--syutoi-color-surface); }
-.prose pre { max-width: 100%; overflow-x: auto; padding: 1.25rem; background: var(--syutoi-color-surface); border: 1px solid var(--syutoi-color-border); border-radius: var(--syutoi-radius-sm); line-height: 1.65; tab-size: 2; }
+.prose :not(pre) > code { padding: .15em .35em; border: 1px solid var(--syutoi-color-border); border-radius: 4px; background: var(--syutoi-color-code-bg); }
+.prose pre { max-width: 100%; overflow-x: auto; padding: 1.25rem; background: var(--syutoi-color-code-bg); border: 1px solid var(--syutoi-color-border); border-radius: var(--syutoi-radius-sm); line-height: 1.65; tab-size: 2; }
 .prose pre code { font-size: inherit; }
 .prose table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; font-size: .9rem; }
 .prose th, .prose td { padding: .65rem 1rem; border: 1px solid var(--syutoi-color-border); text-align: start; vertical-align: top; min-width: 10rem; }
 .prose caption { padding-block: .5rem; text-align: start; color: var(--syutoi-color-text-secondary); }
-.prose th { background: var(--syutoi-color-surface); font-weight: 600; }
+.prose th { background: var(--syutoi-color-soft); font-weight: 600; }
 .prose :where(kbd, mark) { padding: .12em .4em; border-radius: 3px; background: var(--syutoi-color-border); color: inherit; }
 .prose kbd { border: 1px solid var(--syutoi-color-text-secondary); }
 .prose summary { cursor: pointer; font-weight: 550; overflow-wrap: anywhere; }
@@ -54,7 +54,7 @@
 .copy-button { border: 1px solid var(--syutoi-color-border); border-radius: var(--syutoi-radius-sm); background: var(--syutoi-color-surface); padding: .4rem .75rem; min-height: 2.75rem; cursor: pointer; }
 .code-block > pre { margin-top: .5rem; }
 /* Hexo builds Highlight.js markup; no browser highlighter is needed. */
-.prose figure.highlight { overflow-x: auto; border: 1px solid var(--syutoi-color-border); border-radius: var(--syutoi-radius-sm); background: var(--syutoi-color-surface); }
+.prose figure.highlight { overflow-x: auto; border: 1px solid var(--syutoi-color-border); border-radius: var(--syutoi-radius-sm); background: var(--syutoi-color-code-bg); }
 .prose figure.highlight table { display: table; width: 100%; margin: 0; }
 .prose figure.highlight :where(td, pre) { margin: 0; border: 0; border-radius: 0; }
 .prose figure.highlight td { padding: 0; min-width: 0; }
@@ -74,7 +74,7 @@
 .prose .task-list-item { list-style: none; }
 .prose .task-list-item-checkbox { margin: 0 .5rem 0 -1.35rem; accent-color: var(--syutoi-color-primary); }
 
-.code-scroll { overflow-x: auto; margin-top: .5rem; border: 1px solid var(--syutoi-color-border); border-radius: var(--syutoi-radius-sm); background: var(--syutoi-color-surface); }
+.code-scroll { overflow-x: auto; margin-top: .5rem; border: 1px solid var(--syutoi-color-border); border-radius: var(--syutoi-radius-sm); background: var(--syutoi-color-code-bg); }
 .code-scroll > pre, .code-scroll > figure.highlight { margin: 0; border: 0; border-radius: 0; overflow: visible; }
 .code-status { font-size: .8rem; color: var(--syutoi-color-text-secondary); }
 .prose .code-status { margin: .5rem 0 0; }

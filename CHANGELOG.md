@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Introduce a wood-inspired light/dark palette with paper surfaces, walnut accents, moss details, warm code styling and matching browser theme colors while preserving the existing layout.
+
 ## 0.4.0 — 2026-09-22
 
 SEO, syndication, migration documentation, accessibility and performance validation through G4a. Demo/package distribution and stable-release preparation remain pending.

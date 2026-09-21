@@ -17,7 +17,7 @@ export function initializeTheme(): void {
     root.dataset.theme = resolved;
     root.dataset.themePreference = preference;
     document.querySelector('meta[name="theme-color"]')?.setAttribute(
-      'content', resolved === 'dark' ? '#20232c' : '#f6f7f9'
+      'content', resolved === 'dark' ? '#201d19' : '#f5f2ec'
     );
     document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]').forEach(button => {
       const label = button.dataset[`${preference}Label`];
