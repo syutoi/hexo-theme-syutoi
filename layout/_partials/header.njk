@@ -1,6 +1,6 @@
 <header class="site-header">
   <div class="header-inner{% if not syutoi.navigation.menu.length %} without-navigation{% endif %}">
-    <a class="site-brand" href="{{ url_for('/') }}" rel="home"><span class="brand-mark" aria-hidden="true">S</span>{{ config.title }}</a>
+    <a class="site-brand" href="{{ url_for('/') }}" rel="home">{% if syutoi.branding.logo %}<img class="brand-mark brand-logo" src="{{ syutoi_url(syutoi.branding.logo, true) }}" alt="" width="29" height="29">{% else %}<span class="brand-mark" aria-hidden="true">S</span>{% endif %}{{ config.title }}</a>
     <div class="header-actions">
       {% if syutoi.search.provider != 'none' %}<a href="{{ url_for('search/') }}" aria-label="{{ __('search.title') }}"><svg width="44" height="44" viewBox="-10 -10 44 44" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></svg></a>{% endif %}
       {% include '_partials/theme-toggle.njk' %}

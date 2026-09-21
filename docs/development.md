@@ -126,7 +126,7 @@ CI 在锁定安装后依次执行 lint、clean、typecheck、build、test 和生
 
 提交前停止预览监听，依次运行 `pnpm lint`、`pnpm clean`、`pnpm typecheck`、`pnpm build`、`pnpm test`，检查 `git diff --check` 及生成资源是否同步。然后恢复 `pnpm dev`。修改文档或包版本不需要重新运行未受影响的 Lighthouse 矩阵。
 
-现有 CI 配置覆盖 Node 20.19.0 / 24；本机已实测 Node 20.19.2，远端 CI 与 Node 24 的执行状态不由本地检查推断。主题保持 `private: true`；本地版本标签用于标记开发里程碑，不表示已推送标签、发布 npm 或部署网站。公开发布、npm 安装方式与完整部署文档按后续 G 阶段处理。
+现有 CI 配置覆盖 Node 20.19.0 / 24；本机已实测 Node 20.19.2，远端 CI 与 Node 24 的执行状态不由本地检查推断。`main` 推送另由 `.github/workflows/pages.yml` 构建示例站并部署到 GitHub Pages（自定义域名 `hexo.syutoi.com`）。主题保持 `private: true`；本地版本标签用于标记开发里程碑，不表示已推送标签或发布 npm。完整 deployment 文档与 npm 安装方式仍按后续 G 阶段处理。
 
 
 ## 目录增强回归

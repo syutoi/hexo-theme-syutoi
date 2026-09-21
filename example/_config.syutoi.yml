@@ -2,6 +2,8 @@
 branding:
   name: Yume Syutoi
   avatar: /images/avatar.jpg
+  logo: /images/logo.png
+  favicon: /images/favicon.png
 
 appearance:
   theme: auto
