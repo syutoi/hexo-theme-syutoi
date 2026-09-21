@@ -64,7 +64,155 @@ appearance:
 
 主题默认配置只列出当前可用字段，示例覆盖仅保留示例所需配置。只保留当前可用功能；示例不再继承上游作者的个人社交账号。历史文档中的原站链接与来源记录仍然保留。
 
-配置兼容层区分站点覆盖与主题默认值，优先读取用户显式设置；新字段与旧别名同时出现时以新字段为准。列表整体替换，空列表不会恢复默认菜单。完整字段、优先级和迁移表见 [配置文档](configuration.md)。
+配置兼容层区分站点覆盖与主题默认值，优先读取用户显式设置；同一配置层中新字段与旧别名同时出现时以新字段为准（包括空字符串、false 和空列表）；站点覆盖中的旧别名仍优先于主题默认值。列表整体替换，空列表不会恢复默认菜单。完整字段、优先级和迁移表见 [配置文档](configuration.md)。
+
+## 旧配置逐项清单
+
+以下以本仓库迁移前快照 `a2a8440` 的 `_config.yml` 为基线，核对当前 `lib/config.cjs`。其他 Shoka 分支自行增加的字段不在自动兼容承诺内。“手动迁移”表示旧字段不会自动转成新字段；“移除”表示当前主题不读取它，保留旧配置也不会恢复该功能。字段详细类型见 [配置参考](configuration.md)。
+
+| 旧字段 | 状态 | 当前写法或处理 |
+| --- | --- | --- |
+| `alternate` | 兼容别名 | 改用 `branding.name`；导航站点标题仍用博客 `title` |
+| `sidebar.avatar`、`images` | 部分兼容 | 改用完整 `branding.avatar` 路径；旧相对头像拼接 `images`（默认 `images`），绝对路径/URL 不拼接；`images` 不再是通用资源前缀 |
+| `darkmode` | 兼容别名 | `true` 对应 `appearance.theme: dark`，其他值对应 `auto`；固定浅色需显式设 `light` |
+| `menu` | 部分兼容 | 改用 `navigation.menu` 列表；旧 `路径 || 图标` 仅取路径，嵌套组展开，组的 `default` 入口不保留 |
+| `social` 字符串映射 | 部分兼容 | 改用 `{type, url}` 或 `{name, url}` 列表；旧图标/颜色丢弃；不安全 URL 和无名称项不显示，`skype:` 等协议不支持 |
+| `footer.since`、`footer.powered` | 保留 | 使用整数年份和 YAML 布尔值；未来年份不展示 |
+| `open_graph` | 手动迁移 | 改为 `seo.open_graph`；Twitter 开关/账号用 `seo.twitter_card` / `seo.twitter_site`；旧 Google+/Facebook 附加字段无映射 |
+| `favicon.*` | 手动迁移 | 用 `branding.favicon` 设置单一图标；旧 Apple/Safari/Android/Windows 专用字段不读取 |
+| `image_server` | 移除 | 固定页头用 `appearance.cover`，每篇文章用 Front Matter `cover`，不调用随机图服务 |
+| `search.hits.per_page`、旧 Algolia 接入 | 手动迁移 | 用 `search.provider: pagefind` 重新生成索引；旧索引/分页设置不复用 |
+| `valine.*` | 手动迁移 | 用 `comments.provider: waline` 和 `comments.server_url`；不复用旧 appId/appKey，不自动搬运评论 |
+| `vendors.css.fancybox`、`vendors.js.fancybox` | 手动迁移 | 用 `lightbox.enable: true` 开启本地灯箱，不读取旧 Fancybox 设置 |
+| `statics`、`css`、`js`、其余 `vendors.*` | 移除 | 主题资源由构建清单定位；不要把旧 CDN 或文件路径直接复制到新配置 |
+| `font.*`、`iconfont` | 移除 | 默认系统字体/本地 SVG；字体与视觉定制见 [自定义指南](customization.md) |
+| `sidebar.position` | 移除 | 使用当前响应式布局；可用 `sidebar.enable: false` 隐藏侧栏 |
+| `widgets.*` | 移除 | 不提供随机文章或最新评论挂件；当前侧栏提供统计、分类和目录开关 |
+| `footer.icon.*`、`footer.count`、`post.count` | 移除 | 不加载旧图标/访问统计；`post.reading_time` 仅为构建时阅读时长估算 |
+| `tagcloud.*` | 移除 | 使用当前标签列表，旧字号/颜色参数不生效 |
+| `creative_commons.*` | 移除 | 不自动输出旧许可面板；如需声明，在正文明确写出许可证和链接 |
+| `reward.*`、`audio` | 移除 | 不输出打赏组件或全站播放器；正文可使用普通链接、原生媒体 |
+| `auto_scroll`、`loader.*`、`fireworks.*`、`quicklink.*` | 移除 | 无旧自动滚动、加载动画、烟花或预取接入 |
+| `pangu`、`exturl` | 移除 | 不自动改写中西文间距或编码外链；保留普通文本与真实 `href` |
+| `baidu_analytics`、`baidu_push`、`disable_baidu_transformation` | 移除 | 不输出旧百度统计、推送和转码控制 |
+| `google_site_verification`、`bing_site_verification`、`yandex_site_verification`、`baidu_site_verification` | 移除 | 无同名主题接口；可按服务要求在博客 `source/` 放验证文件并检查生成结果 |
+
+博客级 `url`、`root`、`permalink`、分类/标签映射、分页与 renderer 配置仍放博客 `_config.yml`；主题覆盖放 `_config.syutoi.yml`。不要用主题迁移覆盖原来的文章地址规则。RSS/Sitemap 由独立插件处理，见 [订阅指南](syndication.md)。
+
+例如下面旧覆盖配置：
+
+```yaml
+alternate: 我的博客
+darkmode: true
+images: /images
+sidebar:
+  avatar: avatar.jpg
+menu:
+  home: / || home
+social:
+  github: https://github.com/yourname || github || '#333'
+```
+
+迁移后的 `_config.syutoi.yml`：
+
+```yaml
+branding:
+  name: 我的博客
+  avatar: /images/avatar.jpg
+appearance:
+  theme: dark
+navigation:
+  menu:
+    - name: menu.home
+      url: /
+social:
+  - type: github
+    url: https://github.com/yourname
+```
+
+头像文件放在博客 `source/images/avatar.jpg`。完成转换后删除旧别名，避免以后修改到已被新值覆盖的字段；导航列表覆盖时需列出所有想保留的入口。
+
+## Hexo 标签兼容清单
+
+Hexo 的 `{% 标签 %}` 与上表中的 Markdown 私有语法是两套机制：未启用的 Markdown 扩展通常显示为原文，而未知 Hexo 标签可能直接导致构建失败，不能统一当作无害的文本残留。
+
+| 标签 | 当前行为 | 迁移边界 |
+| --- | --- | --- |
+| `{% links %}…{% endlinks %}` | 保留，生成普通友情链接卡片 | 内容必须为 YAML 对象数组，每项有 `site`、`url`，可选 `image`、`desc`；无效链接跳过，不保留旧动效 |
+| `{% linksfile friends.yml %}` | 保留，从博客 `source/friends.yml` 读取同一格式 | 无结束标签；文件缺失、错误 YAML 或错误数据结构可能中断构建 |
+| `{% media audio %}…{% endmedia %}` / `video` | 降级为普通链接列表 | 数组项可为 URL 字符串、`{name, url}` 或 `{title, list}` 分组；没有播放控件，其他媒体类型返回空内容 |
+| `blockquote`、`codeblock`、`pullquote`、`img`、`iframe`、`include_code`、`post_link`、`asset_img` 等 | Hexo 8 自带标签继续由 Hexo 处理 | 不是主题私有实现；遵循 Hexo 自身语法和资源配置，不承诺旧主题装饰样式一致 |
+| 其他插件/分支增加的标签 | 主题不注册 | 先查明原插件，再改为标准内容或明确安装所需插件；本主题不自动安装适配器 |
+
+可直接放入文章的友情链接示例：
+
+```text
+{% links %}
+- site: 示例站
+  url: https://example.com/
+  desc: 朋友的博客
+{% endlinks %}
+```
+
+媒体链接兼容示例（文件需自行放入 `source/media/`）：
+
+```text
+{% media audio %}
+- name: 访谈录音
+  url: /media/interview.mp3
+{% endmedia %}
+```
+
+如需播放控件，替换整个 media 标签块为原生 HTML；以下假设博客部署在根目录，子目录站点需补上实际 root：
+
+```html
+<audio controls preload="none" src="/media/interview.mp3">
+  <a href="/media/interview.mp3">下载访谈录音</a>
+</audio>
+```
+
+原生 HTML 的 URL 不经过主题标签的路径辅助函数。主题 `links` / `media` 输出则会处理博客 root。不要将旧生成的 `public/` 内容当作文章源文件迁移：旧 `data-src` 图片或 `span.exturl[data-url]` 依赖已删除的脚本；应从原始 Markdown 重新生成。手写过此类 HTML 时，改成有真实 `src` 的 `img` 和真实 `href` 的 `a`，不要直接把 base64 数据当作 URL。
+
+## 不支持语法的替代写法
+
+下面是内容改写建议，不是自动转换规则。保留原来的题目、答案和说明；嵌套复杂内容需要逐段检查。
+
+| 旧写法 | 替代写法 |
+| --- | --- |
+| `:::info` … `:::` | 引用块 `> **提示：** 说明内容`，多段内容每行均加 `>` |
+| `;;;tab1 标题`、`+++` 标签页/折叠标记 | 用 `## 标题` 分节；需要折叠时使用下面的 `details` 示例 |
+| `题目{.quiz}`、`答案{.correct}`、`{.gap}` | 普通有序题目加明确“答案”段落，或将答案放入 `details` |
+| `==重点==`、`++新增++` | `<mark>重点</mark>`、`<ins>新增</ins>` |
+| `!!剧透!!` | `<details><summary>查看剧透</summary><p>内容</p></details>` |
+| `{文字^注音}` | `<ruby>文字<rt>注音</rt></ruby>` |
+| `:smile:` | Unicode 表情，如 😄 |
+| 图片后的 `{.gallery}`、颜色/label 属性 | 删除私有属性，保留标准图片/文本；确需特殊排版时写明确 HTML 并自行配套样式 |
+
+```html
+<details>
+  <summary>查看答案</summary>
+  <p>答案及解释。复杂列表可使用 HTML 的 ol / li 元素。</p>
+</details>
+```
+
+此示例内部使用 HTML，避免误以为 HTML 块中的 Markdown 在任何 renderer 配置下都会被解析。公式/图表若暂不安装插件，可导出静态图片并提供替代文字，或保留带语言名称的代码供阅读；不要把旧 KaTeX/CDN 字段当作渲染开关。
+
+## 迁移前的只读扫描
+
+在**博客根目录**运行以下命令（需已安装 ripgrep），只列出疑似遗留项，不修改文件：
+
+```bash
+# 盘点 Hexo 标签，包括第三方标签和结束标签。
+rg -n '\{%[- ]*[A-Za-z_][A-Za-z_0-9]*' source --glob '*.md'
+# 私有 Markdown 语法；命中代码示例、历史文档时应人工判断。
+rg -n ':::|;;;|\+\+\+|\{\.[^}]+\}|!![^!]+!!|==[^=]+==|\+\+[^+]+\+\+' source --glob '*.md'
+# 旧运行时相关 HTML 与 Stylus 定制。
+rg -n 'data-src=|data-url=|exturl|colors\.styl|custom\.styl|iconfont\.styl' source themes --glob '!node_modules/**' --glob '!public/**'
+# 最后逐项对照上面的配置清单，不做批量替换。
+rg -n '^[[:space:]]*[A-Za-z_][A-Za-z_0-9]*:' _config*.yml
+```
+
+扫描没有命中时 `rg` 返回 1，不表示迁移失败。这些表达式不是完整解析器，也不覆盖所有公式、emoji 和第三方扩展；仍应通读关键文章并检查构建日志。原作者域名、许可证和历史来源中的 Shoka 名称应保留，不进行全局文本替换。
 
 ## 建议迁移顺序
 
@@ -72,7 +220,7 @@ appearance:
 2. 按 [快速开始](getting-started.md) 整理 renderer 与生成器，先用最小主题配置成功生成。
 3. 保留原来的 permalink、category_map、tag_map 和站点 root，比较重要文章、分类和旧锚点链接。
 4. 将旧 menu、头像、主题偏好改为新结构，逐项恢复封面、导航和社交链接。
-5. 按兼容表检查旧标签，先把影响正文理解的语法改为标准 Markdown 或 HTML；完整兼容清单的扩展属于 G2。
+5. 按兼容表检查旧标签，先把影响正文理解的语法改为标准 Markdown 或 HTML；对照上述标签表及替代示例逐项确认。
 6. 单独开启 Pagefind、灯箱或 Waline 并验证。Waline 评论线程采用含 root 的路径；旧系统数据与线程迁移需在服务端处理，主题不自动搬运。
 7. 按 [订阅文档](syndication.md) 恢复 feed/Sitemap，再检查 SEO 覆盖；noindex、search:false 与 sitemap:false 各自独立。
 8. clean/generate，查看桌面/手机和无 JS 页面，再按照 [部署指南](deployment.md) 发布。
