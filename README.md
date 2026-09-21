@@ -4,6 +4,8 @@
 
 当前版本 **0.2.0**，在 0.1.0 MVP 基础上加入响应式目录与滚动高亮、阅读时间、封面替代文字和默认关闭的可选图片灯箱。首个 Syutoi 版本重新编号，不延续上游遗留的 `0.2.5`；差异见 [CHANGELOG](CHANGELOG.md)。上游来源与 MIT 许可证保留。
 
+在线 Demo：<https://hexo.syutoi.com/>（由 GitHub Actions 构建 `example/` 并发布到 GitHub Pages）。
+
 ## 使用主题
 
 需要 Node.js >=20.19.0、pnpm 9.0.4 和 Hexo 8。现有博客安装方式见 [快速开始](docs/getting-started.md)，主题选项放在博客根目录的 `_config.syutoi.yml`。无需开发构建即可使用仓库中已提交的 JS/CSS，但仍需安装主题的构建时依赖。

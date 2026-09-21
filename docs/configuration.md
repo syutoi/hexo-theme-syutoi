@@ -196,7 +196,7 @@ archive_generator:
 - 文章作者优先使用 Front Matter `author`，其次为博客 `author`；发布时间与更新时间输出为 UTC ISO 时间。Page 和列表不输出文章时间或作者标签。
 - 404 页面输出 `noindex, follow`。RSS/Atom/JSON Feed 仍由插件生成，主题保留发现链接；本批未集成 sitemap 或结构化数据。
 
-上线前必须在博客 `_config.yml` 填写真实的 `title`、`description`、`author` 和 `url`；部署在子目录时保持 url 的路径与 root 一致，例如 `url: https://example.com/blog`、`root: /blog/`。示例站的 `http://yoursite.com` 是占位地址，不用于生产。主题元信息不会从 package.json 作者或示例站 branding 读取站点身份。
+上线前必须在博客 `_config.yml` 填写真实的 `title`、`description`、`author` 和 `url`；部署在子目录时保持 url 的路径与 root 一致，例如 `url: https://example.com/blog`、`root: /blog/`。本仓库示例站使用 `https://hexo.syutoi.com`，供公开 Demo；你自己的博客应换成自己的地址。主题元信息不会从 package.json 作者或示例站 branding 读取站点身份。
 
 可在浏览器查看页面源代码，检查生成的绝对地址。若希望隐藏 URL 中的 index.html，可使用 Hexo 配置：
 
