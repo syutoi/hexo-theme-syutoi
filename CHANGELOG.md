@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Improve accessibility with a unified header landmark, keyboard-focusable content tables, stronger image/banner and category contrast, and a repeatable core-page accessibility audit.
+
 - Validate optional feed and sitemap plugins, add a sitemap to the example site, correct RSS HTML encoding and feed update timestamps, and suppress subscription links when feed generators are unavailable.
 
 - Add configurable Open Graph and Twitter metadata, per-page SEO overrides, default sharing images and alt text, locale and article taxonomy tags, noindex controls, and typed social links with legacy compatibility.

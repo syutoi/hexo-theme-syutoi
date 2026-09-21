@@ -7,10 +7,10 @@
 <head>{% include '_partials/head/head.njk' %}</head>
 <body class="{{ 'home-page' if is_home() else 'inner-page' }}">
   <a class="skip-link" href="#main">{{ __('desk.skip') }}</a>
-  <div class="site-masthead">
+  <header class="site-masthead">
     {% include '_partials/header.njk' %}
     {% include '_partials/hero.njk' %}
-  </div>
+  </header>
   <div class="site-layout{% if not syutoi.sidebar.enable %} without-sidebar{% endif %}">
     <main id="main" class="site-main" tabindex="-1">{% block content %}{% endblock %}</main>
     {% if syutoi.sidebar.enable %}{% include '_partials/sidebar.njk' %}{% endif %}

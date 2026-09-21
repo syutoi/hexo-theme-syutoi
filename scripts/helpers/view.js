@@ -1,6 +1,7 @@
 'use strict';
 const { enhanceLightbox } = require('../../lib/lightbox.cjs');
 const { enhanceImages } = require('../../lib/images.cjs');
+const { enhanceTables } = require('../../lib/tables.cjs');
 const { enhanceCode } = require('../../lib/code.cjs');
 const { plainText } = require('../../lib/text.cjs');
 const { readingTime } = require('../../lib/reading.cjs');
@@ -62,7 +63,7 @@ hexo.extend.helper.register('syutoi_metadata', function () {
 });
 
 hexo.extend.helper.register('syutoi_content', function (content) {
-  return enhanceCode(enhanceImages(content, value => this.url_for(value)), this.__('desk.code_block'));
+  return enhanceCode(enhanceTables(enhanceImages(content, value => this.url_for(value))), this.__('desk.code_block'));
 });
 
 hexo.extend.helper.register('syutoi_body', function () {

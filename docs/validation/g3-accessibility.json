@@ -1,0 +1,1582 @@
+{
+  "started": "2026-09-21T19:08:10.085Z",
+  "node": "v20.19.2",
+  "base": "http://127.0.0.1:4174",
+  "browser": "Chrome/151.0.7922.108",
+  "axe": "4.13.0",
+  "paths": [
+    "/",
+    "/syutoi-long-read/",
+    "/examples/",
+    "/archives/",
+    "/categories/",
+    "/categories/Syutoi/",
+    "/tags/",
+    "/tags/写作/",
+    "/404.html"
+  ],
+  "textResize": [
+    {
+      "path": "/",
+      "width": 1440,
+      "scale": 2,
+      "passed": true
+    },
+    {
+      "path": "/syutoi-long-read/",
+      "width": 1440,
+      "scale": 2,
+      "passed": true
+    },
+    {
+      "path": "/examples/",
+      "width": 1440,
+      "scale": 2,
+      "passed": true
+    },
+    {
+      "path": "/archives/",
+      "width": 1440,
+      "scale": 2,
+      "passed": true
+    },
+    {
+      "path": "/categories/",
+      "width": 1440,
+      "scale": 2,
+      "passed": true
+    },
+    {
+      "path": "/categories/Syutoi/",
+      "width": 1440,
+      "scale": 2,
+      "passed": true
+    },
+    {
+      "path": "/tags/",
+      "width": 1440,
+      "scale": 2,
+      "passed": true
+    },
+    {
+      "path": "/tags/写作/",
+      "width": 1440,
+      "scale": 2,
+      "passed": true
+    },
+    {
+      "path": "/404.html",
+      "width": 1440,
+      "scale": 2,
+      "passed": true
+    },
+    {
+      "path": "/",
+      "width": 320,
+      "scale": 2,
+      "passed": true
+    },
+    {
+      "path": "/syutoi-long-read/",
+      "width": 320,
+      "scale": 2,
+      "passed": true
+    },
+    {
+      "path": "/examples/",
+      "width": 320,
+      "scale": 2,
+      "passed": true
+    },
+    {
+      "path": "/archives/",
+      "width": 320,
+      "scale": 2,
+      "passed": true
+    },
+    {
+      "path": "/categories/",
+      "width": 320,
+      "scale": 2,
+      "passed": true
+    },
+    {
+      "path": "/categories/Syutoi/",
+      "width": 320,
+      "scale": 2,
+      "passed": true
+    },
+    {
+      "path": "/tags/",
+      "width": 320,
+      "scale": 2,
+      "passed": true
+    },
+    {
+      "path": "/tags/写作/",
+      "width": 320,
+      "scale": 2,
+      "passed": true
+    },
+    {
+      "path": "/404.html",
+      "width": 320,
+      "scale": 2,
+      "passed": true
+    }
+  ],
+  "keyboard": [
+    {
+      "path": "/",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "path": "/syutoi-long-read/",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "path": "/examples/",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "path": "/archives/",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "path": "/categories/",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "path": "/categories/Syutoi/",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "path": "/tags/",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "path": "/tags/写作/",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "path": "/404.html",
+      "width": 1440,
+      "passed": true
+    },
+    {
+      "path": "/",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "path": "/syutoi-long-read/",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "path": "/examples/",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "path": "/archives/",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "path": "/categories/",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "path": "/categories/Syutoi/",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "path": "/tags/",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "path": "/tags/写作/",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "path": "/404.html",
+      "width": 320,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "externalBlocked": [],
+  "completed": true,
+  "noJSTableKeyboard": true,
+  "finished": "2026-09-21T19:09:11.352Z",
+  "rawReport": {
+    "path": "/tmp/syutoi-g3-a11y-final/report.json",
+    "sha256": "60f5cbe1a01e6d7db308f568d9c9d558833b43cec176fc445ad8ceb24d1a032f"
+  },
+  "scans": [
+    {
+      "path": "/",
+      "width": 1440,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 26
+        }
+      ]
+    },
+    {
+      "path": "/syutoi-long-read/",
+      "width": 1440,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 48,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/examples/",
+      "width": 1440,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 43,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/archives/",
+      "width": 1440,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/categories/",
+      "width": 1440,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/categories/Syutoi/",
+      "width": 1440,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 11
+        }
+      ]
+    },
+    {
+      "path": "/tags/",
+      "width": 1440,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/tags/写作/",
+      "width": 1440,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 11
+        }
+      ]
+    },
+    {
+      "path": "/404.html",
+      "width": 1440,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/",
+      "width": 1440,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 26
+        }
+      ]
+    },
+    {
+      "path": "/syutoi-long-read/",
+      "width": 1440,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 48,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/examples/",
+      "width": 1440,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 43,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/archives/",
+      "width": 1440,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/categories/",
+      "width": 1440,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/categories/Syutoi/",
+      "width": 1440,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 11
+        }
+      ]
+    },
+    {
+      "path": "/tags/",
+      "width": 1440,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/tags/写作/",
+      "width": 1440,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 11
+        }
+      ]
+    },
+    {
+      "path": "/404.html",
+      "width": 1440,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/",
+      "width": 768,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 26
+        }
+      ]
+    },
+    {
+      "path": "/syutoi-long-read/",
+      "width": 768,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 49,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 13
+        }
+      ]
+    },
+    {
+      "path": "/examples/",
+      "width": 768,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 43,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/archives/",
+      "width": 768,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/categories/",
+      "width": 768,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/categories/Syutoi/",
+      "width": 768,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 11
+        }
+      ]
+    },
+    {
+      "path": "/tags/",
+      "width": 768,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/tags/写作/",
+      "width": 768,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 11
+        }
+      ]
+    },
+    {
+      "path": "/404.html",
+      "width": 768,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/",
+      "width": 768,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 26
+        }
+      ]
+    },
+    {
+      "path": "/syutoi-long-read/",
+      "width": 768,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 49,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 13
+        }
+      ]
+    },
+    {
+      "path": "/examples/",
+      "width": 768,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 43,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/archives/",
+      "width": 768,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/categories/",
+      "width": 768,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/categories/Syutoi/",
+      "width": 768,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 11
+        }
+      ]
+    },
+    {
+      "path": "/tags/",
+      "width": 768,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/tags/写作/",
+      "width": 768,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 11
+        }
+      ]
+    },
+    {
+      "path": "/404.html",
+      "width": 768,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/",
+      "width": 390,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 19
+        }
+      ]
+    },
+    {
+      "path": "/syutoi-long-read/",
+      "width": 390,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 49,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 12
+        }
+      ]
+    },
+    {
+      "path": "/examples/",
+      "width": 390,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 44,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "path": "/archives/",
+      "width": 390,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "path": "/categories/",
+      "width": 390,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "path": "/categories/Syutoi/",
+      "width": 390,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 4
+        }
+      ]
+    },
+    {
+      "path": "/tags/",
+      "width": 390,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "path": "/tags/写作/",
+      "width": 390,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 4
+        }
+      ]
+    },
+    {
+      "path": "/404.html",
+      "width": 390,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "path": "/",
+      "width": 390,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 19
+        }
+      ]
+    },
+    {
+      "path": "/syutoi-long-read/",
+      "width": 390,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 49,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 12
+        }
+      ]
+    },
+    {
+      "path": "/examples/",
+      "width": 390,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 44,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "path": "/archives/",
+      "width": 390,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "path": "/categories/",
+      "width": 390,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "path": "/categories/Syutoi/",
+      "width": 390,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 4
+        }
+      ]
+    },
+    {
+      "path": "/tags/",
+      "width": 390,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "path": "/tags/写作/",
+      "width": 390,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 4
+        }
+      ]
+    },
+    {
+      "path": "/404.html",
+      "width": 390,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "path": "/",
+      "width": 320,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 19
+        }
+      ]
+    },
+    {
+      "path": "/syutoi-long-read/",
+      "width": 320,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 49,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 18
+        }
+      ]
+    },
+    {
+      "path": "/examples/",
+      "width": 320,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 45,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 15
+        }
+      ]
+    },
+    {
+      "path": "/archives/",
+      "width": 320,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "path": "/categories/",
+      "width": 320,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "path": "/categories/Syutoi/",
+      "width": 320,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 4
+        }
+      ]
+    },
+    {
+      "path": "/tags/",
+      "width": 320,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "path": "/tags/写作/",
+      "width": 320,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 4
+        }
+      ]
+    },
+    {
+      "path": "/404.html",
+      "width": 320,
+      "mode": "light",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "path": "/",
+      "width": 320,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 19
+        }
+      ]
+    },
+    {
+      "path": "/syutoi-long-read/",
+      "width": 320,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 49,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 18
+        }
+      ]
+    },
+    {
+      "path": "/examples/",
+      "width": 320,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 45,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 15
+        }
+      ]
+    },
+    {
+      "path": "/archives/",
+      "width": 320,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "path": "/categories/",
+      "width": 320,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "path": "/categories/Syutoi/",
+      "width": 320,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 4
+        }
+      ]
+    },
+    {
+      "path": "/tags/",
+      "width": 320,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "path": "/tags/写作/",
+      "width": 320,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 4
+        }
+      ]
+    },
+    {
+      "path": "/404.html",
+      "width": 320,
+      "mode": "dark",
+      "javascript": true,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 38,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "path": "/",
+      "width": 1440,
+      "mode": "light",
+      "javascript": false,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 36,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 26
+        }
+      ]
+    },
+    {
+      "path": "/syutoi-long-read/",
+      "width": 1440,
+      "mode": "light",
+      "javascript": false,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 47,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/examples/",
+      "width": 1440,
+      "mode": "light",
+      "javascript": false,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 41,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/archives/",
+      "width": 1440,
+      "mode": "light",
+      "javascript": false,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 36,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/categories/",
+      "width": 1440,
+      "mode": "light",
+      "javascript": false,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 36,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/categories/Syutoi/",
+      "width": 1440,
+      "mode": "light",
+      "javascript": false,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 36,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 11
+        }
+      ]
+    },
+    {
+      "path": "/tags/",
+      "width": 1440,
+      "mode": "light",
+      "javascript": false,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 36,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/tags/写作/",
+      "width": 1440,
+      "mode": "light",
+      "javascript": false,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 36,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 11
+        }
+      ]
+    },
+    {
+      "path": "/404.html",
+      "width": 1440,
+      "mode": "light",
+      "javascript": false,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 36,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "path": "/",
+      "width": 320,
+      "mode": "light",
+      "javascript": false,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 36,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 19
+        }
+      ]
+    },
+    {
+      "path": "/syutoi-long-read/",
+      "width": 320,
+      "mode": "light",
+      "javascript": false,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 48,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 18
+        }
+      ]
+    },
+    {
+      "path": "/examples/",
+      "width": 320,
+      "mode": "light",
+      "javascript": false,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 44,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 15
+        }
+      ]
+    },
+    {
+      "path": "/archives/",
+      "width": 320,
+      "mode": "light",
+      "javascript": false,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 36,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "path": "/categories/",
+      "width": 320,
+      "mode": "light",
+      "javascript": false,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 36,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "path": "/categories/Syutoi/",
+      "width": 320,
+      "mode": "light",
+      "javascript": false,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 36,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 4
+        }
+      ]
+    },
+    {
+      "path": "/tags/",
+      "width": 320,
+      "mode": "light",
+      "javascript": false,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 36,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "path": "/tags/写作/",
+      "width": 320,
+      "mode": "light",
+      "javascript": false,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 36,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 4
+        }
+      ]
+    },
+    {
+      "path": "/404.html",
+      "width": 320,
+      "mode": "light",
+      "javascript": false,
+      "version": "4.13.0",
+      "violations": [],
+      "passes": 36,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 3
+        }
+      ]
+    }
+  ],
+  "manualReview": "See g3.md for contrast calculations, visual review and limitations; incomplete checks are not automatic passes."
+}

@@ -187,3 +187,22 @@ Puppeteer 与 Chrome 使用现有可选浏览器验收环境，不属于主题�
 新增 `toolbox/check-syndication.mjs` 检查示例站三类 feed 的一致性，并把 Sitemap 中每条 URL 映射为生成目录文件；严格 XML 解析使用仅用于开发检查的 saxes。该命令已纳入 `pnpm test`，因此现有 CI 同样执行。未增加浏览器脚本或主题运行时依赖。
 
 配置及边界见 [订阅与站点地图](syndication.md)。
+
+## 核心页面响应式与无障碍验收（G3）
+
+先生成示例站并启动预览。现有 `check-browser.mjs` 覆盖响应式、键盘交互、主题状态、reduced-motion 和真实禁用 JavaScript 的回退；新增 `check-accessibility.mjs` 对首页、文章、Page、归档、分类/标签索引和详情、404 执行 axe 扫描、跳转链接、200% 文字与表格键盘滚动检查：
+
+```bash
+SYUTOI_PUPPETEER_PATH=/absolute/path/to/installed/puppeteer \
+SYUTOI_AXE_PATH=/absolute/path/to/installed/axe-core/axe.min.js \
+SYUTOI_A11Y_OUTPUT=/tmp/syutoi-a11y \
+node toolbox/check-accessibility.mjs
+```
+
+可用 `SYUTOI_CHROME` 指定 Chrome、`SYUTOI_PREVIEW_URL` 指定根目录示例站预览地址。工具依赖需单独准备，不进入主题生产安装；本次验证使用 Puppeteer 5.5.0、axe-core 4.13.0 和 Chrome 151。脚本按示例站固定路由执行，不是任意博客的通用扫描器。
+
+无 JS 扫描先禁用脚本加载页面，确认增强控件隐藏，再仅为 axe 的计时器恢复执行，不重新加载页面或运行主题脚本；另有全程禁用 JS 的真实表格滚动和原有浏览器回归。报告保留 violations 与 incomplete；发现违规非零退出，incomplete 必须人工复核，不应直接当作通过。200% 检查改变根字号，不等同于操作浏览器缩放菜单；320 CSS px 矩阵单独验证重排。
+
+正文普通表格在构建时补 `tabindex="0"`，无 JS 也能用方向键横向滚动；保留作者显式 tabindex，排除高亮代码内部的布局表格。自定义负 tabindex 会取消普通 Tab 访问，需要作者自行负责。
+
+详见 [G3 验证记录](validation/g3.md)。此验收不代表完整 WCAG 合规认证，也不涵盖屏幕阅读器、Safari/Firefox 或真实手机设备。
