@@ -214,6 +214,8 @@ pretty_urls:
   trailing_index: false
 ```
 
+<a id="seo-configuration"></a>
+
 ### SEO 配置与单页覆盖（F3）
 
 博客 `_config.syutoi.yml`：
@@ -372,6 +374,8 @@ search:
 `/search/` 和 `/_syutoi/search/` 为启用时的保留目录，不要放置同名页面或静态资源。Pagefind 原生构建包随主题依赖安装，启用时需要平台二进制；不要省略其 optional dependencies。普通 Hexo generate/server 使用同一套索引生成器，不需要另外执行 Pagefind CLI。修改、删除内容或关闭搜索后，Hexo 更新路由并清理旧索引；部署时也应同步删除旧文件。
 
 查询不会发送给远端搜索服务；无 JS 时可通过搜索页中的归档链接浏览。网络错误会显示重试提示，重新提交即可。实现边界、依赖与生命周期证据见 [搜索决策](decisions/local-search.md) 和 [F1 验收](validation/f1.md)。
+
+<a id="waline-comments"></a>
 
 ## 可选评论（F2）
 

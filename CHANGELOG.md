@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Publish a documentation hub and eight categorized guides from the repository documentation, with development synchronization and verified local links.
+
+- Curate the example site into three dated articles in two categories, move boundary samples to standalone pages, and retain historical migration coverage in isolated test fixtures.
+
 - Introduce a wood-inspired light/dark palette with paper surfaces, walnut accents, moss details, warm code styling and matching browser theme colors while preserving the existing layout.
 
 ## 0.4.0 — 2026-09-22

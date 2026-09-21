@@ -6,12 +6,12 @@ import { Script } from 'node:vm';
 const output = new URL('../example/public/', import.meta.url);
 const pages = [
   'index.html',
-  'hello-world/index.html',
+  'welcome/index.html',
   'friends/index.html',
   'archives/index.html',
   'categories/index.html',
   'tags/index.html',
-  'tags/Foo/index.html',
+  'tags/写作/index.html',
   '404.html',
   'reading/index.html',
   'typography/index.html',
@@ -40,8 +40,8 @@ for (const page of pages) {
   assert.doesNotMatch(html, /Template render error|extends ['"]_partials/, `${page}: unrendered template`);
 }
 
-const post = await readFile(new URL('hello-world/index.html', output), 'utf8');
-assert.match(post, /Welcome to/, 'Post body was not rendered');
+const post = await readFile(new URL('welcome/index.html', output), 'utf8');
+assert.match(post, /书台，是放下一本书/, 'Post body was not rendered');
 new Script(await readFile(new URL('js/syutoi.min.js', output), 'utf8'), { filename: 'syutoi.min.js' });
 const styles = await readFile(new URL('css/syutoi.min.css', output), 'utf8');
 assert.match(styles, /--syutoi-color-bg/, 'Design tokens missing');

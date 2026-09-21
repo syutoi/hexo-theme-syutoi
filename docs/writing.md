@@ -131,7 +131,7 @@ seo:
   image_alt: 与分享图片对应的描述
 ```
 
-正文标题仍使用普通 title。完整 SEO 字段、优先级与 canonical 覆盖见 [配置说明](configuration.md#seo-配置与单页覆盖f3)。普通 Page 也可参与搜索、评论和 Sitemap，但不输出文章日期和阅读时间。
+正文标题仍使用普通 title。完整 SEO 字段、优先级与 canonical 覆盖见 [配置说明](configuration.md#seo-configuration)。普通 Page 也可参与搜索、评论和 Sitemap，但不输出文章日期和阅读时间。
 
 搜索排除不等于订阅排除；hexo-feed 没有这里支持的单篇 feed:false 开关。发布状态、未来日期、feed 限制和 Sitemap 的实际范围见 [订阅与站点地图](syndication.md)。静态公开页面不应依靠这些展示开关保护私密内容。
 

@@ -423,3 +423,17 @@ test('typed social links support the PRD schema, custom labels, maps and legacy 
   assert.match(mapped, />Contact /);
   assert.match(mapped, />legacy /);
 });
+
+
+test('historical migration fixtures retain source attribution and readable fallbacks', async () => {
+  const posts = await Promise.all(['special.md', 'week-2.md'].map(name => readFile(new URL(`./fixtures/legacy/${name}`, import.meta.url), 'utf8')));
+  const [legacy, notes] = await render({}, '/', {
+    config: {permalink: ':title/'}, posts,
+    paths: ['post-0/index.html', 'post-1/index.html']
+  });
+  assert.match(legacy, /历史文档/);
+  assert.match(legacy, /https:\/\/shoka\.lostyu\.me/);
+  assert.match(legacy, /class="media-links"/);
+  assert.doesNotMatch(notes, /:::note|\{\.quiz/);
+  assert.match(notes, /huang/);
+});

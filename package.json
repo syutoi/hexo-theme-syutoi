@@ -14,7 +14,7 @@
     "dev": "node toolbox/dev.mjs",
     "build": "pnpm build:theme && pnpm build:example",
     "clean": "pnpm --dir example clean",
-    "test": "pnpm test:unit && node toolbox/check-example.mjs && node toolbox/check-markdown.mjs && node toolbox/check-syndication.mjs && pnpm check:budget",
+    "test": "pnpm test:unit && node toolbox/check-example.mjs && node toolbox/check-markdown.mjs && node toolbox/check-docs.mjs && node toolbox/check-syndication.mjs && pnpm check:budget",
     "build:theme": "node toolbox/build.mjs",
     "build:example": "pnpm prepare:example && pnpm --dir example build",
     "typecheck": "tsc --noEmit",

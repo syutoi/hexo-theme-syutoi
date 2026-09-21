@@ -10,6 +10,7 @@
 
 需要 Node.js >=20.19.0、pnpm 9.0.4 和 Hexo 8。现有博客安装方式见 [快速开始](docs/getting-started.md)，主题选项放在博客根目录的 `_config.syutoi.yml`。无需开发构建即可使用仓库中已提交的 JS/CSS，但仍需安装主题的构建时依赖。
 
+- [文档中心](docs/index.md)：按阅读顺序了解安装、配置与发布；本地 Demo 入口为 `/docs/`。
 - [配置说明](docs/configuration.md)：主题字段、覆盖规则与分页。
 - [自定义](docs/customization.md)：配置、设计变量、模板与源码构建。
 - [部署](docs/deployment.md)：独立博客、仓库 Demo 与 GitHub Pages。

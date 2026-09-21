@@ -9,7 +9,7 @@ const require = createRequire(import.meta.url);
 const puppeteer = require(process.env.SYUTOI_PUPPETEER_PATH || 'puppeteer');
 const base = process.env.SYUTOI_PREVIEW_URL || 'http://127.0.0.1:4000';
 const output = process.env.SYUTOI_BROWSER_OUTPUT;
-const paths = ['/', '/page/2/', '/archives/', '/archives/page/2/', '/categories/', '/categories/Syutoi/', '/tags/', '/tags/写作/', '/friends/', '/404.html', '/examples/', '/examples/empty/', '/examples/english/', '/syutoi-long-read/', '/syutoi-minimal/', '/syutoi-boundaries/', '/no-title/', '/reading/', '/typography/', '/reading-elements/', '/code/', '/pictures/'];
+const paths = ['/', '/welcome/', '/archives/', '/categories/', '/categories/writing/', '/tags/', '/tags/写作/', '/friends/', '/404.html', '/examples/', '/examples/empty/', '/examples/english/', '/syutoi-long-read/', '/syutoi-minimal/', '/syutoi-boundaries/', '/no-title/', '/reading/', '/typography/', '/reading-elements/', '/code/', '/pictures/'];
 const widths = [1440, 768, 390, 320];
 const errors = [];
 const external = new Set();
@@ -121,8 +121,8 @@ try {
     }
   }
   await visit('/archives/');
-  await Promise.all([page.waitForNavigation({waitUntil:'load'}),page.click('.pagination a[href="/archives/page/2/"]')]);
-  assert(page.url().endsWith('/archives/page/2/'));
+  await Promise.all([page.waitForNavigation({waitUntil:'load'}),page.click('a[href="/syutoi-long-read/"]')]);
+  assert(page.url().endsWith('/syutoi-long-read/'));
   await visit('/syutoi-long-read/');
   await page.click('.mobile-toc summary');
   const contents = await page.$$('[data-toc="mobile"] a');

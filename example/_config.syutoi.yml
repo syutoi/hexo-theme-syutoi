@@ -13,6 +13,8 @@ navigation:
   menu:
     - name: menu.home
       url: /
+    - name: menu.docs
+      url: /docs/
     - name: menu.examples
       url: /examples/
     - name: menu.archives

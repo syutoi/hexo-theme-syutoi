@@ -22,13 +22,6 @@ const text = unescapeHTML(code.replace(/<br\s*\/?>/g, '\n').replace(/<[^>]*>/g, 
 assert.equal(text, 'const greeting = "Hello, 世界";\nconsole.log(greeting);\n', 'Highlighting must preserve code content');
 assert.match(html, /&lt;widget title=/, 'Unknown language code must be escaped');
 assert.doesNotMatch(html, /<widget\b/);
-const legacy = await readFile(new URL('computer-science/note/theme-syutoi-doc/special/index.html', output), 'utf8');
-assert.match(legacy, /历史文档/);
-assert.match(legacy, /https:\/\/shoka\.lostyu\.me/, 'Historical source links must remain');
-assert.match(legacy, /class="media-links"/, 'Media tag fallback must survive renderer migration');
-const notes = await readFile(new URL('computer-science/java/course-1/week-2/index.html', output), 'utf8');
-assert.doesNotMatch(notes, /:::note|\{\.quiz/);
-assert.match(notes, /huang/);
 const elements = await readFile(new URL('reading-elements/index.html', output), 'utf8');
 for (let level = 1; level <= 6; level++) assert.match(elements, new RegExp(`<h${level} id=`));
 assert.match(elements, /<dl>[\s\S]*<dt>Markdown<\/dt>[\s\S]*<dd>/);
@@ -53,4 +46,4 @@ assert.match(pictures, /width="300" height="1600" loading="lazy" decoding="async
 assert.match(pictures, /loading="eager" decoding="sync"/);
 assert.match(pictures, /<source media="\(max-width: 540px\)" srcset="..\/assets\/image-wide.svg">/);
 assert.doesNotMatch(pictures, /<p>\s*<figure>/);
-console.log('Verified Markdown anchors, footnotes, tasks, tables, details, images, code fidelity and legacy content.');
+console.log('Verified Markdown anchors, footnotes, tasks, tables, details, images, code fidelity.');

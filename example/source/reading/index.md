@@ -1,6 +1,6 @@
 ---
 title: Syutoi 写作与迁移示例
-date: 2026-09-18
+date: 2026-09-22 00:00:00
 description: 标准 Markdown、脚注、任务列表和原生 HTML 的写作示例，以及旧主题语法的替代方式。
 ---
 

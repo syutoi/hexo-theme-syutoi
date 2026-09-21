@@ -10,7 +10,7 @@ const axePath = process.env.SYUTOI_AXE_PATH || require.resolve('axe-core/axe.min
 const axe = await readFile(axePath, 'utf8');
 const base = process.env.SYUTOI_PREVIEW_URL || 'http://127.0.0.1:4000';
 const output = process.env.SYUTOI_A11Y_OUTPUT || '/tmp/syutoi-accessibility';
-const paths = ['/', '/syutoi-long-read/', '/examples/', '/archives/', '/categories/', '/categories/Syutoi/', '/tags/', '/tags/写作/', '/404.html'];
+const paths = ['/', '/syutoi-long-read/', '/examples/', '/archives/', '/categories/', '/categories/writing/', '/tags/', '/tags/写作/', '/404.html'];
 const report = {started:new Date().toISOString(), node:process.version, base, browser:'', axe:'', paths, scans:[], textResize:[], keyboard:[], errors:[], externalBlocked:[], completed:false};
 const external = new Set();
 await mkdir(output, {recursive:true});

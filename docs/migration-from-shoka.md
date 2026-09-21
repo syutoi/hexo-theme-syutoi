@@ -43,9 +43,9 @@ appearance:
 | 标题、强调、链接、图片、标准表格、代码围栏 | 继续支持；代码高亮由 Hexo 在构建时生成 |
 | 脚注 `[^id]` | 显式启用 markdown-it-footnote |
 | 任务列表 `- [x]` | 显式启用 markdown-it-task-lists，生成不可编辑复选框 |
-| `:::info` / `:::note info` 等 | 不默认解析；普通说明页和 Java 笔记已改为引用，特殊功能历史页保留原语法供对照 |
+| `:::info` / `:::note info` 等 | 不默认解析；普通说明页和 Java 笔记已改为引用，特殊功能测试夹具保留原语法供对照 |
 | `;;;id 标题` / `+++` | 不默认解析；改为分节标题或 HTML details / summary |
-| `{.quiz}` / `{.correct}` / `{.gap}` | 移除交互依赖；Java 笔记改为普通题目与答案，特殊功能历史页保留语法参考 |
+| `{.quiz}` / `{.correct}` / `{.gap}` | 移除交互依赖；Java 笔记改为普通题目与答案，特殊功能测试夹具保留语法参考 |
 | 颜色、label、gallery 等 `{.class}` | 不默认启用 attrs；改为普通 Markdown 或明确的 HTML，gallery 图片仍正常显示，属性指令仅为原文 |
 | `!!spoiler!!`、`++ins++`、`==mark==`、emoji 别名 | 不默认启用；使用 details、u/ins、mark 和 Unicode emoji |
 | `{文字^注音}`、上下标 | 使用 ruby/rt、sub、sup |
@@ -56,7 +56,7 @@ appearance:
 | HTML/CSS/JS minify 配置 | 旧捆绑压缩器已移除，JS/CSS 由主题构建压缩，HTML 保留可读输出 |
 | 标题锚点 | 由新 renderer 生成，同名标题使用后缀；文章 URL 保留，旧小节链接需检查 |
 
-盘点范围：`elements.md`、`markdown.md`、`code-highlight.md`、`tag-plugins.md`、两篇 Java 笔记，以及 `theme-syutoi-doc` 下的历史说明。特殊功能历史页有大量私有语法，当前明确作为原文参考保留；不声称这些展示已完整兼容。
+盘点范围：`elements.md`、`markdown.md`、`code-highlight.md`、`tag-plugins.md`、两篇 Java 笔记，以及 `theme-syutoi-doc` 下的历史说明。特殊功能历史页有大量私有语法，现作为 `test/fixtures/legacy/special.md` 原文参考保留，不再公开展示；不声称这些展示已完整兼容。
 
 运行示例 `/reading/` 展示当前受支持的脚注、列表、表格、高亮代码、未知语言回退、原生折叠与注音，可作为新文章的写作起点。
 
@@ -226,3 +226,5 @@ rg -n '^[[:space:]]*[A-Za-z_][A-Za-z_0-9]*:' _config*.yml
 8. clean/generate，查看桌面/手机和无 JS 页面，再按照 [部署指南](deployment.md) 发布。
 
 需要回退时恢复博客配置/依赖和原主题引用，重新安装相应锁文件并 clean/generate；不要只恢复旧 CSS。阅读体验 E 阶段和博客能力 F 阶段已经完成，Beta 验收仍按 [TODO](TODO.md) 推进。
+
+2026-09-22：示例站移除了旧主题文档和 Java 课程文章；特殊功能与第二周笔记保留于 `test/fixtures/legacy/`，由隔离站点测试验证历史来源链接、媒体回退和普通答案内容。

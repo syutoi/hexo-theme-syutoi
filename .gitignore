@@ -7,3 +7,7 @@ yarn.lock
 example/public/
 example/db.json
 example/themes/
+
+# Derived from docs/ by prepare:example; edit the originals instead.
+example/source/_posts/theme-docs/
+example/source/docs/
