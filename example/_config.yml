@@ -143,3 +143,11 @@ feed:
         enable: true
         template: "themes/syutoi/layout/_alternate/json.ejs"
         output: "feed.json"
+
+# Optional site plugin: hexo-generator-sitemap. Exclude individual content
+# with sitemap: false in front matter; seo.noindex is a separate HTML setting.
+sitemap:
+  path: sitemap.xml
+  rel: false
+  tags: true
+  categories: true

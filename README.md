@@ -16,7 +16,7 @@
 - [示例说明](docs/examples.md)：阅读组件、长文和边界场景。
 - [MVP 验收](docs/validation/mvp.md)：实际证据与尚未验证的范围。
 
-默认不加载第三方 JS；搜索、评论、音乐、统计、PJAX 等功能尚未集成。作者自行嵌入的外部内容可能产生网络请求。RSS 是可选站点插件，不是主题运行的必需依赖。
+默认不加载第三方 JS；Pagefind 搜索与 Waline 评论默认关闭。音乐、统计、PJAX 尚未集成。作者自行嵌入的外部内容可能产生网络请求。RSS/Atom/JSON Feed 与 Sitemap 通过可选站点插件生成，不是主题运行的必需依赖；配置见 [订阅与站点地图](docs/syndication.md)。
 
 ## 本地开发与预览
 

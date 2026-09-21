@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Validate optional feed and sitemap plugins, add a sitemap to the example site, correct RSS HTML encoding and feed update timestamps, and suppress subscription links when feed generators are unavailable.
+
 - Add configurable Open Graph and Twitter metadata, per-page SEO overrides, default sharing images and alt text, locale and article taxonomy tags, noindex controls, and typed social links with legacy compatibility.
 
 ## 0.3.0 — 2026-09-22

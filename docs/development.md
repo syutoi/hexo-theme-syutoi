@@ -179,3 +179,11 @@ Puppeteer 与 Chrome 使用现有可选浏览器验收环境，不属于主题�
 评论资源预算独立统计：入口 JS <4 KB gzip、插槽 CSS <2 KB、Waline JS <100 KB、Waline CSS <10 KB。即使功能关闭，生成目录仍含可选静态文件，但 HTML 不引用、浏览器不下载这些资源。
 
 升级 Waline 或锁文件后，运行 `node toolbox/comments-licenses.mjs` 重新生成打包依赖许可声明。`pnpm test` 会校验版本与许可清单一致。当前 API npm 包未附许可证文件，声明 MIT 且作者与客户端一致，清单复用该作者的客户端 MIT 文本。
+
+## 订阅与 Sitemap 回归（F4）
+
+`pnpm test` 包含 `test/syndication.test.mjs` 的真实 Hexo + hexo-feed + hexo-generator-sitemap 集成：根目录/子目录、自定义输出、XML/JSON 内容与时间、排除项、关闭/缺少插件以及空站点。相对 feed 模板路径由 CLI 的博客工作目录解析；临时 API 夹具使用绝对模板路径，避免依赖测试进程 cwd。
+
+新增 `toolbox/check-syndication.mjs` 检查示例站三类 feed 的一致性，并把 Sitemap 中每条 URL 映射为生成目录文件；严格 XML 解析使用仅用于开发检查的 saxes。该命令已纳入 `pnpm test`，因此现有 CI 同样执行。未增加浏览器脚本或主题运行时依赖。
+
+配置及边界见 [订阅与站点地图](syndication.md)。

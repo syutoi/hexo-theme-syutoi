@@ -73,7 +73,7 @@ PRD 第 52 节的 v0.1 MVP 验收标准优先于后续版本功能清单。
 - [x] F1：定义搜索 provider 接口，验证 Pagefind 与 Hexo 生命周期的集成，再实现可选本地搜索。
 - [x] F2：定义 Comments Slot，以 Waline 为首个可选 adapter；不启用时无请求。
 - [x] F3：完善 Open Graph/Twitter Card、结构化社交链接和 SEO 配置。
-- [ ] F4：通过 Hexo 插件验证 RSS、Sitemap，避免在主题重复实现。
+- [x] F4：通过 Hexo 插件验证 RSS、Sitemap，避免在主题重复实现。
 
 ## G. Beta 与稳定版（0.9–1.0，PRD §43–51）
 
@@ -444,3 +444,18 @@ C 阶段完成。下一批：D2，完善 Markdown 阅读元素的样式与边界
 详情：[F3 验收记录](validation/f3.md)、[SEO 与社交链接配置](configuration.md#seo-配置与单页覆盖f3)。
 
 下一批：F4，通过 Hexo 插件验证 RSS、Sitemap，避免在主题重复实现。
+
+
+## F4 完成记录（2026-09-22）
+
+- 保留已使用的 hexo-feed 1.1.2 和 EJS 模板，在示例站安装 hexo-generator-sitemap 3.0.1；主题不新增 feed/sitemap 生成器。
+- 修正 RSS 正文二次转义和 RSS 分类结构，补齐订阅自引用地址；Atom/JSON Feed 使用真实修改时间，RSS/Atom 汇总最新时间。保留现有三个订阅输出路径。
+- 订阅入口同时检查站点开关与插件生成器，缺少插件时不生成无效链接。
+- 真实插件集成覆盖根目录/子目录、自定义输出、草稿/未发布/未来文章、sitemap 排除、空站点、关闭 feed 与缺少插件。
+- 严格 XML 解析与跨 feed 内容检查纳入 `pnpm test`；Sitemap 中的 URL 必须对应实际生成文件。
+- lint、clean、typecheck、build、65 项测试、产物/Markdown/预算检查通过。示例三类 feed 各 20 篇，Sitemap 54 个有效地址，所有客户端产物不变。
+- 配置与边界见 [订阅与站点地图](syndication.md)；明确 seo.noindex、sitemap:false 与 feed 包含范围互不等同，保留 hexo-feed 尚未声明 Hexo 8 peer 支持的说明。
+
+详情：[F4 验收记录](validation/f4.md)。F 阶段任务完成。
+
+下一批：G1，补齐 Beta 发布所需的上手、配置、写作、自定义、部署与迁移文档。

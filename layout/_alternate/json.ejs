@@ -1,15 +1,16 @@
 <%- JSON.stringify({
     version: 'https://jsonfeed.org/version/1',
     title: config.title,
-    subtitle: config.subtitle,
     icon: full_url_for('/images/favicon.png'),
     description: config.description,
     home_page_url: config.url,
+    feed_url: full_url_for(config.feed.jsonFeed.output || 'feed.json'),
     items: posts.map(post => ({
         id: post.permalink,
         url: post.permalink,
-        title: post.title,
+        title: post.title || post.slug,
         date_published: moment(post.date).toISOString(),
+        date_modified: moment(post.updated || post.date).toISOString(),
         content_html: post.content || '',
         tags: [...(post.categories ? post.categories.toArray() : []).map(({ name }) => name), ...(post.tags ? post.tags.toArray() : []).map(({ name }) => name)]
     }))

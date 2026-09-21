@@ -86,6 +86,6 @@ pnpm exec hexo server --ip 127.0.0.1
 
 ## 可选订阅与部署检查
 
-RSS/Atom/JSON Feed 需要另装 `hexo-feed`；使用主题的 EJS feed 模板时还需 `hexo-renderer-ejs`。对应配置可从 [示例站配置](../example/_config.yml) 的 `feed` 段选取，模板路径要求主题目录名为 `syutoi`。不启用 feed 时无需这些插件，页脚不会生成有效的订阅入口。Sitemap 交由站点插件，当前主题不生成。
+RSS/Atom/JSON Feed 使用可选站点插件 `hexo-feed` 与 `hexo-renderer-ejs`，Sitemap 使用 `hexo-generator-sitemap`。安装命令、完整配置、开关与排除规则见 [订阅与站点地图](syndication.md)。未安装插件时主题不会输出订阅入口。
 
 上线前填入实际的 url、root、作者与描述；子目录站点例如 `url: https://example.com/blog` 与 `root: /blog/`。部署生成的 `public/`，由宿主配置 404、HTTPS、文本 gzip/Brotli 和缓存策略；主题不会配置服务器。发布后检查页面和静态资源 URL，并用实际网络复测性能。完整公开发布/托管平台指南属于后续 G 阶段。

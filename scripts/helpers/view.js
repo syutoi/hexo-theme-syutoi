@@ -49,7 +49,9 @@ hexo.extend.helper.register('syutoi_reading_time', function (post) {
 });
 hexo.extend.helper.register('syutoi_feed', function (type) {
   const feed = this.config.feed?.[type];
-  return feed?.enable ? this.url_for(feed.output || { rss: 'rss.xml', atom: 'atom.xml', jsonFeed: 'feed.json' }[type]) : '';
+  if (!feed?.enable || !hexo.extend.generator.get(type)) return '';
+  const path = safeUrl(feed.output || { rss: 'rss.xml', atom: 'atom.xml', jsonFeed: 'feed.json' }[type], true);
+  return path ? this.url_for(path) : '';
 });
 
 hexo.extend.helper.register('syutoi_year', () => new Date().getFullYear());

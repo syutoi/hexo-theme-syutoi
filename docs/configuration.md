@@ -74,9 +74,9 @@ social:
 | `sidebar.toc` | `true` | 在文章和独立 Page 显示桌面固定/手机折叠目录；JS 增强滚动高亮，单页 toc: false 可关闭 |
 | `footer.since` | 空值 | 起始年份整数；早于当前年份时显示年份区间，否则只显示当前年 |
 | `footer.powered` | `true` | 显示 Hexo / Syutoi 标识 |
-| `footer.rss` | `true` | 显示页脚 RSS 链接；还需站点 feed.rss.enable 为 true |
+| `footer.rss` | `true` | 显示页脚 RSS 链接；还需站点 feed.rss.enable 为 true 且插件已注册 RSS 生成器 |
 
-`footer.rss` 只控制页脚；作者侧栏的 RSS 链接跟随站点 feed 开关。关闭整个侧栏也会隐藏其中的社交链接。文章封面仍由文章 Front Matter 的 `cover` 决定，不使用页头封面作为随机回退。
+`footer.rss` 只控制页脚；作者侧栏的 RSS 链接跟随站点 feed 开关与插件注册状态。关闭整个侧栏也会隐藏其中的社交链接。文章封面仍由文章 Front Matter 的 `cover` 决定，不使用页头封面作为随机回退。
 
 导航 `name` 以 `menu.` 开头时查找语言文件，如 `menu.home`；找不到翻译时显示后缀。其他名称按字面显示。社交名称始终按字面显示。标签文本默认 HTML 转义。
 
@@ -197,7 +197,7 @@ archive_generator:
 - canonical 和 og:url 使用当前生成路径，经 Hexo `full_url_for` 转为绝对 URL，遵循博客 `url` 和 `pretty_urls`。分页有自己的 URL，不统一指回首页；文章 `link` 是阅读原文入口，不改变 canonical。
 - 分享图片依次取单页 `seo.image`、文章/Page 的 `cover`、全局 `seo.default_image`；首页及无正文列表最后回退到固定页头 `appearance.cover`。不抓取正文图片或使用头像。图片转为绝对 HTTP(S) 地址；无有效图片使用 summary 卡片，有图片使用 summary_large_image。替代文字与选中的图片对应，分别取 `seo.image_alt`、`cover_alt`、`seo.default_image_alt`，缺失时不编造描述。
 - 文章作者优先使用 Front Matter `author`，其次为博客 `author`；发布时间与更新时间输出为 UTC ISO 时间。Page 和列表不输出文章时间或作者标签。
-- 404 和搜索页面固定输出 `noindex, follow`；站点或单页也可主动设置 noindex。RSS/Atom/JSON Feed 仍由插件生成，主题保留发现链接；Sitemap 留给 F4，当前不生成 JSON-LD。
+- 404 和搜索页面固定输出 `noindex, follow`；站点或单页也可主动设置 noindex。RSS/Atom/JSON Feed 仍由插件生成，主题保留发现链接；Sitemap 通过可选站点插件生成，配置见 [订阅与站点地图](syndication.md)；当前不生成 JSON-LD。
 
 上线前必须在博客 `_config.yml` 填写真实的 `title`、`description`、`author` 和 `url`；部署在子目录时保持 url 的路径与 root 一致，例如 `url: https://example.com/blog`、`root: /blog/`。本仓库示例站使用 `https://hexo.syutoi.com`，供公开 Demo；你自己的博客应换成自己的地址。主题元信息不会从 package.json 作者或示例站 branding 读取站点身份。
 
