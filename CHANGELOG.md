@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-- Ship a right-sized default logo while retaining the original image, and record repeatable Lighthouse and scripted INP measurements with the remaining mobile homepage LCP gap.
+- Ship a right-sized default logo while retaining the original image, reduce the example cover transfer cost, and record repeatable Lighthouse and scripted INP measurements, including the mobile homepage LCP follow-up.
 
 - Improve accessibility with a unified header landmark, keyboard-focusable content tables, stronger image/banner and category contrast, and a repeatable core-page accessibility audit.
 
