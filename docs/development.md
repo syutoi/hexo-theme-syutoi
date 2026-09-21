@@ -122,7 +122,7 @@ CI 在锁定安装后依次执行 lint、clean、typecheck、build、test 和生
 
 ## 版本与提交检查
 
-当前版本为 `0.2.0`，对应 MVP 后的阅读体验增强；`0.1.0` 为首个 MVP。此前 `0.2.5` 沿用自上游，不表示本项目已完成 PRD 的 0.2 阶段。版本与破坏性变更记录在 [CHANGELOG](../CHANGELOG.md)。`package.json` 版本也用于 JS/CSS URL 的缓存参数，修改后需重新生成示例站。
+当前版本为 `0.3.0`，对应可选本地搜索与评论插槽；`0.2.0` 为阅读体验增强，`0.1.0` 为首个 MVP。此前 `0.2.5` 沿用自上游，不表示本项目已完成 PRD 的 0.2 阶段。版本与破坏性变更记录在 [CHANGELOG](../CHANGELOG.md)。`package.json` 版本也用于 JS/CSS URL 的缓存参数，修改后需重新生成示例站。
 
 提交前停止预览监听，依次运行 `pnpm lint`、`pnpm clean`、`pnpm typecheck`、`pnpm build`、`pnpm test`，检查 `git diff --check` 及生成资源是否同步。然后恢复 `pnpm dev`。修改文档或包版本不需要重新运行未受影响的 Lighthouse 矩阵。
 
