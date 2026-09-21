@@ -1,6 +1,6 @@
 # Only override theme defaults needed by this example site.
 branding:
-  name: Yume Syutoi
+  name: Lumi's 书台
   avatar: /images/avatar.png
   logo: /images/logo.webp
   favicon: /images/favicon.png
