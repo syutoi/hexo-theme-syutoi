@@ -6,21 +6,32 @@
 <title>{{ meta.documentTitle }}</title>
 {% if meta.description %}<meta name="description" content="{{ meta.description }}">{% endif %}
 {% if meta.canonical %}<link rel="canonical" href="{{ meta.canonical }}">{% endif %}
-{% if meta.notFound %}<meta name="robots" content="noindex, follow">{% endif %}
+{% if meta.noindex %}<meta name="robots" content="noindex, follow">{% endif %}
 {% if syutoi.branding.favicon %}<link rel="icon" href="{{ syutoi_url(syutoi.branding.favicon, true) }}">{% endif %}
+{% if meta.openGraph %}
 <meta property="og:title" content="{{ meta.title }}">
 {% if meta.description %}<meta property="og:description" content="{{ meta.description }}">{% endif %}
 <meta property="og:type" content="{{ meta.type }}">
 {% if meta.canonical %}<meta property="og:url" content="{{ meta.canonical }}">{% endif %}
 <meta property="og:site_name" content="{{ meta.siteTitle }}">
 {% if meta.image %}<meta property="og:image" content="{{ meta.image }}">{% endif %}
-{% if meta.author %}<meta name="author" content="{{ meta.author }}">{% endif %}
+{% if meta.image and meta.imageAlt %}<meta property="og:image:alt" content="{{ meta.imageAlt }}">{% endif %}
+{% if meta.locale %}<meta property="og:locale" content="{{ meta.locale }}">{% endif %}
+{% if meta.section %}<meta property="article:section" content="{{ meta.section }}">{% endif %}
+{% for tag in meta.tags %}<meta property="article:tag" content="{{ tag }}">{% endfor %}
 {% if meta.published %}<meta property="article:published_time" content="{{ meta.published }}">{% endif %}
 {% if meta.modified %}<meta property="article:modified_time" content="{{ meta.modified }}">{% endif %}
+{% endif %}
+{% if meta.author %}<meta name="author" content="{{ meta.author }}">{% endif %}
+{% if meta.twitterCard %}
 <meta name="twitter:card" content="{{ 'summary_large_image' if meta.image else 'summary' }}">
 <meta name="twitter:title" content="{{ meta.title }}">
 {% if meta.description %}<meta name="twitter:description" content="{{ meta.description }}">{% endif %}
 {% if meta.image %}<meta name="twitter:image" content="{{ meta.image }}">{% endif %}
+{% if meta.image and meta.imageAlt %}<meta name="twitter:image:alt" content="{{ meta.imageAlt }}">{% endif %}
+{% if meta.twitterSite %}<meta name="twitter:site" content="{{ meta.twitterSite }}">{% endif %}
+{% if meta.twitterCreator %}<meta name="twitter:creator" content="{{ meta.twitterCreator }}">{% endif %}
+{% endif %}
 {% if syutoi_feed('rss') %}<link rel="alternate" type="application/rss+xml" title="RSS" href="{{ syutoi_feed('rss') }}">{% endif %}
 {% if syutoi_feed('atom') %}<link rel="alternate" type="application/atom+xml" title="Atom" href="{{ syutoi_feed('atom') }}">{% endif %}
 {% if syutoi_feed('jsonFeed') %}<link rel="alternate" type="application/feed+json" title="JSON Feed" href="{{ syutoi_feed('jsonFeed') }}">{% endif %}

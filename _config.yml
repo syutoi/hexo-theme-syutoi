@@ -84,16 +84,26 @@ navigation:
 #       url: /friends/
 # Copy the whole menu when overriding it; lists are not appended.
 
+# Build-time metadata; no social SDK is loaded.
+seo:
+  open_graph: true
+  twitter_card: true
+  default_image: ''
+  default_image_alt: ''
+  twitter_site: '' # @account or account
+  noindex: false # true asks crawlers not to index the whole site
+
 # Social links
 # Displayed as labelled links in the author sidebar.
-# Names are plain text, URLs support https:// and mailto:.
+# Use type for a built-in label, or name for custom plain text.
+# URLs support https:// and mailto:.
 # No remote icon font, SDK, tracking widget or automatic embed is loaded.
 # Empty by default: replace examples with your own accounts.
 social: []
 # social:
-#   - name: GitHub
+#   - type: github
 #     url: https://github.com/yourname
-#   - name: Email
+#   - type: email
 #     url: mailto:hello@example.com
 
 # Sidebar

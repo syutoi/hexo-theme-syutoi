@@ -354,3 +354,72 @@ test('lightbox opt-in isolates assets to eligible post/page bodies and preserves
   }
   assert.match(page, /data-close="关闭图片查看器"/);
 });
+
+test('SEO overrides render escaped sharing metadata, locale and article taxonomy without changing visible titles', async () => {
+  const [article, page] = await render({seo:{default_image:'/images/default.png',default_image_alt:'Site picture',twitter_site:'syutoi'}}, '/blog/', {
+    config:{language:'zh-TW',permalink:':title/'},
+    posts:[post('Visible title', 'cover: /images/cover.jpg\ncategories: [Writing]\ntags: [Hexo, "A & B"]\nseo:\n  title: "Share <title>"\n  description: "<b>Share &amp; read</b>"\n  canonical: https://original.example/story/?edition=1#part\n  image: /images/share.png\n  image_alt: "Paper & ink"\n  twitter_creator: "@guest"\n  noindex: true')],
+    pages:{about:'---\ntitle: About\nlang: en-GB\n---\nHello'},
+    paths:['post-0/index.html','about/index.html']
+  });
+  const head = article.match(/<head>[\s\S]*?<\/head>/)[0];
+  assert.match(article, /<h1>Visible title<\/h1>/);
+  assert.match(head, /<title>Share &lt;title&gt; · Fixture<\/title>/);
+  assert.match(head, /name="description" content="Share &amp; read"/);
+  assert.match(head, /rel="canonical" href="https:\/\/original.example\/story\/\?edition=1"/);
+  assert.match(head, /og:url" content="https:\/\/original.example\/story\/\?edition=1"/);
+  assert.match(head, /og:image" content="https:\/\/example.com\/blog\/images\/share.png"/);
+  assert.match(head, /og:image:alt" content="Paper &amp; ink"/);
+  assert.match(head, /twitter:image:alt" content="Paper &amp; ink"/);
+  assert.match(head, /twitter:site" content="@syutoi"/);
+  assert.match(head, /twitter:creator" content="@guest"/);
+  assert.match(head, /og:locale" content="zh_TW"/);
+  assert.match(head, /article:section" content="Writing"/);
+  assert.match(head, /article:tag" content="A &amp; B"/);
+  assert.match(head, /robots" content="noindex, follow"/);
+  assert.match(page, /og:locale" content="en_GB"/);
+  assert.match(page, /og:image" content="https:\/\/example.com\/blog\/images\/default.png"/);
+  assert.match(page, /og:image:alt" content="Site picture"/);
+  assert.doesNotMatch(page, /article:section|article:tag|twitter:creator|robots"/);
+});
+
+test('sharing switches, explicit image opt-out and invalid URLs preserve canonical and descriptions', async () => {
+  const [article, search] = await render({seo:{open_graph:false,twitter_card:false,noindex:true}}, '/', {
+    config:{permalink:':title/'},
+    posts:[post('Switches','seo:\n  noindex: false\n  canonical: javascript:alert(1)')],
+    pages:{search:'---\ntitle: Search\ntype: search\n---\nSearch fallback'},
+    paths:['post-0/index.html','search/index.html']
+  });
+  const head = article.match(/<head>[\s\S]*?<\/head>/)[0];
+  assert.doesNotMatch(head, /property="og:|name="twitter:|property="article:|javascript:/);
+  assert.match(head, /rel="canonical" href="https:\/\/example.com\/post-0\/"/);
+  assert.match(head, /name="description"/);
+  assert.match(head, /name="author" content="Writer"/);
+  assert.match(head, /robots" content="noindex, follow"/);
+  assert.match(search, /robots" content="noindex, follow"/);
+  const pages = await render({seo:{default_image:'https://images.example/share.png',default_image_alt:'Fallback'}}, '/blog/', {
+    config:{permalink:':title/'},
+    posts:[post('No image','cover: /images/cover.jpg\nseo:\n  image: false'),post('Unsafe','seo:\n  canonical: https://user:password@example.com/private\n  image: javascript:alert(1)\n  image_alt: Wrong image\n  twitter_creator: "bad account"')],
+    paths:['post-0/index.html','post-1/index.html']
+  });
+  const heads = pages.map(html => html.match(/<head>[\s\S]*?<\/head>/)[0]);
+  assert.doesNotMatch(heads[0], /og:image|twitter:image/);
+  assert.match(heads[0], /twitter:card" content="summary"/);
+  assert.match(heads[1], /og:image" content="https:\/\/images.example\/share.png"/);
+  assert.match(heads[1], /og:image:alt" content="Fallback"/);
+  assert.doesNotMatch(heads[1], /javascript:|password|twitter:creator|Wrong image/);
+});
+
+test('typed social links support the PRD schema, custom labels, maps and legacy entries', async () => {
+  const html = await render({social:[{type:'github',url:'https://github.com/example'},{type:'email',url:'mailto:hello@example.com'},{type:'custom',name:'<My link>',url:'/about/'},{type:'unknown',url:'https://example.com'},{type:'x',url:'javascript:alert(1)'}]}, '/blog/');
+  const nav = html.match(/<nav class="social-links"[\s\S]*?<\/nav>/)[0];
+  assert.match(nav, />GitHub /);
+  assert.match(nav, />Email /);
+  assert.match(nav, /href="\/blog\/about\/">&lt;My link&gt;/);
+  assert.equal((nav.match(/<a /g)||[]).length,3);
+  assert.doesNotMatch(nav, /javascript:|unknown/);
+  const mapped = await render({social:{github:{url:'https://github.com/example'},email:{name:'Contact',url:'mailto:hello@example.com'},legacy:'https://example.com || old-icon'}});
+  assert.match(mapped, />GitHub /);
+  assert.match(mapped, />Contact /);
+  assert.match(mapped, />legacy /);
+});

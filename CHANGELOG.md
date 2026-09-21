@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add configurable Open Graph and Twitter metadata, per-page SEO overrides, default sharing images and alt text, locale and article taxonomy tags, noindex controls, and typed social links with legacy compatibility.
+
 ## 0.3.0 — 2026-09-22
 
 Optional search and comments after the 0.2.0 reading experience release. Both remain disabled by default.

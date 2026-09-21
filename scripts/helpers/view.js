@@ -6,6 +6,7 @@ const { plainText } = require('../../lib/text.cjs');
 const { readingTime } = require('../../lib/reading.cjs');
 const { safeUrl, navigationItems } = require('../../lib/view.cjs');
 const { normalizeConfig } = require('../../lib/config.cjs');
+const { metadata } = require('../../lib/seo.cjs');
 
 hexo.extend.helper.register('syutoi_settings', function () {
   return normalizeConfig(this.theme, hexo.config.theme_config);
@@ -55,36 +56,7 @@ hexo.extend.helper.register('syutoi_year', () => new Date().getFullYear());
 
 
 hexo.extend.helper.register('syutoi_metadata', function () {
-  const { page, config } = this;
-  const text = value => typeof value === 'string' ? value.replace(/\s+/g, ' ').trim() : '';
-  const title = text(this.syutoi_title());
-  const pagedTitle = page.current > 1 ? `${title} · ${this.__('title.page_number', page.current)}` : title;
-  const siteTitle = text(config.title);
-  const description = [page.description, page.excerpt, page.content, config.description].map(value => plainText(value)).find(Boolean) || '';
-  const absolute = value => {
-    const safe = safeUrl(value, true);
-    if (!safe) return '';
-    try {
-      const url = new URL(this.full_url_for(safe), config.url);
-      return ['http:', 'https:'].includes(url.protocol) ? url.href : '';
-    } catch { return ''; }
-  };
-  const isArticle = this.is_post();
-  const cover = page.cover || (!isArticle && !page.content ? this.syutoi_settings().appearance.cover : '');
-  const timestamp = value => value && typeof value.toISOString === 'function' ? value.toISOString() : '';
-  return {
-    title: pagedTitle,
-    documentTitle: siteTitle && title !== siteTitle ? `${pagedTitle} · ${siteTitle}` : pagedTitle,
-    description,
-    canonical: absolute(page.path || '/'),
-    siteTitle,
-    image: absolute(cover),
-    author: isArticle ? text(page.author || config.author) : '',
-    published: isArticle ? timestamp(page.date) : '',
-    modified: isArticle ? timestamp(page.updated) : '',
-    type: isArticle ? 'article' : 'website',
-    notFound: page.type === '404'
-  };
+  return metadata(this);
 });
 
 hexo.extend.helper.register('syutoi_content', function (content) {

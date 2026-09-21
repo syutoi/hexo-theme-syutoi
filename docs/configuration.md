@@ -190,14 +190,14 @@ archive_generator:
 
 ## 页面与分享元信息
 
-主题生成 title、description、canonical、Open Graph 和基本 Twitter Card，不加载第三方脚本：
+主题生成 title、description、canonical、Open Graph 和 Twitter Card，不加载第三方脚本：
 
 - 标题由当前页面标题和博客 `title` 组成，首页不重复站点名；列表第 2 页起加入本地化页码。
-- 描述依次取页面 `description`、more 摘要、正文、博客 `description`，跳过空值。移除 HTML、script/style 内容，转换常用 HTML 实体，最多保留 160 个 Unicode 码点；没有描述时省略对应标签。列表摘要的显示开关不影响 SEO 描述。
+- 描述依次取单页 `seo.description`、页面 `description`、more 摘要、正文、博客 `description`，跳过空值。移除 HTML、script/style 内容，转换常用 HTML 实体，最多保留 160 个 Unicode 码点；没有描述时省略对应标签。列表摘要的显示开关不影响 SEO 描述。
 - canonical 和 og:url 使用当前生成路径，经 Hexo `full_url_for` 转为绝对 URL，遵循博客 `url` 和 `pretty_urls`。分页有自己的 URL，不统一指回首页；文章 `link` 是阅读原文入口，不改变 canonical。
-- 文章或 Page 的 `cover` 可用作分享图片；首页及无正文的列表页可使用固定页头 `appearance.cover`。不抓取正文图片或使用作者头像作为回退。图片转为绝对 HTTP(S) 地址，无有效图片时使用普通 summary 卡片。
+- 分享图片依次取单页 `seo.image`、文章/Page 的 `cover`、全局 `seo.default_image`；首页及无正文列表最后回退到固定页头 `appearance.cover`。不抓取正文图片或使用头像。图片转为绝对 HTTP(S) 地址；无有效图片使用 summary 卡片，有图片使用 summary_large_image。替代文字与选中的图片对应，分别取 `seo.image_alt`、`cover_alt`、`seo.default_image_alt`，缺失时不编造描述。
 - 文章作者优先使用 Front Matter `author`，其次为博客 `author`；发布时间与更新时间输出为 UTC ISO 时间。Page 和列表不输出文章时间或作者标签。
-- 404 页面输出 `noindex, follow`。RSS/Atom/JSON Feed 仍由插件生成，主题保留发现链接；本批未集成 sitemap 或结构化数据。
+- 404 和搜索页面固定输出 `noindex, follow`；站点或单页也可主动设置 noindex。RSS/Atom/JSON Feed 仍由插件生成，主题保留发现链接；Sitemap 留给 F4，当前不生成 JSON-LD。
 
 上线前必须在博客 `_config.yml` 填写真实的 `title`、`description`、`author` 和 `url`；部署在子目录时保持 url 的路径与 root 一致，例如 `url: https://example.com/blog`、`root: /blog/`。本仓库示例站使用 `https://hexo.syutoi.com`，供公开 Demo；你自己的博客应换成自己的地址。主题元信息不会从 package.json 作者或示例站 branding 读取站点身份。
 
@@ -207,6 +207,65 @@ archive_generator:
 pretty_urls:
   trailing_index: false
 ```
+
+### SEO 配置与单页覆盖（F3）
+
+博客 `_config.syutoi.yml`：
+
+```yaml
+seo:
+  open_graph: true
+  twitter_card: true
+  default_image: /images/share.jpg
+  default_image_alt: 山间的书桌
+  twitter_site: '@your_account'
+  noindex: false
+```
+
+`open_graph` 和 `twitter_card` 可分别关闭对应标签组；不影响 title、description、canonical 或普通 author 标签。图片无需远程 SDK，主题不会下载或探测远程图片尺寸；请提供可公开访问的图片。`twitter_site` 仅接受账号名（可带一个 `@`），不是个人主页 URL；无效值省略。
+
+文章或 Page 的 Front Matter 可以单独覆盖：
+
+```yaml
+seo:
+  title: 用于浏览器标题与分享的标题
+  description: 用于搜索结果与分享的简介。
+  canonical: https://example.com/original/
+  image: /images/article-share.jpg
+  image_alt: 图片内容的简短描述
+  noindex: true
+  twitter_creator: '@article_author'
+```
+
+- `seo.title` 覆盖浏览器及分享标题，正文标题与列表标题保持 Front Matter `title`。`seo.description` 优先于普通 `description`，同样转为纯文本并截断。
+- `seo.canonical` 是明确声明原始页面的可选覆盖，可为 HTTP(S) 地址或站内路径；本地路径遵循 Hexo root 与 pretty_urls。忽略 URL 片段；拒绝不安全协议或带用户名密码的地址，错误值回退到当前生成路径。canonical 与 og:url 始终一致。普通 `link` 不改变 canonical。
+- `seo.image: false` 禁止该页所有分享图片回退；空值或无效地址会尝试下一候选图片。`cover: false` 只关闭封面，不关闭全站分享默认图。
+- `seo.noindex: true` 输出 `noindex, follow`；全局开启后单页 false 不会撤销它。404/搜索也不能通过 false 取消。noindex 不改变页面可访问性。
+- Open Graph 使用页面语言生成 `og:locale`（例如 zh_TW、en_GB）；只有文章输出分类 `article:section` 与标签 `article:tag`。Page 和列表不冒充文章，不生成不存在的多语言页面关系。
+- `twitter_creator` 只用于文章作者，未配置时不推断为博客站点账号。主题不生成猜测的作者个人主页地址。
+
+字段全部在生成时处理并由模板转义。分享平台的缓存与抓取结果不由主题控制。协议参考：[Open Graph](https://ogp.me/)。
+
+### 结构化社交链接（F3）
+
+推荐使用 PRD 的列表格式；按配置顺序显示文字链接，不引入图标字体或分享 SDK：
+
+```yaml
+social:
+  - type: github
+    url: https://github.com/yourname
+  - type: email
+    url: mailto:hello@example.com
+  - type: mastodon
+    name: 我的 Mastodon
+    url: https://example.social/@yourname
+  - name: 关于本站
+    url: /about/
+```
+
+内置类型标签：github、gitlab、email、twitter、x、mastodon、bluesky、rss、website；类型大小写不敏感。`name` 优先，可用任意语言；未知类型需提供 name，否则忽略。非法 URL 与空标签忽略，本地路径包含站点 root，`social: []` 清空。
+
+原有 `{name, url}` 列表继续有效。也兼容 `social: {github: {url: ...}}` 的结构化映射以及 Shoka 的 `url || icon || color` 字符串映射；旧图标和颜色不解析为新组件。
 
 ## Markdown 阅读元素
 

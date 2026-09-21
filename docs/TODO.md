@@ -72,7 +72,7 @@ PRD 第 52 节的 v0.1 MVP 验收标准优先于后续版本功能清单。
 
 - [x] F1：定义搜索 provider 接口，验证 Pagefind 与 Hexo 生命周期的集成，再实现可选本地搜索。
 - [x] F2：定义 Comments Slot，以 Waline 为首个可选 adapter；不启用时无请求。
-- [ ] F3：完善 Open Graph/Twitter Card、结构化社交链接和 SEO 配置。
+- [x] F3：完善 Open Graph/Twitter Card、结构化社交链接和 SEO 配置。
 - [ ] F4：通过 Hexo 插件验证 RSS、Sitemap，避免在主题重复实现。
 
 ## G. Beta 与稳定版（0.9–1.0，PRD §43–51）
@@ -425,3 +425,22 @@ C 阶段完成。下一批：D2，完善 Markdown 阅读元素的样式与边界
 详情：[F2 验收记录](validation/f2.md)、[评论架构决策](decisions/comments.md)。
 
 下一批：F3，完善 Open Graph/Twitter Card、结构化社交链接和 SEO 配置。
+
+
+## 0.3.0 版本记录（2026-09-22）
+
+- 将 package.json 与当前版本说明更新为 0.3.0，整理 F1/F2 Changelog。
+- 构建和当时的 56 项测试通过；`c902412`（`chore: release Syutoi 0.3.0`）标记为 `v0.3.0`。既有标签保持不变。
+- 后续 F3 作为独立提交进入 Unreleased，不移动 0.3.0 标签。
+
+## F3 完成记录（2026-09-22）
+
+- 元信息逻辑集中到 `lib/seo.cjs`，新增站点 SEO 配置和单页 Front Matter 覆盖；支持 title、description、canonical、分享图片/替代文字、noindex 与 Twitter 作者账号。
+- Open Graph/Twitter Card 可独立关闭，分享图片有明确回退顺序；补齐页面 locale、文章分类和标签。canonical 与 og:url 保持一致，分页 URL 沿用现有生成路径。
+- 404 和搜索固定 noindex；全局 noindex 不被单页 false 撤销。无效账号和不安全 URL 不输出。
+- 社交链接支持 PRD 的 `type + url`，允许 name 覆盖；兼容既有 name/url 列表、结构化映射及旧字符串映射。不新增客户端资源。
+- lint、clean、typecheck、build、61 项测试以及产物/Markdown/体积检查通过，所有 JS/CSS 构建产物保持不变。
+
+详情：[F3 验收记录](validation/f3.md)、[SEO 与社交链接配置](configuration.md#seo-配置与单页覆盖f3)。
+
+下一批：F4，通过 Hexo 插件验证 RSS、Sitemap，避免在主题重复实现。
