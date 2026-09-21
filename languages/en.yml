@@ -86,3 +86,12 @@ search:
   error: "Search is unavailable. Please try again."
   no_js: "Search requires JavaScript. You can browse the archives instead."
   archives: "Browse archives"
+
+comments:
+  title: "Comments"
+  load: "Load comments"
+  reload: "Reload comments"
+  prompt: "Load comments to connect to this site’s comment service."
+  loading: "Loading comments…"
+  error: "Unable to load comments. Please try again."
+  no_js: "Comments require JavaScript. The article remains available."

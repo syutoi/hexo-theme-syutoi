@@ -11,3 +11,8 @@ and an eligible body image is opened.
 Optional local search uses Pagefind 1.5.2 (MIT). Its license is distributed
 in source/js/pagefind.LICENSE.txt. Pagefind builds search resources locally;
 its browser engine loads only after a query on the enabled search page.
+
+Optional comments bundle @waline/client 3.13.0 (MIT) and its runtime
+dependencies. Bundled notices and licenses are distributed in
+source/js/waline.LICENSE.txt. The client and stylesheet load only after
+the reader requests comments on an enabled post or standalone page.

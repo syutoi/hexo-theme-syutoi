@@ -12,7 +12,11 @@ const assets = [
   ['source/js/photoswipe.min.js', 20000, null],
   ['source/css/lightbox.min.css', 3000, null],
   ['source/js/search.min.js', 6000, null],
-  ['source/css/search.min.css', 3000, null]
+  ['source/css/search.min.css', 3000, null],
+  ['source/js/comments.min.js', 4000, null],
+  ['source/css/comments.min.css', 2000, null],
+  ['source/js/waline.min.js', 100000, null],
+  ['source/css/waline.min.css', 10000, null]
 ];
 const results = await Promise.all(assets.map(async ([path, limitBytes, stretchBytes]) => {
   const bytes = await readFile(new URL(`../${path}`, import.meta.url));

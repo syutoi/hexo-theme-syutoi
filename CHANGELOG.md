@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add a default-off comments slot and local Waline adapter with click-loaded resources, per-page opt-outs, theme-aware styles, localized fallbacks and reload support.
+
 - Add optional local Pagefind search with Hexo-managed index routes, a dedicated search page, deferred engine loading, content opt-outs, localized status messages and retry handling.
 
 ## 0.2.0 — 2026-09-21

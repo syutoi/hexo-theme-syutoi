@@ -307,3 +307,31 @@ search:
 `/search/` 和 `/_syutoi/search/` 为启用时的保留目录，不要放置同名页面或静态资源。Pagefind 原生构建包随主题依赖安装，启用时需要平台二进制；不要省略其 optional dependencies。普通 Hexo generate/server 使用同一套索引生成器，不需要另外执行 Pagefind CLI。修改、删除内容或关闭搜索后，Hexo 更新路由并清理旧索引；部署时也应同步删除旧文件。
 
 查询不会发送给远端搜索服务；无 JS 时可通过搜索页中的归档链接浏览。网络错误会显示重试提示，重新提交即可。实现边界、依赖与生命周期证据见 [搜索决策](decisions/local-search.md) 和 [F1 验收](validation/f1.md)。
+
+## 可选评论（F2）
+
+默认 `comments.provider: none`。在博客 `_config.syutoi.yml` 中配置自己的 Waline 服务：
+
+```yaml
+comments:
+  provider: waline
+  server_url: https://comments.example.com
+```
+
+`server_url` 是 Waline 服务的根地址，可带部署子路径，不要追加 `/api/comment`。只接受完整 HTTP(S) 地址；空值、相对地址、带账号密码、查询参数或片段的地址不启用插槽。HTTPS 博客请使用 HTTPS 服务，并在服务端配置允许的站点来源。服务部署、数据库、审核、反垃圾和账户权限由 Waline 管理；主题不创建服务或保存服务端密钥。
+
+开启后，文章与普通独立页底部显示“加载评论”。读者点击后才加载本站的 Waline JS/CSS 并连接服务，未点击时只加载小型本地入口与插槽样式。首页、归档、分类、标签、搜索与 404 不输出评论插槽。关闭时不引用评论资源，也不发起评论服务请求。可在单篇文章或独立页 Front Matter 中关闭：
+
+```yaml
+comments: false
+```
+
+`comments: true` 不会绕过全局关闭。带 `password` 或 `published: false` 的内容不显示插槽。不会把 Shoka 遗留的评论配置自动转换为新的服务连接。
+
+评论路径使用构建时的站点相对 URL，包含 `root` 子目录并去掉结尾 `index.html`；地址栏的查询参数、锚点和预览域名不影响它。修改 permalink 或 root 会改变评论线程标识；已有 Waline 数据需要自行迁移，主题不会迁移评论数据。
+
+界面支持简体中文、繁体中文、英文，跟随页面语言及主题明暗选择。客户端固定为 `@waline/client` 3.13.0，资源随主题本地构建；关闭表情 CDN、GIF 搜索、图片上传、文章反应、评论计数与访问统计。加载后的评论正文、头像、登录等仍由服务端数据与 Waline 行为决定，可能引用外部资源。
+
+资源下载失败可再次点击重试；服务请求失败时可用 Waline 的刷新按钮或“重新加载评论”。重新加载会清空当前未提交的编辑内容。没有 JavaScript 或入口脚本未加载时显示提示，正文阅读不受影响。
+
+适配依据：[Waline 客户端 API](https://waline.js.org/en/reference/client/api.html)、[组件选项](https://waline.js.org/en/reference/client/props.html)。

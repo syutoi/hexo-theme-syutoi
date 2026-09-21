@@ -163,3 +163,19 @@ SYUTOI_PUPPETEER_PATH=/absolute/path/to/installed/puppeteer \
 ```
 
 可选搜索入口 JS <6 KB gzip、CSS <3 KB gzip 纳入 `pnpm check:budget`。动态生成的 Pagefind 引擎和内容索引不混入核心预算，浏览器报告独立统计样本站点体积。内容越多，索引与构建时间越大；没有大站规模的性能保证。
+
+## 评论回归（F2）
+
+`node toolbox/check-comments.mjs` 使用临时 Hexo 站点、实际 Waline 客户端和本地模拟 API，覆盖桌面/移动端明暗模式、键盘加载、资源隔离、失败重试、服务异常、重复挂载与评论提交。不会连接真实评论服务；页面和评论数据会在结束后清理。无 JS、全局关闭、单页关闭与列表页均检查无 Waline 或服务请求。
+
+```bash
+SYUTOI_PUPPETEER_PATH="$PWD/node_modules/.pnpm/puppeteer@5.5.0/node_modules/puppeteer" \
+SYUTOI_BROWSER_OUTPUT=/tmp/syutoi-f2 \
+node toolbox/check-comments.mjs
+```
+
+Puppeteer 与 Chrome 使用现有可选浏览器验收环境，不属于主题生产依赖。单元测试另用真实 Hexo 验证配置、语言、子目录 URL 和页面资源引用。
+
+评论资源预算独立统计：入口 JS <4 KB gzip、插槽 CSS <2 KB、Waline JS <100 KB、Waline CSS <10 KB。即使功能关闭，生成目录仍含可选静态文件，但 HTML 不引用、浏览器不下载这些资源。
+
+升级 Waline 或锁文件后，运行 `node toolbox/comments-licenses.mjs` 重新生成打包依赖许可声明。`pnpm test` 会校验版本与许可清单一致。当前 API npm 包未附许可证文件，声明 MIT 且作者与客户端一致，清单复用该作者的客户端 MIT 文本。

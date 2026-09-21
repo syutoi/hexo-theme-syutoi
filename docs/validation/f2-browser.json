@@ -1,0 +1,85 @@
+{
+  "started": "2026-09-21T18:02:45.385Z",
+  "browser": "Chrome/151.0.7922.108",
+  "checks": [
+    {
+      "width": 1440,
+      "mode": "light",
+      "case": "click-only assets, keyboard, stable path, theme, width and remount",
+      "passed": true
+    },
+    {
+      "width": 1440,
+      "mode": "dark",
+      "case": "click-only assets, keyboard, stable path, theme, width and remount",
+      "passed": true
+    },
+    {
+      "width": 390,
+      "mode": "light",
+      "case": "click-only assets, keyboard, stable path, theme, width and remount",
+      "passed": true
+    },
+    {
+      "width": 390,
+      "mode": "dark",
+      "case": "click-only assets, keyboard, stable path, theme, width and remount",
+      "passed": true
+    },
+    {
+      "width": 320,
+      "mode": "light",
+      "case": "click-only assets, keyboard, stable path, theme, width and remount",
+      "passed": true
+    },
+    {
+      "width": 320,
+      "mode": "dark",
+      "case": "click-only assets, keyboard, stable path, theme, width and remount",
+      "passed": true
+    },
+    {
+      "case": "retry after waline.min.css failure",
+      "passed": true
+    },
+    {
+      "case": "retry after waline.min.js failure",
+      "passed": true
+    },
+    {
+      "case": "API failure and reload",
+      "passed": true
+    },
+    {
+      "case": "comment submission to local mock API only",
+      "passed": true
+    },
+    {
+      "case": "entry script failure preserves readable fallback",
+      "passed": true
+    },
+    {
+      "case": "no JS, disabled page, lists and global disable make no vendor or service requests",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "requests": [
+    {
+      "path": "/blog/article/",
+      "method": "GET"
+    },
+    {
+      "path": "/blog/js/syutoi.min.js",
+      "method": "GET"
+    },
+    {
+      "path": "/blog/css/syutoi.min.css",
+      "method": "GET"
+    },
+    {
+      "path": "/blog/images/logo.png",
+      "method": "GET"
+    }
+  ]
+}

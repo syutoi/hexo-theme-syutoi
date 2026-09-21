@@ -1,0 +1,8 @@
+{% if comments %}
+<section class="comments-slot" data-comments-slot data-provider="{{ comments.provider }}" data-server-url="{{ comments.serverURL }}" data-path="{{ comments.path }}" data-lang="{{ comments.lang }}" data-prompt="{{ __('comments.prompt') }}" data-loading="{{ __('comments.loading') }}" data-error="{{ __('comments.error') }}" data-reload="{{ __('comments.reload') }}" aria-labelledby="comments-title">
+  <h2 id="comments-title">{{ __('comments.title') }}</h2>
+  <p data-comments-status role="status">{{ __('comments.no_js') }}</p>
+  <button type="button" data-comments-load aria-controls="comments-content" hidden>{{ __('comments.load') }}</button>
+  <div id="comments-content" data-comments-content tabindex="-1"></div>
+</section>
+{% endif %}

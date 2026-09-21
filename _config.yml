@@ -49,6 +49,12 @@ lightbox:
 search:
   provider: none
 
+# Optional comments. Requires your own Waline server; loaded on reader request.
+# Per-post/page comments: false disables the slot.
+comments:
+  provider: none # none | waline
+  server_url: '' # Absolute http(s) Waline server URL
+
 # Navigation
 # Every item has a visible name and a destination URL.
 # menu.* names use the corresponding entry in languages/*.yml.

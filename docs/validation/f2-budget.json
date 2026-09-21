@@ -1,0 +1,105 @@
+{
+  "gzipLevel": 9,
+  "unit": "bytes (1 KB = 1000 bytes)",
+  "assets": [
+    {
+      "path": "source/js/syutoi.min.js",
+      "bytes": 5472,
+      "gzipBytes": 2028,
+      "limitBytes": 50000,
+      "stretchBytes": 30000,
+      "passed": true,
+      "sha256": "75a17b3366ade106b2ec83d4b3351d9245ae03dbf39e569ee2905b2849093826"
+    },
+    {
+      "path": "source/css/syutoi.min.css",
+      "bytes": 22263,
+      "gzipBytes": 5408,
+      "limitBytes": 40000,
+      "stretchBytes": null,
+      "passed": true,
+      "sha256": "4325d9e3ce3acc9a36a920eaadf7cd48f46ecc05ea74ce4cbf70a00eed061260"
+    },
+    {
+      "path": "source/js/lightbox.min.js",
+      "bytes": 4835,
+      "gzipBytes": 2175,
+      "limitBytes": 6000,
+      "stretchBytes": null,
+      "passed": true,
+      "sha256": "83b5c3ddf3253cb3ca4c8c2a8677b7d9bd2a0fcb17e2d70bf8d15a5a28671e2b"
+    },
+    {
+      "path": "source/js/photoswipe.min.js",
+      "bytes": 60067,
+      "gzipBytes": 17356,
+      "limitBytes": 20000,
+      "stretchBytes": null,
+      "passed": true,
+      "sha256": "92c462055cf597a494b1f48e8c6994cf07198456072976f92d74a48e56cd09b4"
+    },
+    {
+      "path": "source/css/lightbox.min.css",
+      "bytes": 4965,
+      "gzipBytes": 1628,
+      "limitBytes": 3000,
+      "stretchBytes": null,
+      "passed": true,
+      "sha256": "13608a9aa5f3022c5fe7baa95f98f37cb478db880491ffb8ed591d0707c40209"
+    },
+    {
+      "path": "source/js/search.min.js",
+      "bytes": 3350,
+      "gzipBytes": 1485,
+      "limitBytes": 6000,
+      "stretchBytes": null,
+      "passed": true,
+      "sha256": "a966296d5845d12068d9e1f788138e9bcdbec1193d99aab53e2c16b27ec4d8dd"
+    },
+    {
+      "path": "source/css/search.min.css",
+      "bytes": 997,
+      "gzipBytes": 435,
+      "limitBytes": 3000,
+      "stretchBytes": null,
+      "passed": true,
+      "sha256": "a0195be7c4c1f1fc0a7c829d61df820a7dba90feacb25608507023f3ddd9f495"
+    },
+    {
+      "path": "source/js/comments.min.js",
+      "bytes": 1688,
+      "gzipBytes": 817,
+      "limitBytes": 4000,
+      "stretchBytes": null,
+      "passed": true,
+      "sha256": "87571ebb024c1b5067f3bc23bb2b9e7bdebd07aa33c9b0efd0395c9a8bb3dd0c"
+    },
+    {
+      "path": "source/css/comments.min.css",
+      "bytes": 766,
+      "gzipBytes": 368,
+      "limitBytes": 2000,
+      "stretchBytes": null,
+      "passed": true,
+      "sha256": "0cbc4145ac5852f2be995a9b49d478a99b918bb3ecefcebfc5dd733a1fa0a511"
+    },
+    {
+      "path": "source/js/waline.min.js",
+      "bytes": 194377,
+      "gzipBytes": 73745,
+      "limitBytes": 100000,
+      "stretchBytes": null,
+      "passed": true,
+      "sha256": "08580932bd6a7781a330b9055e4760b83a1b8d25c35174341864c8f291f5f8be"
+    },
+    {
+      "path": "source/css/waline.min.css",
+      "bytes": 23764,
+      "gzipBytes": 5023,
+      "limitBytes": 10000,
+      "stretchBytes": null,
+      "passed": true,
+      "sha256": "d587eb35490e79fd1d0da3285f41d530c13d3b7f756f4a7dbc44059dd18c021c"
+    }
+  ]
+}

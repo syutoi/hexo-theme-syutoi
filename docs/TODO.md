@@ -71,7 +71,7 @@ PRD 第 52 节的 v0.1 MVP 验收标准优先于后续版本功能清单。
 ## F. 博客能力（0.5，PRD §22–25）
 
 - [x] F1：定义搜索 provider 接口，验证 Pagefind 与 Hexo 生命周期的集成，再实现可选本地搜索。
-- [ ] F2：定义 Comments Slot，以 Waline 为首个可选 adapter；不启用时无请求。
+- [x] F2：定义 Comments Slot，以 Waline 为首个可选 adapter；不启用时无请求。
 - [ ] F3：完善 Open Graph/Twitter Card、结构化社交链接和 SEO 配置。
 - [ ] F4：通过 Hexo 插件验证 RSS、Sitemap，避免在主题重复实现。
 
@@ -411,3 +411,17 @@ C 阶段完成。下一批：D2，完善 Markdown 阅读元素的样式与边界
 - 更新配置、开发说明、依赖许可证和 Unreleased。包版本仍为 0.2.0，既有版本标签保持原指向；默认预览已恢复。
 
 下一批：F2，定义 Comments Slot，以 Waline 为首个可选 adapter，关闭时无请求。
+
+
+## F2 完成记录（2026-09-22）
+
+- 定义默认关闭的 Comments Slot 和 `CommentsAdapter.mount/destroy` 接口，首个适配器为本地打包的 Waline 3.13.0。
+- 新增 `comments.provider` / `comments.server_url`；文章和普通 Page 可启用，支持 `comments: false`。列表、搜索、404 和受保护内容不输出插槽。
+- 点击后加载 Waline JS/CSS；支持重复挂载前清理、资源失败重试、无 JS 回退、中文/繁体/英文，以及主题明暗和移动端布局。
+- 线程路径包含站点 root、忽略 index.html，查询参数与锚点不改变线程。示例站保持关闭，不连接公开评论服务。
+- 完成配置/开发说明、架构决策、第三方许可清单和独立资源预算。核心 JS/CSS 内容及大小不变。
+- 验证：lint、typecheck、clean/build、56 项测试、页面/Markdown/体积检查通过；12 个浏览器验收场景通过，无未捕获脚本错误。实际客户端连接本地模拟 API，尚未部署或验证真实 Waline 服务。
+
+详情：[F2 验收记录](validation/f2.md)、[评论架构决策](decisions/comments.md)。
+
+下一批：F3，完善 Open Graph/Twitter Card、结构化社交链接和 SEO 配置。

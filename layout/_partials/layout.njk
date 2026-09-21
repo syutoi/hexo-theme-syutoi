@@ -1,4 +1,5 @@
 {% set syutoi = syutoi_settings() %}
+{% set comments = syutoi_comments() %}
 {% set body = syutoi_body() if (is_post() or is_page()) and page.type not in ['categories', 'tags', '404'] else {} %}
 {% set contents = toc(page.content) if syutoi.sidebar.enable and syutoi.sidebar.toc and page.toc != false and (is_post() or (is_page() and page.content)) else '' %}
 <!doctype html>
@@ -17,5 +18,6 @@
   {% include '_partials/footer.njk' %}
   {% if body.enabled %}{{ syutoi_lightbox_assets() | safe }}{% endif %}
   {% if page.type == 'search' and syutoi.search.provider != 'none' %}{{ syutoi_search_assets() | safe }}{% endif %}
+  {% if comments %}{{ syutoi_comments_assets() | safe }}{% endif %}
 </body>
 </html>

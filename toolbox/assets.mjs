@@ -17,7 +17,11 @@ export function createAssetContext(workingDirectory = root) {
       'js/photoswipe.min': 'src/client/photoswipe.ts',
       'css/lightbox.min': 'src/styles/lightbox.css',
       'js/search.min': 'src/client/search.ts',
-      'css/search.min': 'src/styles/search.css'
+      'css/search.min': 'src/styles/search.css',
+      'js/comments.min': 'src/client/comments.ts',
+      'js/waline.min': 'src/client/comments/waline.ts',
+      'css/comments.min': 'src/styles/comments.css',
+      'css/waline.min': 'src/styles/waline.css'
     },
     outdir: 'source',
     bundle: true,
@@ -25,6 +29,7 @@ export function createAssetContext(workingDirectory = root) {
     platform: 'browser',
     format: 'iife',
     target: 'es2020',
+    define: { __VUE_OPTIONS_API__: 'false', __VUE_PROD_DEVTOOLS__: 'false', __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'false' },
     minify: true,
     charset: 'utf8',
     legalComments: 'none',

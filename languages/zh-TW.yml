@@ -86,3 +86,12 @@ search:
   error: "搜尋暫時無法使用，請重試。"
   no_js: "搜尋需要 JavaScript，也可以透過歸檔瀏覽文章。"
   archives: "瀏覽歸檔"
+
+comments:
+  title: "留言"
+  load: "載入留言"
+  reload: "重新載入留言"
+  prompt: "載入留言後將連線至本站的留言服務。"
+  loading: "正在載入留言…"
+  error: "留言載入失敗，請重試。"
+  no_js: "留言需要 JavaScript，您仍可閱讀正文。"

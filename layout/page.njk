@@ -17,4 +17,5 @@
     <div class="prose" data-prose data-copy-label="{{ __('desk.copy') }}" data-copied-label="{{ __('desk.copied') }}" data-copy-failed-label="{{ __('desk.copy_failed') }}">{{ body.html | safe }}</div>
   {% endif %}
 </section>
+{% block comments %}{% include '_partials/comments.njk' %}{% endblock %}
 {% endblock %}

@@ -86,3 +86,12 @@ search:
   error: "搜索暂时不可用，请重试。"
   no_js: "搜索需要 JavaScript，也可以通过归档浏览文章。"
   archives: "浏览归档"
+
+comments:
+  title: "评论"
+  load: "加载评论"
+  reload: "重新加载评论"
+  prompt: "加载评论后将连接本站的评论服务。"
+  loading: "正在加载评论…"
+  error: "评论加载失败，请重试。"
+  no_js: "评论需要 JavaScript，您仍可阅读正文。"

@@ -29,5 +29,5 @@
   {% if page.prev %}<a href="{{ url_for(page.prev.path) }}"><span>{{ __('post.prev') }}</span>{{ page.prev.title or __('post.untitled') }}</a>{% endif %}
   {% if page.next %}<a href="{{ url_for(page.next.path) }}"><span>{{ __('post.next') }}</span>{{ page.next.title or __('post.untitled') }}</a>{% endif %}
 </nav>{% endif %}
-{% block comments %}{% endblock %}
+{% block comments %}{% include '_partials/comments.njk' %}{% endblock %}
 {% endblock %}

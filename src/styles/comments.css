@@ -1,0 +1,22 @@
+.comments-slot {
+  margin-block: 2rem;
+  padding: clamp(1rem, 3vw, 2rem);
+  border-radius: var(--syutoi-radius-md);
+  background: var(--syutoi-color-surface);
+  box-shadow: var(--syutoi-shadow);
+  overflow-wrap: anywhere;
+}
+.comments-slot h2 { margin-top: 0; font-size: 1.25rem; }
+.comments-slot [data-comments-status] { color: var(--syutoi-color-text-secondary); }
+.comments-slot [data-comments-load] {
+  min-height: 44px;
+  padding: .5rem 1rem;
+  border: 1px solid var(--syutoi-color-border);
+  border-radius: var(--syutoi-radius-sm);
+  background: var(--syutoi-color-bg);
+  color: var(--syutoi-color-text);
+  font: inherit;
+  cursor: pointer;
+}
+.comments-slot [data-comments-load]:disabled { cursor: wait; opacity: .6; }
+.comments-slot [data-comments-content]:not(:empty) { margin-top: 1rem; }

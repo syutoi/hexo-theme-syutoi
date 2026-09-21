@@ -1,0 +1,30 @@
+@import '../../node_modules/@waline/client/dist/waline.css';
+
+.comments-slot {
+  --syutoi-comments-ready: 1;
+  --waline-font-size: 1rem;
+  --waline-theme-color: var(--syutoi-color-primary);
+  --waline-active-color: var(--syutoi-color-focus);
+  --waline-color: var(--syutoi-color-text);
+  --waline-light-grey: var(--syutoi-color-text-secondary);
+  --waline-dark-grey: var(--syutoi-color-text-secondary);
+  --waline-bg-color: var(--syutoi-color-surface);
+  --waline-bg-color-light: var(--syutoi-color-bg);
+  --waline-bg-color-hover: var(--syutoi-color-soft);
+  --waline-border-color: var(--syutoi-color-border);
+  --waline-disable-bg-color: var(--syutoi-color-bg);
+  --waline-disable-color: var(--syutoi-color-text-secondary);
+  --waline-bq-color: var(--syutoi-color-soft);
+  --waline-info-color: var(--syutoi-color-text-secondary);
+  --waline-info-bg-color: var(--syutoi-color-bg);
+}
+.comments-slot .wl-editor { font: inherit; }
+.comments-slot .wl-content img { max-width: 100%; }
+.comments-slot .wl-content pre { max-width: 100%; }
+.comments-slot .wl-header { flex-wrap: wrap; }
+.comments-slot .wl-header-item { min-width: 0; }
+@media (max-width: 480px) {
+  .comments-slot .wl-header-item { flex: 1 1 100%; }
+}
+.comments-slot .wl-btn { min-height: 44px; }
+.comments-slot .wl-editor::placeholder { color: var(--syutoi-color-text-secondary); }
