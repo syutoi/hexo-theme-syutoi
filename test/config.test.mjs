@@ -44,6 +44,7 @@ test('default navigation translates while custom labels stay literal', () => {
   const settings = normalizeConfig(defaults,{navigation:{menu:[{name:'menu.home',url:'/'},{name:'My notes',url:'/notes/'}]}});
   assert.deepEqual(navigationItems(settings,key=>key==='menu.home'?'首页':key),[{label:'首页',url:'/'},{label:'My notes',url:'/notes/'}]);
   assert.equal(normalizeConfig(defaults).branding.name,'');
+  assert.equal(normalizeConfig(defaults).branding.logo,'/images/logo.png');
   assert.equal(normalizeConfig(defaults).social.length,0);
 });
 

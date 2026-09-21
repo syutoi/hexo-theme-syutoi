@@ -8,11 +8,14 @@
 
 # Identity
 # Empty name uses the site's title; empty avatar uses its initial.
+# logo is the small mark beside the site title in the header.
+# Empty logo keeps the letter mark fallback.
 # Image paths are relative to the blog's source directory / site root.
 # An external https:// URL also works; no image service is required.
 branding:
   name: ''
   avatar: ''
+  logo: /images/logo.png
   favicon: /images/favicon.png
 
 # Appearance
