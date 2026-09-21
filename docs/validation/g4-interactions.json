@@ -1,0 +1,438 @@
+{
+  "started": "2026-09-21T19:22:47.172Z",
+  "commit": "f1e4515bbed03b4abe4deaeb449bda5c2d2f25f6",
+  "node": "v20.19.2",
+  "base": "http://127.0.0.1:4173",
+  "library": {
+    "path": "/tmp/syutoi-g4-vitals/node_modules/web-vitals/dist/web-vitals.iife.js",
+    "sha256": "8890ec954757ea8e4801f49958afb76e2b8837c47fec5b16598fc20cbd49c220"
+  },
+  "runs": [
+    {
+      "mode": "mobile",
+      "path": "/",
+      "iteration": 1,
+      "viewport": {
+        "width": 390,
+        "height": 1000,
+        "dpr": 1
+      },
+      "cpuSlowdown": 4,
+      "networkThrottling": "none; interactions after local page load",
+      "actions": [
+        "theme",
+        "open menu",
+        "escape menu"
+      ],
+      "inp": {
+        "value": 88,
+        "rating": "good",
+        "entries": [
+          {
+            "name": "pointerdown",
+            "duration": 88,
+            "interactionId": 9562,
+            "startTime": 2239.899999976158,
+            "processingStart": 2245,
+            "processingEnd": 2245.0999999940395
+          },
+          {
+            "name": "pointerdown",
+            "duration": 88,
+            "interactionId": 9562,
+            "startTime": 2239.899999976158,
+            "processingStart": 2245,
+            "processingEnd": 2245.0999999940395
+          }
+        ]
+      }
+    },
+    {
+      "mode": "mobile",
+      "path": "/",
+      "iteration": 2,
+      "viewport": {
+        "width": 390,
+        "height": 1000,
+        "dpr": 1
+      },
+      "cpuSlowdown": 4,
+      "networkThrottling": "none; interactions after local page load",
+      "actions": [
+        "theme",
+        "open menu",
+        "escape menu"
+      ],
+      "inp": {
+        "value": 80,
+        "rating": "good",
+        "entries": [
+          {
+            "name": "pointerdown",
+            "duration": 80,
+            "interactionId": 8534,
+            "startTime": 1833.199999988079,
+            "processingStart": 1839.7999999821186,
+            "processingEnd": 1840.5
+          },
+          {
+            "name": "pointerdown",
+            "duration": 80,
+            "interactionId": 8534,
+            "startTime": 1833.199999988079,
+            "processingStart": 1839.7999999821186,
+            "processingEnd": 1840.5
+          }
+        ]
+      }
+    },
+    {
+      "mode": "mobile",
+      "path": "/",
+      "iteration": 3,
+      "viewport": {
+        "width": 390,
+        "height": 1000,
+        "dpr": 1
+      },
+      "cpuSlowdown": 4,
+      "networkThrottling": "none; interactions after local page load",
+      "actions": [
+        "theme",
+        "open menu",
+        "escape menu"
+      ],
+      "inp": {
+        "value": 88,
+        "rating": "good",
+        "entries": [
+          {
+            "name": "pointerdown",
+            "duration": 88,
+            "interactionId": 2767,
+            "startTime": 2226.2999999821186,
+            "processingStart": 2236.2999999821186,
+            "processingEnd": 2236.2999999821186
+          },
+          {
+            "name": "pointerdown",
+            "duration": 88,
+            "interactionId": 2767,
+            "startTime": 2226.2999999821186,
+            "processingStart": 2236.2999999821186,
+            "processingEnd": 2236.2999999821186
+          }
+        ]
+      }
+    },
+    {
+      "mode": "mobile",
+      "path": "/syutoi-long-read/",
+      "iteration": 1,
+      "viewport": {
+        "width": 390,
+        "height": 1000,
+        "dpr": 1
+      },
+      "cpuSlowdown": 4,
+      "networkThrottling": "none; interactions after local page load",
+      "actions": [
+        "theme",
+        "open menu",
+        "escape menu",
+        "open contents",
+        "contents anchor",
+        "copy code"
+      ],
+      "inp": {
+        "value": 160,
+        "rating": "good",
+        "entries": [
+          {
+            "name": "pointerdown",
+            "duration": 160,
+            "interactionId": 6876,
+            "startTime": 5281.0999999940395,
+            "processingStart": 5287.199999988079,
+            "processingEnd": 5287.5
+          }
+        ]
+      }
+    },
+    {
+      "mode": "mobile",
+      "path": "/syutoi-long-read/",
+      "iteration": 2,
+      "viewport": {
+        "width": 390,
+        "height": 1000,
+        "dpr": 1
+      },
+      "cpuSlowdown": 4,
+      "networkThrottling": "none; interactions after local page load",
+      "actions": [
+        "theme",
+        "open menu",
+        "escape menu",
+        "open contents",
+        "contents anchor",
+        "copy code"
+      ],
+      "inp": {
+        "value": 120,
+        "rating": "good",
+        "entries": [
+          {
+            "name": "pointerdown",
+            "duration": 120,
+            "interactionId": 9215,
+            "startTime": 5345.5,
+            "processingStart": 5350.699999988079,
+            "processingEnd": 5350.699999988079
+          }
+        ]
+      }
+    },
+    {
+      "mode": "mobile",
+      "path": "/syutoi-long-read/",
+      "iteration": 3,
+      "viewport": {
+        "width": 390,
+        "height": 1000,
+        "dpr": 1
+      },
+      "cpuSlowdown": 4,
+      "networkThrottling": "none; interactions after local page load",
+      "actions": [
+        "theme",
+        "open menu",
+        "escape menu",
+        "open contents",
+        "contents anchor",
+        "copy code"
+      ],
+      "inp": {
+        "value": 112,
+        "rating": "good",
+        "entries": [
+          {
+            "name": "pointerdown",
+            "duration": 112,
+            "interactionId": 1957,
+            "startTime": 5343.699999988079,
+            "processingStart": 5350.199999988079,
+            "processingEnd": 5350.5999999940395
+          }
+        ]
+      }
+    },
+    {
+      "mode": "desktop",
+      "path": "/",
+      "iteration": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "cpuSlowdown": 1,
+      "networkThrottling": "none; interactions after local page load",
+      "actions": [
+        "theme"
+      ],
+      "inp": {
+        "value": 48,
+        "rating": "good",
+        "entries": [
+          {
+            "name": "pointerdown",
+            "duration": 48,
+            "interactionId": 9736,
+            "startTime": 1058.4000000059605,
+            "processingStart": 1060.4000000059605,
+            "processingEnd": 1060.4000000059605
+          },
+          {
+            "name": "pointerdown",
+            "duration": 48,
+            "interactionId": 9736,
+            "startTime": 1058.4000000059605,
+            "processingStart": 1060.4000000059605,
+            "processingEnd": 1060.4000000059605
+          }
+        ]
+      }
+    },
+    {
+      "mode": "desktop",
+      "path": "/",
+      "iteration": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "cpuSlowdown": 1,
+      "networkThrottling": "none; interactions after local page load",
+      "actions": [
+        "theme"
+      ],
+      "inp": {
+        "value": 48,
+        "rating": "good",
+        "entries": [
+          {
+            "name": "pointerdown",
+            "duration": 48,
+            "interactionId": 8873,
+            "startTime": 1085.5,
+            "processingStart": 1087.800000011921,
+            "processingEnd": 1087.9000000059605
+          },
+          {
+            "name": "pointerdown",
+            "duration": 48,
+            "interactionId": 8873,
+            "startTime": 1085.5,
+            "processingStart": 1087.800000011921,
+            "processingEnd": 1087.9000000059605
+          }
+        ]
+      }
+    },
+    {
+      "mode": "desktop",
+      "path": "/",
+      "iteration": 3,
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "cpuSlowdown": 1,
+      "networkThrottling": "none; interactions after local page load",
+      "actions": [
+        "theme"
+      ],
+      "inp": {
+        "value": 32,
+        "rating": "good",
+        "entries": [
+          {
+            "name": "pointerdown",
+            "duration": 32,
+            "interactionId": 1490,
+            "startTime": 1162.5,
+            "processingStart": 1163.9000000059605,
+            "processingEnd": 1163.9000000059605
+          },
+          {
+            "name": "pointerdown",
+            "duration": 32,
+            "interactionId": 1490,
+            "startTime": 1162.5,
+            "processingStart": 1163.9000000059605,
+            "processingEnd": 1163.9000000059605
+          }
+        ]
+      }
+    },
+    {
+      "mode": "desktop",
+      "path": "/syutoi-long-read/",
+      "iteration": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "cpuSlowdown": 1,
+      "networkThrottling": "none; interactions after local page load",
+      "actions": [
+        "theme",
+        "contents anchor",
+        "copy code"
+      ],
+      "inp": {
+        "value": 64,
+        "rating": "good",
+        "entries": [
+          {
+            "name": "pointerdown",
+            "duration": 64,
+            "interactionId": 4062,
+            "startTime": 1797.800000011921,
+            "processingStart": 1799,
+            "processingEnd": 1799
+          }
+        ]
+      }
+    },
+    {
+      "mode": "desktop",
+      "path": "/syutoi-long-read/",
+      "iteration": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "cpuSlowdown": 1,
+      "networkThrottling": "none; interactions after local page load",
+      "actions": [
+        "theme",
+        "contents anchor",
+        "copy code"
+      ],
+      "inp": {
+        "value": 80,
+        "rating": "good",
+        "entries": [
+          {
+            "name": "pointerdown",
+            "duration": 80,
+            "interactionId": 8624,
+            "startTime": 1780.300000011921,
+            "processingStart": 1782.2000000178814,
+            "processingEnd": 1782.300000011921
+          }
+        ]
+      }
+    },
+    {
+      "mode": "desktop",
+      "path": "/syutoi-long-read/",
+      "iteration": 3,
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "cpuSlowdown": 1,
+      "networkThrottling": "none; interactions after local page load",
+      "actions": [
+        "theme",
+        "contents anchor",
+        "copy code"
+      ],
+      "inp": {
+        "value": 80,
+        "rating": "good",
+        "entries": [
+          {
+            "name": "pointerdown",
+            "duration": 80,
+            "interactionId": 6433,
+            "startTime": 1816.199999988079,
+            "processingStart": 1820,
+            "processingEnd": 1820.199999988079
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "browser": "Chrome/151.0.7922.108",
+  "finished": "2026-09-21T19:23:42.483Z"
+}

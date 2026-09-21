@@ -117,7 +117,7 @@ CI 在锁定安装后依次执行 lint、clean、typecheck、build、test 和生
 
 构建后运行 `pnpm check:budget`，检查生成的核心 JS/CSS（含构建注释），以 gzip level 9、十进制 KB 统计；严格上限为 JS <50 KB、CSS <40 KB，JS <30 KB 是争取目标。可选灯箱另外检查适配入口 <6 KB、PhotoSwipe 核心 <20 KB、独立 CSS <3 KB，分别报告，不合并进核心预算。该检查也进入 `pnpm test` 和现有 CI；它不包含页面 HTML、图片、feed 或其他第三方服务，也不代表服务器已开启压缩。
 
-`toolbox/check-performance.mjs` 使用独立安装的 Lighthouse CLI 和本机 Chrome，依次测量首页/长文、mobile/desktop，每组 3 次，保存完整原始报告及含中位数/范围的摘要。它不进入默认测试或下载浏览器；构建与服务启动由调用者负责。固定版本、启动命令、实测数据及 INP 测量限制见 [D8 性能报告](validation/d8.md)。
+`toolbox/check-performance.mjs` 使用独立安装的 Lighthouse CLI 和本机 Chrome，依次测量首页/长文、mobile/desktop，每组 3 次，保存完整原始报告及含中位数/范围的摘要。它不进入默认测试或下载浏览器；构建与服务启动由调用者负责。固定版本与初始方法见 [D8 性能报告](validation/d8.md)，当前结果和剩余差距见 [G4 性能报告](validation/g4.md)。默认输出目录为 `/tmp/syutoi-performance`，新测量请指定独立目录，保留历史基线。
 
 
 ## 版本与提交检查
@@ -206,3 +206,21 @@ node toolbox/check-accessibility.mjs
 正文普通表格在构建时补 `tabindex="0"`，无 JS 也能用方向键横向滚动；保留作者显式 tabindex，排除高亮代码内部的布局表格。自定义负 tabindex 会取消普通 Tab 访问，需要作者自行负责。
 
 详见 [G3 验证记录](validation/g3.md)。此验收不代表完整 WCAG 合规认证，也不涵盖屏幕阅读器、Safari/Firefox 或真实手机设备。
+
+## 实验室交互性能（G4）
+
+`toolbox/check-interaction-performance.mjs` 用独立安装的 web-vitals 测量实际脚本交互的 INP。工具仅在验收浏览器内注入，不打包进主题，不发送指标到外部服务。先构建并通过本机静态服务提供 `example/public`，不要与 Lighthouse、构建或其他浏览器验收同时运行：
+
+```bash
+npm install --prefix /tmp/syutoi-vitals --no-audit --no-fund web-vitals@5.1.0
+SYUTOI_PUPPETEER_PATH=/absolute/path/to/installed/puppeteer \
+SYUTOI_WEB_VITALS_PATH=/tmp/syutoi-vitals/node_modules/web-vitals/dist/web-vitals.iife.js \
+SYUTOI_INTERACTION_OUTPUT=/tmp/syutoi-interactions \
+node toolbox/check-interaction-performance.mjs
+```
+
+可通过 `SYUTOI_PREVIEW_URL` 和 `SYUTOI_CHROME` 调整本机地址/浏览器。固定两页、两种视口，每组新隐私上下文重复三次；mobile 仅使用 390px 视口和 4× CPU slowdown，desktop 为 1440px、1×，DPR 均为 1，不模拟触摸设备。交互在页面加载后执行，不模拟网络节流；因此不可与 Lighthouse 默认 mobile 节流数值视为同一种测试。
+
+操作包括主题切换、移动菜单打开/Escape、长文目录展开/锚点与代码复制。使用真实浏览器剪贴板 API，仅复制本地示例代码；无法复制会失败，不用替身伪造成功。每次操作留 700ms 供回调更新，以 `onINP(callback, {reportAllChanges:true, durationThreshold:16})` 收集并保存本次脚本会话值。无数据、脚本错误或操作失败会非零退出；只有带 `finished` 的报告代表执行完成。指标超过 200ms 仍记录真实数据，不因波动直接作为 CI 门槛。
+
+这是指定交互序列的实验室结果，不是现场用户的第 75 百分位数，也不代表搜索/评论/灯箱或页面整个真实访问过程。无交互的 Lighthouse navigation 仍只报告 TBT，不能用 TBT 替代 INP。方法依据 [web-vitals 官方用法](https://github.com/GoogleChrome/web-vitals) 和 [INP 定义](https://web.dev/articles/inp)。当前实测及未达标项见 [G4 性能报告](validation/g4.md)。

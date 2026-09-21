@@ -13,7 +13,7 @@ const cli = process.env.SYUTOI_LIGHTHOUSE_CLI;
 assert(cli, 'Set SYUTOI_LIGHTHOUSE_CLI to an installed lighthouse/cli/index.js');
 const base = process.env.SYUTOI_PREVIEW_URL || 'http://127.0.0.1:4173';
 const chrome = process.env.SYUTOI_CHROME || '/usr/bin/google-chrome';
-const output = resolve(process.env.SYUTOI_PERFORMANCE_OUTPUT || '/tmp/syutoi-d8');
+const output = resolve(process.env.SYUTOI_PERFORMANCE_OUTPUT || '/tmp/syutoi-performance');
 await mkdir(output, { recursive: true });
 const command = async (file, args) => (await exec(file, args, { maxBuffer: 10 * 1024 * 1024 })).stdout.trim();
 const report = {

@@ -41,3 +41,16 @@
 | wallpaper-2572384 | 文章封面 | 1920 × 1200 | 1280 × 800 |
 
 已生成文件随仓库提交；日常 build/dev 不需要安装图片编码器。主题继续接受原来的单 URL 封面配置，没有自动转码用户图片或引入客户端图片库。这一批通过用途匹配的静态尺寸与 WebP 编码优化示例，不新增 srcset 配置；更高分辨率设备或其他布局需按实际展示尺寸准备资源。性能前后对比与限制见 [D8a 报告](validation/d8a.md)。
+
+## 导航 Logo 的维护
+
+默认导航显示 29 × 29 CSS px 的图标，使用 `source/images/logo.webp`（96 × 96，适用于常见高 DPR 屏幕）。原始 `source/images/logo.png` 保留供重新生成或显式配置使用。副本保持原图内容与透明背景，仅缩小尺寸；文件来自主题资源，普通博客无需安装图像处理工具。
+
+维护时使用 cwebp 1.3.2，在主题根目录执行：
+
+```bash
+cwebp -lossless -m 6 -resize 96 96 source/images/logo.png -o source/images/logo.webp
+pnpm build
+```
+
+这里的 lossless 指缩放结果的 WebP 编码，不表示缩放过程保留原图全部像素。替换自己的品牌图时，应根据实际显示尺寸选择合适的源图，避免导航加载数百 KB 的大图；路径仍通过 `branding.logo` 配置。

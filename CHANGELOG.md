@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Ship a right-sized default logo while retaining the original image, and record repeatable Lighthouse and scripted INP measurements with the remaining mobile homepage LCP gap.
+
 - Improve accessibility with a unified header landmark, keyboard-focusable content tables, stronger image/banner and category contrast, and a repeatable core-page accessibility audit.
 
 - Validate optional feed and sitemap plugins, add a sitemap to the example site, correct RSS HTML encoding and feed update timestamps, and suppress subscription links when feed generators are unavailable.
