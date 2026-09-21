@@ -1,6 +1,6 @@
 # 基础写作
 
-本页对应 Syutoi 0.2.0。先按 [快速开始](getting-started.md) 配置 Markdown renderer，再在博客中执行 `pnpm exec hexo new "文章标题"`。完整可运行样例见 [示例清单](examples.md)。
+本页对应当前开发分支（0.3.0 及 Unreleased 的 SEO/订阅改进）。先按 [快速开始](getting-started.md) 配置 Markdown renderer，再在博客中执行 `pnpm exec hexo new "文章标题"`。完整可运行样例见 [示例清单](examples.md)。
 
 ## 文章与独立页面
 
@@ -105,6 +105,35 @@ alt 用于替代文字，独立图片的 title 会显示为图注。普通正文
 选择与用途相符的图片尺寸和编码，主题不会自动下载或转换用户图片。手写 picture/source/srcset/sizes 保留原值，路径需要适配部署目录；完整边界规则见 [正文图片配置](configuration.md#正文图片)。默认保留原生图片；可在主题配置中启用 [可选灯箱](configuration.md#可选图片灯箱)，单篇 Front Matter 的 `lightbox: false` 可退出。picture/srcset 和非图片链接仍保留原生行为。
 
 脚注、details、目录和分页在无 JS 时可用。Mermaid、数学公式、标签属性扩展和复杂 Shoka 私有语法不默认支持；替代写法见 [迁移清单](migration-from-shoka.md)。
+
+## 搜索、评论、订阅与 SEO
+
+这些能力有独立开关，不能相互替代：
+
+| Front Matter | 作用 |
+| --- | --- |
+| `search: false` | 从已开启的 Pagefind 索引中排除文章或 Page |
+| `comments: false` | 不显示本页评论插槽；true 不会越过全局关闭 |
+| `lightbox: false` | 不增强本页正文图片；保留原图链接 |
+| `sitemap: false` | 告诉已安装的 Sitemap 插件排除本页 |
+| `seo.noindex: true` | 在 HTML 中请求不被索引，不改变页面可访问性 |
+| `seo.image: false` | 不为本页生成分享图片，包括默认图回退 |
+
+站点主题配置 `search.provider: pagefind` 启用搜索；`comments.provider: waline` 与有效 server_url 启用评论。主题不为你部署评论服务，读者点击后才连接服务。功能开启后仍应检查各页面的 Front Matter。
+
+单页覆盖浏览器/分享标题和简介：
+
+```yaml
+seo:
+  title: 分享时使用的标题
+  description: 页面介绍。
+  image: /images/share.webp
+  image_alt: 与分享图片对应的描述
+```
+
+正文标题仍使用普通 title。完整 SEO 字段、优先级与 canonical 覆盖见 [配置说明](configuration.md#seo-配置与单页覆盖f3)。普通 Page 也可参与搜索、评论和 Sitemap，但不输出文章日期和阅读时间。
+
+搜索排除不等于订阅排除；hexo-feed 没有这里支持的单篇 feed:false 开关。发布状态、未来日期、feed 限制和 Sitemap 的实际范围见 [订阅与站点地图](syndication.md)。静态公开页面不应依靠这些展示开关保护私密内容。
 
 ## 发布前检查
 

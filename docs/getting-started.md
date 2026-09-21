@@ -1,6 +1,6 @@
 # 快速开始
 
-本页用于已有 Hexo 博客；想先查看效果，可按 [README](../README.md) 启动仓库自带示例。以下命令在博客根目录执行，要求 Node >=20.19.0、pnpm 9.0.4；当前实现以 Hexo 8.1.2 验证。
+本页主要用于已有 Hexo 博客；新博客先看 [从空目录开始](#从空目录开始)，再执行安装步骤。想先查看效果，可按 [README](../README.md) 启动仓库自带示例。以下命令在博客根目录执行，要求 Node >=20.19.0、pnpm 9.0.4；当前实现以 Hexo 8.1.2 验证。本文描述当前开发分支；0.3.0 标签包含搜索和评论，后续 SEO、Sitemap 与文档改进见 Changelog 的 Unreleased。
 
 ## 安装主题与依赖
 
@@ -88,4 +88,31 @@ pnpm exec hexo server --ip 127.0.0.1
 
 RSS/Atom/JSON Feed 使用可选站点插件 `hexo-feed` 与 `hexo-renderer-ejs`，Sitemap 使用 `hexo-generator-sitemap`。安装命令、完整配置、开关与排除规则见 [订阅与站点地图](syndication.md)。未安装插件时主题不会输出订阅入口。
 
-上线前填入实际的 url、root、作者与描述；子目录站点例如 `url: https://example.com/blog` 与 `root: /blog/`。部署生成的 `public/`，由宿主配置 404、HTTPS、文本 gzip/Brotli 和缓存策略；主题不会配置服务器。发布后检查页面和静态资源 URL，并用实际网络复测性能。完整公开发布/托管平台指南属于后续 G 阶段。
+上线前填入实际的 url、root、作者与描述；子目录站点例如 `url: https://example.com/blog` 与 `root: /blog/`。部署生成的 `public/`，由宿主配置 404、HTTPS、文本 gzip/Brotli 和缓存策略；主题不会配置服务器。发布后检查页面和静态资源 URL，并用实际网络复测性能。两种项目布局的部署步骤与 GitHub Pages 示例见 [部署指南](deployment.md)。
+
+
+## 从空目录开始
+
+先使用 Hexo CLI 初始化博客（现有博客跳过此步）：
+
+```bash
+pnpm dlx hexo-cli@4.3.2 init my-blog
+cd my-blog
+```
+
+然后执行本文安装步骤，并检查初始化模板带来的 renderer、首页/归档插件。不要把本主题仓库直接当作自己的博客根目录；这里的 example 是开发夹具。
+
+## 升级与排查
+
+先保存博客与主题的本地修改，在主题目录中获取自己选择的已发布 tag 或提交，再按原安装命令安装主题生产依赖。标签可能尚未推送；不要假设本地开发记录中的每个标签都能在远端获取。构建前查看 [Changelog](../CHANGELOG.md)，升级后重启服务并 clean/generate。
+
+| 现象 | 检查 |
+| --- | --- |
+| 找不到 nunjucks、pagefind 等模块 | 是否在 themes/syutoi 安装了主题生产依赖；只安装博客依赖不够 |
+| 页面无样式或图片 404 | 是否部署整个 public；url/root 是否匹配；资源文件是否存在 |
+| 修改配置后没变化 | 重启预览，并检查博客 theme_config 是否覆盖了 _config.syutoi.yml |
+| 页面重复、Markdown 输出不一致 | 是否有重复的首页/归档生成器或多个 Markdown renderer |
+| 看不到搜索/评论入口 | 默认关闭；检查 provider，评论还需要有效 server_url 与当前页未退出 |
+| 启用 feed 却没有订阅文件 | 检查插件是否安装、模板路径与命令工作目录；见订阅文档 |
+
+源码定制见 [自定义](customization.md)，文章功能开关见 [写作](writing.md)，从旧主题升级见 [迁移](migration-from-shoka.md)。

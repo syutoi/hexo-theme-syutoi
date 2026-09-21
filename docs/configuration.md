@@ -2,7 +2,7 @@
 
 主题默认配置只列出已经实现的选项，最多三层字段。用户在博客根目录创建 `_config.syutoi.yml`，只写需要覆盖的字段，无需复制整份默认文件。
 
-Hexo 的同名字段覆盖顺序是：主题 `_config.yml` → 博客 `_config.syutoi.yml` → 博客 `_config.yml` 中的 `theme_config`。列表整体替换，不追加；`[]` 表示清空。修改配置后重新启动 `pnpm dev`。
+Hexo 的同名字段覆盖顺序是：主题 `_config.yml` → 博客 `_config.syutoi.yml` → 博客 `_config.yml` 中的 `theme_config`。列表整体替换，不追加；`[]` 表示清空。修改配置后重启预览：主题仓库使用 `pnpm dev`，独立博客使用 `pnpm exec hexo server`。
 
 站点的标题、作者、描述、语言、URL、目录、分页、日期、Markdown 和 feed 插件配置仍放在博客 `_config.yml`。主题不会重复提供这些 Hexo 选项。
 
@@ -54,7 +54,7 @@ social:
 
 | 字段 | 默认值 | 行为 |
 | --- | --- | --- |
-| `branding.name` | 空字符串 | 页头展示名；留空使用站点 title |
+| `branding.name` | 空字符串 | 页头大图区域展示名；留空使用站点 title，导航标题始终使用站点 title |
 | `branding.avatar` | 空字符串 | 作者侧栏头像完整路径；留空显示首字母 |
 | `branding.logo` | `/images/logo.png` | 导航栏标题旁的品牌图标；空字符串回退为字母标记 |
 | `branding.favicon` | `/images/favicon.png` | 网站图标；空字符串关闭 |
@@ -65,9 +65,15 @@ social:
 | `post_list.cover` | `true` | 列表显示文章 cover；不影响文章页和页头 |
 | `post.reading_time` | `true` | 文章头部显示正文预计阅读时间；单篇 reading_time: false 可关闭 |
 | `search.provider` | `none` | none / pagefind；启用后生成独立搜索页面，文章/Page 可用 search: false 退出索引 |
+| `comments.provider` | `none` | none / waline；有效 server_url 才启用内容页插槽 |
+| `comments.server_url` | 空字符串 | 完整 HTTP(S) Waline 服务地址；点击加载后连接 |
+| `seo.open_graph` / `seo.twitter_card` | `true` | 分别输出 Open Graph / Twitter Card |
+| `seo.default_image` / `seo.default_image_alt` | 空字符串 | 站点分享图与对应替代文字 |
+| `seo.twitter_site` | 空字符串 | Twitter 账号名，可带 @，不填主页 URL |
+| `seo.noindex` | `false` | true 为全站输出 noindex, follow |
 | `lightbox.enable` | `false` | 正文图片的可选灯箱；单篇 lightbox: false 可关闭，首次点击才加载查看器 |
 | `navigation.menu` | 首页、归档、分类、标签 | `{ name, url }` 列表；空列表移除菜单链接 |
-| `social` | `[]` | `{ name, url }` 列表，显示在作者侧栏；不加载外部图标或组件 |
+| `social` | `[]` | `{ type, url }` 或 `{ name, url }` 列表，显示在作者侧栏；不加载外部图标或组件 |
 | `sidebar.enable` | `true` | 显示侧栏；关闭后使用居中的单列布局 |
 | `sidebar.statistics` | `true` | 显示文章、分类、标签数量 |
 | `sidebar.categories` | `true` | 在非文章页显示顶级分类列表 |

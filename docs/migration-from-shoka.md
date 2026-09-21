@@ -1,13 +1,13 @@
 # 从 Shoka 迁移：当前兼容范围
 
-本说明记录 Syutoi 0.2.0 的兼容范围；0.1.0 MVP 逐项结果见 [验收表](validation/mvp.md)，不代表完整 1.0 功能已实现。上游历史、许可证和文章中的来源链接保持保留。
+本说明记录当前开发分支（0.3.0 及 Unreleased 改进）的兼容范围；0.1.0 MVP 逐项结果见 [验收表](validation/mvp.md)，不代表完整 1.0 功能已实现。上游历史、许可证和文章中的来源链接保持保留。
 
 ## 页面与资源
 
 - 页面使用语义化 Nunjucks 模板、系统字体、原生 CSS 和本地 SVG。旧 `app.js`、`app.css`、Stylus 源文件与生成器已删除，示例站不再安装 `hexo-renderer-stylus`、`hexo-autoprefixer`。CSS 前缀处理统一交给主题的 PostCSS 构建。
 - 仓库开发预览更新后运行 `pnpm clean && pnpm build`；安装主题的博客运行 `pnpm exec hexo clean && pnpm exec hexo generate`。部署时也清理旧生成目录，避免残留文件。
-- 已停止 PJAX、播放器、烟花、加载动画、评论、搜索、打赏和统计脚本。对应旧字段已从默认配置删除；即使用户覆盖文件仍有这些字段，也不会启用这些功能。
-- 核心页面无需 JavaScript 即可阅读和导航。JavaScript 仅增强主题偏好、移动菜单和代码复制；无 JS 时移动导航直接显示。
+- 已停止旧 PJAX、播放器、烟花、加载动画、打赏和统计脚本。旧搜索/评论接入也不会自动启用；新 Pagefind 与 Waline 使用独立配置，默认关闭，需重新设置 provider。
+- 核心页面无需 JavaScript 即可阅读和导航。核心 JavaScript 增强主题偏好、移动菜单、目录高亮和代码复制；可选搜索/评论/灯箱使用独立资源；无 JS 时移动导航直接显示。
 - 不再默认加载远程字体、图标或第三方脚本。正文中的外部图片和用户自己嵌入的内容仍由作者控制。
 
 ## 视觉迁移范围
@@ -26,9 +26,9 @@ appearance:
 
 ## 配置和内容
 
-- 旧 `menu` 中的 `路径 || 图标` 暂时兼容，嵌套菜单展开为普通导航。新配置统一使用 `navigation.menu` 下的 `{ name, url }` 列表，社交链接也使用 `{ name, url }` 列表。
+- 旧 `menu` 中的 `路径 || 图标` 暂时兼容，嵌套菜单展开为普通导航。新配置统一使用 `navigation.menu` 下的 `{ name, url }` 列表，社交链接推荐 `{ type, url }`，也兼容 `{ name, url }` 列表。
 - 封面仅使用文章显式设置的字符串 `cover`；不再随机挑选 `_images.yml` 或 `_data/images.yml` 图片。文章不设置封面也可正常展示。
-- 旧 `_data/colors.styl`、`custom.styl`、`iconfont.styl` 不再生效。修改 `src/styles/` 并重新构建资源；自定义入口的正式设计待后续完成。
+- 旧 `_data/colors.styl`、`custom.styl`、`iconfont.styl` 不再生效。按 [自定义文档](customization.md) 修改 `src/styles/` 并重新构建资源；当前没有自动注入自定义 CSS 的配置。
 - 外部链接保留真实 `href`，图片保留真实 `src`，不再依赖旧 JS 解码和懒加载。友情链接标签保留为普通链接卡片。
 - `{% media audio/video %}` 中的播放列表以可访问的链接列表展示，不再加载第三方播放器。单个媒体也可以改为标准 HTML `audio` / `video` 标签，并设置 `controls`、`preload="none"`。
 - 定制 Markdown renderer 已替换，旧示例文档保留历史说明并加注提示，不能再作为当前功能清单。差异见下表。
@@ -66,6 +66,15 @@ appearance:
 
 配置兼容层区分站点覆盖与主题默认值，优先读取用户显式设置；新字段与旧别名同时出现时以新字段为准。列表整体替换，空列表不会恢复默认菜单。完整字段、优先级和迁移表见 [配置文档](configuration.md)。
 
-## 下一步
+## 建议迁移顺序
 
-MVP 后续阅读体验按 [TODO](TODO.md) 的 E 阶段推进；真实 INP、多浏览器、屏幕阅读器及公开发布仍需后续验证。
+1. 先提交或备份旧博客配置、依赖、主题定制和内容，在单独分支中安装 Syutoi；保留原主题以便回退。
+2. 按 [快速开始](getting-started.md) 整理 renderer 与生成器，先用最小主题配置成功生成。
+3. 保留原来的 permalink、category_map、tag_map 和站点 root，比较重要文章、分类和旧锚点链接。
+4. 将旧 menu、头像、主题偏好改为新结构，逐项恢复封面、导航和社交链接。
+5. 按兼容表检查旧标签，先把影响正文理解的语法改为标准 Markdown 或 HTML；完整兼容清单的扩展属于 G2。
+6. 单独开启 Pagefind、灯箱或 Waline 并验证。Waline 评论线程采用含 root 的路径；旧系统数据与线程迁移需在服务端处理，主题不自动搬运。
+7. 按 [订阅文档](syndication.md) 恢复 feed/Sitemap，再检查 SEO 覆盖；noindex、search:false 与 sitemap:false 各自独立。
+8. clean/generate，查看桌面/手机和无 JS 页面，再按照 [部署指南](deployment.md) 发布。
+
+需要回退时恢复博客配置/依赖和原主题引用，重新安装相应锁文件并 clean/generate；不要只恢复旧 CSS。阅读体验 E 阶段和博客能力 F 阶段已经完成，Beta 验收仍按 [TODO](TODO.md) 推进。

@@ -77,7 +77,7 @@ PRD 第 52 节的 v0.1 MVP 验收标准优先于后续版本功能清单。
 
 ## G. Beta 与稳定版（0.9–1.0，PRD §43–51）
 
-- [ ] G1：编写 getting-started/configuration/writing/customization/deployment/migration-from-shoka 文档。
+- [x] G1：编写 getting-started/configuration/writing/customization/deployment/migration-from-shoka 文档。
 - [ ] G2：发布配置与内容迁移兼容清单，明确不支持的旧标签及替代写法。
 - [ ] G3：完整验证首页、文章、Page、归档、分类、标签、404 的响应式与无障碍。
 - [ ] G4：验证性能预算：核心 JS gzip <50KB（争取 <30KB）、CSS gzip <40KB；按明确环境记录性能数据。
@@ -459,3 +459,16 @@ C 阶段完成。下一批：D2，完善 Markdown 阅读元素的样式与边界
 详情：[F4 验收记录](validation/f4.md)。F 阶段任务完成。
 
 下一批：G1，补齐 Beta 发布所需的上手、配置、写作、自定义、部署与迁移文档。
+
+
+## G1 完成记录（2026-09-22）
+
+- 补齐 customization/deployment，区分配置定制、源码定制、普通博客与仓库 Demo 的构建/发布目录；提供独立博客 GitHub Pages workflow 示例，并说明主题 submodule 与生产依赖安装。
+- 更新 getting-started/configuration/writing/migration-from-shoka，补齐当前搜索、评论、SEO、Sitemap 行为和独立开关，清理 0.2.0 与“后续 E 阶段”等过时说明。
+- README 增加文档入口，明确当前开发分支与 0.3.0 标签的范围；配置表补齐评论/SEO，澄清 branding.name 和导航 title 的位置。
+- 临时独立博客用当前本地提交 clone、独立生产依赖安装及文档 YAML 生成成功；验证创建文章/Page、冻结锁文件重装、根目录与 /blog/、Markdown 脚注/任务列表、Pagefind 和 CNAME 复制。
+- 25 个 YAML 示例可解析，50 个本地文件链接目标存在，git diff --check 通过。仅修改文档，未重跑无变化的全量代码测试或浏览器矩阵，也未推送、部署或修改 DNS。
+
+详情：[G1 验证记录](validation/g1.md)。
+
+下一批：G2，完善可发布的配置/内容迁移兼容清单与替代写法。
