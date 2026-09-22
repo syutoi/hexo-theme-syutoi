@@ -47,3 +47,10 @@ assert.match(pictures, /loading="eager" decoding="sync"/);
 assert.match(pictures, /<source media="\(max-width: 540px\)" srcset="..\/assets\/image-wide.svg">/);
 assert.doesNotMatch(pictures, /<p>\s*<figure>/);
 console.log('Verified Markdown anchors, footnotes, tasks, tables, details, images, code fidelity.');
+
+const extensions = await readFile(new URL('markdown-extensions/index.html', output), 'utf8');
+assert.equal((extensions.match(/class="markdown-alert markdown-alert-/g) || []).length, 5);
+assert.match(extensions, /width="100" height="100"/);
+assert.match(extensions, /<figcaption>100 像素宽的头像<\/figcaption>/);
+assert.match(extensions, /\[!UNKNOWN\]/);
+console.log('Verified optional Markdown image attributes and five alert kinds.');

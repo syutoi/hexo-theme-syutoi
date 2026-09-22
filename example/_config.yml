@@ -96,6 +96,10 @@ markdown:
     linkify: true
     typographer: false
   plugins:
+    - name: markdown-it-attrs
+      options:
+        allowedAttributes: [width, height]
+    - name: ./themes/syutoi/lib/markdown-alerts.cjs
     - markdown-it-footnote
     - name: markdown-it-task-lists
       options:

@@ -2,4 +2,5 @@
 @import './base/base.css';
 @import './layouts/site.css';
 @import './markdown/article.css';
+@import './markdown/alerts.css';
 @import './components/theme.css';

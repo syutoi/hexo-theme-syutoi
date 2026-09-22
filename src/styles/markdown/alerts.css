@@ -1,0 +1,20 @@
+/* Build-time Markdown alerts: readable without client-side JavaScript. */
+.prose .markdown-alert {
+  --alert-accent: var(--syutoi-color-primary);
+  margin-block: 1.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--syutoi-color-border);
+  border-inline-start: 4px solid var(--alert-accent);
+  border-radius: var(--syutoi-radius-sm);
+  background: var(--syutoi-color-surface);
+  color: var(--syutoi-color-text);
+}
+.prose .markdown-alert-tip { --alert-accent: var(--syutoi-color-accent); }
+.prose .markdown-alert-important { --alert-accent: var(--syutoi-color-focus); }
+.prose .markdown-alert-warning, .prose .markdown-alert-caution { --alert-accent: var(--syutoi-code-keyword); }
+.prose .markdown-alert > .markdown-alert-title {
+  margin: 0 0 .5rem;
+  color: var(--alert-accent);
+  font-weight: 700;
+}
+.prose .markdown-alert > :last-child { margin-bottom: 0; }

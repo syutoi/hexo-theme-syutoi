@@ -63,7 +63,7 @@ hexo.extend.helper.register('syutoi_metadata', function () {
 });
 
 hexo.extend.helper.register('syutoi_content', function (content) {
-  return enhanceCode(enhanceTables(enhanceImages(content, value => this.url_for(value))), this.__('desk.code_block'));
+  return enhanceCode(enhanceTables(enhanceImages(content, value => value.startsWith(this.config.root || '/') ? value : this.url_for(value))), this.__('desk.code_block'));
 });
 
 hexo.extend.helper.register('syutoi_body', function () {

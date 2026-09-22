@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add optional Markdown image dimensions and GitHub-style alerts with theme-aware styling, examples and configuration guidance; avoid duplicate image root prefixes under subdirectory deployments.
+
 - Publish a documentation hub and eight categorized guides from the repository documentation, with development synchronization and verified local links.
 
 - Curate the example site into three dated articles in two categories, move boundary samples to standalone pages, and retain historical migration coverage in isolated test fixtures.

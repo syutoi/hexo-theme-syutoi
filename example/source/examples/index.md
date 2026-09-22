@@ -10,6 +10,7 @@ description: 当前主题的写作示例、长文和边界页面入口。
 
 | 示例 | 主要检查内容 |
 | --- | --- |
+| [图片属性与提示块](/markdown-extensions/) | 图片尺寸、五种提示块与普通引用 |
 | [标准 Markdown 与迁移](/reading/) | 脚注、任务列表、代码与旧语法替代方式 |
 | [中英文混排](/typography/) | 中文、繁体、英文、长链接和行内代码 |
 | [阅读元素](/reading-elements/) | H1–H6、引用、列表、表格、details |

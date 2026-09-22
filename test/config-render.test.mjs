@@ -1,3 +1,4 @@
+import { parseDocument, DomUtils } from 'htmlparser2';
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { mkdtemp, mkdir, writeFile, readFile, symlink, rm } from 'node:fs/promises';
@@ -436,4 +437,63 @@ test('historical migration fixtures retain source attribution and readable fallb
   assert.match(legacy, /class="media-links"/);
   assert.doesNotMatch(notes, /:::note|\{\.quiz/);
   assert.match(notes, /huang/);
+});
+
+const extensionConfig = {
+  permalink: ':title/',
+  markdown: {
+    preset: 'default', render: {html: true},
+    plugins: [
+      {name: 'markdown-it-attrs', options: {allowedAttributes: ['width', 'height']}},
+      {name: './themes/syutoi/lib/markdown-alerts.cjs'}
+    ],
+    images: {lazyload: true, prepend_root: true}
+  }
+};
+test('optional Markdown extensions preserve images, captions, quotes and escaped examples in Hexo', async () => {
+  const content = `![Avatar](/images/avatar.png "Caption"){width=100 height="100" onerror="evil()" class=bad}
+
+> [!TIP]
+> **Useful** [link](/docs/).
+>
+> - First
+> - Second
+>
+> > Ordinary nested quote
+
+## After alert
+
+> [!UNKNOWN]
+> Plain text
+
+> \\[!TIP]
+> Escaped marker
+
+\`\`\`markdown
+![Avatar](/a.png){width=100}
+> [!NOTE]
+\`\`\`
+`;
+  const [html] = await render({lightbox:{enable:true}}, '/blog/', {config: extensionConfig, posts: [post('Extensions', '', content)], paths: ['post-0/index.html']});
+  assert.match(html, /src="\/blog\/images\/avatar.png"[^>]*width="100"[^>]*height="100"/);
+  assert.match(html, /<figcaption>Caption<\/figcaption>/);
+  const viewer = DomUtils.findOne(node => node.name === 'a' && Object.hasOwn(node.attribs, 'data-syutoi-lightbox'), parseDocument(html).children, true);
+  assert.equal(viewer?.attribs.href, '/blog/images/avatar.png');
+  assert.doesNotMatch(html, /onerror=|class="bad"/);
+  assert.equal((html.match(/class="markdown-alert markdown-alert-tip"/g) || []).length, 1);
+  assert.match(html, /<strong>Useful<\/strong>/);
+  assert.match(html, /<blockquote>\s*<p>Ordinary nested quote<\/p>\s*<\/blockquote>/);
+  assert.match(html, /\[!UNKNOWN\]/);
+  assert.match(html, /\[!TIP\]/);
+  assert.match(DomUtils.textContent(parseDocument(html)), /\{width=100\}/);
+  assert.match(html, /After alert/);
+});
+test('Markdown extensions are opt-in and all five alert kinds render without scripts', async () => {
+  const body = ['NOTE', 'TIP', 'IMPORTANT', 'WARNING', 'CAUTION'].map(name => `> [!${name}]\n> Body`).join('\n\n');
+  const [on] = await render({}, '/', {config: extensionConfig, posts: [post('Alerts', '', body)], paths: ['post-0/index.html']});
+  for (const name of ['note', 'tip', 'important', 'warning', 'caution']) assert.match(on, new RegExp(`class="markdown-alert markdown-alert-${name}"`));
+  const [off] = await render({}, '/', {config: {permalink: ':title/'}, posts: [post('Off', '', body + '\n\n![x](/x.png){width=100}')], paths: ['post-0/index.html']});
+  assert.doesNotMatch(off, /class="markdown-alert/);
+  assert.match(off, /\[!NOTE\]/);
+  assert.match(DomUtils.textContent(parseDocument(off)), /\{width=100\}/);
 });

@@ -46,7 +46,7 @@ appearance:
 | `:::info` / `:::note info` 等 | 不默认解析；普通说明页和 Java 笔记已改为引用，特殊功能测试夹具保留原语法供对照 |
 | `;;;id 标题` / `+++` | 不默认解析；改为分节标题或 HTML details / summary |
 | `{.quiz}` / `{.correct}` / `{.gap}` | 移除交互依赖；Java 笔记改为普通题目与答案，特殊功能测试夹具保留语法参考 |
-| 颜色、label、gallery 等 `{.class}` | 不默认启用 attrs；改为普通 Markdown 或明确的 HTML，gallery 图片仍正常显示，属性指令仅为原文 |
+| 颜色、label、gallery 等 `{.class}` | 不恢复旧 class 样式；可选 attrs 仅提供图片 width/height，见写作指南；gallery 等改为普通图片或 HTML |
 | `!!spoiler!!`、`++ins++`、`==mark==`、emoji 别名 | 不默认启用；使用 details、u/ins、mark 和 Unicode emoji |
 | `{文字^注音}`、上下标 | 使用 ruby/rt、sub、sup |
 | 多行/合并单元格/无表头表格 | 改为标准 Markdown 表格或 HTML table |
@@ -228,3 +228,5 @@ rg -n '^[[:space:]]*[A-Za-z_][A-Za-z_0-9]*:' _config*.yml
 需要回退时恢复博客配置/依赖和原主题引用，重新安装相应锁文件并 clean/generate；不要只恢复旧 CSS。阅读体验 E 阶段和博客能力 F 阶段已经完成，Beta 验收仍按 [TODO](TODO.md) 推进。
 
 2026-09-22：示例站移除了旧主题文档和 Java 课程文章；特殊功能与第二周笔记保留于 `test/fixtures/legacy/`，由隔离站点测试验证历史来源链接、媒体回退和普通答案内容。
+
+图片尺寸属性与 GitHub 风格提示块现可按 [写作指南](writing.md#可选图片属性与提示块) 开启。它们不恢复 Shoka 的 ::: 私有容器、gallery 或颜色样式。

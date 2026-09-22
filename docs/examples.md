@@ -8,6 +8,7 @@
 | --- | --- | --- |
 | `/welcome/` | `_posts/desk/welcome.md` | 置顶欢迎文章、封面与导航 |
 | `/examples/` | `examples/index.md` | 当前示例入口与边界场景链接 |
+| `/markdown-extensions/` | `markdown-extensions/index.md` | 可选尺寸属性、五种提示块、转义与引用 |
 | `/reading/` | `reading/index.md` | 标准 Markdown 与迁移写法 |
 | `/typography/` | `typography/index.md` | 中英文混排、长字符串 |
 | `/reading-elements/` | `reading-elements/index.md` | 阅读元素与表格/脚注/details |
