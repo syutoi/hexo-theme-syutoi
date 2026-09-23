@@ -224,3 +224,14 @@ node toolbox/check-interaction-performance.mjs
 操作包括主题切换、移动菜单打开/Escape、长文目录展开/锚点与代码复制。使用真实浏览器剪贴板 API，仅复制本地示例代码；无法复制会失败，不用替身伪造成功。每次操作留 700ms 供回调更新，以 `onINP(callback, {reportAllChanges:true, durationThreshold:16})` 收集并保存本次脚本会话值。无数据、脚本错误或操作失败会非零退出；只有带 `finished` 的报告代表执行完成。指标超过 200ms 仍记录真实数据，不因波动直接作为 CI 门槛。
 
 这是指定交互序列的实验室结果，不是现场用户的第 75 百分位数，也不代表搜索/评论/灯箱或页面整个真实访问过程。无交互的 Lighthouse navigation 仍只报告 TBT，不能用 TBT 替代 INP。方法依据 [web-vitals 官方用法](https://github.com/GoogleChrome/web-vitals) 和 [INP 定义](https://web.dev/articles/inp)。交互实测及边界见 [G4 性能报告](validation/g4.md)，加载性能后续复测见 [G4a](validation/g4a.md)。
+
+
+## 独立 Git 安装验收（G5a）
+
+在主题仓库根目录运行 `pnpm check:install`。需要 Git、pnpm、网络及已安装的仓库开发依赖。工具在系统临时目录新建独立博客，从本地仓库 clone **HEAD 提交**（不包含未提交修改），按快速开始的站点 YAML 安装生产依赖并生成页面；不启动服务、不修改当前示例配置、不推送或发布。
+
+检查根目录与 `/blog/` 两种部署路径，分别关闭/开启图片属性、提示块、Pagefind 与灯箱。涵盖基础页面、资产路径、Markdown 输出和冻结锁文件重装。它创建的是最小独立站点，并未执行 Hexo CLI init，也未验证远端仓库/标签可用性。当前不提供 npm 主题安装。
+
+控制台输出临时工作区及 `report.json` 路径，成功或失败都保留命令日志以便复查。验收后可以自行删除该临时目录。主题依赖由克隆的锁文件固定；站点插件按快速开始命令解析当时版本，首次安装后使用生成的站点锁文件复验。该网络验收为可选维护工具，不放入日常 `pnpm test`。
+
+最近结果见 [G5a 报告](validation/g5a.md)。

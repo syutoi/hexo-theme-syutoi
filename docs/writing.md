@@ -1,6 +1,6 @@
 # 基础写作
 
-本页对应0.4.0。先按 [快速开始](getting-started.md) 配置 Markdown renderer，再在博客中执行 `pnpm exec hexo new "文章标题"`。完整可运行样例见 [示例清单](examples.md)。
+本页对应当前开发分支（包版本 0.4.0）；可选图片属性与提示块需要 v0.4.0 标签之后的主题代码。先按 [快速开始](getting-started.md) 配置 Markdown renderer，再在博客中执行 `pnpm exec hexo new "文章标题"`。完整可运行样例见 [示例清单](examples.md)。
 
 ## 文章与独立页面
 

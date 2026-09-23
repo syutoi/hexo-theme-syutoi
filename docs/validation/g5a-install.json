@@ -1,0 +1,47 @@
+{
+  "commit": "d747660d54c37b32d199a3c66140fb8e785d35b5",
+  "node": "v20.19.2",
+  "pnpm": "9.0.4",
+  "scenarios": [
+    {
+      "root": "/",
+      "extended": false,
+      "pages": 9,
+      "passed": true
+    },
+    {
+      "root": "/",
+      "extended": true,
+      "pages": 9,
+      "passed": true
+    },
+    {
+      "root": "/blog/",
+      "extended": false,
+      "pages": 9,
+      "passed": true
+    },
+    {
+      "root": "/blog/",
+      "extended": true,
+      "pages": 9,
+      "passed": true
+    }
+  ],
+  "themeInstall": "pnpm --dir themes/syutoi install --prod --frozen-lockfile --filter hexo-theme-syutoi",
+  "source": "Local Git clone of committed HEAD; no workspace node_modules reuse",
+  "limitations": [
+    "No Hexo CLI init",
+    "No remote clone or deployment",
+    "No npm distribution",
+    "No browser execution in this check"
+  ],
+  "siteVersions": {
+    "hexo": "8.1.2",
+    "hexo-generator-category": "2.0.0",
+    "hexo-generator-tag": "2.0.0",
+    "hexo-renderer-markdown-it": "7.1.1",
+    "hexo-server": "3.0.0",
+    "markdown-it-task-lists": "2.1.1"
+  }
+}
