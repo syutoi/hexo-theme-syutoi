@@ -235,3 +235,12 @@ node toolbox/check-interaction-performance.mjs
 控制台输出临时工作区及 `report.json` 路径，成功或失败都保留命令日志以便复查。验收后可以自行删除该临时目录。主题依赖由克隆的锁文件固定；站点插件按快速开始命令解析当时版本，首次安装后使用生成的站点锁文件复验。该网络验收为可选维护工具，不放入日常 `pnpm test`。
 
 最近结果见 [G5a 报告](validation/g5a.md)。
+
+
+## 线上 Demo 验收（G5c）
+
+运行 `pnpm check:online`，使用 curl 对 `https://hexo.syutoi.com/` 进行只读验收；可用 `SYUTOI_ONLINE_URL` 指定其他同结构的 HTTPS Demo。需要联网，不登录、不提交表单、不部署。工具依次检查核心页面和八篇文档、canonical/og:url、文档站内链接与锚点、页面资源的 HTTP 状态/MIME、RSS/Atom/Sitemap 的 XML、JSON Feed 和随机不存在路径的真实 404。
+
+canonical 接受目录 URL 与其 index.html 等价写法，同时检查实际地址可访问。线上核心 JS/CSS 与本地预构建文件逐字节对比；这可识别资源差异，不能替代构建提交标识。网络错误有限重试，仍失败则报告失败，不能等同于主题错误。每次在临时目录保留响应正文与 `report.json`，失败返回非零状态。
+
+只检查同源资源；第三方友链图片列为外部资源，不代表已验证其可用性。该工具不测 Lighthouse、运行时交互、域名配置权限或完整无障碍，浏览器和性能验收另行执行。最近结果见 [G5c 报告](validation/g5c.md)。

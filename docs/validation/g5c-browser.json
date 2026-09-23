@@ -1,0 +1,82 @@
+{
+  "started": "2026-09-23T05:24:13.010Z",
+  "browser": "Chrome/151.0.7922.108",
+  "base": "https://hexo.syutoi.com",
+  "checks": [
+    {
+      "width": 1440,
+      "mode": "light",
+      "path": "/",
+      "passed": true
+    },
+    {
+      "width": 1440,
+      "mode": "light",
+      "path": "/docs/",
+      "passed": true
+    },
+    {
+      "width": 1440,
+      "mode": "light",
+      "path": "/markdown-extensions/",
+      "passed": true
+    },
+    {
+      "width": 1440,
+      "mode": "dark",
+      "path": "/",
+      "passed": true
+    },
+    {
+      "width": 1440,
+      "mode": "dark",
+      "path": "/docs/",
+      "passed": true
+    },
+    {
+      "width": 1440,
+      "mode": "dark",
+      "path": "/markdown-extensions/",
+      "passed": true
+    },
+    {
+      "width": 390,
+      "mode": "light",
+      "path": "/",
+      "passed": true
+    },
+    {
+      "width": 390,
+      "mode": "light",
+      "path": "/docs/",
+      "passed": true
+    },
+    {
+      "width": 390,
+      "mode": "light",
+      "path": "/markdown-extensions/",
+      "passed": true
+    },
+    {
+      "width": 390,
+      "mode": "dark",
+      "path": "/",
+      "passed": true
+    },
+    {
+      "width": 390,
+      "mode": "dark",
+      "path": "/docs/",
+      "passed": true
+    },
+    {
+      "width": 390,
+      "mode": "dark",
+      "path": "/markdown-extensions/",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "noJSNavigation": true,
+  "finished": "2026-09-23T05:24:43.816Z"
+}

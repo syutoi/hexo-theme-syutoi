@@ -20,6 +20,7 @@
     "typecheck": "tsc --noEmit",
     "test:unit": "node --test test/*.test.mjs",
     "lint": "eslint . --max-warnings=0",
+    "check:online": "node toolbox/check-online.mjs",
     "check:install": "node toolbox/check-install.mjs",
     "check:budget": "node toolbox/check-budget.mjs"
   },

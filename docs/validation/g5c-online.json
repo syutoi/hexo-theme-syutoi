@@ -1,0 +1,1411 @@
+{
+  "started": "2026-09-23T05:19:15.958Z",
+  "base": "https://hexo.syutoi.com/",
+  "requests": [
+    {
+      "url": "https://hexo.syutoi.com/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 13469,
+      "sha256": "8d1d043003e10b47e3f7869321b9b41b74e8bcefa8ef18aa95a9e1bb3b98aa71"
+    },
+    {
+      "url": "https://hexo.syutoi.com/docs/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/docs/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 9725,
+      "sha256": "0b00c2fd9eefbb8bf35918c9bfa4719e6991c0b3983f523cc95cd69f34b412fd"
+    },
+    {
+      "url": "https://hexo.syutoi.com/markdown-extensions/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/markdown-extensions/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 11174,
+      "sha256": "133d09ca4a9e9d41e3561a03032968744617914271ad8ddb54d1856b2372400a"
+    },
+    {
+      "url": "https://hexo.syutoi.com/examples/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/examples/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 10890,
+      "sha256": "aee37dc2a35c507de8267abb0318a7c540f6f251738928c536de29da4e8b7549"
+    },
+    {
+      "url": "https://hexo.syutoi.com/welcome/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/welcome/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 10429,
+      "sha256": "a523e04dfb620f24236af734005318b435eee115ad9f1d511274093861410d4c"
+    },
+    {
+      "url": "https://hexo.syutoi.com/syutoi-long-read/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/syutoi-long-read/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24009,
+      "sha256": "d25e55417631aba397b7f10e43fff18a88bf8a41a5638958e9b343abcffa0efd"
+    },
+    {
+      "url": "https://hexo.syutoi.com/archives/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/archives/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 7659,
+      "sha256": "8f77803a7f9cfc691f1f17ec31ea3d8d28b0d91dadd6ca6f1ba40d520a4c57e9"
+    },
+    {
+      "url": "https://hexo.syutoi.com/friends/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/friends/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 9261,
+      "sha256": "892f4b73d6d09107932222207e3da9cb54aa7c3b1b3d91667c5731dbcc51b790"
+    },
+    {
+      "url": "https://hexo.syutoi.com/categories/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/categories/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 6154,
+      "sha256": "a2fcf961d30f05a7400bc1467e5a58b92e9feadc7d768d01819f7b272a272c13"
+    },
+    {
+      "url": "https://hexo.syutoi.com/categories/docs/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/categories/docs/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 10791,
+      "sha256": "b68c7af6bf0932c0aefa4c7a95eac3693792a1c9e6c193352c35d433c3009ecf"
+    },
+    {
+      "url": "https://hexo.syutoi.com/404.html",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/404.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 6037,
+      "sha256": "63642422b801638f12418d971783d9fe04acee2b2836b605421ba30f1215e8cf"
+    },
+    {
+      "url": "https://hexo.syutoi.com/tags/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/tags/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 6211,
+      "sha256": "38fdc4c47466029676eed9a08c479b1c811ecdec7f483799e5ed94fafedb2a21"
+    },
+    {
+      "url": "https://hexo.syutoi.com/docs/configuration/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/docs/configuration/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 65176,
+      "sha256": "7f1c7d9f1a80368b3293b2b5bbe91a1abe546e1ba577511530c4c6bd24a90710"
+    },
+    {
+      "url": "https://hexo.syutoi.com/docs/getting-started/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/docs/getting-started/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 21825,
+      "sha256": "8ac42218a900787be2fde8c800505432508d74f784edbf6736e5726c23524628"
+    },
+    {
+      "url": "https://hexo.syutoi.com/docs/customization/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/docs/customization/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 17202,
+      "sha256": "ca4f9e8a7e8366266d332b2189a04adcbdcaab320e25099f4798be0bfd7dc83f"
+    },
+    {
+      "url": "https://hexo.syutoi.com/docs/writing/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/docs/writing/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 31858,
+      "sha256": "35a8bbe6e4aeea62c74bb69dc7be1bdf487868c225ea556e81c585828d0b0449"
+    },
+    {
+      "url": "https://hexo.syutoi.com/docs/features/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/docs/features/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 13317,
+      "sha256": "8ac56d0e13abb2847cf3f13969b53c46817ca44ccbafd03a9a317c7ea737a7ab"
+    },
+    {
+      "url": "https://hexo.syutoi.com/docs/syndication/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/docs/syndication/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 17671,
+      "sha256": "e6f818a90c9c2776001ee1c39e392a3f89f24865f0eb3181bc75d3eff9435b5a"
+    },
+    {
+      "url": "https://hexo.syutoi.com/docs/migration-from-shoka/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/docs/migration-from-shoka/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 41532,
+      "sha256": "489a841b38ea46a63e455be9994131333d543a13d0ea3bc6d34e9dc10e76da8f"
+    },
+    {
+      "url": "https://hexo.syutoi.com/docs/deployment/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/docs/deployment/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 22168,
+      "sha256": "3bc912a0216699a0225ee40b3d813a099065de3ce99ba8bb1b3a3de6d0a01831"
+    },
+    {
+      "url": "https://hexo.syutoi.com/css/syutoi.min.css?v=0.4.0",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/css/syutoi.min.css?v=0.4.0",
+      "contentType": "text/css; charset=utf-8",
+      "bytes": 24308,
+      "sha256": "65f30c8a6a14ffbc49ee8d9a2c69fd2d04da78a2c875bd002cd2ce7a718ac76d"
+    },
+    {
+      "url": "https://hexo.syutoi.com/js/syutoi.min.js?v=0.4.0",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/js/syutoi.min.js?v=0.4.0",
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 5472,
+      "sha256": "c1f81c0ab2fc850935b066c4fc85387107a8171b871d05ff11a07a057c8c785e"
+    },
+    {
+      "url": "https://hexo.syutoi.com/images/logo.webp",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/images/logo.webp",
+      "contentType": "image/webp",
+      "bytes": 2558,
+      "sha256": "93b520f5cbe6562b07b86a52dc2fdbd28736f1985c10e6c24fc8326cf0bcb18d"
+    },
+    {
+      "url": "https://hexo.syutoi.com/assets/pastoral-evening.webp",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/assets/pastoral-evening.webp",
+      "contentType": "image/webp",
+      "bytes": 155078,
+      "sha256": "5622003d951a1e77d5ec5613f9067ea2876f38a61c9d7c2e03e9c781100987f9"
+    },
+    {
+      "url": "https://hexo.syutoi.com/assets/sunlit-desk.webp",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/assets/sunlit-desk.webp",
+      "contentType": "image/webp",
+      "bytes": 104890,
+      "sha256": "c4c73190389fdf1c01bdf8149652ce1c233f049a079ec497c023631ab9332f58"
+    },
+    {
+      "url": "https://hexo.syutoi.com/images/avatar.png",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/images/avatar.png",
+      "contentType": "image/png",
+      "bytes": 748349,
+      "sha256": "4da1c0c328b7252ca003ce170c9613a1225a35f0d799716f18ff787974dd6e62"
+    },
+    {
+      "url": "https://hexo.syutoi.com/assets/cottage-garden.webp",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/assets/cottage-garden.webp",
+      "contentType": "image/webp",
+      "bytes": 204464,
+      "sha256": "3dd1c159ee730777c39acaf6d16dd7d43b06728061bc4c2e9ec71bd1fb138e53"
+    },
+    {
+      "url": "https://hexo.syutoi.com/assets/image-wide.svg",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/assets/image-wide.svg",
+      "contentType": "image/svg+xml",
+      "bytes": 402,
+      "sha256": "d3b4039558f0143ec87f76855700c2e84c192d1fbf145020217b4d84ae7e3830"
+    },
+    {
+      "url": "https://hexo.syutoi.com/docs/index.html",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/docs/index.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 9725,
+      "sha256": "0b00c2fd9eefbb8bf35918c9bfa4719e6991c0b3983f523cc95cd69f34b412fd"
+    },
+    {
+      "url": "https://hexo.syutoi.com/index.html",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/index.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 13469,
+      "sha256": "8d1d043003e10b47e3f7869321b9b41b74e8bcefa8ef18aa95a9e1bb3b98aa71"
+    },
+    {
+      "url": "https://hexo.syutoi.com/syutoi-minimal/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/syutoi-minimal/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 8609,
+      "sha256": "db563b5bd3be66594c3ee0e6070ae861d9af3166fbcf65481835a077d921cf62"
+    },
+    {
+      "url": "https://hexo.syutoi.com/examples/index.html",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/examples/index.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 10890,
+      "sha256": "aee37dc2a35c507de8267abb0318a7c540f6f251738928c536de29da4e8b7549"
+    },
+    {
+      "url": "https://hexo.syutoi.com/markdown-extensions/index.html",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/markdown-extensions/index.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 11174,
+      "sha256": "133d09ca4a9e9d41e3561a03032968744617914271ad8ddb54d1856b2372400a"
+    },
+    {
+      "url": "https://hexo.syutoi.com/archives/index.html",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/archives/index.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 7659,
+      "sha256": "8f77803a7f9cfc691f1f17ec31ea3d8d28b0d91dadd6ca6f1ba40d520a4c57e9"
+    },
+    {
+      "url": "https://hexo.syutoi.com/friends/index.html",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/friends/index.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 9261,
+      "sha256": "892f4b73d6d09107932222207e3da9cb54aa7c3b1b3d91667c5731dbcc51b790"
+    },
+    {
+      "url": "https://hexo.syutoi.com/categories/index.html",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/categories/index.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 6154,
+      "sha256": "a2fcf961d30f05a7400bc1467e5a58b92e9feadc7d768d01819f7b272a272c13"
+    },
+    {
+      "url": "https://hexo.syutoi.com/categories/docs/index.html",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/categories/docs/index.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 10791,
+      "sha256": "b68c7af6bf0932c0aefa4c7a95eac3693792a1c9e6c193352c35d433c3009ecf"
+    },
+    {
+      "url": "https://hexo.syutoi.com/tags/index.html",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/tags/index.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 6211,
+      "sha256": "38fdc4c47466029676eed9a08c479b1c811ecdec7f483799e5ed94fafedb2a21"
+    },
+    {
+      "url": "https://hexo.syutoi.com/rss.xml",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/rss.xml",
+      "contentType": "application/xml",
+      "bytes": 198341,
+      "sha256": "1d5655aefbc6c2b07761b1bf2b97ab847323239413a1fcc7be8f2acde4137a6b"
+    },
+    {
+      "url": "https://hexo.syutoi.com/atom.xml",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/atom.xml",
+      "contentType": "application/xml",
+      "bytes": 199733,
+      "sha256": "b634ff4289bcb0b4e9e4cd9c4a7156b40e2cf544c1bb735e379d63a69ce38562"
+    },
+    {
+      "url": "https://hexo.syutoi.com/sitemap.xml",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/sitemap.xml",
+      "contentType": "application/xml",
+      "bytes": 6083,
+      "sha256": "39fd0504917c51166ee31afba42c5cc7fd0c48c3a4bf5b9c03d82619734cf4b1"
+    },
+    {
+      "url": "https://hexo.syutoi.com/no-title/index.html",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/no-title/index.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5675,
+      "sha256": "cc5491457ffdee212eac37da892624745aee7068cbea5ffcb5c24fe0b1437fa5"
+    },
+    {
+      "url": "https://hexo.syutoi.com/pictures/index.html",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/pictures/index.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 11952,
+      "sha256": "7b7e480523a2e40f24500811952a75792a810f416abc48b96d7b1f3951b998c6"
+    },
+    {
+      "url": "https://hexo.syutoi.com/reading/index.html",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/reading/index.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 15647,
+      "sha256": "7ed8a9703fa4087003094124448386d0014079a1728625e316d55c508358a684"
+    },
+    {
+      "url": "https://hexo.syutoi.com/examples/english/index.html",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/examples/english/index.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 8318,
+      "sha256": "6e46361715c95cd1a63309413cc21f5a09b8731456896689b3d828000a343bf4"
+    },
+    {
+      "url": "https://hexo.syutoi.com/reading-elements/index.html",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/reading-elements/index.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 17244,
+      "sha256": "e8473f3db5974509e3e673802329ffa429de999c708c68ff2ed720785aa97bcc"
+    },
+    {
+      "url": "https://hexo.syutoi.com/examples/empty/index.html",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/examples/empty/index.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 6239,
+      "sha256": "228c536985db1b9c000c799a679678455eca8a64dc9d9b3b8d842edcde375cc9"
+    },
+    {
+      "url": "https://hexo.syutoi.com/typography/index.html",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/typography/index.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 13068,
+      "sha256": "797474d9e0b8a41f41c6be782011f89fed66b5ea5215c508db0e35fc9e88ffa4"
+    },
+    {
+      "url": "https://hexo.syutoi.com/code/index.html",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/code/index.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 12961,
+      "sha256": "00867ebc7ff44239048af1696c81cd3371fb1c5235f12f2a24ed189e36194806"
+    },
+    {
+      "url": "https://hexo.syutoi.com/syutoi-boundaries/index.html",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/syutoi-boundaries/index.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 10427,
+      "sha256": "794369bfdbe95e2e44939de606f4fe7744e8d01f0b049b4bbc3e7f33a9f87b16"
+    },
+    {
+      "url": "https://hexo.syutoi.com/tags/%E9%9A%8F%E7%AC%94/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/tags/%E9%9A%8F%E7%AC%94/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 6448,
+      "sha256": "7901640b4729f209ac486d5089c122cb510c1381fee8fdbf388a8cf886c6cf32"
+    },
+    {
+      "url": "https://hexo.syutoi.com/tags/%E4%B9%A6%E5%8F%B0/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/tags/%E4%B9%A6%E5%8F%B0/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 6747,
+      "sha256": "3a4db436d3df49925d3035e4012c318d25c9aa92ebe00a4776dd70e7254c5216"
+    },
+    {
+      "url": "https://hexo.syutoi.com/tags/%E5%86%99%E4%BD%9C/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/tags/%E5%86%99%E4%BD%9C/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 6796,
+      "sha256": "9e4b4ce219e25a6090cedd889b75324604cde4345dd7890435cbca0e7e611607"
+    },
+    {
+      "url": "https://hexo.syutoi.com/tags/%E9%98%85%E8%AF%BB/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/tags/%E9%98%85%E8%AF%BB/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 6796,
+      "sha256": "9a6138dbaba6779be50af1395ea1cf6c19851477fd9788cab2d6beedbff521da"
+    },
+    {
+      "url": "https://hexo.syutoi.com/categories/desk/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/categories/desk/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 7269,
+      "sha256": "e7043ca47e4c9cff2f037582d113f0769057a2e18477a2eaa22d178cf491d7b3"
+    },
+    {
+      "url": "https://hexo.syutoi.com/categories/writing/",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/categories/writing/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 6822,
+      "sha256": "e8f3239a0b02c20490f4cc6faa196ce3a749f0d83adb2fc731fe09a515576a5b"
+    },
+    {
+      "url": "https://hexo.syutoi.com/feed.json",
+      "status": 200,
+      "finalUrl": "https://hexo.syutoi.com/feed.json",
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 153525,
+      "sha256": "ac7828ff70586e7a7b88aa2de3680c9d38007fbc751e5ad7589c68c37b47d9d0"
+    },
+    {
+      "url": "https://hexo.syutoi.com/__syutoi_acceptance_missing_1790140843318/",
+      "status": 404,
+      "finalUrl": "https://hexo.syutoi.com/__syutoi_acceptance_missing_1790140843318/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 6037,
+      "sha256": "63642422b801638f12418d971783d9fe04acee2b2836b605421ba30f1215e8cf"
+    }
+  ],
+  "checks": [
+    {
+      "message": "/ HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "/ HTML content type",
+      "passed": true
+    },
+    {
+      "message": "/ main content",
+      "passed": true
+    },
+    {
+      "message": "/ canonical",
+      "passed": true
+    },
+    {
+      "message": "/ Open Graph URL",
+      "passed": true
+    },
+    {
+      "message": "docs/ HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "docs/ HTML content type",
+      "passed": true
+    },
+    {
+      "message": "docs/ main content",
+      "passed": true
+    },
+    {
+      "message": "docs/ canonical",
+      "passed": true
+    },
+    {
+      "message": "docs/ Open Graph URL",
+      "passed": true
+    },
+    {
+      "message": "markdown-extensions/ HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "markdown-extensions/ HTML content type",
+      "passed": true
+    },
+    {
+      "message": "markdown-extensions/ main content",
+      "passed": true
+    },
+    {
+      "message": "markdown-extensions/ canonical",
+      "passed": true
+    },
+    {
+      "message": "markdown-extensions/ Open Graph URL",
+      "passed": true
+    },
+    {
+      "message": "Five deployed alert types",
+      "passed": true
+    },
+    {
+      "message": "examples/ HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "examples/ HTML content type",
+      "passed": true
+    },
+    {
+      "message": "examples/ main content",
+      "passed": true
+    },
+    {
+      "message": "examples/ canonical",
+      "passed": true
+    },
+    {
+      "message": "examples/ Open Graph URL",
+      "passed": true
+    },
+    {
+      "message": "welcome/ HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "welcome/ HTML content type",
+      "passed": true
+    },
+    {
+      "message": "welcome/ main content",
+      "passed": true
+    },
+    {
+      "message": "welcome/ canonical",
+      "passed": true
+    },
+    {
+      "message": "welcome/ Open Graph URL",
+      "passed": true
+    },
+    {
+      "message": "syutoi-long-read/ HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "syutoi-long-read/ HTML content type",
+      "passed": true
+    },
+    {
+      "message": "syutoi-long-read/ main content",
+      "passed": true
+    },
+    {
+      "message": "syutoi-long-read/ canonical",
+      "passed": true
+    },
+    {
+      "message": "syutoi-long-read/ Open Graph URL",
+      "passed": true
+    },
+    {
+      "message": "archives/ HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "archives/ HTML content type",
+      "passed": true
+    },
+    {
+      "message": "archives/ main content",
+      "passed": true
+    },
+    {
+      "message": "archives/ canonical",
+      "passed": true
+    },
+    {
+      "message": "archives/ Open Graph URL",
+      "passed": true
+    },
+    {
+      "message": "friends/ HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "friends/ HTML content type",
+      "passed": true
+    },
+    {
+      "message": "friends/ main content",
+      "passed": true
+    },
+    {
+      "message": "friends/ canonical",
+      "passed": true
+    },
+    {
+      "message": "friends/ Open Graph URL",
+      "passed": true
+    },
+    {
+      "message": "categories/ HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "categories/ HTML content type",
+      "passed": true
+    },
+    {
+      "message": "categories/ main content",
+      "passed": true
+    },
+    {
+      "message": "categories/ canonical",
+      "passed": true
+    },
+    {
+      "message": "categories/ Open Graph URL",
+      "passed": true
+    },
+    {
+      "message": "categories/docs/ HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "categories/docs/ HTML content type",
+      "passed": true
+    },
+    {
+      "message": "categories/docs/ main content",
+      "passed": true
+    },
+    {
+      "message": "categories/docs/ canonical",
+      "passed": true
+    },
+    {
+      "message": "categories/docs/ Open Graph URL",
+      "passed": true
+    },
+    {
+      "message": "404.html HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "404.html HTML content type",
+      "passed": true
+    },
+    {
+      "message": "404.html main content",
+      "passed": true
+    },
+    {
+      "message": "404.html canonical",
+      "passed": true
+    },
+    {
+      "message": "404.html Open Graph URL",
+      "passed": true
+    },
+    {
+      "message": "404 noindex",
+      "passed": true
+    },
+    {
+      "message": "tags/ HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "tags/ HTML content type",
+      "passed": true
+    },
+    {
+      "message": "tags/ main content",
+      "passed": true
+    },
+    {
+      "message": "tags/ canonical",
+      "passed": true
+    },
+    {
+      "message": "tags/ Open Graph URL",
+      "passed": true
+    },
+    {
+      "message": "docs/configuration/ HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "docs/configuration/ HTML content type",
+      "passed": true
+    },
+    {
+      "message": "docs/configuration/ main content",
+      "passed": true
+    },
+    {
+      "message": "docs/configuration/ canonical",
+      "passed": true
+    },
+    {
+      "message": "docs/configuration/ Open Graph URL",
+      "passed": true
+    },
+    {
+      "message": "docs/getting-started/ HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "docs/getting-started/ HTML content type",
+      "passed": true
+    },
+    {
+      "message": "docs/getting-started/ main content",
+      "passed": true
+    },
+    {
+      "message": "docs/getting-started/ canonical",
+      "passed": true
+    },
+    {
+      "message": "docs/getting-started/ Open Graph URL",
+      "passed": true
+    },
+    {
+      "message": "docs/customization/ HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "docs/customization/ HTML content type",
+      "passed": true
+    },
+    {
+      "message": "docs/customization/ main content",
+      "passed": true
+    },
+    {
+      "message": "docs/customization/ canonical",
+      "passed": true
+    },
+    {
+      "message": "docs/customization/ Open Graph URL",
+      "passed": true
+    },
+    {
+      "message": "docs/writing/ HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "docs/writing/ HTML content type",
+      "passed": true
+    },
+    {
+      "message": "docs/writing/ main content",
+      "passed": true
+    },
+    {
+      "message": "docs/writing/ canonical",
+      "passed": true
+    },
+    {
+      "message": "docs/writing/ Open Graph URL",
+      "passed": true
+    },
+    {
+      "message": "docs/features/ HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "docs/features/ HTML content type",
+      "passed": true
+    },
+    {
+      "message": "docs/features/ main content",
+      "passed": true
+    },
+    {
+      "message": "docs/features/ canonical",
+      "passed": true
+    },
+    {
+      "message": "docs/features/ Open Graph URL",
+      "passed": true
+    },
+    {
+      "message": "docs/syndication/ HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "docs/syndication/ HTML content type",
+      "passed": true
+    },
+    {
+      "message": "docs/syndication/ main content",
+      "passed": true
+    },
+    {
+      "message": "docs/syndication/ canonical",
+      "passed": true
+    },
+    {
+      "message": "docs/syndication/ Open Graph URL",
+      "passed": true
+    },
+    {
+      "message": "docs/migration-from-shoka/ HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "docs/migration-from-shoka/ HTML content type",
+      "passed": true
+    },
+    {
+      "message": "docs/migration-from-shoka/ main content",
+      "passed": true
+    },
+    {
+      "message": "docs/migration-from-shoka/ canonical",
+      "passed": true
+    },
+    {
+      "message": "docs/migration-from-shoka/ Open Graph URL",
+      "passed": true
+    },
+    {
+      "message": "docs/deployment/ HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "docs/deployment/ HTML content type",
+      "passed": true
+    },
+    {
+      "message": "docs/deployment/ main content",
+      "passed": true
+    },
+    {
+      "message": "docs/deployment/ canonical",
+      "passed": true
+    },
+    {
+      "message": "docs/deployment/ Open Graph URL",
+      "passed": true
+    },
+    {
+      "message": "https://hexo.syutoi.com/css/syutoi.min.css?v=0.4.0 asset HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "/css/syutoi.min.css asset content type",
+      "passed": true
+    },
+    {
+      "message": "/css/syutoi.min.css matches current local prebuilt asset",
+      "passed": true
+    },
+    {
+      "message": "https://hexo.syutoi.com/js/syutoi.min.js?v=0.4.0 asset HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "/js/syutoi.min.js asset content type",
+      "passed": true
+    },
+    {
+      "message": "/js/syutoi.min.js matches current local prebuilt asset",
+      "passed": true
+    },
+    {
+      "message": "https://hexo.syutoi.com/images/logo.webp asset HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "/images/logo.webp asset content type",
+      "passed": true
+    },
+    {
+      "message": "https://hexo.syutoi.com/assets/pastoral-evening.webp asset HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "/assets/pastoral-evening.webp asset content type",
+      "passed": true
+    },
+    {
+      "message": "https://hexo.syutoi.com/assets/sunlit-desk.webp asset HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "/assets/sunlit-desk.webp asset content type",
+      "passed": true
+    },
+    {
+      "message": "https://hexo.syutoi.com/images/avatar.png asset HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "/images/avatar.png asset content type",
+      "passed": true
+    },
+    {
+      "message": "https://hexo.syutoi.com/assets/cottage-garden.webp asset HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "/assets/cottage-garden.webp asset content type",
+      "passed": true
+    },
+    {
+      "message": "https://hexo.syutoi.com/assets/image-wide.svg asset HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "/assets/image-wide.svg asset content type",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/docs/index.html",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/index.html",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/docs/getting-started/",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/docs/configuration/",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/docs/writing/",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/docs/deployment/",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/docs/customization/",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/docs/features/",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/docs/syndication/",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/docs/migration-from-shoka/",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/examples/",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/syutoi-long-read/",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/docs/getting-started/#%E5%8D%87%E7%BA%A7%E4%B8%8E%E6%8E%92%E6%9F%A5",
+      "passed": true
+    },
+    {
+      "message": "Document anchor https://hexo.syutoi.com/docs/getting-started/#%E5%8D%87%E7%BA%A7%E4%B8%8E%E6%8E%92%E6%9F%A5",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/syutoi-minimal/",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/examples/index.html",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/markdown-extensions/index.html",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/welcome/",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/archives/index.html",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/friends/index.html",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/categories/index.html",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/404.html",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/categories/docs/index.html",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/docs/",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/tags/index.html",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/docs/getting-started/#%E4%BB%8E%E7%A9%BA%E7%9B%AE%E5%BD%95%E5%BC%80%E5%A7%8B",
+      "passed": true
+    },
+    {
+      "message": "Document anchor https://hexo.syutoi.com/docs/getting-started/#%E4%BB%8E%E7%A9%BA%E7%9B%AE%E5%BD%95%E5%BC%80%E5%A7%8B",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/docs/configuration/#%E9%98%85%E8%AF%BB%E6%97%B6%E9%97%B4%E4%B8%8E%E5%B0%81%E9%9D%A2%E6%9B%BF%E4%BB%A3%E6%96%87%E5%AD%97",
+      "passed": true
+    },
+    {
+      "message": "Document anchor https://hexo.syutoi.com/docs/configuration/#%E9%98%85%E8%AF%BB%E6%97%B6%E9%97%B4%E4%B8%8E%E5%B0%81%E9%9D%A2%E6%9B%BF%E4%BB%A3%E6%96%87%E5%AD%97",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/docs/configuration/#%E6%AD%A3%E6%96%87%E5%9B%BE%E7%89%87",
+      "passed": true
+    },
+    {
+      "message": "Document anchor https://hexo.syutoi.com/docs/configuration/#%E6%AD%A3%E6%96%87%E5%9B%BE%E7%89%87",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/docs/configuration/#%E5%8F%AF%E9%80%89%E5%9B%BE%E7%89%87%E7%81%AF%E7%AE%B1",
+      "passed": true
+    },
+    {
+      "message": "Document anchor https://hexo.syutoi.com/docs/configuration/#%E5%8F%AF%E9%80%89%E5%9B%BE%E7%89%87%E7%81%AF%E7%AE%B1",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/docs/configuration/#seo-configuration",
+      "passed": true
+    },
+    {
+      "message": "Document anchor https://hexo.syutoi.com/docs/configuration/#seo-configuration",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/markdown-extensions/",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/docs/configuration/#%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2",
+      "passed": true
+    },
+    {
+      "message": "Document anchor https://hexo.syutoi.com/docs/configuration/#%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/docs/configuration/#waline-comments",
+      "passed": true
+    },
+    {
+      "message": "Document anchor https://hexo.syutoi.com/docs/configuration/#waline-comments",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/docs/writing/#%E5%9B%BE%E7%89%87%E4%B8%8E%E6%8A%98%E5%8F%A0%E5%86%85%E5%AE%B9",
+      "passed": true
+    },
+    {
+      "message": "Document anchor https://hexo.syutoi.com/docs/writing/#%E5%9B%BE%E7%89%87%E4%B8%8E%E6%8A%98%E5%8F%A0%E5%86%85%E5%AE%B9",
+      "passed": true
+    },
+    {
+      "message": "Document link https://hexo.syutoi.com/docs/writing/#%E5%8F%AF%E9%80%89%E5%9B%BE%E7%89%87%E5%B1%9E%E6%80%A7%E4%B8%8E%E6%8F%90%E7%A4%BA%E5%9D%97",
+      "passed": true
+    },
+    {
+      "message": "Document anchor https://hexo.syutoi.com/docs/writing/#%E5%8F%AF%E9%80%89%E5%9B%BE%E7%89%87%E5%B1%9E%E6%80%A7%E4%B8%8E%E6%8F%90%E7%A4%BA%E5%9D%97",
+      "passed": true
+    },
+    {
+      "message": "rss.xml HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "rss.xml strict XML",
+      "passed": true
+    },
+    {
+      "message": "rss.xml XML content type",
+      "passed": true
+    },
+    {
+      "message": "atom.xml HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "atom.xml strict XML",
+      "passed": true
+    },
+    {
+      "message": "atom.xml XML content type",
+      "passed": true
+    },
+    {
+      "message": "sitemap.xml HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "sitemap.xml strict XML",
+      "passed": true
+    },
+    {
+      "message": "sitemap.xml XML content type",
+      "passed": true
+    },
+    {
+      "message": "Sitemap uses production origin",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/examples/index.html",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/friends/index.html",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/markdown-extensions/index.html",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/no-title/index.html",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/pictures/index.html",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/reading/index.html",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/examples/english/index.html",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/reading-elements/index.html",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/examples/empty/index.html",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/typography/index.html",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/welcome/",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/code/index.html",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/syutoi-long-read/",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/syutoi-minimal/",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/docs/customization/",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/docs/configuration/",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/docs/features/",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/docs/getting-started/",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/docs/deployment/",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/docs/syndication/",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/docs/writing/",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/docs/migration-from-shoka/",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/docs/index.html",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/syutoi-boundaries/index.html",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/tags/%E9%9A%8F%E7%AC%94/",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/tags/%E4%B9%A6%E5%8F%B0/",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/tags/%E5%86%99%E4%BD%9C/",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/tags/%E9%98%85%E8%AF%BB/",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/categories/desk/",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/categories/docs/",
+      "passed": true
+    },
+    {
+      "message": "Sitemap destination https://hexo.syutoi.com/categories/writing/",
+      "passed": true
+    },
+    {
+      "message": "feed.json HTTP 200",
+      "passed": true
+    },
+    {
+      "message": "JSON Feed has entries",
+      "passed": true
+    },
+    {
+      "message": "JSON Feed production home URL",
+      "passed": true
+    },
+    {
+      "message": "JSON Feed production article URLs",
+      "passed": true
+    },
+    {
+      "message": "JSON Feed content type",
+      "passed": true
+    },
+    {
+      "message": "Unknown route returns HTTP 404",
+      "passed": true
+    },
+    {
+      "message": "Unknown route uses theme 404 page",
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "externalImages": [
+    "https://cdn.jsdelivr.net/gh/amehime/shoka@latest/images/avatar.jpg"
+  ],
+  "pages": [
+    {
+      "path": "",
+      "canonical": "https://hexo.syutoi.com/index.html"
+    },
+    {
+      "path": "docs/",
+      "canonical": "https://hexo.syutoi.com/docs/index.html"
+    },
+    {
+      "path": "markdown-extensions/",
+      "canonical": "https://hexo.syutoi.com/markdown-extensions/index.html"
+    },
+    {
+      "path": "examples/",
+      "canonical": "https://hexo.syutoi.com/examples/index.html"
+    },
+    {
+      "path": "welcome/",
+      "canonical": "https://hexo.syutoi.com/welcome/"
+    },
+    {
+      "path": "syutoi-long-read/",
+      "canonical": "https://hexo.syutoi.com/syutoi-long-read/"
+    },
+    {
+      "path": "archives/",
+      "canonical": "https://hexo.syutoi.com/archives/index.html"
+    },
+    {
+      "path": "friends/",
+      "canonical": "https://hexo.syutoi.com/friends/index.html"
+    },
+    {
+      "path": "categories/",
+      "canonical": "https://hexo.syutoi.com/categories/index.html"
+    },
+    {
+      "path": "categories/docs/",
+      "canonical": "https://hexo.syutoi.com/categories/docs/index.html"
+    },
+    {
+      "path": "404.html",
+      "canonical": "https://hexo.syutoi.com/404.html"
+    },
+    {
+      "path": "tags/",
+      "canonical": "https://hexo.syutoi.com/tags/index.html"
+    },
+    {
+      "path": "docs/configuration/",
+      "canonical": "https://hexo.syutoi.com/docs/configuration/"
+    },
+    {
+      "path": "docs/getting-started/",
+      "canonical": "https://hexo.syutoi.com/docs/getting-started/"
+    },
+    {
+      "path": "docs/customization/",
+      "canonical": "https://hexo.syutoi.com/docs/customization/"
+    },
+    {
+      "path": "docs/writing/",
+      "canonical": "https://hexo.syutoi.com/docs/writing/"
+    },
+    {
+      "path": "docs/features/",
+      "canonical": "https://hexo.syutoi.com/docs/features/"
+    },
+    {
+      "path": "docs/syndication/",
+      "canonical": "https://hexo.syutoi.com/docs/syndication/"
+    },
+    {
+      "path": "docs/migration-from-shoka/",
+      "canonical": "https://hexo.syutoi.com/docs/migration-from-shoka/"
+    },
+    {
+      "path": "docs/deployment/",
+      "canonical": "https://hexo.syutoi.com/docs/deployment/"
+    }
+  ],
+  "finished": "2026-09-23T05:20:45.792Z"
+}
