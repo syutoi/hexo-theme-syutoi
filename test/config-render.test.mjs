@@ -554,3 +554,22 @@ test('built-in social icons render accessible local SVGs with safe text fallback
   }
   assert.equal(links[types.length].attribs.href, '/blog/about/');
 });
+
+test('TOC numbering can be disabled without changing nested heading targets', async () => {
+  const fixture = {config:{permalink:':title/'},posts:[post('Nested', '', '## First\n\n### Child\n\n#### Detail\n\n### Sibling\n\n## Second')],paths:['post-0/index.html']};
+  const [on] = await render({}, '/', fixture);
+  const [off] = await render({sidebar:{toc_number:false}}, '/', fixture);
+  const navs = html => DomUtils.getElementsByTagName('nav', parseDocument(html)).filter(node => node.attribs['data-toc']);
+  const numbered = navs(on);
+  const plain = navs(off);
+  assert.equal(numbered.length, 2);
+  assert.equal(plain.length, 2);
+  for (let i=0; i<2; i++) {
+    const numbers = node => DomUtils.getElementsByTagName('span',node).filter(span => span.attribs.class === 'toc-number').map(span => DomUtils.textContent(span).trim());
+    assert.deepEqual(numbers(numbered[i]), ['1.','1.1.','1.1.1.','1.2.','2.']);
+    assert.deepEqual(numbers(plain[i]), []);
+    const links = node => DomUtils.getElementsByTagName('a',node).map(link=>link.attribs.href);
+    assert.deepEqual(links(numbered[i]), links(plain[i]));
+    assert.equal(links(plain[i]).length, 5);
+  }
+});

@@ -54,8 +54,8 @@
 .sidebar-categories a { display: flex; justify-content: space-between; gap: .5rem; padding-block: .5rem; text-decoration: none; }
 .sidebar-categories a > :last-child { color: var(--syutoi-color-text-secondary); }
 .article-toc { font-size: .8rem; max-height: 65vh; overflow-y: auto; }
-.article-toc ol { padding-left: 1.2rem; }
-.article-toc > ol { padding-left: 0; list-style: none; }
+.article-toc ol { padding-left: 1.2rem; list-style: none; }
+.article-toc > ol { padding-left: 0; }
 .article-toc a { display: inline-block; padding-block: .2rem; text-decoration: none; }
 .home-categories { margin-bottom: 2.25rem; }
 .section-heading { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }

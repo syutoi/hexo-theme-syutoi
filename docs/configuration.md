@@ -81,6 +81,7 @@ social:
 | `sidebar.statistics` | `true` | 显示文章、分类、标签数量 |
 | `sidebar.categories` | `true` | 在非文章页显示顶级分类列表 |
 | `sidebar.toc` | `true` | 在文章和独立 Page 显示桌面固定/手机折叠目录；JS 增强滚动高亮，单页 toc: false 可关闭 |
+| `sidebar.toc_number` | `true` | 显示目录层级序号；false 隐藏序号，桌面与手机目录同步生效 |
 | `footer.since` | 空值 | 起始年份整数；早于当前年份时显示年份区间，否则只显示当前年 |
 | `footer.powered` | `true` | 显示 Hexo / Syutoi 标识 |
 | `footer.rss` | `true` | 显示页脚 RSS 链接；还需站点 feed.rss.enable 为 true 且插件已注册 RSS 生成器 |
@@ -161,7 +162,23 @@ toc: true
 
 独立页面可使用 `hexo new page about` 创建，或直接创建 `source/about/index.md`，设置 `title` 并书写 Markdown。支持可选 `cover` 和 `cover_alt`，默认不显示文章日期、阅读时间、分类标签、来源声明和相邻文章导航。站点导航链接需要另行配置。
 
+<a id="table-of-contents"></a>
+
+### 目录显示与序号
+
 文章和独立 Page 的正文有标题时生成目录；`toc: false` 关闭当前页目录，主题 `sidebar.toc: false` 关闭所有目录，`sidebar.enable: false` 关闭侧栏及两种目录。
+
+目录序号默认开启。若希望只显示标题，在博客 `_config.syutoi.yml` 中设置：
+
+```yaml
+sidebar:
+  toc: true          # 显示目录
+  toc_number: false  # 隐藏目录序号
+```
+
+本仓库示例站对应 `example/_config.syutoi.yml`。如果已有 `sidebar` 配置，请合并字段，不要重复声明。`toc_number` 是主题级选项，不能通过文章 Front Matter 单独覆盖；单篇只需隐藏整个目录时使用 `toc: false`。
+
+这只隐藏目录序号，保留目录、缩进和跳转，不改变正文标题。开启时按 `1.`、`1.1.`、`1.1.1.` 显示层级；标题文字中手写的序号不会自动去除。此开关在 v0.5.0 之后加入，修改后重启预览并重新生成。
 
 761px 及以上屏宽使用侧栏 sticky 目录，长目录在面板内滚动；760px 及以下在正文前显示默认折叠的原生 details。Enter/Space 可展开，目录链接使用原生锚点跳转，选中后不强制收起。两种呈现共享同一份生成目录，CSS 只显示当前屏宽的一种，无 JS 时仍可操作。
 

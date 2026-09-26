@@ -17,6 +17,7 @@
 | 添加 GitHub、X、知乎、小红书等账号 | [社交链接与图标](social-links.md) |
 | 调整木色配色、字体与布局 | [外观定制](customization.md) |
 | 写文章、设置置顶、摘要、目录与更新时间 | [文章写作](writing.md) |
+| 显示或隐藏文章目录、关闭目录序号 | [目录显示与序号](configuration.md#table-of-contents) |
 | 控制图片宽高、设置头像封面、开启大图预览 | [图片与尺寸](images.md) |
 | 使用 `{width=100}` 或 NOTE/TIP 提示块 | [Markdown 扩展](markdown-extensions.md) |
 | 开启本地搜索、Waline 评论、图片灯箱 | [功能配置](features.md) |

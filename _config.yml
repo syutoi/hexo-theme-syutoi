@@ -125,6 +125,7 @@ sidebar:
   statistics: true
   categories: true
   toc: true
+  toc_number: true # Show hierarchical heading numbers (1., 1.1., etc.)
 
 # Footer
 # since is an optional first publication year (an integer).

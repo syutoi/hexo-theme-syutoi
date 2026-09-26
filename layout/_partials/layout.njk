@@ -1,7 +1,7 @@
 {% set syutoi = syutoi_settings() %}
 {% set comments = syutoi_comments() %}
 {% set body = syutoi_body() if (is_post() or is_page()) and page.type not in ['categories', 'tags', '404'] else {} %}
-{% set contents = toc(page.content) if syutoi.sidebar.enable and syutoi.sidebar.toc and page.toc != false and (is_post() or (is_page() and page.content)) else '' %}
+{% set contents = toc(page.content, {list_number: syutoi.sidebar.toc_number}) if syutoi.sidebar.enable and syutoi.sidebar.toc and page.toc != false and (is_post() or (is_page() and page.content)) else '' %}
 <!doctype html>
 <html lang="{{ page.lang or config.language or 'en' }}" data-theme-default="{{ syutoi.appearance.theme }}">
 <head>{% include '_partials/head/head.njk' %}</head>
