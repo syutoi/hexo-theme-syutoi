@@ -12,6 +12,8 @@
 
 - [文档中心](docs/index.md)：按阅读顺序了解安装、配置与发布；本地 Demo 入口为 `/docs/`。
 - [配置说明](docs/configuration.md)：主题字段、覆盖规则与分页。
+- [社交链接与图标](docs/social-links.md)、[访问统计](docs/analytics.md)：配置账号展示与访问统计。
+- [图片与尺寸](docs/images.md)、[Markdown 扩展](docs/markdown-extensions.md)：图片宽高、图注、灯箱和提示块。
 - [自定义](docs/customization.md)：配置、设计变量、模板与源码构建。
 - [部署](docs/deployment.md)：独立博客、仓库 Demo 与 GitHub Pages。
 - [基础写作](docs/writing.md)：Front Matter、Markdown、图片与代码。
@@ -19,7 +21,7 @@
 - [示例说明](docs/examples.md)：阅读组件、长文和边界场景。
 - [MVP 验收](docs/validation/mvp.md)：实际证据与尚未验证的范围。
 
-默认不加载第三方 JS；Pagefind 搜索与 Waline 评论默认关闭。音乐、统计、PJAX 尚未集成。作者自行嵌入的外部内容可能产生网络请求。RSS/Atom/JSON Feed 与 Sitemap 通过可选站点插件生成，不是主题运行的必需依赖；配置见 [订阅与站点地图](docs/syndication.md)。
+默认不加载第三方 JS；Pagefind 搜索与 Waline 评论默认关闭。百度统计可通过 `analytics.baidu` 启用；百度统计与社交 SVG 图标属于 v0.5.0 标签之后的改进。音乐、PJAX 尚未集成。作者自行嵌入的外部内容可能产生网络请求。RSS/Atom/JSON Feed 与 Sitemap 通过可选站点插件生成，不是主题运行的必需依赖；配置见 [订阅与站点地图](docs/syndication.md)。
 
 ## 本地开发与预览
 

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Organize the demo documentation into a 12-guide user manual, with dedicated social, analytics, image sizing and Markdown extension guides.
+
 - Add local SVG social icons for common platforms, accessible labels and text fallback for custom links.
 
 - Add opt-in Baidu Analytics through `analytics.baidu`, with tracking ID validation and asynchronous HTTPS loading.

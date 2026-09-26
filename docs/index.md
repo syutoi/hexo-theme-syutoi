@@ -1,29 +1,56 @@
-# Syutoi 文档中心
+# Syutoi 使用手册
 
-Syutoi（书台）是一款用于写作与阅读的 Hexo 主题。本指南对应 **v0.5.0**，从安装、配置到发布，帮助你建立自己的书台。
+从安装、外观设置到文章写作与发布，这里汇总 Syutoi（书台）的日常使用方法。手册对应当前开发分支：包版本仍为 **0.5.0**，百度统计与社交平台图标在 **v0.5.0 标签之后**加入。使用固定标签时，请阅读该标签中的文档；差异见 [版本记录](../CHANGELOG.md)。
 
 ## 第一次使用
 
-1. [快速开始](getting-started.md)：准备环境、安装主题、启动本地预览。
-2. [基础配置](configuration.md)：设置站点标题、作者、头像、导航和侧栏。
-3. [文章写作](writing.md)：发布第一篇文章，添加分类、摘要、封面和目录。
-4. [部署指南](deployment.md)：生成静态文件并发布站点。
+1. [快速开始](getting-started.md)：安装主题、配置 renderer、启动本地预览。
+2. [基础配置](configuration.md)：设置标题、作者、头像、导航、侧栏及分页。
+3. [文章写作](writing.md)：创建文章，填写分类、标签、日期、摘要和封面。
+4. [部署指南](deployment.md)：生成并发布静态站点。
 
-## 配置与扩展
+## 按需求查找
 
-| 文档 | 你可以做什么 |
+| 我想做什么 | 阅读指南 |
 | --- | --- |
-| [外观定制](customization.md) | 修改配色、字体、间距与模板 |
-| [功能配置](features.md) | 按需开启搜索、评论和图片预览 |
-| [订阅与站点地图](syndication.md) | 配置 RSS、Atom、JSON Feed 与 Sitemap |
-| [从 Shoka 迁移](migration-from-shoka.md) | 确认旧配置和文章语法的迁移方式 |
+| 修改页头名字、作者名字、头像和菜单 | [基础配置](configuration.md) |
+| 添加 GitHub、X、知乎、小红书等账号 | [社交链接与图标](social-links.md) |
+| 调整木色配色、字体与布局 | [外观定制](customization.md) |
+| 写文章、设置置顶、摘要、目录与更新时间 | [文章写作](writing.md) |
+| 控制图片宽高、设置头像封面、开启大图预览 | [图片与尺寸](images.md) |
+| 使用 `{width=100}` 或 NOTE/TIP 提示块 | [Markdown 扩展](markdown-extensions.md) |
+| 开启本地搜索、Waline 评论、图片灯箱 | [功能配置](features.md) |
+| 接入百度统计并检查是否生效 | [访问统计](analytics.md) |
+| 提供 RSS、Atom、JSON Feed 和站点地图 | [订阅与站点地图](syndication.md) |
+| 发布到网站或排查子目录路径 | [部署指南](deployment.md) |
+| 从原 Shoka 主题迁移 | [从 Shoka 迁移](migration-from-shoka.md) |
 
-## 对照实际效果
+## 配置应该放在哪里
 
-[示例入口](/examples/) 集中了代码、图片、表格、中英文混排和边界页面。也可以阅读 [完整长文](/syutoi-long-read/) 或 [简短随笔](/syutoi-minimal/)，对照不同文章的展示方式。
+| 文件 | 负责什么 |
+| --- | --- |
+| 博客 `_config.yml` | 站点标题、作者、描述、语言、URL、日期、分页、Markdown 插件与订阅插件 |
+| 博客 `_config.syutoi.yml` | 头像、主题配色模式、导航、社交账号、搜索、评论、灯箱与百度统计 |
+| 文章顶部 Front Matter | 单篇标题、日期、分类标签、封面、摘要及功能退出开关 |
 
-## 遇到问题
+本仓库 Demo 对应 `example/_config.yml` 和 `example/_config.syutoi.yml`。请覆盖博客配置，不要直接改主题 `_config.yml` 的默认值，方便后续升级。列表如 `social`、`navigation.menu` 会整体替换，需要一次写全。
 
-先查看 [安装与升级排查](getting-started.md#升级与排查)，再核对 [配置说明](configuration.md)。主题使用 Git 安装；仓库内的 Demo 用于展示与文档阅读，安装主题不会自动将这些文章加入你的博客。
+## 修改后如何看到效果
 
-[版本记录](../CHANGELOG.md) · [源码仓库](https://github.com/syutoi/hexo-theme-syutoi)
+独立博客修改配置或插件后，停止原来的预览进程，在博客目录执行：
+
+```bash
+pnpm exec hexo clean
+pnpm exec hexo generate
+pnpm exec hexo server
+```
+
+主题仓库的 Demo 则在仓库根目录执行 `pnpm build`；本地预览使用 `pnpm dev`，配置变动后需重启。查看 <http://127.0.0.1:4000/>。本地生效不等于线上已更新，线上仍需部署生成文件。
+
+## 对照效果与排查
+
+[示例入口](/examples/) 包含代码、图片、表格、中英文混排及边界场景；[图片属性与提示块](/markdown-extensions/) 和 [友链](/friends/) 可对照图片尺寸。主题安装不会自动复制 Demo 的文章、账号或统计 ID，请使用你自己的配置。
+
+图片属性显示为普通文字时，先看 [图片常见问题](images.md#常见问题)；社交图标不出现时看 [社交链接排查](social-links.md#隐藏与排查)；统计未生效时看 [百度统计排查](analytics.md#常见问题)。其他安装问题见 [安装与升级排查](getting-started.md#升级与排查)。
+
+[源码仓库](https://github.com/syutoi/hexo-theme-syutoi) · [版本记录](../CHANGELOG.md)

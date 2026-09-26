@@ -1,6 +1,6 @@
 # 功能配置
 
-搜索、评论、图片预览和订阅都可以按需启用。主题功能写入博客根目录的 `_config.syutoi.yml`，订阅插件配置写入博客 `_config.yml`；修改后重启预览并重新生成。
+搜索、评论、图片预览、统计和订阅都可以按需启用。主题功能写入博客根目录的 `_config.syutoi.yml`，订阅插件配置写入博客 `_config.yml`；修改后重启预览并重新生成。
 
 ## 本地搜索
 
@@ -39,6 +39,14 @@ lightbox:
 ## 分享与搜索引擎信息
 
 站点 title、description、author、url 使用自己的信息。需要默认分享图片或单篇覆盖时，参考 [SEO 配置](configuration.md#seo-configuration)。
+
+## 社交链接与访问统计
+
+在作者侧栏展示账号，见 [社交链接与图标](social-links.md)。记录网站访问，见 [访问统计](analytics.md)。两者分别通过 `social` 与 `analytics.baidu` 配置，都不需要手动粘贴脚本。
+
+## Markdown 图片属性与提示块
+
+这些是构建时的写作扩展，配置放在站点 `_config.yml`，不是主题配置。开启方式见 [Markdown 扩展](markdown-extensions.md)，图片尺寸与路径说明见 [图片与尺寸](images.md)。
 
 ## 检查效果
 

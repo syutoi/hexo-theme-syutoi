@@ -52,6 +52,8 @@ social:
 
 ## 字段说明
 
+需要按步骤操作时，可直接阅读 [社交链接与图标](social-links.md)、[访问统计](analytics.md)、[图片与尺寸](images.md) 或 [Markdown 扩展](markdown-extensions.md)。本页保留字段参考与高级行为说明。
+
 | 字段 | 默认值 | 行为 |
 | --- | --- | --- |
 | `branding.name` | 空字符串 | 页头大图区域展示名；留空使用站点 title，导航标题始终使用站点 title |
@@ -257,42 +259,7 @@ seo:
 
 ### 结构化社交链接（F3）
 
-推荐使用 PRD 的列表格式；按配置顺序显示链接；内置平台使用本地 SVG 图标，不引入图标字体或分享 SDK：
-
-```yaml
-social:
-  - type: github
-    url: https://github.com/yourname
-  - type: email
-    url: mailto:hello@example.com
-  - type: mastodon
-    name: 我的 Mastodon
-    url: https://example.social/@yourname
-  - name: 关于本站
-    url: /about/
-```
-
-内置图标类型：github、gitlab、x、zhihu、xiaohongshu、bilibili、weibo、telegram、youtube、instagram、mastodon、bluesky、email、rss、website。twitter 为 x 的兼容别名；类型大小写不敏感。`name` 优先，可用任意语言；未知类型需提供 name，否则忽略。非法 URL 与空标签忽略，本地路径包含站点 root，`social: []` 清空。
-
-原有 `{name, url}` 列表继续有效。也兼容 `social: {github: {url: ...}}` 的结构化映射以及 Shoka 的 `url || icon || color` 字符串映射；旧图标和颜色不解析为新组件。
-
-`social` 中使用上述内置 `type` 时，侧栏显示对应 SVG 图标，`name` 可自定义悬停提示和无障碍名称。图标跟随明暗主题配色，只有已配置的图标会嵌入页面，不加载外部字体或图标服务。只填写 `name` 或使用未知 `type` 配合 `name` 时保留文字链接，不根据 URL 猜测平台。
-
-例如，在博客 `_config.syutoi.yml` 中配置（用你的真实主页地址替换示例）：
-
-```yaml
-social:
-  - type: github
-    url: https://github.com/yourname
-  - type: x
-    url: https://x.com/yourname
-  - type: zhihu
-    url: https://www.zhihu.com/people/yourname
-  - type: xiaohongshu
-    url: https://www.xiaohongshu.com/user/profile/your-id
-```
-
-品牌图标来自 Simple Icons，本地来源与版本记录见 `layout/_partials/icons/README.md`；邮件、RSS 和网站使用主题内置通用图标。无需自行准备图标文件。
+在 `_config.syutoi.yml` 的 `social` 列表填写平台 `type` 和主页 `url`，链接按配置顺序显示于作者侧栏。内置平台使用本地 SVG 图标，`name` 可自定义提示文字；自定义链接保留文字。完整配置、平台类型表和兼容说明见 [社交链接与图标](social-links.md)。图标支持在 v0.5.0 之后加入。
 
 ## Markdown 阅读元素
 
@@ -427,19 +394,4 @@ comments: false
 
 ## 百度统计
 
-此功能在 v0.5.0 之后加入。将下面配置放入博客根目录的 `_config.syutoi.yml`（本仓库示例站使用 `example/_config.syutoi.yml`）：
-
-```yaml
-analytics:
-  baidu: '你的32位跟踪ID'
-```
-
-在百度统计后台添加站点并获取安装代码，只复制 `hm.js?` 后的 **32 位十六进制跟踪 ID**，替换上面的占位文字。不要填写整段 JavaScript、完整 URL 或后台地址中的数字站点编号；ID 必须用引号包裹，避免纯数字被 YAML 当作数值。
-
-保存后重启预览；正式部署前执行 `pnpm exec hexo clean` 和 `pnpm exec hexo generate`。主题仓库可执行 `pnpm clean && pnpm build`。所有使用主题布局的页面都会初始化 `_hmt` 队列，并通过 HTTPS 异步加载百度统计脚本，无需另装 Hexo 插件或手动粘贴代码。独立的原始 HTML 文件不经过主题布局，不会自动添加统计。
-
-默认 `baidu: ''` 完全关闭；空值、非字符串和格式无效的 ID 同样不输出统计脚本。启用后本地预览也会加载统计，预览时如不希望记录访问，可临时留空。不要同时通过其他插件注入同一统计代码，以免重复计数。
-
-验证时查看生成页面源码是否包含 `https://hm.baidu.com/hm.js?你的ID`，并在浏览器 Network 中确认脚本请求。广告拦截或网络限制可能阻止上报；脚本生成成功不等于后台已经收到访问数据。本功能会连接百度统计服务，主题没有增加访问计数显示或自定义事件上报。
-
-接入方式参考 [百度统计代码介绍](https://tongji.baidu.com/web/help/article?id=174&type=0)。旧的 `baidu_analytics` 字段不自动启用统计，请改用上述配置。
+在 `_config.syutoi.yml` 配置 `analytics.baidu` 即可启用，默认留空关闭。获取 ID、验证效果、本地预览和常见问题见 [访问统计指南](analytics.md)。此功能在 v0.5.0 之后加入。
