@@ -65,3 +65,14 @@ test('list options preserve explicit false and reject invalid summary lengths', 
     assert.equal(normalizeConfig(defaults, {post_list:{summary_length}}).post_list.summary_length, 160);
   }
 });
+
+test('Baidu Analytics requires a tracking ID and preserves explicit opt-out', () => {
+  const id = '0123456789abcdef0123456789ABCDEF';
+  assert.equal(normalizeConfig(defaults).analytics.baidu, '');
+  assert.equal(normalizeConfig(defaults, {analytics:{baidu:` ${id} `}}).analytics.baidu, id);
+  assert.equal(normalizeConfig({analytics:{baidu:id}}, {analytics:{baidu:''}}).analytics.baidu, '');
+  for (const baidu of [null, false, 123456, {}, [], '', 'a'.repeat(31), 'a'.repeat(33), 'g'.repeat(32), `https://hm.baidu.com/hm.js?${id}`, '"><script>alert(1)</script>']) {
+    assert.equal(normalizeConfig(defaults, {analytics:{baidu}}).analytics.baidu, '');
+  }
+  assert.equal(normalizeConfig(defaults, {baidu_analytics:id}).analytics.baidu, '');
+});

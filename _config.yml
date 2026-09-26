@@ -55,6 +55,11 @@ comments:
   provider: none # none | waline
   server_url: '' # Absolute http(s) Waline server URL
 
+# Optional Baidu Analytics. Paste only the 32-character tracking ID from hm.js?.
+# Empty disables tracking; enabled tracking loads a third-party script on every page.
+analytics:
+  baidu: ''
+
 # Navigation
 # Every item has a visible name and a destination URL.
 # menu.* names use the corresponding entry in languages/*.yml.

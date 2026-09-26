@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add opt-in Baidu Analytics through `analytics.baidu`, with tracking ID validation and asynchronous HTTPS loading.
+
 ## 0.5.0 — 2026-09-26
 
 Warm visual styling, a demo documentation center and optional writing extensions. Distributed through Git; npm publication and 1.0 preparation remain pending.

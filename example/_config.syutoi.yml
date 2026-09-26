@@ -9,6 +9,10 @@ appearance:
   theme: auto
   cover: /assets/pastoral-evening.webp
 
+# Baidu Analytics for https://hexo.syutoi.com
+analytics:
+  baidu: 'adb412db4d28b21384a9130d8bdac370'
+
 navigation:
   menu:
     - name: menu.home

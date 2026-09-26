@@ -65,6 +65,7 @@ social:
 | `post_list.cover` | `true` | 列表显示文章 cover；不影响文章页和页头 |
 | `post.reading_time` | `true` | 文章头部显示正文预计阅读时间；单篇 reading_time: false 可关闭 |
 | `search.provider` | `none` | none / pagefind；启用后生成独立搜索页面，文章/Page 可用 search: false 退出索引 |
+| `analytics.baidu` | 空字符串 | 百度统计的 32 位十六进制跟踪 ID；留空或格式无效时不加载统计 |
 | `comments.provider` | `none` | none / waline；有效 server_url 才启用内容页插槽 |
 | `comments.server_url` | 空字符串 | 完整 HTTP(S) Waline 服务地址；点击加载后连接 |
 | `seo.open_graph` / `seo.twitter_card` | `true` | 分别输出 Open Graph / Twitter Card |
@@ -404,3 +405,23 @@ comments: false
 资源下载失败可再次点击重试；服务请求失败时可用 Waline 的刷新按钮或“重新加载评论”。重新加载会清空当前未提交的编辑内容。没有 JavaScript 或入口脚本未加载时显示提示，正文阅读不受影响。
 
 适配依据：[Waline 客户端 API](https://waline.js.org/en/reference/client/api.html)、[组件选项](https://waline.js.org/en/reference/client/props.html)。
+
+
+## 百度统计
+
+此功能在 v0.5.0 之后加入。将下面配置放入博客根目录的 `_config.syutoi.yml`（本仓库示例站使用 `example/_config.syutoi.yml`）：
+
+```yaml
+analytics:
+  baidu: '你的32位跟踪ID'
+```
+
+在百度统计后台添加站点并获取安装代码，只复制 `hm.js?` 后的 **32 位十六进制跟踪 ID**，替换上面的占位文字。不要填写整段 JavaScript、完整 URL 或后台地址中的数字站点编号；ID 必须用引号包裹，避免纯数字被 YAML 当作数值。
+
+保存后重启预览；正式部署前执行 `pnpm exec hexo clean` 和 `pnpm exec hexo generate`。主题仓库可执行 `pnpm clean && pnpm build`。所有使用主题布局的页面都会初始化 `_hmt` 队列，并通过 HTTPS 异步加载百度统计脚本，无需另装 Hexo 插件或手动粘贴代码。独立的原始 HTML 文件不经过主题布局，不会自动添加统计。
+
+默认 `baidu: ''` 完全关闭；空值、非字符串和格式无效的 ID 同样不输出统计脚本。启用后本地预览也会加载统计，预览时如不希望记录访问，可临时留空。不要同时通过其他插件注入同一统计代码，以免重复计数。
+
+验证时查看生成页面源码是否包含 `https://hm.baidu.com/hm.js?你的ID`，并在浏览器 Network 中确认脚本请求。广告拦截或网络限制可能阻止上报；脚本生成成功不等于后台已经收到访问数据。本功能会连接百度统计服务，主题没有增加访问计数显示或自定义事件上报。
+
+接入方式参考 [百度统计代码介绍](https://tongji.baidu.com/web/help/article?id=174&type=0)。旧的 `baidu_analytics` 字段不自动启用统计，请改用上述配置。

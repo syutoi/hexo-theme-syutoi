@@ -40,3 +40,5 @@
 {% if page.type == 'search' and syutoi.search.provider != 'none' %}{{ _css('search.min.css') | safe }}{% endif %}
 
 {% if comments %}{{ _css('comments.min.css') | safe }}{% endif %}
+
+{% include '_partials/head/analytics.njk' %}

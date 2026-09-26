@@ -497,3 +497,31 @@ test('Markdown extensions are opt-in and all five alert kinds render without scr
   assert.match(off, /\[!NOTE\]/);
   assert.match(DomUtils.textContent(parseDocument(off)), /\{width=100\}/);
 });
+
+test('Baidu Analytics renders once per layout with async HTTPS loading under a subdirectory', async () => {
+  const id = '0123456789abcdef0123456789abcdef';
+  const pages = await render({analytics:{baidu:id}}, '/blog/', {
+    config:{permalink:':title/'},
+    pages:{about:'---\ntitle: About\n---\nAbout this blog.'},
+    paths:['index.html', 'post-0/index.html', 'about/index.html', 'archives/index.html', '404.html']
+  });
+  for (const html of pages) {
+    const document = parseDocument(html);
+    const scripts = DomUtils.getElementsByTagName('script', document);
+    const trackers = scripts.filter(node => node.attribs.src?.startsWith('https://hm.baidu.com/'));
+    assert.equal(trackers.length, 1);
+    assert.equal(trackers[0].attribs.src, `https://hm.baidu.com/hm.js?${id}`);
+    assert.ok(Object.hasOwn(trackers[0].attribs, 'async'));
+    assert.equal(trackers[0].parent.name, 'head');
+    const queue = scripts.find(node => DomUtils.textContent(node).includes('window._hmt = window._hmt || []'));
+    assert.ok(queue);
+    assert.ok(scripts.indexOf(queue) < scripts.indexOf(trackers[0]));
+  }
+});
+
+test('Baidu Analytics emits no script when disabled or misconfigured', async () => {
+  for (const settings of [{}, {analytics:{baidu:''}}, {analytics:{baidu:'"><script>alert(1)</script>'}}]) {
+    const html = await render(settings);
+    assert.doesNotMatch(html, /hm\.baidu\.com|window\._hmt|alert\(1\)/);
+  }
+});

@@ -2,6 +2,12 @@ import assert from 'node:assert/strict';
 import { readFile, stat } from 'node:fs/promises';
 import { parseDocument, DomUtils } from 'htmlparser2';
 import { Script } from 'node:vm';
+import yaml from 'js-yaml';
+import { normalizeConfig } from '../lib/config.cjs';
+
+const exampleSettings = yaml.load(await readFile(new URL('../example/_config.syutoi.yml', import.meta.url), 'utf8'));
+const baidu = normalizeConfig(exampleSettings).analytics.baidu;
+const expectedExternalScripts = baidu ? [`https://hm.baidu.com/hm.js?${baidu}`] : [];
 
 const output = new URL('../example/public/', import.meta.url);
 const pages = [
@@ -35,7 +41,10 @@ for (const page of pages) {
   assert(html.indexOf('js/syutoi.min.js') < html.indexOf('css/syutoi.min.css'), `${page}: theme bootstrap must precede styles`);
   assert.match(html, /data-theme-toggle/, `${page}: theme control missing`);
   assert.match(html, /<main[^>]+id="main"/, `${page}: main landmark missing`);
-  assert.doesNotMatch(html, /<script[^>]+src=["'](?:https?:)?\/\//i, `${page}: external script`);
+  const externalScripts = DomUtils.getElementsByTagName('script', parseDocument(html))
+    .filter(node => /^(?:https?:)?\/\//i.test(node.attribs.src || ''));
+  assert.deepEqual(externalScripts.map(node => node.attribs.src), expectedExternalScripts, `${page}: unexpected or duplicate external script`);
+  for (const script of externalScripts) assert.ok(Object.hasOwn(script.attribs, 'async'), `${page}: analytics must load asynchronously`);
   assert.doesNotMatch(html, /(?:css\/app\.css|js\/app\.js|data-background-image|class="exturl)/, `${page}: legacy runtime markup`);
   assert.doesNotMatch(html, /Template render error|extends ['"]_partials/, `${page}: unrendered template`);
 }

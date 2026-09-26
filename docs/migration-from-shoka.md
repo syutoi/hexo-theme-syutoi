@@ -94,7 +94,7 @@ appearance:
 | `reward.*`、`audio` | 移除 | 不输出打赏组件或全站播放器；正文可使用普通链接、原生媒体 |
 | `auto_scroll`、`loader.*`、`fireworks.*`、`quicklink.*` | 移除 | 无旧自动滚动、加载动画、烟花或预取接入 |
 | `pangu`、`exturl` | 移除 | 不自动改写中西文间距或编码外链；保留普通文本与真实 `href` |
-| `baidu_analytics`、`baidu_push`、`disable_baidu_transformation` | 移除 | 不输出旧百度统计、推送和转码控制 |
+| `baidu_analytics`、`baidu_push`、`disable_baidu_transformation` | 移除 | 旧字段不生效；v0.5.0 之后可通过 `analytics.baidu` 重新配置百度统计，推送和转码控制仍不提供 |
 | `google_site_verification`、`bing_site_verification`、`yandex_site_verification`、`baidu_site_verification` | 移除 | 无同名主题接口；可按服务要求在博客 `source/` 放验证文件并检查生成结果 |
 
 博客级 `url`、`root`、`permalink`、分类/标签映射、分页与 renderer 配置仍放博客 `_config.yml`；主题覆盖放 `_config.syutoi.yml`。不要用主题迁移覆盖原来的文章地址规则。RSS/Sitemap 由独立插件处理，见 [订阅指南](syndication.md)。
