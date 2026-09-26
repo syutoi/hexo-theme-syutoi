@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Support optional `_posts/<column>/index.md` landing pages with automatic chapter directories, excluded from article lists and feeds.
+
+- Maintain the user manual directly as colocated Hexo Markdown files in `example/source/`, removing document synchronization while preserving public URLs.
+
+- Make categories ordered columns by default, with title-row navigation tabs, responsive directories and column-scoped previous/next links; allow opting out or selecting specific categories.
+
 - Fix duplicate numbering in nested tables of contents and add `sidebar.toc_number` to control heading numbers.
 
 - Organize the demo documentation into a 12-guide user manual, with dedicated social, analytics, image sizing and Markdown extension guides.
@@ -75,7 +81,7 @@ First Syutoi MVP after the fork from hexo-theme-shoka. The previous package vers
 ### Changed
 
 - Preserved the image masthead, decorative waves, cards and sidebar while replacing the old browser runtime and Stylus pipeline.
-- Adopted the standard hexo-renderer-markdown-it renderer and compact structured theme configuration. See docs/migration-from-shoka.md for compatibility details.
+- Adopted the standard hexo-renderer-markdown-it renderer and compact structured theme configuration. See example/source/_posts/theme-docs/migration-from-shoka.md for compatibility details.
 - Optimized example masthead/cover images using smaller WebP copies, retaining the original JPEGs and historical content links.
 
 ### Removed from the default runtime

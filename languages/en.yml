@@ -95,3 +95,10 @@ comments:
   loading: "Loading comments…"
   error: "Unable to load comments. Please try again."
   no_js: "Comments require JavaScript. The article remains available."
+
+column:
+  title: "Column contents"
+  article: "This article"
+  navigation: "Column navigation"
+  introduction: "Introduction"
+  view_all: "View full column"

@@ -1,4 +1,17 @@
-# 主题配置
+---
+title: 基础配置
+description: 站点身份、导航、侧栏及主题配置字段参考。
+date: '2026-09-22 00:00:00'
+updated: '2026-09-26 00:00:00'
+comments: false
+permalink: docs/configuration/
+categories:
+  - 主题文档
+author: Syutoi
+cover: false
+column: 主题文档
+column_order: 20
+---
 
 主题默认配置只列出已经实现的选项，最多三层字段。用户在博客根目录创建 `_config.syutoi.yml`，只写需要覆盖的字段，无需复制整份默认文件。
 
@@ -52,7 +65,7 @@ social:
 
 ## 字段说明
 
-需要按步骤操作时，可直接阅读 [社交链接与图标](social-links.md)、[访问统计](analytics.md)、[图片与尺寸](images.md) 或 [Markdown 扩展](markdown-extensions.md)。本页保留字段参考与高级行为说明。
+需要按步骤操作时，可直接阅读 [社交链接与图标](/docs/social-links/)、[访问统计](/docs/analytics/)、[图片与尺寸](/docs/images/) 或 [Markdown 扩展](/docs/markdown-extensions/)。本页保留字段参考与高级行为说明。
 
 | 字段 | 默认值 | 行为 |
 | --- | --- | --- |
@@ -77,6 +90,7 @@ social:
 | `lightbox.enable` | `false` | 正文图片的可选灯箱；单篇 lightbox: false 可关闭，首次点击才加载查看器 |
 | `navigation.menu` | 首页、归档、分类、标签 | `{ name, url }` 列表；空列表移除菜单链接 |
 | `social` | `[]` | `{ type, url }` 或 `{ name, url }` 列表，显示在作者侧栏；内置类型显示本地 SVG 图标，其余显示文字 |
+| `columns.categories` | `all` | 默认所有分类作为专栏；也可指定分类完整名称列表或用 [] 关闭；见 [专栏指南](/docs/columns/) |
 | `sidebar.enable` | `true` | 显示侧栏；关闭后使用居中的单列布局 |
 | `sidebar.statistics` | `true` | 显示文章、分类、标签数量 |
 | `sidebar.categories` | `true` | 在非文章页显示顶级分类列表 |
@@ -104,7 +118,7 @@ social:
 
 站点的旧字段不会被新版主题默认值遮住；站点覆盖配置中同时存在新字段和旧别名时，新字段优先，包括空字符串与空列表。建议逐步改用新字段，不再向旧配置添加功能。
 
-旧 CDN、Iconfont、Google Fonts、加载动画、烟花、播放器、评论、搜索、打赏、统计脚本、Quicklink、Base64 链接、随机图等字段已从默认配置删除，在本版本没有效果。它们不会仅因为旧配置还在就发起外部请求。详细范围见 [迁移说明](migration-from-shoka.md)。
+旧 CDN、Iconfont、Google Fonts、加载动画、烟花、播放器、评论、搜索、打赏、统计脚本、Quicklink、Base64 链接、随机图等字段已从默认配置删除，在本版本没有效果。它们不会仅因为旧配置还在就发起外部请求。详细范围见 [迁移说明](/docs/migration-from-shoka/)。
 
 ## 首页与文章列表
 
@@ -186,6 +200,8 @@ sidebar:
 
 文章模板预留空的 Nunjucks `comments` block，供继承 `post.njk` 的自定义模板扩展；默认没有评论容器或外部脚本。本阶段不集成评论服务。
 
+所有分类默认提供完整章节目录，行为与关闭方法见 [专栏](/docs/columns/)。专栏使用 `column_order` 排序，文末导航也在专栏内按该顺序跳转。
+
 归档按年份分组、默认按日期倒序排列。归档首页、年份页和月份页均遵循博客 `_config.yml` 的分页设置，空站点也会生成归档首页：
 
 ```yaml
@@ -212,7 +228,7 @@ archive_generator:
 
 在博客 `_config.yml` 设置 `language: zh-CN`、`zh-TW` 或 `en`；也可提供有顺序的语言列表。文章或 Page 的 `lang` 优先，支持 `zh_Hant` 等常见标记规范化。缺失文案按单页语言、站点语言列表、英文逐键回退。
 
-内置导航名称使用 `menu.*` 键以跟随语言，例如 `menu.friends`；直接写“友链”等名称时保留原文。自定义文案继续通过 `source/_data/languages.yml` 覆盖，详细示例与兼容范围见 [语言说明](../languages/README.md)。
+内置导航名称使用 `menu.*` 键以跟随语言，例如 `menu.friends`；直接写“友链”等名称时保留原文。自定义文案继续通过 `source/_data/languages.yml` 覆盖，详细示例与兼容范围见 [语言说明](https://github.com/syutoi/hexo-theme-syutoi/blob/main/languages/README.md)。
 
 ## 页面与分享元信息
 
@@ -223,7 +239,7 @@ archive_generator:
 - canonical 和 og:url 使用当前生成路径，经 Hexo `full_url_for` 转为绝对 URL，遵循博客 `url` 和 `pretty_urls`。分页有自己的 URL，不统一指回首页；文章 `link` 是阅读原文入口，不改变 canonical。
 - 分享图片依次取单页 `seo.image`、文章/Page 的 `cover`、全局 `seo.default_image`；首页及无正文列表最后回退到固定页头 `appearance.cover`。不抓取正文图片或使用头像。图片转为绝对 HTTP(S) 地址；无有效图片使用 summary 卡片，有图片使用 summary_large_image。替代文字与选中的图片对应，分别取 `seo.image_alt`、`cover_alt`、`seo.default_image_alt`，缺失时不编造描述。
 - 文章作者优先使用 Front Matter `author`，其次为博客 `author`；发布时间与更新时间输出为 UTC ISO 时间。Page 和列表不输出文章时间或作者标签。
-- 404 和搜索页面固定输出 `noindex, follow`；站点或单页也可主动设置 noindex。RSS/Atom/JSON Feed 仍由插件生成，主题保留发现链接；Sitemap 通过可选站点插件生成，配置见 [订阅与站点地图](syndication.md)；当前不生成 JSON-LD。
+- 404 和搜索页面固定输出 `noindex, follow`；站点或单页也可主动设置 noindex。RSS/Atom/JSON Feed 仍由插件生成，主题保留发现链接；Sitemap 通过可选站点插件生成，配置见 [订阅与站点地图](/docs/syndication/)；当前不生成 JSON-LD。
 
 上线前必须在博客 `_config.yml` 填写真实的 `title`、`description`、`author` 和 `url`；部署在子目录时保持 url 的路径与 root 一致，例如 `url: https://example.com/blog`、`root: /blog/`。本仓库示例站使用 `https://hexo.syutoi.com`，供公开 Demo；你自己的博客应换成自己的地址。主题元信息不会从 package.json 作者或示例站 branding 读取站点身份。
 
@@ -276,7 +292,7 @@ seo:
 
 ### 结构化社交链接（F3）
 
-在 `_config.syutoi.yml` 的 `social` 列表填写平台 `type` 和主页 `url`，链接按配置顺序显示于作者侧栏。内置平台使用本地 SVG 图标，`name` 可自定义提示文字；自定义链接保留文字。完整配置、平台类型表和兼容说明见 [社交链接与图标](social-links.md)。图标支持在 v0.5.0 之后加入。
+在 `_config.syutoi.yml` 的 `social` 列表填写平台 `type` 和主页 `url`，链接按配置顺序显示于作者侧栏。内置平台使用本地 SVG 图标，`name` 可自定义提示文字；自定义链接保留文字。完整配置、平台类型表和兼容说明见 [社交链接与图标](/docs/social-links/)。图标支持在 v0.5.0 之后加入。
 
 ## Markdown 阅读元素
 
@@ -337,7 +353,7 @@ lightbox:
 
 关闭或没有合格图片时，HTML 不输出任何灯箱资源与增强标记。启用且有图片时只加载独立入口；首次点击才请求本地 PhotoSwipe 核心与独立 CSS，无 CDN。禁用 JS 或入口加载失败时链接正常工作；核心或样式失败会导航原图；灯箱内原图加载失败显示可点击的原图链接，无法修复原图自身的 404。Ctrl/Cmd/Shift/Alt 点击保留浏览器行为。
 
-资源体积、浏览器验收和未测范围见 [E4a 验收](validation/e4a.md)；[E4 评估](decisions/optional-lightbox.md) 保留选型时的历史问题。
+资源体积、浏览器验收和未测范围见 [E4a 验收](https://github.com/syutoi/hexo-theme-syutoi/blob/main/docs/validation/e4a.md)；[E4 评估](https://github.com/syutoi/hexo-theme-syutoi/blob/main/docs/decisions/optional-lightbox.md) 保留选型时的历史问题。
 
 
 ## 阅读时间与封面替代文字
@@ -376,7 +392,7 @@ search:
 
 `/search/` 和 `/_syutoi/search/` 为启用时的保留目录，不要放置同名页面或静态资源。Pagefind 原生构建包随主题依赖安装，启用时需要平台二进制；不要省略其 optional dependencies。普通 Hexo generate/server 使用同一套索引生成器，不需要另外执行 Pagefind CLI。修改、删除内容或关闭搜索后，Hexo 更新路由并清理旧索引；部署时也应同步删除旧文件。
 
-查询不会发送给远端搜索服务；无 JS 时可通过搜索页中的归档链接浏览。网络错误会显示重试提示，重新提交即可。实现边界、依赖与生命周期证据见 [搜索决策](decisions/local-search.md) 和 [F1 验收](validation/f1.md)。
+查询不会发送给远端搜索服务；无 JS 时可通过搜索页中的归档链接浏览。网络错误会显示重试提示，重新提交即可。实现边界、依赖与生命周期证据见 [搜索决策](https://github.com/syutoi/hexo-theme-syutoi/blob/main/docs/decisions/local-search.md) 和 [F1 验收](https://github.com/syutoi/hexo-theme-syutoi/blob/main/docs/validation/f1.md)。
 
 <a id="waline-comments"></a>
 
@@ -411,4 +427,9 @@ comments: false
 
 ## 百度统计
 
-在 `_config.syutoi.yml` 配置 `analytics.baidu` 即可启用，默认留空关闭。获取 ID、验证效果、本地预览和常见问题见 [访问统计指南](analytics.md)。此功能在 v0.5.0 之后加入。
+在 `_config.syutoi.yml` 配置 `analytics.baidu` 即可启用，默认留空关闭。获取 ID、验证效果、本地预览和常见问题见 [访问统计指南](/docs/analytics/)。此功能在 v0.5.0 之后加入。
+
+
+---
+
+[文档首页](/docs/)

@@ -1,4 +1,17 @@
-# 社交链接与图标
+---
+title: 社交链接与图标
+description: 配置 GitHub、X、知乎、小红书等账号及内置图标。
+date: '2026-09-26 00:00:00'
+updated: '2026-09-26 00:00:00'
+comments: false
+permalink: docs/social-links/
+categories:
+  - 主题文档
+author: Syutoi
+cover: false
+column: 主题文档
+column_order: 30
+---
 
 社交链接显示在作者头像、名字和文章数量下方。内置图标在 v0.5.0 之后加入；使用旧标签时，请阅读对应版本的说明。
 
@@ -45,7 +58,7 @@ social:
 
 类型大小写不敏感。内置平台图标随主题提供，无需准备图片、安装插件或连接图标 CDN。只有配置使用的 SVG 会嵌入页面，颜色跟随明暗主题。图标保留键盘焦点、无障碍名称和悬停提示；名称取自内置标签或自定义 `name`。
 
-品牌 SVG 来自 Simple Icons；来源、版本与许可见 [图标维护说明](../layout/_partials/icons/README.md)。
+品牌 SVG 来自 Simple Icons；来源、版本与许可见 [图标维护说明](https://github.com/syutoi/hexo-theme-syutoi/blob/main/layout/_partials/icons/README.md)。
 
 ## 自定义名称和文字链接
 
@@ -83,3 +96,8 @@ social: []
 | 更新后没有变化 | 重启预览并重新生成；线上还需部署生成文件 |
 
 旧的 `{name, url}` 列表保持文字显示；也支持 `social: {github: {url: ...}}` 的结构化映射。Shoka 的 `URL || icon || color` 字符串映射仍按文字链接处理，不使用旧图标和颜色。建议使用本页的列表格式。
+
+
+---
+
+[文档首页](/docs/)

@@ -59,10 +59,20 @@ pnpm build
 
 此前验收报告的文章数与性能数据属于当时的数据集；此次内容缩减后，不直接与旧数据集比较性能。
 
-## 文档中心
+## 使用手册与示例文章
 
-导航“文档”进入 `/docs/`，12 篇使用指南同时归入“主题文档”分类（`/categories/docs/`）。正文唯一来源是仓库 `docs/`；`toolbox/example-docs.mjs` 维护发布清单、标题、摘要和固定链接，生成目录已加入 Git 忽略规则，请勿直接编辑。
+导航“文档”进入 `/docs/`，13 篇使用指南归入“主题文档”分类（`/categories/docs/`）。使用手册是普通 Hexo 内容，与示例文章一起直接维护：
 
-`pnpm prepare:example`、`pnpm build` 和 `pnpm dev` 会同步文档；dev 同时监听 docs 变更。直接在 example 内运行 Hexo 前，应先在仓库根目录运行 `pnpm prepare:example`。新增指南时更新清单和 `docs/index.md`，移出清单的生成文章会在同步时清理。
+- `example/source/_posts/theme-docs/index.md`：专栏导读，提供介绍、按需求查找和自动章节目录。
+- `example/source/_posts/theme-docs/*.md`（除 `index.md`）：普通文章，Front Matter 保存标题、日期、分类、permalink 和 column_order。
+- `docs/`：开发记录与验收材料，不再作为手册正文的复制来源。
 
-指南保留各自的固定发布日期，新增手册章节使用 2026-09-26；修订时可维护同步器中的 updated 字段，避免普通文字修订改变首页排序。公开站点现有 3 篇展示文章与 12 篇指南；指南参与分类、归档和订阅。站内指南链接自动转换为 `/docs/…/`，其余仓库文档链接指向 GitHub；代码围栏中的示例保持原样。
+新增指南直接创建 Markdown 文件，填写 `categories: [主题文档]`、`column_order` 和唯一的 `permalink`，即可自动加入专栏。修改正文、标题和顺序不需要同步脚本，Hexo server 会正常监听；只有需要新增导读推荐时，才手动编辑导读页。
+
+原访问地址 `/docs/.../` 通过文章 permalink 保持不变，磁盘位置不决定 URL。源码中的站内链接直接使用最终页面地址；跨站引用显式使用完整 URL。普通博客在子目录部署时，应按自己的 root 检查手写正文链接。
+
+`pnpm prepare:example` 仅创建主题符号链接，不生成、删除或覆盖内容。完成一次准备后，可以在 example 目录直接运行 Hexo；仓库 `pnpm dev` 继续负责主题资产监听和启动 Hexo server。
+
+现有 3 篇展示文章与 13 篇指南共 16 篇 Post，参与分类、归档和订阅；导读不计入 Post 列表。日期与更新日期在各自 Front Matter 中维护。分类页和前后篇自动使用 column_order，无需另一份阅读顺序清单。
+
+`toolbox/example-manual.mjs` 仅供本地/线上验收读取文章 Front Matter、发现需要检查的访问地址，不参与页面构建或内容写入。

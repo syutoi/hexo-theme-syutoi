@@ -66,7 +66,7 @@ appearance:
 
 ## 旧主题兼容
 
-本批移除了默认 PJAX、音乐播放器、烟花、搜索、评论、统计和打赏运行时。默认配置已精简，已停用的功能不会因旧字段仍在而加载；配置与兼容规则见 [配置文档](configuration.md)。具体差异见 [迁移说明](migration-from-shoka.md)。
+本批移除了默认 PJAX、音乐播放器、烟花、搜索、评论、统计和打赏运行时。默认配置已精简，已停用的功能不会因旧字段仍在而加载；配置与兼容规则见 [配置文档](../example/source/_posts/theme-docs/configuration.md)。具体差异见 [迁移说明](../example/source/_posts/theme-docs/migration-from-shoka.md)。
 
 ## Markdown 渲染
 
@@ -74,7 +74,7 @@ appearance:
 
 代码高亮交给 Hexo 内置 Highlight.js，`highlight.enable: true`、`line_number: false`、`auto_detect: false`；未知语言回退到纯文本。`markdown.render.html: true` 允许博客作者写入 details、ruby 等 HTML；这适用于受信任的作者内容，并不提供对外来 HTML 的净化。`breaks: false` 使用普通 Markdown 分段规则。
 
-图片启用原生懒加载与站点 root 前缀；标题从 H1 开始生成锚点，同名标题自动区分。原站链接不变，但旧定制锚点与扩展语法需要按 [迁移清单](migration-from-shoka.md) 检查。
+图片启用原生懒加载与站点 root 前缀；标题从 H1 开始生成锚点，同名标题自动区分。原站链接不变，但旧定制锚点与扩展语法需要按 [迁移清单](../example/source/_posts/theme-docs/migration-from-shoka.md) 检查。
 
 ## 代码检查
 
@@ -186,7 +186,7 @@ Puppeteer 与 Chrome 使用现有可选浏览器验收环境，不属于主题�
 
 新增 `toolbox/check-syndication.mjs` 检查示例站三类 feed 的一致性，并把 Sitemap 中每条 URL 映射为生成目录文件；严格 XML 解析使用仅用于开发检查的 saxes。该命令已纳入 `pnpm test`，因此现有 CI 同样执行。未增加浏览器脚本或主题运行时依赖。
 
-配置及边界见 [订阅与站点地图](syndication.md)。
+配置及边界见 [订阅与站点地图](../example/source/_posts/theme-docs/syndication.md)。
 
 ## 核心页面响应式与无障碍验收（G3）
 
@@ -239,7 +239,7 @@ node toolbox/check-interaction-performance.mjs
 
 ## 线上 Demo 验收（G5c）
 
-运行 `pnpm check:online`，使用 curl 对 `https://hexo.syutoi.com/` 进行只读验收；可用 `SYUTOI_ONLINE_URL` 指定其他同结构的 HTTPS Demo。需要联网，不登录、不提交表单、不部署。工具依次检查核心页面和文档发布清单中的全部指南、canonical/og:url、文档站内链接与锚点、页面资源的 HTTP 状态/MIME、RSS/Atom/Sitemap 的 XML、JSON Feed 和随机不存在路径的真实 404。
+运行 `pnpm check:online`，使用 curl 对 `https://hexo.syutoi.com/` 进行只读验收；可用 `SYUTOI_ONLINE_URL` 指定其他同结构的 HTTPS Demo。需要联网，不登录、不提交表单、不部署。工具依次检查核心页面和从示例文章 Front Matter 发现的全部指南、canonical/og:url、文档站内链接与锚点、页面资源的 HTTP 状态/MIME、RSS/Atom/Sitemap 的 XML、JSON Feed 和随机不存在路径的真实 404。
 
 canonical 接受目录 URL 与其 index.html 等价写法，同时检查实际地址可访问。线上核心 JS/CSS 与本地预构建文件逐字节对比；这可识别资源差异，不能替代构建提交标识。网络错误有限重试，仍失败则报告失败，不能等同于主题错误。每次在临时目录保留响应正文与 `report.json`，失败返回非零状态。
 

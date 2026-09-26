@@ -1,5 +1,3 @@
-import { watch } from 'node:fs';
-import { syncExampleDocs } from './example-docs.mjs';
 import { spawn } from 'node:child_process';
 import { createRequire } from 'node:module';
 import { join } from 'node:path';
@@ -10,16 +8,10 @@ import './prepare-example.mjs';
 const context = await createAssetContext();
 let server;
 let stopping = false;
-let docsQueue = Promise.resolve();
-const docsWatcher = watch(join(root, 'docs'), {recursive:true}, () => {
-  docsQueue = docsQueue.then(() => syncExampleDocs()).catch(error => console.error('Documentation sync failed:', error));
-});
 
 async function stop(code = 0) {
   if (stopping) return;
   stopping = true;
-  docsWatcher.close();
-  await docsQueue;
   process.exitCode = code;
   if (server?.pid && server.exitCode === null && server.signalCode === null) {
     const exited = once(server, 'exit').catch(() => {});

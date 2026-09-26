@@ -1,4 +1,17 @@
-# 访问统计
+---
+title: 访问统计
+description: 配置访问统计服务；当前支持百度统计的接入与验证。
+date: '2026-09-26 00:00:00'
+updated: '2026-09-26 00:00:00'
+comments: false
+permalink: docs/analytics/
+categories:
+  - 主题文档
+author: Syutoi
+cover: false
+column: 主题文档
+column_order: 100
+---
 
 本页汇总访问统计服务的接入方法。目前支持百度统计；Google Analytics 等其他服务尚未接入，后续支持后会在本页补充。
 
@@ -41,3 +54,8 @@ analytics:
 | 数据重复 | 检查是否同时在模板、Hexo 插件或自定义 HTML 中粘贴了统计代码 |
 
 复制主题示例时，请将示例站的 ID 换成自己站点的 ID。`hexo.syutoi.com` 的配置只属于该示例站，不是公共统计服务。统计不会在侧栏显示访客数，也不替代文章、分类、标签数量。
+
+
+---
+
+[文档首页](/docs/)

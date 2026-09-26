@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { parseDocument, DomUtils } from 'htmlparser2';
-import { documents } from './example-docs.mjs';
+import { guides } from './example-manual.mjs';
 
 const output = new URL('../example/public/', import.meta.url);
-for (const path of ['docs/', ...documents.map(([slug]) => `docs/${slug}/`), 'categories/docs/']) {
+for (const path of ['docs/', ...guides.map(guide => guide.path), 'categories/docs/']) {
   const html = await readFile(new URL(path + 'index.html', output), 'utf8');
   assert.match(html, /href="\/docs\/"/);
   const dom = parseDocument(html);
@@ -23,4 +23,4 @@ for (const path of ['docs/', ...documents.map(([slug]) => `docs/${slug}/`), 'cat
     }
   }
 }
-console.log(`Verified documentation hub, ${documents.length} guides, category and all local prose links/anchors.`);
+console.log(`Verified documentation hub, ${guides.length} guides, category and all local prose links/anchors.`);

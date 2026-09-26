@@ -44,7 +44,7 @@ try {
   for (const name of Object.keys(manifest.dependencies)) {
     report.siteVersions[name] = JSON.parse(await readFile(join(directory,'node_modules',name,'package.json'),'utf8')).version;
   }
-  const guide = await readFile(join(repository,'docs/getting-started.md'),'utf8');
+  const guide = await readFile(join(repository,'example/source/_posts/theme-docs/getting-started.md'),'utf8');
   const configText = [...guide.matchAll(/```yaml\n([\s\S]*?)```/g)].map(match=>match[1]).find(text=>text.startsWith('theme: syutoi'));
   assert(configText, 'Quick-start site YAML missing');
   const config = {...yaml.load(configText), permalink:':title/'};

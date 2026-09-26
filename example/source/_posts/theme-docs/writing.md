@@ -1,6 +1,19 @@
-# 基础写作
+---
+title: 文章写作
+description: Front Matter、封面、摘要、目录及 Markdown 写作方法。
+date: '2026-09-22 00:00:00'
+updated: '2026-09-26 00:00:00'
+comments: false
+permalink: docs/writing/
+categories:
+  - 主题文档
+author: Syutoi
+cover: false
+column: 主题文档
+column_order: 50
+---
 
-本页对应 0.5.0；可选图片属性与提示块从此版本提供。先按 [快速开始](getting-started.md) 配置 Markdown renderer，再在博客中执行 `pnpm exec hexo new "文章标题"`。完整可运行样例见 [示例清单](examples.md)。
+本页对应 0.5.0；可选图片属性与提示块从此版本提供。先按 [快速开始](/docs/getting-started/) 配置 Markdown renderer，再在博客中执行 `pnpm exec hexo new "文章标题"`。完整可运行样例见 [示例清单](/examples/)。
 
 ## 文章与独立页面
 
@@ -34,7 +47,7 @@ toc: true
 
 `cover` 可省略，或使用 `false`；图片来自博客 `source/images/`，不会随机回退到别的封面。`summary: false` 隐藏列表摘要，未设置时按 description、more 摘要、正文回退。`description` 与列表摘要不同，隐藏列表摘要不会关闭页面元信息。`author` 可单篇覆盖站点作者，`sticky: true` 将文章置顶到首页。
 
-分类数组通常表达层级，例如“阅读 → 笔记”；多个平级标签放在 `tags`。没有分类或标签也可发布。不要复制示例日期、作者和域名作为自己的身份。日期显示遵循博客 date_format/timezone，updated 与 date 不在同一天才在文章头部显示更新日期。正文阅读时间由构建时估算，短文最少约 1 分钟；纯代码块或纯图片不显示估时，可用 `reading_time: false` 关闭。算法和全局开关见 [阅读时间说明](configuration.md#阅读时间与封面替代文字)。
+分类数组通常表达层级，例如“阅读 → 笔记”；多个平级标签放在 `tags`。没有分类或标签也可发布。不要复制示例日期、作者和域名作为自己的身份。日期显示遵循博客 date_format/timezone，updated 与 date 不在同一天才在文章头部显示更新日期。正文阅读时间由构建时估算，短文最少约 1 分钟；纯代码块或纯图片不显示估时，可用 `reading_time: false` 关闭。算法和全局开关见 [阅读时间说明](/docs/configuration/#阅读时间与封面替代文字)。
 
 `pnpm exec hexo new page about` 创建独立 Page，正文与文章写法相同，但默认没有文章日期、分类标签和前后篇。Page 支持 title、description、cover、cover_alt、lang、toc，不显示文章阅读时间。页面导航在 `_config.syutoi.yml` 单独配置。
 
@@ -59,7 +72,7 @@ toc: true
 
 正文支持 H1–H6，通常从 H2 开始以避免重复页面主标题。renderer 为标题生成锚点，同名标题自动区分；不要假设与旧 Shoka 定制锚点完全一致。目录只包含正文标题，无标题的文章不会输出空目录。`toc: false` 关闭当前页目录；主题 sidebar.toc/sidebar.enable 可全局关闭。桌面目录固定在侧栏，手机目录在正文前以原生 details 折叠；无 JS 仍可展开和跳转。JS 只增强章节高亮及跨屏宽焦点处理，长目录可在面板内滚动。
 
-如需隐藏目录序号，在主题配置中设置 `sidebar.toc_number: false`；默认 true 显示层级编号，桌面和手机同步生效。它不改变正文标题或作者手写的序号，详见 [目录显示与序号](configuration.md#table-of-contents)。
+如需隐藏目录序号，在主题配置中设置 `sidebar.toc_number: false`；默认 true 显示层级编号，桌面和手机同步生效。它不改变正文标题或作者手写的序号，详见 [目录显示与序号](/docs/configuration/#table-of-contents)。
 
 中英文自然换行，不自动修改文字空格；长链接可折行。设置 `lang: en` 或 `lang: zh-TW` 可改变单页界面语言。手写 Markdown 链接需自行检查部署路径，尤其是子目录站点；主题不会重写所有正文 href。
 
@@ -89,7 +102,7 @@ console.log(greeting);
 
 ## 图片与折叠内容
 
-设置图片大小、区分正文与封面、排查加载问题，见 [图片与尺寸](images.md)。
+设置图片大小、区分正文与封面、排查加载问题，见 [图片与尺寸](/docs/images/)。
 
 ```markdown
 ![窗边的猫](/images/cat.webp "摄于一个晴朗的下午")
@@ -106,9 +119,9 @@ alt 用于替代文字，独立图片的 title 会显示为图注。普通正文
 </details>
 ```
 
-选择与用途相符的图片尺寸和编码，主题不会自动下载或转换用户图片。手写 picture/source/srcset/sizes 保留原值，路径需要适配部署目录；完整边界规则见 [正文图片配置](configuration.md#正文图片)。默认保留原生图片；可在主题配置中启用 [可选灯箱](configuration.md#可选图片灯箱)，单篇 Front Matter 的 `lightbox: false` 可退出。picture/srcset 和非图片链接仍保留原生行为。
+选择与用途相符的图片尺寸和编码，主题不会自动下载或转换用户图片。手写 picture/source/srcset/sizes 保留原值，路径需要适配部署目录；完整边界规则见 [正文图片配置](/docs/configuration/#正文图片)。默认保留原生图片；可在主题配置中启用 [可选灯箱](/docs/configuration/#可选图片灯箱)，单篇 Front Matter 的 `lightbox: false` 可退出。picture/srcset 和非图片链接仍保留原生行为。
 
-脚注、details、目录和分页在无 JS 时可用。Mermaid、数学公式、标签属性扩展和复杂 Shoka 私有语法不默认支持；替代写法见 [迁移清单](migration-from-shoka.md)。
+脚注、details、目录和分页在无 JS 时可用。Mermaid、数学公式、标签属性扩展和复杂 Shoka 私有语法不默认支持；替代写法见 [迁移清单](/docs/migration-from-shoka/)。
 
 ## 搜索、评论、订阅与 SEO
 
@@ -135,9 +148,13 @@ seo:
   image_alt: 与分享图片对应的描述
 ```
 
-正文标题仍使用普通 title。完整 SEO 字段、优先级与 canonical 覆盖见 [配置说明](configuration.md#seo-configuration)。普通 Page 也可参与搜索、评论和 Sitemap，但不输出文章日期和阅读时间。
+正文标题仍使用普通 title。完整 SEO 字段、优先级与 canonical 覆盖见 [配置说明](/docs/configuration/#seo-configuration)。普通 Page 也可参与搜索、评论和 Sitemap，但不输出文章日期和阅读时间。
 
-搜索排除不等于订阅排除；hexo-feed 没有这里支持的单篇 feed:false 开关。发布状态、未来日期、feed 限制和 Sitemap 的实际范围见 [订阅与站点地图](syndication.md)。静态公开页面不应依靠这些展示开关保护私密内容。
+搜索排除不等于订阅排除；hexo-feed 没有这里支持的单篇 feed:false 开关。发布状态、未来日期、feed 限制和 Sitemap 的实际范围见 [订阅与站点地图](/docs/syndication/)。静态公开页面不应依靠这些展示开关保护私密内容。
+
+## 连载与专栏
+
+所有分类默认作为专栏，可通过文章 `column_order` 指定阅读顺序，自动显示同专栏目录和前后篇导航；完整用法见 [专栏与阅读顺序](/docs/columns/)。它与当前文章的标题目录独立。
 
 ## 发布前检查
 
@@ -145,12 +162,17 @@ seo:
 
 ## 可选图片属性与提示块
 
-示例站已启用图片尺寸属性和 GitHub 风格提示块；独立博客需在站点 `_config.yml` 配置 Markdown 插件。详见 [Markdown 扩展](markdown-extensions.md)。
+示例站已启用图片尺寸属性和 GitHub 风格提示块；独立博客需在站点 `_config.yml` 配置 Markdown 插件。详见 [Markdown 扩展](/docs/markdown-extensions/)。
 
 ### 图片尺寸属性
 
-启用插件后可写 `![头像](/images/avatar.png){width=100 height=100}`，不必写 HTML。配置步骤、引号写法、等比例缩放与故障排查见 [图片与尺寸](images.md)。
+启用插件后可写 `![头像](/images/avatar.png){width=100 height=100}`，不必写 HTML。配置步骤、引号写法、等比例缩放与故障排查见 [图片与尺寸](/docs/images/)。
 
 ### GitHub 风格提示块
 
-使用 `> [!TIP]` 等标记创建提示块。支持的类型、中文标签与嵌套限制见 [提示块写法](markdown-extensions.md#alerts)，效果见 [扩展示例](/markdown-extensions/)。
+使用 `> [!TIP]` 等标记创建提示块。支持的类型、中文标签与嵌套限制见 [提示块写法](/docs/markdown-extensions/#alerts)，效果见 [扩展示例](/markdown-extensions/)。
+
+
+---
+
+[文档首页](/docs/)

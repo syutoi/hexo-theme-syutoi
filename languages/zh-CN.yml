@@ -95,3 +95,10 @@ comments:
   loading: "正在加载评论…"
   error: "评论加载失败，请重试。"
   no_js: "评论需要 JavaScript，您仍可阅读正文。"
+
+column:
+  title: "专栏目录"
+  article: "本文目录"
+  navigation: "专栏导航"
+  introduction: "导读"
+  view_all: "查看完整专栏"

@@ -1,6 +1,19 @@
-# 从 Shoka 迁移：当前兼容范围
+---
+title: 从 Shoka 迁移
+description: 配置与内容兼容边界，以及旧语法的替代方式。
+date: '2026-09-22 00:00:00'
+updated: '2026-09-26 00:00:00'
+comments: false
+permalink: docs/migration-from-shoka/
+categories:
+  - 主题文档
+author: Syutoi
+cover: false
+column: 主题文档
+column_order: 130
+---
 
-本说明记录 0.5.0 的兼容范围；0.1.0 MVP 逐项结果见 [验收表](validation/mvp.md)，不代表完整 1.0 功能已实现。上游历史、许可证和文章中的来源链接保持保留。
+本说明记录 0.5.0 的兼容范围；0.1.0 MVP 逐项结果见 [验收表](https://github.com/syutoi/hexo-theme-syutoi/blob/main/docs/validation/mvp.md)，不代表完整 1.0 功能已实现。上游历史、许可证和文章中的来源链接保持保留。
 
 ## 页面与资源
 
@@ -22,13 +35,13 @@ appearance:
   cover: /assets/banner.jpg # 文件放在博客 source/assets/banner.jpg
 ```
 
-页头展示名改用 `branding.name`，头像改用 `branding.avatar` 完整路径；旧 `alternate`、`sidebar.avatar` / `images` 仍作为兼容别名，见 [配置文档](configuration.md)。
+页头展示名改用 `branding.name`，头像改用 `branding.avatar` 完整路径；旧 `alternate`、`sidebar.avatar` / `images` 仍作为兼容别名，见 [配置文档](/docs/configuration/)。
 
 ## 配置和内容
 
 - 旧 `menu` 中的 `路径 || 图标` 暂时兼容，嵌套菜单展开为普通导航。新配置统一使用 `navigation.menu` 下的 `{ name, url }` 列表，社交链接推荐 `{ type, url }`，也兼容 `{ name, url }` 列表。
 - 封面仅使用文章显式设置的字符串 `cover`；不再随机挑选 `_images.yml` 或 `_data/images.yml` 图片。文章不设置封面也可正常展示。
-- 旧 `_data/colors.styl`、`custom.styl`、`iconfont.styl` 不再生效。按 [自定义文档](customization.md) 修改 `src/styles/` 并重新构建资源；当前没有自动注入自定义 CSS 的配置。
+- 旧 `_data/colors.styl`、`custom.styl`、`iconfont.styl` 不再生效。按 [自定义文档](/docs/customization/) 修改 `src/styles/` 并重新构建资源；当前没有自动注入自定义 CSS 的配置。
 - 外部链接保留真实 `href`，图片保留真实 `src`，不再依赖旧 JS 解码和懒加载。友情链接标签保留为普通链接卡片。
 - `{% media audio/video %}` 中的播放列表以可访问的链接列表展示，不再加载第三方播放器。单个媒体也可以改为标准 HTML `audio` / `video` 标签，并设置 `controls`、`preload="none"`。
 - 定制 Markdown renderer 已替换，旧示例文档保留历史说明并加注提示，不能再作为当前功能清单。差异见下表。
@@ -64,11 +77,11 @@ appearance:
 
 主题默认配置只列出当前可用字段，示例覆盖仅保留示例所需配置。只保留当前可用功能；示例不再继承上游作者的个人社交账号。历史文档中的原站链接与来源记录仍然保留。
 
-配置兼容层区分站点覆盖与主题默认值，优先读取用户显式设置；同一配置层中新字段与旧别名同时出现时以新字段为准（包括空字符串、false 和空列表）；站点覆盖中的旧别名仍优先于主题默认值。列表整体替换，空列表不会恢复默认菜单。完整字段、优先级和迁移表见 [配置文档](configuration.md)。
+配置兼容层区分站点覆盖与主题默认值，优先读取用户显式设置；同一配置层中新字段与旧别名同时出现时以新字段为准（包括空字符串、false 和空列表）；站点覆盖中的旧别名仍优先于主题默认值。列表整体替换，空列表不会恢复默认菜单。完整字段、优先级和迁移表见 [配置文档](/docs/configuration/)。
 
 ## 旧配置逐项清单
 
-以下以本仓库迁移前快照 `a2a8440` 的 `_config.yml` 为基线，核对当前 `lib/config.cjs`。其他 Shoka 分支自行增加的字段不在自动兼容承诺内。“手动迁移”表示旧字段不会自动转成新字段；“移除”表示当前主题不读取它，保留旧配置也不会恢复该功能。字段详细类型见 [配置参考](configuration.md)。
+以下以本仓库迁移前快照 `a2a8440` 的 `_config.yml` 为基线，核对当前 `lib/config.cjs`。其他 Shoka 分支自行增加的字段不在自动兼容承诺内。“手动迁移”表示旧字段不会自动转成新字段；“移除”表示当前主题不读取它，保留旧配置也不会恢复该功能。字段详细类型见 [配置参考](/docs/configuration/)。
 
 | 旧字段 | 状态 | 当前写法或处理 |
 | --- | --- | --- |
@@ -85,7 +98,7 @@ appearance:
 | `valine.*` | 手动迁移 | 用 `comments.provider: waline` 和 `comments.server_url`；不复用旧 appId/appKey，不自动搬运评论 |
 | `vendors.css.fancybox`、`vendors.js.fancybox` | 手动迁移 | 用 `lightbox.enable: true` 开启本地灯箱，不读取旧 Fancybox 设置 |
 | `statics`、`css`、`js`、其余 `vendors.*` | 移除 | 主题资源由构建清单定位；不要把旧 CDN 或文件路径直接复制到新配置 |
-| `font.*`、`iconfont` | 移除 | 默认系统字体/本地 SVG；字体与视觉定制见 [自定义指南](customization.md) |
+| `font.*`、`iconfont` | 移除 | 默认系统字体/本地 SVG；字体与视觉定制见 [自定义指南](/docs/customization/) |
 | `sidebar.position` | 移除 | 使用当前响应式布局；可用 `sidebar.enable: false` 隐藏侧栏 |
 | `widgets.*` | 移除 | 不提供随机文章或最新评论挂件；当前侧栏提供统计、分类和目录开关 |
 | `footer.icon.*`、`footer.count`、`post.count` | 移除 | 不加载旧图标/访问统计；`post.reading_time` 仅为构建时阅读时长估算 |
@@ -97,7 +110,7 @@ appearance:
 | `baidu_analytics`、`baidu_push`、`disable_baidu_transformation` | 移除 | 旧字段不生效；v0.5.0 之后可通过 `analytics.baidu` 重新配置百度统计，推送和转码控制仍不提供 |
 | `google_site_verification`、`bing_site_verification`、`yandex_site_verification`、`baidu_site_verification` | 移除 | 无同名主题接口；可按服务要求在博客 `source/` 放验证文件并检查生成结果 |
 
-博客级 `url`、`root`、`permalink`、分类/标签映射、分页与 renderer 配置仍放博客 `_config.yml`；主题覆盖放 `_config.syutoi.yml`。不要用主题迁移覆盖原来的文章地址规则。RSS/Sitemap 由独立插件处理，见 [订阅指南](syndication.md)。
+博客级 `url`、`root`、`permalink`、分类/标签映射、分页与 renderer 配置仍放博客 `_config.yml`；主题覆盖放 `_config.syutoi.yml`。不要用主题迁移覆盖原来的文章地址规则。RSS/Sitemap 由独立插件处理，见 [订阅指南](/docs/syndication/)。
 
 例如下面旧覆盖配置：
 
@@ -217,16 +230,21 @@ rg -n '^[[:space:]]*[A-Za-z_][A-Za-z_0-9]*:' _config*.yml
 ## 建议迁移顺序
 
 1. 先提交或备份旧博客配置、依赖、主题定制和内容，在单独分支中安装 Syutoi；保留原主题以便回退。
-2. 按 [快速开始](getting-started.md) 整理 renderer 与生成器，先用最小主题配置成功生成。
+2. 按 [快速开始](/docs/getting-started/) 整理 renderer 与生成器，先用最小主题配置成功生成。
 3. 保留原来的 permalink、category_map、tag_map 和站点 root，比较重要文章、分类和旧锚点链接。
 4. 将旧 menu、头像、主题偏好改为新结构，逐项恢复封面、导航和社交链接。
 5. 按兼容表检查旧标签，先把影响正文理解的语法改为标准 Markdown 或 HTML；对照上述标签表及替代示例逐项确认。
 6. 单独开启 Pagefind、灯箱或 Waline 并验证。Waline 评论线程采用含 root 的路径；旧系统数据与线程迁移需在服务端处理，主题不自动搬运。
-7. 按 [订阅文档](syndication.md) 恢复 feed/Sitemap，再检查 SEO 覆盖；noindex、search:false 与 sitemap:false 各自独立。
-8. clean/generate，查看桌面/手机和无 JS 页面，再按照 [部署指南](deployment.md) 发布。
+7. 按 [订阅文档](/docs/syndication/) 恢复 feed/Sitemap，再检查 SEO 覆盖；noindex、search:false 与 sitemap:false 各自独立。
+8. clean/generate，查看桌面/手机和无 JS 页面，再按照 [部署指南](/docs/deployment/) 发布。
 
-需要回退时恢复博客配置/依赖和原主题引用，重新安装相应锁文件并 clean/generate；不要只恢复旧 CSS。阅读体验 E 阶段和博客能力 F 阶段已经完成，Beta 验收仍按 [TODO](TODO.md) 推进。
+需要回退时恢复博客配置/依赖和原主题引用，重新安装相应锁文件并 clean/generate；不要只恢复旧 CSS。阅读体验 E 阶段和博客能力 F 阶段已经完成，Beta 验收仍按 [TODO](https://github.com/syutoi/hexo-theme-syutoi/blob/main/docs/TODO.md) 推进。
 
 2026-09-22：示例站移除了旧主题文档和 Java 课程文章；特殊功能与第二周笔记保留于 `test/fixtures/legacy/`，由隔离站点测试验证历史来源链接、媒体回退和普通答案内容。
 
-图片尺寸属性与 GitHub 风格提示块现可按 [写作指南](writing.md#可选图片属性与提示块) 开启。它们不恢复 Shoka 的 ::: 私有容器、gallery 或颜色样式。
+图片尺寸属性与 GitHub 风格提示块现可按 [写作指南](/docs/writing/#可选图片属性与提示块) 开启。它们不恢复 Shoka 的 ::: 私有容器、gallery 或颜色样式。
+
+
+---
+
+[文档首页](/docs/)

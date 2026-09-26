@@ -1,4 +1,17 @@
-# 订阅与站点地图
+---
+title: 订阅与站点地图
+description: 生成 RSS、Atom、JSON Feed 和 Sitemap。
+date: '2026-09-22 00:00:00'
+updated: '2026-09-26 00:00:00'
+comments: false
+permalink: docs/syndication/
+categories:
+  - 主题文档
+author: Syutoi
+cover: false
+column: 主题文档
+column_order: 110
+---
 
 RSS、Atom、JSON Feed 和 Sitemap 属于博客的插件配置，放在博客 `_config.yml`，不放在 `_config.syutoi.yml`。主题提供 feed 展示模板和 HTML 订阅入口，内容筛选、路由生成与 Sitemap 模板由插件负责。
 
@@ -81,3 +94,8 @@ RSS 正文以 XML 转义后的 HTML 输出，读者解析 XML 后可得到正常
 部署后可访问 `/rss.xml`、`/atom.xml`、`/feed.json` 和 `/sitemap.xml`，确认返回实际文件。可自行将站点地图提交给搜索引擎；本阶段未向外部服务提交内容，也未验证搜索引擎收录。
 
 插件文档：[hexo-feed](https://github.com/sergeyzwezdin/hexo-feed)、[hexo-generator-sitemap](https://github.com/hexojs/hexo-generator-sitemap)。
+
+
+---
+
+[文档首页](/docs/)

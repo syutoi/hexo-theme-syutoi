@@ -1,6 +1,11 @@
 {% extends '_partials/layout.njk' %}
 {% block content %}
-<header class="page-heading"><p class="eyebrow">{{ __('title.category') }}</p><h1>{{ page.category }}</h1></header>
-{% include '_partials/post-list.njk' %}
-{% include '_partials/pagination.njk' %}
+<header class="page-heading"><p class="eyebrow">{{ __('title.category') }}</p><h1>{{ page.title if page.column_home else page.category }}</h1></header>
+{% if page.column_home %}
+{% include '_partials/mobile-toc.njk' %}
+<div class="prose" data-prose data-copy-label="{{ __('desk.copy') }}" data-copied-label="{{ __('desk.copied') }}" data-copy-failed-label="{{ __('desk.copy_failed') }}">{{ body.html | safe }}</div>
+{% endif %}
+{% if column %}<nav class="column-directory" aria-label="{{ __('column.title') }}">{% include '_partials/column-directory.njk' %}</nav>
+{% else %}{% include '_partials/post-list.njk' %}
+{% include '_partials/pagination.njk' %}{% endif %}
 {% endblock %}

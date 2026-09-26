@@ -6,7 +6,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
 import { parseDocument, DomUtils } from 'htmlparser2';
-import { documents } from './example-docs.mjs';
+import { guides } from './example-manual.mjs';
 import { parseXml } from './xml.mjs';
 const exec = promisify(execFile);
 const base = new URL(process.env.SYUTOI_ONLINE_URL || 'https://hexo.syutoi.com/');
@@ -41,7 +41,7 @@ async function batch(items,fn) {
   }
 }
 try {
-  const paths=['','docs/','examples/','markdown-extensions/','welcome/','syutoi-long-read/','friends/','archives/','categories/','categories/docs/','tags/','404.html',...documents.map(([slug])=>`docs/${slug}/`)];
+  const paths=['','docs/','examples/','markdown-extensions/','welcome/','syutoi-long-read/','friends/','archives/','categories/','categories/docs/','tags/','404.html',...guides.map(guide=>guide.path)];
   const assets=new Set();const links=new Map();
   await batch(paths,async path=>{
     const {info,text}=await get(path);

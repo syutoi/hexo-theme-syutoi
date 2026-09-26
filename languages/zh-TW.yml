@@ -95,3 +95,10 @@ comments:
   loading: "正在載入留言…"
   error: "留言載入失敗，請重試。"
   no_js: "留言需要 JavaScript，您仍可閱讀正文。"
+
+column:
+  title: "專欄目錄"
+  article: "本文目錄"
+  navigation: "專欄導覽"
+  introduction: "導讀"
+  view_all: "查看完整專欄"

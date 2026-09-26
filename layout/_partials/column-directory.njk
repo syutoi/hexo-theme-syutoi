@@ -1,0 +1,5 @@
+{% if not column.home %}<p class="column-heading">{{ column.name }}</p>{% endif %}
+<ol class="column-entries">
+{% if column.home %}<li><a href="{{ url_for(column.path) }}"{% if page.column_home %} aria-current="page"{% endif %}><span class="column-index" aria-hidden="true"></span><span>{{ __('column.introduction') }}</span></a></li>{% endif %}
+{% for entry in column.posts %}<li><a href="{{ url_for(entry.path) }}"{% if entry.path == page.path %} aria-current="page"{% endif %}><span class="column-index" aria-hidden="true">{{ loop.index }}.</span><span>{{ entry.title or __('post.untitled') }}</span></a></li>{% else %}<li>{{ __('desk.empty') }}</li>{% endfor %}
+</ol>

@@ -3,7 +3,7 @@
 {% if page.current == 1 and site.categories.length %}
 <section class="home-categories" aria-labelledby="categories-title">
   <div class="section-heading"><h2 id="categories-title">{{ __('index.category') }}</h2><a href="{{ url_for(config.category_dir + '/') }}">{{ __('title.all') }} <span aria-hidden="true">↗</span></a></div>
-  <div class="category-cards">{% for category in site.categories.sort('name').toArray() %}{% if not category.parent %}<a class="category-card" href="{{ url_for(category.path) }}"><span class="category-symbol" aria-hidden="true">#</span><strong>{{ category.name }}</strong><span>{{ category.length }} {{ __('state.posts') }}</span></a>{% endif %}{% endfor %}</div>
+  <div class="category-cards">{% for category in site.categories.sort('name').toArray() %}{% if not category.parent %}<a class="category-card" href="{{ url_for(syutoi_category_path(category)) }}"><span class="category-symbol" aria-hidden="true">#</span><strong>{{ category.name }}</strong><span>{{ category.posts.length }} {{ __('state.posts') }}</span></a>{% endif %}{% endfor %}</div>
 </section>
 {% endif %}
 <section class="home-posts" aria-labelledby="posts-title">

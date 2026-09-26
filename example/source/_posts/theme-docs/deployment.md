@@ -1,4 +1,17 @@
-# 部署
+---
+title: 部署指南
+description: 发布静态站点并检查路径、缓存和部署配置。
+date: '2026-09-22 00:00:00'
+updated: '2026-09-26 00:00:00'
+comments: false
+permalink: docs/deployment/
+categories:
+  - 主题文档
+author: Syutoi
+cover: false
+column: 主题文档
+column_order: 120
+---
 
 部署对象是 Hexo 生成的静态目录，不是主题源码。下面区分普通博客与本仓库示例；只准备本地生成文件不等于已经发布。首次发布需自行配置托管平台、域名和权限。
 
@@ -9,7 +22,7 @@
 | 独立 Hexo 博客 | 博客根目录 | `pnpm exec hexo clean && pnpm exec hexo generate` | 博客的 `public/` |
 | 本主题仓库示例 | 主题仓库根目录 | `pnpm clean && pnpm build` | `example/public/` |
 
-独立博客安装方法见 [快速开始](getting-started.md)。提交博客 package.json 和 pnpm-lock.yaml，并确保 CI 能取得主题与主题生产依赖。主题自带已提交的 JS/CSS，普通博客无需运行主题的完整开发构建。
+独立博客安装方法见 [快速开始](/docs/getting-started/)。提交博客 package.json 和 pnpm-lock.yaml，并确保 CI 能取得主题与主题生产依赖。主题自带已提交的 JS/CSS，普通博客无需运行主题的完整开发构建。
 
 已有博客使用嵌套 Git clone 安装主题时，主题内容不会自动进入博客提交。可把主题作为 Git submodule 记录并固定到已推送的 commit，再让 CI 递归检出；也可以在 CI 中单独检出自己维护的主题仓库。不要只提交一个本机目录路径或软链接。
 
@@ -91,9 +104,9 @@ jobs:
 
 ## 本仓库 Demo
 
-仓库已有 [Pages workflow](../.github/workflows/pages.yml)：推送 main 或手动运行会安装依赖、构建 example、写入 CNAME、上传 `example/public/` 并部署。它使用仓库 .nvmrc/packageManager，不使用上一节的独立博客命令。
+仓库已有 [Pages workflow](https://github.com/syutoi/hexo-theme-syutoi/blob/main/.github/workflows/pages.yml)：推送 main 或手动运行会安装依赖、构建 example、写入 CNAME、上传 `example/public/` 并部署。它使用仓库 .nvmrc/packageManager，不使用上一节的独立博客命令。
 
-[CI workflow](../.github/workflows/ci.yml) 执行 lint、构建、测试和资源一致性检查；Pages 工作流是另一个 workflow，没有等待 CI 成功的依赖关系。当前文档不声称增加了发布闸门。发布前请先在本地完成检查，按需要自行设置分支保护。
+[CI workflow](https://github.com/syutoi/hexo-theme-syutoi/blob/main/.github/workflows/ci.yml) 执行 lint、构建、测试和资源一致性检查；Pages 工作流是另一个 workflow，没有等待 CI 成功的依赖关系。当前文档不声称增加了发布闸门。发布前请先在本地完成检查，按需要自行设置分支保护。
 
 ## 其他静态托管
 
@@ -112,3 +125,8 @@ jobs:
 5. 启用订阅/Sitemap 时检查实际 XML/JSON 地址；开启搜索/评论时检查真实网络环境下的交互。
 
 其他平台步骤可参考 [Hexo 部署文档](https://hexo.io/docs/github-pages)。本阶段验证本地构建步骤和文档结构，未执行远程发布或修改 DNS。服务端部署、鉴权和跨域需要在自己的环境验证。
+
+
+---
+
+[文档首页](/docs/)

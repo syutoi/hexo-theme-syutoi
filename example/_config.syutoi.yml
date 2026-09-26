@@ -34,3 +34,5 @@ navigation:
 social:
   - type: github
     url: https://github.com/syutoi
+
+# Every category uses the built-in column directory by default.

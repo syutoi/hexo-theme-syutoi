@@ -1,4 +1,17 @@
-# Markdown 扩展
+---
+title: Markdown 扩展
+description: 开启图片属性和提示块，配置中文标签并排查常见问题。
+date: '2026-09-26 00:00:00'
+updated: '2026-09-26 00:00:00'
+comments: false
+permalink: docs/markdown-extensions/
+categories:
+  - 主题文档
+author: Syutoi
+cover: false
+column: 主题文档
+column_order: 80
+---
 
 图片尺寸属性和 GitHub 风格提示块从 v0.5.0 提供，默认不启用。示例站已配置；独立博客需要按本页设置。
 
@@ -71,4 +84,9 @@ markdown:
 | 修改后旧页面不变 | 停止旧进程，重新 clean/generate 后再启动；线上需重新部署 |
 | 脚注或任务列表失效 | 添加扩展时不要覆盖掉原本使用的插件列表 |
 
-完整的图片尺寸、路径和加载说明见 [图片与尺寸](images.md)。常规 Markdown、代码、表格和 Front Matter 见 [文章写作](writing.md)。
+完整的图片尺寸、路径和加载说明见 [图片与尺寸](/docs/images/)。常规 Markdown、代码、表格和 Front Matter 见 [文章写作](/docs/writing/)。
+
+
+---
+
+[文档首页](/docs/)

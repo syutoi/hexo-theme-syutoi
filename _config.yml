@@ -4,7 +4,7 @@
 # A list override replaces the entire list; [] means no entries.
 # Site title, subtitle, author, description and language belong in
 # the blog's _config.yml, along with theme: syutoi.
-# Full reference: docs/configuration.md
+# Full reference: example/source/_posts/theme-docs/configuration.md
 
 # Identity
 # Empty name uses the site's title; empty avatar uses its initial.
@@ -113,6 +113,11 @@ social: []
 #   - type: email
 #     url: mailto:hello@example.com
 
+# All categories are columns by default. Use [] to disable, or a list of full
+# category names (Parent/Child for nesting) to enable only selected categories.
+columns:
+  categories: all
+
 # Sidebar
 # Disabling it uses a centred, single-column content area.
 # statistics displays counts and links for posts/categories/tags.
@@ -156,4 +161,4 @@ footer:
 # social mapping -> social ({name, url} list)
 # Old aliases are accepted during migration; new explicit values win.
 # Retired CDN/player/comment/animation settings have no effect.
-# See docs/migration-from-shoka.md for the detailed compatibility list.
+# See example/source/_posts/theme-docs/migration-from-shoka.md for the detailed compatibility list.

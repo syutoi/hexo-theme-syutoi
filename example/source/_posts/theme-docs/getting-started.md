@@ -1,6 +1,19 @@
-# 快速开始
+---
+title: 快速开始
+description: 安装 Syutoi、配置 Hexo，并启动你的第一个站点。
+date: '2026-09-22 00:00:00'
+updated: '2026-09-26 00:00:00'
+comments: false
+permalink: docs/getting-started/
+categories:
+  - 主题文档
+author: Syutoi
+cover: false
+column: 主题文档
+column_order: 10
+---
 
-本页主要用于已有 Hexo 博客；新博客先看 [从空目录开始](#从空目录开始)，再执行安装步骤。想先查看效果，可按 [README](../README.md) 启动仓库自带示例。以下命令在博客根目录执行，要求 Node >=20.19.0、pnpm 9.0.4；当前实现以 Hexo 8.1.2 验证。本文对应 0.5.0，包含木色视觉、文档中心及可选 Markdown 扩展。使用旧标签时请阅读该标签内的文档；历史版本差异见 Changelog。
+本页主要用于已有 Hexo 博客；新博客先看 [从空目录开始](#从空目录开始)，再执行安装步骤。想先查看效果，可按 [README](https://github.com/syutoi/hexo-theme-syutoi/blob/main/README.md) 启动仓库自带示例。以下命令在博客根目录执行，要求 Node >=20.19.0、pnpm 9.0.4；当前实现以 Hexo 8.1.2 验证。本文对应 0.5.0，包含木色视觉、文档中心及可选 Markdown 扩展。使用旧标签时请阅读该标签内的文档；历史版本差异见 Changelog。
 
 ## 安装主题与依赖
 
@@ -70,7 +83,7 @@ appearance:
   cover: /images/banner.webp
 ```
 
-使用封面时将文件放入 `source/images/banner.webp`；不需要封面可省略 `cover`。其他选项见 [配置说明](configuration.md)。不要修改主题默认 `_config.yml` 来保存自己的站点身份。
+使用封面时将文件放入 `source/images/banner.webp`；不需要封面可省略 `cover`。其他选项见 [配置说明](/docs/configuration/)。不要修改主题默认 `_config.yml` 来保存自己的站点身份。
 
 ## 写作与预览
 
@@ -86,9 +99,9 @@ pnpm exec hexo server --ip 127.0.0.1
 
 ## 可选订阅与部署检查
 
-RSS/Atom/JSON Feed 使用可选站点插件 `hexo-feed` 与 `hexo-renderer-ejs`，Sitemap 使用 `hexo-generator-sitemap`。安装命令、完整配置、开关与排除规则见 [订阅与站点地图](syndication.md)。未安装插件时主题不会输出订阅入口。
+RSS/Atom/JSON Feed 使用可选站点插件 `hexo-feed` 与 `hexo-renderer-ejs`，Sitemap 使用 `hexo-generator-sitemap`。安装命令、完整配置、开关与排除规则见 [订阅与站点地图](/docs/syndication/)。未安装插件时主题不会输出订阅入口。
 
-上线前填入实际的 url、root、作者与描述；子目录站点例如 `url: https://example.com/blog` 与 `root: /blog/`。部署生成的 `public/`，由宿主配置 404、HTTPS、文本 gzip/Brotli 和缓存策略；主题不会配置服务器。发布后检查页面和静态资源 URL，并用实际网络复测性能。两种项目布局的部署步骤与 GitHub Pages 示例见 [部署指南](deployment.md)。
+上线前填入实际的 url、root、作者与描述；子目录站点例如 `url: https://example.com/blog` 与 `root: /blog/`。部署生成的 `public/`，由宿主配置 404、HTTPS、文本 gzip/Brotli 和缓存策略；主题不会配置服务器。发布后检查页面和静态资源 URL，并用实际网络复测性能。两种项目布局的部署步骤与 GitHub Pages 示例见 [部署指南](/docs/deployment/)。
 
 
 ## 从空目录开始
@@ -104,7 +117,7 @@ cd my-blog
 
 ## 升级与排查
 
-先保存博客与主题的本地修改，在主题目录中获取自己选择的已发布 tag 或提交，再按原安装命令安装主题生产依赖。标签可能尚未推送；不要假设本地开发记录中的每个标签都能在远端获取。构建前查看 [Changelog](../CHANGELOG.md)，升级后重启服务并 clean/generate。
+先保存博客与主题的本地修改，在主题目录中获取自己选择的已发布 tag 或提交，再按原安装命令安装主题生产依赖。标签可能尚未推送；不要假设本地开发记录中的每个标签都能在远端获取。构建前查看 [Changelog](https://github.com/syutoi/hexo-theme-syutoi/blob/main/CHANGELOG.md)，升级后重启服务并 clean/generate。
 
 | 现象 | 检查 |
 | --- | --- |
@@ -115,4 +128,9 @@ cd my-blog
 | 看不到搜索/评论入口 | 默认关闭；检查 provider，评论还需要有效 server_url 与当前页未退出 |
 | 启用 feed 却没有订阅文件 | 检查插件是否安装、模板路径与命令工作目录；见订阅文档 |
 
-源码定制见 [自定义](customization.md)，文章功能开关见 [写作](writing.md)，从旧主题升级见 [迁移](migration-from-shoka.md)。
+源码定制见 [自定义](/docs/customization/)，文章功能开关见 [写作](/docs/writing/)，从旧主题升级见 [迁移](/docs/migration-from-shoka/)。
+
+
+---
+
+[文档首页](/docs/)

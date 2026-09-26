@@ -1,4 +1,3 @@
-import { syncExampleDocs } from './example-docs.mjs';
 import { lstat, mkdir, realpath, symlink } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -18,5 +17,3 @@ try {
 }
 
 console.log('Example site linked to the local Syutoi theme.');
-
-await syncExampleDocs();

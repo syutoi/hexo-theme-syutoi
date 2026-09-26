@@ -39,7 +39,7 @@ export function initializeToc(): void {
     }
     active = current;
     // Scroll only the sidebar panel; never move page focus or the document.
-    if (active && desktop.matches && !desktopToc.contains(document.activeElement)) {
+    if (active && desktop.matches && desktopToc.getClientRects().length && !desktopToc.contains(document.activeElement)) {
       const panel = desktopToc.getBoundingClientRect();
       const link = active.link.getBoundingClientRect();
       if (link.top < panel.top + 8) desktopToc.scrollTop += link.top - panel.top - 8;
@@ -67,6 +67,7 @@ export function initializeToc(): void {
     const previous = document.activeElement === document.body ? lastFocused : document.activeElement;
     if (desktop.matches && previous && disclosure.contains(previous)) {
       const entry = entries.find(item => item.mobile === previous);
+      desktopToc.closest('[data-reading-navigation]')?.dispatchEvent(new Event('syutoi:show-article', { bubbles: true }));
       (entry?.link || active?.link || first.link).focus({ preventScroll: true });
     } else if (!desktop.matches && previous && desktopToc.contains(previous)) {
       const entry = entries.find(item => item.link === previous);

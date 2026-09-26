@@ -20,7 +20,7 @@ async function render(settings, rootPath = '/', fixture = {}) {
     await mkdir(join(directory, 'source/_posts'), { recursive: true });
     await symlink(root, join(directory, 'themes/syutoi'));
     await symlink(join(root, 'example/node_modules'), join(directory, 'node_modules'));
-    await writeFile(join(directory, 'package.json'), JSON.stringify({name:'config-fixture',hexo:{version:'8.1.2'},dependencies:{'hexo-renderer-markdown-it':'7.1.1'}}));
+    await writeFile(join(directory, 'package.json'), JSON.stringify({name:'config-fixture',hexo:{version:'8.1.2'},dependencies:{'hexo-renderer-markdown-it':'7.1.1',...fixture.dependencies}}));
     await writeFile(join(directory, '_config.yml'), yaml.dump({title:'Fixture',author:'Writer',theme:'syutoi',language:'en',url:'https://example.com'+rootPath,root:rootPath,ignore:['**/node_modules/**','**/themes/syutoi/example/**'],...fixture.config}));
     await writeFile(join(directory, '_config.syutoi.yml'), yaml.dump(settings));
     const posts = fixture.posts ?? ['---\ntitle: Example\ndate: 2020-01-01\n---\n## Heading\n\nA paragraph.\n'];
@@ -30,12 +30,19 @@ async function render(settings, rootPath = '/', fixture = {}) {
       await mkdir(join(directory, 'source', path), {recursive:true});
       await writeFile(destination, content);
     }
+    for (const [path, content] of Object.entries(fixture.postFiles ?? {})) {
+      const destination = join(directory, 'source/_posts', path);
+      await mkdir(join(destination, '..'), {recursive:true});
+      await writeFile(destination, content);
+    }
     if (fixture.translations) {
       await mkdir(join(directory, 'source/_data'), {recursive:true});
       await writeFile(join(directory, 'source/_data/languages.yml'), yaml.dump(fixture.translations));
     }
     await hexo.init();
     await hexo.call('generate');
+    if (fixture.verify) await fixture.verify(hexo, directory);
+    for (const path of fixture.absentPaths || []) assert.equal(hexo.route.get(path), undefined, `Unexpected route: ${path}`);
     if (fixture.paths) return await Promise.all(fixture.paths.map(path => readFile(join(directory, 'public', path), 'utf8')));
     return await readFile(join(directory, 'public/index.html'), 'utf8');
   } finally {
@@ -130,7 +137,7 @@ test('empty and unpaginated sites render usable lists without pagination', async
 
 
 test('article metadata, taxonomy, attribution and neighbors survive subdirectory rendering', async () => {
-  const [article, single] = await render({}, '/blog/', {
+  const [article, single] = await render({columns:{categories:[]}}, '/blog/', {
     config:{permalink:':title/'},
     posts:[
       post('Older', 'updated: 2020-01-01'),
@@ -572,4 +579,93 @@ test('TOC numbering can be disabled without changing nested heading targets', as
     assert.deepEqual(links(numbered[i]), links(plain[i]));
     assert.equal(links(plain[i]).length, 5);
   }
+});
+
+test('columns provide complete ordered directories and scoped neighbors under a subdirectory', async () => {
+  const fixture={config:{permalink:':title/',category_generator:{per_page:1}},absentPaths:['categories/Guide/page/2/index.html'],posts:[
+    post('Last','categories: [Guide]\ncolumn_order: 30', '## Heading\n\nBody'),
+    post('First','categories: [Guide]\ncolumn_order: 10', '## Heading\n\nBody'),
+    post('Middle','categories: [Guide]\ncolumn_order: 20', '## Heading\n\nBody'),
+    post('Unrelated','categories: [Notes]'),
+    post('Private','categories: [Guide]\npassword: secret'),
+    post('Optout','categories: [Guide]\ncolumn: false')
+  ],paths:['post-1/index.html','post-2/index.html','post-0/index.html','categories/Guide/index.html','post-3/index.html']};
+  const pages=await render({columns:{categories:['Guide']}},'/blog/',fixture);
+  for (const html of pages.slice(0,4)) {
+    const dom=parseDocument(html);
+    const directory=DomUtils.getElementsByTagName('ol',dom).find(node=>node.attribs.class==='column-entries');
+    assert.ok(directory);
+    const links=DomUtils.getElementsByTagName('a',directory);
+    assert.deepEqual(links.map(a=>DomUtils.textContent(a).replace(/^\d+\.\s*/,'')),['First','Middle','Last']);
+    assert.deepEqual(links.map(a=>a.attribs.href),['/blog/post-1/','/blog/post-2/','/blog/post-0/']);
+    assert.doesNotMatch(html,/href="\/blog\/categories\/Guide\/page\/2\//);
+  }
+  for (const [index,expected] of [[0,['/blog/post-2/']],[1,['/blog/post-1/','/blog/post-0/']],[2,['/blog/post-2/']]]) {
+    const html=pages[index];
+    const nav=DomUtils.getElementsByTagName('nav',parseDocument(html)).find(n=>n.attribs.class==='post-neighbors column-neighbors');
+    assert.deepEqual(DomUtils.getElementsByTagName('a',nav).map(a=>a.attribs.href),expected);
+    assert.match(html,/aria-current="page"/);
+    assert.match(html,/data-reading-tabs/);
+    assert.match(html,/class="mobile-column"/);
+  }
+  assert.doesNotMatch(pages[4],/data-reading-tabs|column-neighbors|column-entries/);
+  const [noToc]=await render({columns:{categories:['Guide']},sidebar:{toc:false}},'/',{...fixture,paths:['post-1/index.html']});
+  assert.match(noToc,/data-column="desktop"/);
+  assert.doesNotMatch(noToc,/data-reading-tabs/);
+  const [noSidebar]=await render({columns:{categories:['Guide']},sidebar:{enable:false}},'/',{...fixture,paths:['post-1/index.html']});
+  assert.match(noSidebar,/mobile-column column-inline/);
+  assert.doesNotMatch(noSidebar,/data-column="desktop"/);
+});
+
+test('all categories have column navigation by default and an empty list restores ordinary categories', async () => {
+  const fixture={dependencies:{'hexo-generator-category':'1.0.0'},config:{permalink:':title/',category_generator:{per_page:1}},posts:[
+    post('Guide one','categories: [Guide]'),post('Guide two','categories: [Guide]'),
+    post('Notes one','categories: [Notes]'),post('Uncategorized')
+  ],paths:['post-0/index.html','post-2/index.html','categories/Guide/index.html','categories/Notes/index.html','post-3/index.html'],absentPaths:['categories/Guide/page/2/index.html']};
+  const pages=await render({},'/blog/',fixture);
+  for(const html of pages.slice(0,4)) assert.match(html,/class="column-entries"/);
+  assert.doesNotMatch(pages[4],/class="column-entries"/);
+  const [ordinary,second]=await render({columns:{categories:[]}},'/blog/',{...fixture,absentPaths:[],paths:['post-0/index.html','categories/Guide/page/2/index.html']});
+  assert.doesNotMatch(ordinary,/column-neighbors|column-entries/);
+  assert.match(second,/class="post-list"/);
+});
+
+
+test('colocated index homes render intro and chapters, keep feeds clean, and survive native file updates', async () => {
+  const intro = post('Guide home', 'categories: [Guide]\npermalink: guide/', 'Intro content.');
+  await render({}, '/blog/', {
+    dependencies: {'hexo-generator-category':'1.0.0', 'hexo-generator-sitemap':'3.0.1'},
+    config: {sitemap:{path:'sitemap.xml',categories:true}},
+    posts: [post('Chapter', 'categories: [Guide]\npermalink: chapter/'), post('Other chapter','categories: [Other]')],
+    postFiles: {'guide/index.md':intro, 'other/index.md':post('Other home','categories: [Other]', 'Other intro.')},
+    verify: async (hexo, directory) => {
+      const html = await readFile(join(directory,'public/guide/index.html'),'utf8');
+      assert.match(html,/Intro content/);
+      assert.match(html,/class="column-entries"/);
+      assert.match(html,/href="\/blog\/chapter\/"/);
+      assert.equal(hexo.locals.get('posts').length,2);
+      assert.equal(hexo.locals.get('pages').filter(p => p.column_home).length,2);
+      const other = await readFile(join(directory,'public/categories/Other/index.html'),'utf8');
+      assert.match(other,/Other intro/);
+      const sitemap = await readFile(join(directory,'public/sitemap.xml'),'utf8');
+      const urls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]);
+      assert.equal(new Set(urls).size,urls.length);
+      assert.ok(urls.includes('https://example.com/blog/guide/'));
+      assert.ok(urls.includes('https://example.com/blog/categories/Other/'));
+      const source = join(directory,'source/_posts/guide/index.md');
+      await writeFile(source,intro.replace('Intro content.','Updated intro.'));
+      await hexo.call('generate');
+      assert.match(await readFile(join(directory,'public/guide/index.html'),'utf8'),/Updated intro/);
+      await rm(source);
+      await hexo.call('generate');
+      assert.equal(hexo.route.get('guide/index.html'),undefined);
+      assert.equal(hexo.locals.get('posts').length,2);
+      assert.equal(hexo.locals.get('column_homes').Guide,undefined);
+      assert.ok(hexo.route.get('categories/Guide/index.html'));
+      await writeFile(source,intro);
+      await hexo.call('generate');
+      assert.ok(hexo.route.get('guide/index.html'));
+      assert.equal(hexo.locals.get('posts').length,2);
+    }
+  });
 });

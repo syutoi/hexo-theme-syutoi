@@ -1,4 +1,17 @@
-# 图片与尺寸
+---
+title: 图片与尺寸
+description: 图片路径、宽高设置、头像封面、灯箱和体积排查。
+date: '2026-09-26 00:00:00'
+updated: '2026-09-26 00:00:00'
+comments: false
+permalink: docs/images/
+categories:
+  - 主题文档
+author: Syutoi
+cover: false
+column: 主题文档
+column_order: 70
+---
 
 正文图片、作者头像、页头和文章封面使用不同配置。本页说明放在哪里、怎样控制显示大小，以及如何开启点击放大。
 
@@ -34,7 +47,7 @@ markdown:
         allowedAttributes: [width, height]
 ```
 
-保留原有的脚注、任务列表等插件，不要重复添加 attrs。该插件由当前使用的 `hexo-renderer-markdown-it@7.1.1` 提供；renderer 的完整安装方法见 [快速开始](getting-started.md)，提示块与扩展维护见 [Markdown 扩展](markdown-extensions.md)。修改插件配置后重启预览并重新生成。
+保留原有的脚注、任务列表等插件，不要重复添加 attrs。该插件由当前使用的 `hexo-renderer-markdown-it@7.1.1` 提供；renderer 的完整安装方法见 [快速开始](/docs/getting-started/)，提示块与扩展维护见 [Markdown 扩展](/docs/markdown-extensions/)。修改插件配置后重启预览并重新生成。
 
 width/height 填正整数像素值，如 `100`，不写 `100px` 或 `50%`。通常只写 width，保持原图比例；同时填写宽高时应符合原图比例。主题保留响应式 `max-width: 100%` 和 `height: auto`，手机窄屏仍会缩小图片，不会强制拉伸成指定矩形。只写 height 不保证能控制显示高度。
 
@@ -57,7 +70,7 @@ width/height 填正整数像素值，如 `100`，不写 `100px` 或 `50%`。通�
 | 浏览器图标 | `_config.syutoi.yml` | `branding.favicon` |
 | 页头大图 | `_config.syutoi.yml` | `appearance.cover` |
 | 文章或独立页封面 | 内容文件的 Front Matter | `cover`、`cover_alt` |
-| 分享预览图 | 主题配置或 Front Matter | 见 [SEO 字段](configuration.md#seo-configuration) |
+| 分享预览图 | 主题配置或 Front Matter | 见 [SEO 字段](/docs/configuration/#seo-configuration) |
 
 ```yaml
 # 博客 _config.syutoi.yml
@@ -73,7 +86,7 @@ cover: /images/article.webp
 cover_alt: 桌上的书与一杯茶
 ```
 
-正文的 `{width=100}` 不控制上述图片。头像按侧栏样式显示，页头和封面可能裁剪；选择合适构图，并为图片提供足够但不过大的分辨率。`cover: false` 可关闭单篇封面；`post_list.cover: false` 只隐藏列表图片。布局定制见 [外观定制](customization.md)。
+正文的 `{width=100}` 不控制上述图片。头像按侧栏样式显示，页头和封面可能裁剪；选择合适构图，并为图片提供足够但不过大的分辨率。`cover: false` 可关闭单篇封面；`post_list.cover: false` 只隐藏列表图片。布局定制见 [外观定制](/docs/customization/)。
 
 ## 点击放大与长图
 
@@ -84,7 +97,7 @@ lightbox:
   enable: true
 ```
 
-只增强合格的正文图片；头像、页头和封面不属于灯箱范围。单篇文章可写 `lightbox: false` 退出。缩略图链接不同原图时，要填写原图的真实尺寸；picture/srcset 等情况保留原生行为。详细条件见 [可选图片灯箱](configuration.md#可选图片灯箱)。
+只增强合格的正文图片；头像、页头和封面不属于灯箱范围。单篇文章可写 `lightbox: false` 退出。缩略图链接不同原图时，要填写原图的真实尺寸；picture/srcset 等情况保留原生行为。详细条件见 [可选图片灯箱](/docs/configuration/#可选图片灯箱)。
 
 正文图片保持比例，最大高度为 `min(80vh, 960px)`。非常长的信息图可链接到原图阅读；如果要取消高度限制，可以使用原生 HTML：
 
@@ -98,7 +111,7 @@ lightbox:
 
 主题会为正文 img 的站内绝对路径处理 `root` 子目录前缀；自己编写的 `source/srcset` 路径需要适配部署目录。不要把本地磁盘路径写进 Markdown。文件名大小写应与链接一致，发布后仍需检查是否 404。
 
-设置 width 只改变显示尺寸，**不会压缩原文件**。主题不会自动下载、裁剪、转码或生成响应式图片；上传前应自行缩小和压缩。普通照片、插画可使用已经准备好的 WebP 文件，原图可单独保留。图片优化和示例资源维护见 [示例图片编码工具](../toolbox/optimize-example-images.mjs)。
+设置 width 只改变显示尺寸，**不会压缩原文件**。主题不会自动下载、裁剪、转码或生成响应式图片；上传前应自行缩小和压缩。普通照片、插画可使用已经准备好的 WebP 文件，原图可单独保留。图片优化和示例资源维护见 [示例图片编码工具](https://github.com/syutoi/hexo-theme-syutoi/blob/main/toolbox/optimize-example-images.mjs)。
 
 ## 常见问题
 
@@ -111,3 +124,8 @@ lightbox:
 | 点击图片没有灯箱 | 检查全局/单篇开关以及图片是否符合灯箱条件 |
 
 对照效果：[图片展示](/pictures/) · [图片属性与提示块](/markdown-extensions/) · [友链头像](/friends/)。
+
+
+---
+
+[文档首页](/docs/)

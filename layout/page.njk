@@ -5,7 +5,7 @@
   {% if page.type == 'categories' or page.type == 'tags' %}
   <ul class="taxonomy-list">
     {% set terms = site.categories if page.type == 'categories' else site.tags %}
-    {% for term in terms.toArray() %}<li><a href="{{ url_for(term.path) }}">{{ term.name }}<span>{{ term.length }}</span></a></li>{% else %}<li>{{ __('desk.empty_categories') if page.type == 'categories' else __('desk.empty_tags') }}</li>{% endfor %}
+    {% for term in terms.toArray() %}<li><a href="{{ url_for(syutoi_category_path(term) if page.type == 'categories' else term.path) }}">{{ term.name }}<span>{{ term.posts.length if page.type == 'categories' else term.length }}</span></a></li>{% else %}<li>{{ __('desk.empty_categories') if page.type == 'categories' else __('desk.empty_tags') }}</li>{% endfor %}
   </ul>
   {% elif page.type == 'search' and syutoi.search.provider != 'none' %}
     {% include '_partials/search.njk' %}

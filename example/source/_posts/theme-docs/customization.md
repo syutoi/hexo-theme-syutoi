@@ -1,6 +1,19 @@
-# 自定义主题
+---
+title: 外观定制
+description: 调整配色、字体与布局，维护自己的主题定制。
+date: '2026-09-22 00:00:00'
+updated: '2026-09-26 00:00:00'
+comments: false
+permalink: docs/customization/
+categories:
+  - 主题文档
+author: Syutoi
+cover: false
+column: 主题文档
+column_order: 40
+---
 
-先用 [主题配置](configuration.md) 调整外观；只有配置无法满足需求时才修改主题源码。当前没有 custom_css、custom_js、inject 或动态皮肤配置，单独把 CSS 放进博客 source 不会自动引用。
+先用 [主题配置](/docs/configuration/) 调整外观；只有配置无法满足需求时才修改主题源码。当前没有 custom_css、custom_js、inject 或动态皮肤配置，单独把 CSS 放进博客 source 不会自动引用。
 
 ## 使用配置与站点资源
 
@@ -79,4 +92,9 @@ pnpm test
 
 把站点配置和文章留在博客，源码定制保存在自己的主题分支或 fork，先提交本地修改再合并上游更新。合并后重新安装锁定依赖、构建、验证并提交产物；不要用覆盖整个主题目录的方法更新。
 
-当前没有承诺跨版本稳定的私有 CSS 类名、DOM 结构或插槽注入 API。升级前查看 [Changelog](../CHANGELOG.md) 与 [迁移说明](migration-from-shoka.md)，配置能表达的内容优先留在配置中。
+当前没有承诺跨版本稳定的私有 CSS 类名、DOM 结构或插槽注入 API。升级前查看 [Changelog](https://github.com/syutoi/hexo-theme-syutoi/blob/main/CHANGELOG.md) 与 [迁移说明](/docs/migration-from-shoka/)，配置能表达的内容优先留在配置中。
+
+
+---
+
+[文档首页](/docs/)

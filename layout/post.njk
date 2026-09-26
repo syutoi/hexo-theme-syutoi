@@ -11,11 +11,12 @@
       {% if page.author or config.author %}<span>{{ page.author or config.author }}</span>{% endif %}
       {% if reading %}<span class="reading-time">{{ reading }}</span>{% endif %}
     </div>
-    {% if page.categories.length %}<nav class="post-taxonomy" aria-label="{{ __('title.category') }}">{% for category in page.categories.toArray() %}<a href="{{ url_for(category.path) }}">{{ category.name }}</a>{% endfor %}</nav>{% endif %}
+    {% if page.categories.length %}<nav class="post-taxonomy" aria-label="{{ __('title.category') }}">{% for category in page.categories.toArray() %}<a href="{{ url_for(syutoi_category_path(category)) }}">{{ category.name }}</a>{% endfor %}</nav>{% endif %}
     {% if page.link and syutoi_url(page.link) %}<p><a href="{{ syutoi_url(page.link) }}">{{ __('desk.external') }} ↗</a></p>{% endif %}
   </header>
   {% if syutoi_cover(page) %}<img class="article-cover" src="{{ syutoi_cover(page) }}" alt="{{ syutoi_cover_alt(page) }}" decoding="async">{% endif %}
   {% include '_partials/mobile-toc.njk' %}
+  {% if column %}<details class="mobile-column{% if not syutoi.sidebar.enable %} column-inline{% endif %}"><summary>{{ __('column.title') }} · {{ column.name }}</summary><nav class="column-navigation" data-column="mobile" aria-label="{{ __('column.title') }}">{% include '_partials/column-directory.njk' %}</nav></details>{% endif %}
   <div class="prose" data-prose data-copy-label="{{ __('desk.copy') }}" data-copied-label="{{ __('desk.copied') }}" data-copy-failed-label="{{ __('desk.copy_failed') }}">{{ body.html | safe }}</div>
   <footer class="article-footer">
     {% if page.tags.length %}<nav class="post-taxonomy" aria-label="{{ __('title.tag') }}">{% for tag in page.tags.toArray() %}<a href="{{ url_for(tag.path) }}">#{{ tag.name }}</a>{% endfor %}</nav>{% endif %}
@@ -25,7 +26,13 @@
     </div>
   </footer>
 </article>
-{% if page.prev or page.next %}<nav class="post-neighbors" aria-label="{{ __('desk.related_navigation') }}">
+{% if column %}
+{% if column.previous or column.next %}<nav class="post-neighbors column-neighbors" aria-label="{{ __('column.navigation') }}">
+  {% if column.previous %}<a rel="prev" href="{{ url_for(column.previous.path) }}"><span>{{ __('post.prev') }}</span>{{ column.previous.title or __('post.untitled') }}</a>{% endif %}
+  {% if column.next %}<a rel="next" href="{{ url_for(column.next.path) }}"><span>{{ __('post.next') }}</span>{{ column.next.title or __('post.untitled') }}</a>{% endif %}
+</nav>{% endif %}
+<p class="column-overview"><a href="{{ url_for(column.path) }}">{{ __('column.view_all') }} · {{ column.name }}</a></p>
+{% elif page.prev or page.next %}<nav class="post-neighbors" aria-label="{{ __('desk.related_navigation') }}">
   {% if page.prev %}<a href="{{ url_for(page.prev.path) }}"><span>{{ __('post.prev') }}</span>{{ page.prev.title or __('post.untitled') }}</a>{% endif %}
   {% if page.next %}<a href="{{ url_for(page.next.path) }}"><span>{{ __('post.next') }}</span>{{ page.next.title or __('post.untitled') }}</a>{% endif %}
 </nav>{% endif %}

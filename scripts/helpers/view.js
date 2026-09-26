@@ -26,6 +26,7 @@ hexo.extend.helper.register('syutoi_title', function () {
   if (page.type === 'categories') return this.__('title.category');
   if (page.type === 'tags') return this.__('title.tag');
   if (page.type === '404') return this.__('desk.not_found');
+  if (page.column_home) return page.title || page.category;
   if (page.category) return this.__('title.category_page', page.category);
   if (page.tag) return this.__('title.tag_page', page.tag);
   if (page.archive) return [this.__('title.archive'), page.year, page.month, page.day].filter(Boolean).join(' / ');
@@ -71,4 +72,15 @@ hexo.extend.helper.register('syutoi_body', function () {
   return this.syutoi_settings().lightbox.enable && this.page.lightbox !== false
     ? enhanceLightbox(html, value => value.startsWith(this.config.root || '/') ? value : this.url_for(value), this.__('lightbox.open'))
     : { html, enabled: false };
+});
+
+const { columnForPage } = require('../../lib/columns.cjs');
+hexo.extend.helper.register('syutoi_column', function () {
+  return columnForPage(this.site, this.page, this.syutoi_settings(), this.config, this.is_post());
+});
+
+hexo.extend.helper.register('syutoi_category_path', function (category) {
+  const {categoryKey} = require('../../lib/columns.cjs');
+  const key = categoryKey(category,this.site.categories.toArray());
+  return this.site.column_homes?.[key]?.path.replace(/(^|\/)index\.html$/, '$1') || category.path;
 });
