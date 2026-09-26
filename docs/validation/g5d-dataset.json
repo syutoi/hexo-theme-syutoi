@@ -1,0 +1,38 @@
+{
+  "commit": "0eac0dec8a0cd918e4cd390c97b0be6c123e9c58",
+  "posts": 11,
+  "showcasePosts": 3,
+  "guides": 8,
+  "files": [
+    {
+      "path": "example/public/index.html",
+      "bytes": 13495,
+      "sha256": "6496ee1aeb986d527482f8ab646f2c77f227875efe72587d079fdc2377a715c6"
+    },
+    {
+      "path": "example/public/syutoi-long-read/index.html",
+      "bytes": 24009,
+      "sha256": "d25e55417631aba397b7f10e43fff18a88bf8a41a5638958e9b343abcffa0efd"
+    },
+    {
+      "path": "source/images/avatar.png",
+      "bytes": 748349,
+      "sha256": "4da1c0c328b7252ca003ce170c9613a1225a35f0d799716f18ff787974dd6e62"
+    },
+    {
+      "path": "example/source/assets/pastoral-evening.webp",
+      "bytes": 155078,
+      "sha256": "5622003d951a1e77d5ec5613f9067ea2876f38a61c9d7c2e03e9c781100987f9"
+    },
+    {
+      "path": "example/source/assets/sunlit-desk.webp",
+      "bytes": 104890,
+      "sha256": "c4c73190389fdf1c01bdf8149652ce1c233f049a079ec497c023631ab9332f58"
+    },
+    {
+      "path": "example/source/assets/cottage-garden.webp",
+      "bytes": 204464,
+      "sha256": "3dd1c159ee730777c39acaf6d16dd7d43b06728061bc4c2e9ec71bd1fb138e53"
+    }
+  ]
+}
