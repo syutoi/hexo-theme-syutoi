@@ -30,5 +30,7 @@ navigation:
     - name: menu.friends
       url: /friends/
 
-# Do not inherit the upstream author's personal social accounts.
-social: []
+# Social links shown in the author sidebar.
+social:
+  - type: github
+    url: https://github.com/syutoi

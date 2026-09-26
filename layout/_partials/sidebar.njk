@@ -8,7 +8,11 @@
       <a href="{{ url_for(config.category_dir + '/') }}"><strong>{{ site.categories.length }}</strong><span>{{ __('state.categories') }}</span></a>
       <a href="{{ url_for(config.tag_dir + '/') }}"><strong>{{ site.tags.length }}</strong><span>{{ __('state.tags') }}</span></a>
     </nav>{% endif %}
-    {% if syutoi.social.length %}<nav class="social-links" aria-label="{{ __('desk.social') }}">{% for item in syutoi.social %}<a href="{{ syutoi_url(item.url) }}">{{ item.name }} <span aria-hidden="true">↗</span></a>{% endfor %}</nav>{% endif %}
+    {% if syutoi.social.length %}<nav class="social-links" aria-label="{{ __('desk.social') }}">{% for item in syutoi.social %}
+      {% if item.icon %}
+      <a class="social-icon" href="{{ syutoi_url(item.url) }}" aria-label="{{ item.name }}" title="{{ item.name }}">{% include '_partials/icons/' ~ item.icon ~ '.njk' %}</a>
+      {% else %}<a href="{{ syutoi_url(item.url) }}">{{ item.name }} <span aria-hidden="true">↗</span></a>{% endif %}
+    {% endfor %}</nav>{% endif %}
     {% if syutoi_feed('rss') %}<a class="subscribe-link" href="{{ syutoi_feed('rss') }}">{{ __('desk.rss') }} <span aria-hidden="true">↗</span></a>{% endif %}
   </section>
   {% if is_post() or (is_page() and page.content) %}

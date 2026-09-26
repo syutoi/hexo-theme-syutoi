@@ -29,6 +29,10 @@
 .site-layout.without-sidebar { grid-template-columns: minmax(0, 1fr); max-width: 900px; }
 .social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem 1rem; margin: 1rem 0; font-size: .8rem; }
 .social-links a { text-decoration: none; }
+.social-links .social-icon { display: inline-grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 50%; }
+.social-icon svg { width: 1.4rem; height: 1.4rem; fill: currentColor; }
+.social-icon .social-icon-wide { width: 2rem; height: 2rem; }
+.social-icon:hover, .social-icon:focus-visible { background: var(--syutoi-color-soft); }
 .site-main { min-width: 0; min-height: 50vh; }
 .site-main:focus-visible { outline: 2px solid var(--syutoi-color-focus); outline-offset: 4px; }
 .site-sidebar { min-width: 0; padding-top: .5rem; }

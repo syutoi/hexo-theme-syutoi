@@ -414,14 +414,15 @@ test('sharing switches, explicit image opt-out and invalid URLs preserve canonic
 test('typed social links support the PRD schema, custom labels, maps and legacy entries', async () => {
   const html = await render({social:[{type:'github',url:'https://github.com/example'},{type:'email',url:'mailto:hello@example.com'},{type:'custom',name:'<My link>',url:'/about/'},{type:'unknown',url:'https://example.com'},{type:'x',url:'javascript:alert(1)'}]}, '/blog/');
   const nav = html.match(/<nav class="social-links"[\s\S]*?<\/nav>/)[0];
-  assert.match(nav, />GitHub /);
-  assert.match(nav, />Email /);
+  assert.match(nav, /aria-label="GitHub" title="GitHub"/);
+  assert.match(nav, /<svg[^>]+aria-hidden="true"/);
+  assert.match(nav, /aria-label="Email" title="Email"/);
   assert.match(nav, /href="\/blog\/about\/">&lt;My link&gt;/);
   assert.equal((nav.match(/<a /g)||[]).length,3);
   assert.doesNotMatch(nav, /javascript:|unknown/);
   const mapped = await render({social:{github:{url:'https://github.com/example'},email:{name:'Contact',url:'mailto:hello@example.com'},legacy:'https://example.com || old-icon'}});
-  assert.match(mapped, />GitHub /);
-  assert.match(mapped, />Contact /);
+  assert.match(mapped, /aria-label="GitHub" title="GitHub"/);
+  assert.match(mapped, /aria-label="Contact" title="Contact"/);
   assert.match(mapped, />legacy /);
 });
 
@@ -524,4 +525,32 @@ test('Baidu Analytics emits no script when disabled or misconfigured', async () 
     const html = await render(settings);
     assert.doesNotMatch(html, /hm\.baidu\.com|window\._hmt|alert\(1\)/);
   }
+});
+
+test('built-in social icons render accessible local SVGs with safe text fallback', async () => {
+  const types = ['github','gitlab','x','twitter','zhihu','xiaohongshu','bilibili','weibo','telegram','youtube','instagram','mastodon','bluesky','email','rss','website'];
+  const social = types.map(type => ({type:type.toUpperCase(),name:`${type} <profile>`,url:`https://example.com/${type}`}));
+  social.push({type:'../../head/head',name:'Custom site',url:'/about/'}, {name:'Plain GitHub',url:'https://github.com/example'});
+  const html = await render({social}, '/blog/');
+  const document = parseDocument(html);
+  const nav = DomUtils.getElementsByTagName('nav',document).find(node => node.attribs.class === 'social-links');
+  const links = DomUtils.getElementsByTagName('a',nav);
+  assert.equal(links.length, social.length);
+  for (const [index, type] of types.entries()) {
+    const link = links[index];
+    assert.equal(link.attribs['aria-label'], `${type} <profile>`);
+    assert.equal(link.attribs.title, `${type} <profile>`);
+    assert.equal(link.attribs.href, `https://example.com/${type}`);
+    const [svg] = DomUtils.getElementsByTagName('svg',link);
+    assert.ok(svg, `${type} must have an icon`);
+    assert.equal(svg.attribs['aria-hidden'], 'true');
+    assert.equal(svg.attribs.focusable, 'false');
+    assert.equal(DomUtils.getElementsByTagName('script', link).length, 0);
+    assert.equal(DomUtils.getElementsByTagName('img', link).length, 0);
+  }
+  for (const link of links.slice(types.length)) {
+    assert.equal(DomUtils.getElementsByTagName('svg',link).length, 0);
+    assert.ok(DomUtils.textContent(link).trim());
+  }
+  assert.equal(links[types.length].attribs.href, '/blog/about/');
 });

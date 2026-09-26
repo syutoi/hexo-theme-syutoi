@@ -74,7 +74,7 @@ social:
 | `seo.noindex` | `false` | true 为全站输出 noindex, follow |
 | `lightbox.enable` | `false` | 正文图片的可选灯箱；单篇 lightbox: false 可关闭，首次点击才加载查看器 |
 | `navigation.menu` | 首页、归档、分类、标签 | `{ name, url }` 列表；空列表移除菜单链接 |
-| `social` | `[]` | `{ type, url }` 或 `{ name, url }` 列表，显示在作者侧栏；不加载外部图标或组件 |
+| `social` | `[]` | `{ type, url }` 或 `{ name, url }` 列表，显示在作者侧栏；内置类型显示本地 SVG 图标，其余显示文字 |
 | `sidebar.enable` | `true` | 显示侧栏；关闭后使用居中的单列布局 |
 | `sidebar.statistics` | `true` | 显示文章、分类、标签数量 |
 | `sidebar.categories` | `true` | 在非文章页显示顶级分类列表 |
@@ -257,7 +257,7 @@ seo:
 
 ### 结构化社交链接（F3）
 
-推荐使用 PRD 的列表格式；按配置顺序显示文字链接，不引入图标字体或分享 SDK：
+推荐使用 PRD 的列表格式；按配置顺序显示链接；内置平台使用本地 SVG 图标，不引入图标字体或分享 SDK：
 
 ```yaml
 social:
@@ -272,9 +272,27 @@ social:
     url: /about/
 ```
 
-内置类型标签：github、gitlab、email、twitter、x、mastodon、bluesky、rss、website；类型大小写不敏感。`name` 优先，可用任意语言；未知类型需提供 name，否则忽略。非法 URL 与空标签忽略，本地路径包含站点 root，`social: []` 清空。
+内置图标类型：github、gitlab、x、zhihu、xiaohongshu、bilibili、weibo、telegram、youtube、instagram、mastodon、bluesky、email、rss、website。twitter 为 x 的兼容别名；类型大小写不敏感。`name` 优先，可用任意语言；未知类型需提供 name，否则忽略。非法 URL 与空标签忽略，本地路径包含站点 root，`social: []` 清空。
 
 原有 `{name, url}` 列表继续有效。也兼容 `social: {github: {url: ...}}` 的结构化映射以及 Shoka 的 `url || icon || color` 字符串映射；旧图标和颜色不解析为新组件。
+
+`social` 中使用上述内置 `type` 时，侧栏显示对应 SVG 图标，`name` 可自定义悬停提示和无障碍名称。图标跟随明暗主题配色，只有已配置的图标会嵌入页面，不加载外部字体或图标服务。只填写 `name` 或使用未知 `type` 配合 `name` 时保留文字链接，不根据 URL 猜测平台。
+
+例如，在博客 `_config.syutoi.yml` 中配置（用你的真实主页地址替换示例）：
+
+```yaml
+social:
+  - type: github
+    url: https://github.com/yourname
+  - type: x
+    url: https://x.com/yourname
+  - type: zhihu
+    url: https://www.zhihu.com/people/yourname
+  - type: xiaohongshu
+    url: https://www.xiaohongshu.com/user/profile/your-id
+```
+
+品牌图标来自 Simple Icons，本地来源与版本记录见 `layout/_partials/icons/README.md`；邮件、RSS 和网站使用主题内置通用图标。无需自行准备图标文件。
 
 ## Markdown 阅读元素
 

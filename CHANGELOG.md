@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add local SVG social icons for common platforms, accessible labels and text fallback for custom links.
+
 - Add opt-in Baidu Analytics through `analytics.baidu`, with tracking ID validation and asynchronous HTTPS loading.
 
 ## 0.5.0 — 2026-09-26

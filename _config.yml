@@ -100,7 +100,9 @@ seo:
 
 # Social links
 # Displayed as labelled links in the author sidebar.
-# Use type for a built-in label, or name for custom plain text.
+# Use type for a built-in icon and label, or name for custom plain text.
+# Types: github, gitlab, x (twitter), zhihu, xiaohongshu, bilibili, weibo,
+# telegram, youtube, instagram, mastodon, bluesky, email, rss, website.
 # URLs support https:// and mailto:.
 # No remote icon font, SDK, tracking widget or automatic embed is loaded.
 # Empty by default: replace examples with your own accounts.
