@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## 0.5.0 — 2026-09-26
+
+Warm visual styling, a demo documentation center and optional writing extensions. Distributed through Git; npm publication and 1.0 preparation remain pending.
+
+- Replace demo imagery with coordinated pastoral illustrations, retain source PNGs and provide reproducible WebP encoding.
+- Add repeatable standalone Git installation and deployed-site checks, with recorded results for production dependencies, documentation links, assets, feeds and HTTP 404 behavior.
+- Establish a new performance baseline: all bundle budgets and measured CLS/interaction targets pass, but mobile homepage LCP remains above the 2.5s target (3.013s median). Image optimization is tracked as G5d1; this release does not claim all performance targets are met.
+
 - Add optional Markdown image dimensions and GitHub-style alerts with theme-aware styling, examples and configuration guidance; avoid duplicate image root prefixes under subdirectory deployments.
 
 - Publish a documentation hub and eight categorized guides from the repository documentation, with development synchronization and verified local links.

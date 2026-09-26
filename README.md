@@ -2,7 +2,7 @@
 
 面向写作与阅读的 Hexo 主题，fork 自 hexo-theme-shoka。保留图片页头、波浪、图文卡片和侧栏，以 Nunjucks、TypeScript 和原生 CSS 重建核心页面。
 
-当前版本 **0.4.0**，包含可选搜索/评论、SEO 与订阅能力，以及迁移文档、无障碍和性能验证。Demo/分发与正式 1.0 发布准备仍按 [TODO](docs/TODO.md) 推进。首个 Syutoi 版本重新编号，不延续上游遗留的 `0.2.5`；版本差异见 [CHANGELOG](CHANGELOG.md)。上游来源与 MIT 许可证保留。
+当前版本 **0.5.0**，新增木色视觉与田园配图、Demo 文档中心、可选 Markdown 图片属性和提示块，并完成独立 Git 安装及线上验收。当前移动首页 LCP 实测中位数 3.013s，优化仍在进行，详见 [性能基线](docs/validation/g5d.md)。Demo/分发与正式 1.0 发布准备仍按 [TODO](docs/TODO.md) 推进。首个 Syutoi 版本重新编号，不延续上游遗留的 `0.2.5`；版本差异见 [CHANGELOG](CHANGELOG.md)。上游来源与 MIT 许可证保留。
 
 在线 Demo：<https://hexo.syutoi.com/>（由 GitHub Actions 构建 `example/` 并发布到 GitHub Pages）。
 
