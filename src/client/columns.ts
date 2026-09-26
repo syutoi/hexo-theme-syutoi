@@ -1,3 +1,5 @@
+const READING_TAB_KEY = 'syutoi-reading-tab';
+
 export function initializeColumns(): void {
   const desktopNav = document.querySelector<HTMLElement>('[data-column="desktop"]');
   const mobileNav = document.querySelector<HTMLElement>('[data-column="mobile"]');
@@ -28,7 +30,10 @@ export function initializeColumns(): void {
   const panels = buttons.map(button => document.getElementById(button.getAttribute('aria-controls') || ''));
   if (panels.some(panel => !panel)) return;
   tabs.setAttribute('role', 'tablist');
-  const select = (index: number): void => {
+  const select = (index: number, remember = false): void => {
+    if (remember) {
+      try { localStorage.setItem(READING_TAB_KEY, buttons[index]!.id); } catch { /* Storage may be disabled. */ }
+    }
     buttons.forEach((button, i) => {
       button.setAttribute('aria-selected', String(i === index));
       button.tabIndex = i === index ? 0 : -1;
@@ -39,7 +44,7 @@ export function initializeColumns(): void {
     button.setAttribute('role', 'tab');
     panels[index]!.setAttribute('role', 'tabpanel');
     panels[index]!.setAttribute('aria-labelledby', button.id);
-    button.addEventListener('click', () => select(index));
+    button.addEventListener('click', () => select(index, true));
     button.addEventListener('keydown', event => {
       let next: number;
       if (event.key === 'ArrowRight') next = (index + 1) % buttons.length;
@@ -48,14 +53,44 @@ export function initializeColumns(): void {
       else if (event.key === 'End') next = buttons.length - 1;
       else return;
       event.preventDefault();
-      select(next);
+      select(next, true);
       buttons[next]?.focus();
     });
   });
   // If responsive TOC focus transfer targets the article panel, reveal it first.
   container.addEventListener('syutoi:show-article', () => select(0));
   container.addEventListener('syutoi:show-column', () => select(1));
-  select(0);
+  let preferred = 0;
+  try {
+    const saved = localStorage.getItem(READING_TAB_KEY);
+    preferred = Math.max(0, buttons.findIndex(button => button.id === saved));
+  } catch { /* Keep the default when storage is unavailable. */ }
+  select(preferred);
   container.classList.add('is-tabbed');
   tabs.hidden = false;
+
+  // Account for the panel's actual position, including the author card above it.
+  let pending = false;
+  const fit = (): void => {
+    pending = false;
+    if (!container.getClientRects().length) return;
+    const top = Math.max(16, container.getBoundingClientRect().top);
+    const available = window.innerHeight - top - 16;
+    // Off-screen panels retain their natural size until they enter the viewport.
+    container.style.setProperty('--reading-height', `${available > 120 ? available : window.innerHeight - 32}px`);
+  };
+  const schedule = (): void => {
+    if (pending) return;
+    pending = true;
+    requestAnimationFrame(fit);
+  };
+  window.addEventListener('scroll', schedule, {passive:true});
+  window.addEventListener('resize', schedule);
+  if (typeof ResizeObserver === 'function') {
+    const observer = new ResizeObserver(schedule);
+    observer.observe(tabs);
+    const author = document.querySelector('.author-panel');
+    if (author) observer.observe(author);
+  }
+  fit();
 }

@@ -181,10 +181,16 @@
 .reading-tabs[hidden], .reading-navigation [hidden] { display: none; }
 .reading-tabs button { min-height: 44px; padding: .25rem 0 .7rem; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px; background: transparent; color: var(--syutoi-color-text-secondary); cursor: pointer; font: inherit; font-size: .95rem; font-weight: 650; }
 .reading-tabs [aria-selected="true"] { border-bottom-color: var(--syutoi-color-primary); color: var(--syutoi-color-primary); }
-.reading-navigation.is-tabbed { margin-top: 1.5rem; padding: 1rem .5rem; }
+.reading-navigation.is-tabbed { display: flex; flex-direction: column; max-height: var(--reading-height, calc(100dvh - 2rem)); margin-top: 1.5rem; padding: 1rem .5rem; }
+.reading-navigation.is-tabbed .reading-tabs { flex-shrink: 0; }
+.reading-navigation.is-tabbed > [role="tabpanel"] { display: flex; flex-direction: column; min-height: 0; }
+.reading-navigation.is-tabbed > [role="tabpanel"][hidden] { display: none; }
+.reading-navigation.is-tabbed [role="tabpanel"] > nav { min-height: 0; max-height: none; overflow-y: auto; }
 .reading-navigation.is-tabbed .sidebar-section { margin: 0; padding: 0; }
 .reading-navigation.is-tabbed .sidebar-section > h2 { display: none; }
 .reading-navigation .article-toc, .column-navigation { max-height: calc(100dvh - 7rem); overflow-y: auto; overscroll-behavior: contain; }
+.article-toc, .column-navigation { scrollbar-width: none; }
+.article-toc::-webkit-scrollbar, .column-navigation::-webkit-scrollbar { display: none; }
 .column-heading { font-size: .85rem; }
 .column-entries { list-style: none; margin: 0; padding: 0; }
 .article-toc .toc-link, .column-entries a { display: flex; gap: .4rem; }
@@ -202,7 +208,7 @@
 .mobile-column .column-navigation { padding: 0 1rem .5rem; max-height: 55dvh; }
 .column-inline { display: block; }
 @media (max-width: 760px) {
-  .reading-navigation { display: none; }
+  .reading-navigation, .reading-navigation.is-tabbed { display: none; }
   .mobile-column { display: block; }
 }
 .mobile-column .column-entries a { min-height: 44px; align-items: center; }
