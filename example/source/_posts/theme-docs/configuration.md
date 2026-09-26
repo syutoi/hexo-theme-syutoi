@@ -304,9 +304,37 @@ seo:
 
 ## 代码展示与复制
 
+### 显示代码行号
+
+Syutoi 已支持 Hexo Highlight.js 输出的行号。开关放在**博客根目录 `_config.yml`**，不是 `_config.syutoi.yml`，也不是文章 Front Matter。示例站对应 `example/_config.yml`，目前选择关闭行号以保持简洁。
+
+使用本示例的 Hexo 8（Hexo 7 及以上采用相同配置入口）时，将以下字段合并到已有配置中，不要重复添加 `highlight`：
+
+```yaml
+syntax_highlighter: highlight.js
+highlight:
+  line_number: true
+  line_threshold: 0
+  auto_detect: false
+  wrap: true
+  hljs: false
+```
+
+- `line_number: true`：全局开启代码块行号；改为 `false` 关闭。
+- `line_threshold: 0`：所有非空代码块均显示行号。设为 `5` 时，仅超过 5 行的代码块显示，短代码保持简洁。
+- `wrap: true`、`hljs: false`：保留主题适配的代码和行号结构、语法配色类名。
+
+普通 Markdown 围栏无需改写，照常标注语言即可。行号由 Hexo 在构建时生成，主题负责样式；复制图标只复制代码，不包含行号。手写 HTML 的 `<pre>` 不会因为此配置自动生成行号。
+
+修改配置后停止预览，在博客目录运行 `pnpm exec hexo clean`，再执行 `pnpm exec hexo generate`、`pnpm exec hexo server`。主题仓库的示例则在仓库根目录执行 `pnpm clean`、`pnpm build`，然后重新运行 `pnpm dev`。
+
+旧版 Hexo（7 以前）使用 `highlight.enable: true` 开启 Highlight.js，而非 `syntax_highlighter`。以上说明针对主题当前使用的 Highlight.js 方案，PrismJS 使用另一套配置。更多参数见 [Hexo 语法高亮文档](https://hexo.io/zh-cn/docs/syntax-highlight)。
+
+### 语言标签与复制
+
 `/code/` 提供语言、缩进、空行、行末空格、br 换行、空代码、行号和折叠代码示例。高亮继续由 Hexo renderer 完成；主题在生成页面时添加语言标签、带名称的滚动区域和状态位置，原始代码 HTML 片段保持不变。未知语言可能被 renderer 转为 plaintext，标签忠实显示其结果，不重新猜测语言。
 
-滚动区域有显式 Tab 焦点，可用左右方向键滚动长行；无 JavaScript 时标签和滚动仍可用。浏览器提供 Clipboard API 时才添加复制按钮，复制内容不含标签、行号或按钮文字，保留缩进、空行和行末空格。成功／失败反馈显示在当前代码块下方，也通过 status 区域播报。进行中的复制拒绝重复触发但保留按钮焦点；失败后可重试或手动选择代码。
+滚动区域有显式 Tab 焦点，可用左右方向键滚动长行；无 JavaScript 时标签和滚动仍可用。浏览器提供 Clipboard API 时才添加复制按钮，复制内容不含标签、行号或按钮文字，保留缩进、空行和行末空格。成功／失败反馈显示在当前代码块上方，也通过 status 区域播报。进行中的复制拒绝重复触发但保留按钮焦点；失败后可重试或手动选择代码。
 
 Clipboard API 不可用时不显示复制按钮；权限拒绝时显示失败提示，不自动请求其他权限或引入备用外部组件。构建侧新增 htmlparser2 用来定位 HTML 片段，不进入浏览器 bundle。代码颜色仍使用主题的深浅色 token，不加载浏览器高亮器。
 
